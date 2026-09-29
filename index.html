@@ -3,19 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PT Medwa Judison Perkasa — Konstruksi, Agrikultur, Distribusi Pangan & Perdagangan Besar</title>
-<meta name="description" content="PT Medwa Judison Perkasa (MJP) — mitra nasional terpercaya dalam pembangunan infrastruktur, ketahanan pangan, dan rantai pasok nasional. Berpengalaman lebih dari 25 tahun di sektor konstruksi, agrikultur, distribusi pangan, dan perdagangan besar.">
-<meta name="theme-color" content="#050B16">
+<title>Judison — PT Medwa Judison Perkasa | Konstruksi, Agrikultur, Pangan & Perdagangan</title>
+<meta name="description" content="Judison (PT Medwa Judison Perkasa) — penerus warisan H.M. Joesoef Emdhy. Mitra nasional dalam konstruksi, agrikultur, distribusi pangan, dan perdagangan besar.">
+<meta name="theme-color" content="#2563EB">
+<link rel="icon" href="https://i.ibb.co.com/PvQ0vFtx/logo-mjp.png">
 
-<!-- Favicon -->
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%230C1A2E'/><text x='50' y='68' font-size='46' font-family='Arial' font-weight='bold' fill='%23E9B44C' text-anchor='middle'>M</text></svg>">
-
-<!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&display=swap" rel="stylesheet">
 
-<!-- Tailwind CSS CDN -->
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
   tailwind.config = {
@@ -23,34 +19,27 @@
       extend: {
         fontFamily: {
           sans: ['"Plus Jakarta Sans"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+          serif: ['Fraunces', 'ui-serif', 'Georgia', 'serif'],
         },
         colors: {
-          navy: {
-            950: '#050B16',
-            900: '#08111F',
-            850: '#0A1526',
-            800: '#0C1A2E',
-            700: '#12253F',
-            600: '#1B3355',
-            500: '#27466F',
-          },
-          gold: {
-            300: '#F6D68C',
-            400: '#F0C46A',
-            500: '#E9B44C',
-            600: '#C9942F',
-            700: '#9E7422',
-          },
           brand: {
-            blue: '#2E6BFF',
-            bluelight: '#5B8CFF',
-            red: '#E8443A',
-          },
+            blue: '#2563EB',
+            blueDark: '#1D4ED8',
+            blueDeep: '#1E3A8A',
+            blueLight: '#60A5FA',
+            blueSoft: '#EFF6FF',
+            red: '#DC2626',
+            redDark: '#B91C1C',
+            redSoft: '#FEF2F2',
+            navy: '#0A1F44',
+            navyDeep: '#061530',
+          }
         },
         boxShadow: {
-          'soft': '0 20px 60px -30px rgba(0, 0, 0, 0.9)',
-          'glow': '0 0 0 1px rgba(233,180,76,0.18), 0 24px 70px -28px rgba(233,180,76,0.45)',
-          'card': '0 1px 0 0 rgba(255,255,255,0.04) inset, 0 30px 60px -35px rgba(0,0,0,0.95)',
+          'card': '0 1px 3px rgba(10,31,68,0.06), 0 22px 50px -28px rgba(10,31,68,0.18)',
+          'card-hover': '0 1px 3px rgba(10,31,68,0.06), 0 34px 65px -30px rgba(37,99,235,0.35)',
+          'glow': '0 0 0 1px rgba(37,99,235,0.14), 0 30px 65px -30px rgba(37,99,235,0.5)',
+          'redglow': '0 0 0 1px rgba(220,38,38,0.12), 0 30px 65px -30px rgba(220,38,38,0.4)',
         },
       },
     },
@@ -61,168 +50,127 @@
   html { -webkit-tap-highlight-color: transparent; }
   body { overflow-x: hidden; }
 
-  /* ---------- Backgrounds ---------- */
   .bg-grid {
     background-image:
-      linear-gradient(to right, rgba(255,255,255,.045) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255,255,255,.045) 1px, transparent 1px);
+      linear-gradient(to right, rgba(10,31,68,.055) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(10,31,68,.055) 1px, transparent 1px);
     background-size: 46px 46px;
   }
-  .bg-grid-sm {
+  .bg-grid-dark {
     background-image:
       linear-gradient(to right, rgba(255,255,255,.05) 1px, transparent 1px),
       linear-gradient(to bottom, rgba(255,255,255,.05) 1px, transparent 1px);
-    background-size: 22px 22px;
+    background-size: 46px 46px;
   }
-  .radial-gold {
-    background: radial-gradient(60% 60% at 70% 20%, rgba(233,180,76,.20) 0%, rgba(233,180,76,0) 70%);
+  .radial-blue-soft {
+    background: radial-gradient(55% 55% at 15% 20%, rgba(37,99,235,.14) 0%, rgba(37,99,235,0) 70%);
   }
-  .radial-blue {
-    background: radial-gradient(55% 55% at 20% 80%, rgba(46,107,255,.22) 0%, rgba(46,107,255,0) 72%);
+  .radial-red-soft {
+    background: radial-gradient(50% 50% at 90% 75%, rgba(220,38,38,.10) 0%, rgba(220,38,38,0) 70%);
   }
-  .text-gradient-gold {
-    background: linear-gradient(100deg, #F6D68C 0%, #E9B44C 45%, #C9942F 100%);
+  .radial-blue-dark {
+    background: radial-gradient(60% 60% at 20% 25%, rgba(37,99,235,.32) 0%, rgba(37,99,235,0) 70%);
+  }
+  .radial-red-dark {
+    background: radial-gradient(55% 55% at 85% 80%, rgba(220,38,38,.24) 0%, rgba(220,38,38,0) 72%);
+  }
+  .text-gradient-blue {
+    background: linear-gradient(100deg, #60A5FA 0%, #2563EB 55%, #1D4ED8 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
   }
-  .hairline {
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,.14), transparent);
-  }
+  .hairline { background: linear-gradient(90deg, transparent, rgba(10,31,68,.12), transparent); }
+  .hairline-dark { background: linear-gradient(90deg, transparent, rgba(255,255,255,.14), transparent); }
 
-  /* ---------- Navbar ---------- */
-  #navInner { transition: background-color .45s ease, border-color .45s ease, box-shadow .45s ease, padding .45s ease; }
+  #navInner { transition: background-color .4s ease, border-color .4s ease, box-shadow .4s ease; }
   #navInner.nav-scrolled {
-    background-color: rgba(5, 11, 22, .82);
-    border-color: rgba(255, 255, 255, .10);
-    box-shadow: 0 24px 60px -32px rgba(0, 0, 0, .95);
+    background-color: rgba(255,255,255,.88);
+    border-color: rgba(10,31,68,.08);
+    box-shadow: 0 18px 45px -25px rgba(10,31,68,.25);
   }
 
-  /* ---------- Reveal on scroll ---------- */
-  .reveal {
-    opacity: 0;
-    transform: translateY(26px);
-    transition: opacity .85s cubic-bezier(.16,1,.3,1), transform .85s cubic-bezier(.16,1,.3,1);
-    will-change: opacity, transform;
-  }
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .85s cubic-bezier(.16,1,.3,1), transform .85s cubic-bezier(.16,1,.3,1); will-change: opacity, transform; }
   .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1 !important; transform: none !important; transition: none !important; } }
 
-  @media (prefers-reduced-motion: reduce) {
-    .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
-    html { scroll-behavior: auto; }
-  }
-
-  /* ---------- Cards ---------- */
-  .card-lift { transition: transform .5s cubic-bezier(.16,1,.3,1), border-color .5s ease, box-shadow .5s ease, background-color .5s ease; }
-  .card-lift:hover {
-    transform: translateY(-6px);
-    border-color: rgba(233,180,76,.35);
-    box-shadow: 0 0 0 1px rgba(233,180,76,.14), 0 36px 70px -40px rgba(233,180,76,.55);
-  }
-
-  .icon-tile { transition: transform .5s cubic-bezier(.16,1,.3,1), background-color .5s ease, color .5s ease; }
+  .card-lift { transition: transform .5s cubic-bezier(.16,1,.3,1), border-color .5s ease, box-shadow .5s ease; }
+  .card-lift:hover { transform: translateY(-6px); box-shadow: 0 1px 3px rgba(10,31,68,0.06), 0 34px 65px -30px rgba(37,99,235,0.35); border-color: rgba(37,99,235,.28); }
   .card-lift:hover .icon-tile { transform: translateY(-2px) scale(1.06); }
+  .icon-tile { transition: transform .5s cubic-bezier(.16,1,.3,1); }
 
-  /* ---------- Buttons ---------- */
-  .btn-primary {
-    background: linear-gradient(100deg, #F0C46A 0%, #E9B44C 50%, #D8A23A 100%);
-    box-shadow: 0 18px 45px -20px rgba(233,180,76,.75);
-    transition: transform .35s cubic-bezier(.16,1,.3,1), box-shadow .35s ease, filter .35s ease;
-  }
-  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 26px 55px -20px rgba(233,180,76,.95); filter: brightness(1.05); }
+  .btn-primary { background: linear-gradient(100deg, #3B82F6 0%, #2563EB 55%, #1D4ED8 100%); box-shadow: 0 16px 40px -18px rgba(37,99,235,.7); transition: transform .35s cubic-bezier(.16,1,.3,1), box-shadow .35s ease, filter .35s ease; }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 24px 55px -20px rgba(37,99,235,.9); filter: brightness(1.05); }
+  .btn-red { background: linear-gradient(100deg, #EF4444 0%, #DC2626 55%, #B91C1C 100%); box-shadow: 0 16px 40px -18px rgba(220,38,38,.6); transition: transform .35s cubic-bezier(.16,1,.3,1), box-shadow .35s ease; }
+  .btn-red:hover { transform: translateY(-2px); box-shadow: 0 24px 55px -20px rgba(220,38,38,.85); }
   .btn-ghost { transition: transform .35s cubic-bezier(.16,1,.3,1), background-color .35s ease, border-color .35s ease; }
-  .btn-ghost:hover { transform: translateY(-2px); background-color: rgba(255,255,255,.06); border-color: rgba(255,255,255,.28); }
+  .btn-ghost:hover { transform: translateY(-2px); background-color: rgba(10,31,68,.04); border-color: rgba(10,31,68,.24); }
+  .btn-ghost-dark { transition: transform .35s cubic-bezier(.16,1,.3,1), background-color .35s ease, border-color .35s ease; }
+  .btn-ghost-dark:hover { transform: translateY(-2px); background-color: rgba(255,255,255,.08); border-color: rgba(255,255,255,.28); }
 
-  /* ---------- Misc ---------- */
-  .marquee-track { animation: marquee 38s linear infinite; }
-  @keyframes marquee {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
-  .marquee-mask {
-    -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
-    mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
-  }
   .pulse-dot { animation: pulseDot 2.4s ease-in-out infinite; }
-  @keyframes pulseDot {
-    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(52,211,153,.55); }
-    50% { opacity: .75; box-shadow: 0 0 0 7px rgba(52,211,153,0); }
-  }
+  @keyframes pulseDot { 0%,100% { opacity:1; box-shadow: 0 0 0 0 rgba(37,99,235,.5); } 50% { opacity:.75; box-shadow: 0 0 0 7px rgba(37,99,235,0); } }
+
+  .org-vertical { background: linear-gradient(180deg, rgba(148,163,184,.6), rgba(148,163,184,.6)); }
+  .org-horizontal { background: rgba(148,163,184,.6); }
 
   ::-webkit-scrollbar { width: 10px; height: 10px; }
-  ::-webkit-scrollbar-track { background: #050B16; }
-  ::-webkit-scrollbar-thumb { background: #1B3355; border-radius: 999px; border: 2px solid #050B16; }
-  ::-webkit-scrollbar-thumb:hover { background: #27466F; }
+  ::-webkit-scrollbar-track { background: #F1F5F9; }
+  ::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 999px; border: 2px solid #F1F5F9; }
+  ::-webkit-scrollbar-thumb:hover { background: #94A3B8; }
+
+  .quote-mark { font-family: 'Fraunces', serif; font-weight: 700; line-height: .8; }
 </style>
 </head>
 
-<body class="bg-navy-950 font-sans text-slate-300 antialiased selection:bg-gold-500/30 selection:text-white">
+<body class="bg-white font-sans text-slate-700 antialiased selection:bg-brand-blue/15 selection:text-brand-blueDark">
 
-<!-- ============================================================
+<!-- =========================================================
      NAVBAR
-============================================================ -->
+========================================================= -->
 <header class="fixed inset-x-0 top-0 z-50">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <nav id="navInner" class="mt-3 flex items-center justify-between rounded-2xl border border-white/5 bg-navy-900/40 px-3 py-2.5 backdrop-blur-xl sm:px-4 sm:py-3">
+    <nav id="navInner" class="mt-3 flex items-center justify-between rounded-2xl border border-slate-200/70 bg-white/70 px-3 py-2.5 backdrop-blur-xl sm:px-4 sm:py-3">
 
-      <!-- Logo -->
       <a href="#home" class="group flex items-center gap-3">
-        <div class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-gradient-to-br from-brand-bluelight via-brand-blue to-brand-red shadow-lg shadow-brand-blue/25 transition-transform duration-500 group-hover:scale-105">
-          <span class="text-[12px] font-extrabold tracking-tight text-white">MJP</span>
-        </div>
-        <div class="hidden leading-tight sm:block">
-          <div class="text-[15px] font-extrabold tracking-tight text-white">Medwa Judison <span class="text-gold-500">Perkasa</span></div>
-          <div class="text-[10px] font-medium uppercase tracking-[0.18em] text-slate-500">Konstruksi · Agrikultur · Pangan</div>
-        </div>
+        <img src="https://i.ibb.co.com/PvQ0vFtx/logo-mjp.png" alt="Judison — PT Medwa Judison Perkasa"
+             class="h-8 w-auto sm:h-10 transition-transform duration-500 group-hover:scale-[1.03]">
       </a>
 
-      <!-- Desktop Links -->
-      <ul class="hidden items-center gap-1 lg:flex">
-        <li><a href="#tentang" class="nav-link rounded-lg px-3.5 py-2 text-[13.5px] font-medium text-slate-400 transition-colors hover:text-white">Tentang</a></li>
-        <li><a href="#layanan" class="nav-link rounded-lg px-3.5 py-2 text-[13.5px] font-medium text-slate-400 transition-colors hover:text-white">Layanan</a></li>
-        <li><a href="#proyek" class="nav-link rounded-lg px-3.5 py-2 text-[13.5px] font-medium text-slate-400 transition-colors hover:text-white">Proyek</a></li>
-        <li><a href="#legalitas" class="nav-link rounded-lg px-3.5 py-2 text-[13.5px] font-medium text-slate-400 transition-colors hover:text-white">Legalitas</a></li>
-        <li><a href="#tim" class="nav-link rounded-lg px-3.5 py-2 text-[13.5px] font-medium text-slate-400 transition-colors hover:text-white">Manajemen</a></li>
-        <li><a href="#kontak" class="nav-link rounded-lg px-3.5 py-2 text-[13.5px] font-medium text-slate-400 transition-colors hover:text-white">Kontak</a></li>
+      <ul class="hidden items-center gap-0.5 lg:flex">
+        <li><a href="#warisan" class="nav-link rounded-lg px-3.5 py-2 text-[13.5px] font-medium text-slate-500 transition-colors hover:text-brand-blueDark">Warisan</a></li>
+        <li><a href="#tentang" class="nav-link rounded-lg px-3.5 py-2 text-[13.5px] font-medium text-slate-500 transition-colors hover:text-brand-blueDark">Tentang</a></li>
+        <li><a href="#layanan" class="nav-link rounded-lg px-3.5 py-2 text-[13.5px] font-medium text-slate-500 transition-colors hover:text-brand-blueDark">Layanan</a></li>
+        <li><a href="#proyek" class="nav-link rounded-lg px-3.5 py-2 text-[13.5px] font-medium text-slate-500 transition-colors hover:text-brand-blueDark">Proyek</a></li>
+        <li><a href="#struktur" class="nav-link rounded-lg px-3.5 py-2 text-[13.5px] font-medium text-slate-500 transition-colors hover:text-brand-blueDark">Struktur</a></li>
+        <li><a href="#direktur" class="nav-link rounded-lg px-3.5 py-2 text-[13.5px] font-medium text-slate-500 transition-colors hover:text-brand-blueDark">Pimpinan</a></li>
       </ul>
 
-      <!-- CTA -->
       <div class="flex items-center gap-2">
-        <a href="https://wa.me/6287888855877" target="_blank" rel="noopener"
-           class="btn-primary hidden items-center gap-2 rounded-xl px-4 py-2.5 text-[13px] font-bold text-navy-950 sm:inline-flex">
+        <a href="https://wa.me/628788855877" target="_blank" rel="noopener"
+           class="btn-primary hidden items-center gap-2 rounded-xl px-4 py-2.5 text-[13px] font-bold text-white sm:inline-flex">
           <i data-lucide="phone-call" class="h-4 w-4"></i>
           Hubungi Kami
         </a>
         <button id="menuBtn" type="button" aria-label="Buka menu"
-                class="grid h-10 w-10 place-items-center rounded-xl border border-white/10 bg-white/5 text-slate-200 transition-colors hover:bg-white/10 lg:hidden">
+                class="grid h-10 w-10 place-items-center rounded-xl border border-slate-200 bg-white text-slate-700 transition-colors hover:bg-slate-50 lg:hidden">
           <i data-lucide="menu" class="h-5 w-5"></i>
         </button>
       </div>
     </nav>
 
-    <!-- Mobile Menu -->
     <div id="mobileMenu" class="hidden lg:hidden">
-      <div class="mt-2 overflow-hidden rounded-2xl border border-white/10 bg-navy-900/95 p-2 shadow-2xl backdrop-blur-2xl">
-        <a href="#tentang" class="mobile-link flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-slate-300 transition-colors hover:bg-white/5 hover:text-white">
-          <i data-lucide="building-2" class="h-4 w-4 text-gold-500"></i> Tentang Kami
-        </a>
-        <a href="#layanan" class="mobile-link flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-slate-300 transition-colors hover:bg-white/5 hover:text-white">
-          <i data-lucide="layers" class="h-4 w-4 text-gold-500"></i> Layanan
-        </a>
-        <a href="#proyek" class="mobile-link flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-slate-300 transition-colors hover:bg-white/5 hover:text-white">
-          <i data-lucide="hard-hat" class="h-4 w-4 text-gold-500"></i> Proyek Unggulan
-        </a>
-        <a href="#legalitas" class="mobile-link flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-slate-300 transition-colors hover:bg-white/5 hover:text-white">
-          <i data-lucide="shield-check" class="h-4 w-4 text-gold-500"></i> Legalitas & Mitra
-        </a>
-        <a href="#tim" class="mobile-link flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-slate-300 transition-colors hover:bg-white/5 hover:text-white">
-          <i data-lucide="users" class="h-4 w-4 text-gold-500"></i> Manajemen
-        </a>
-        <a href="#kontak" class="mobile-link flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-slate-300 transition-colors hover:bg-white/5 hover:text-white">
-          <i data-lucide="map-pin" class="h-4 w-4 text-gold-500"></i> Kontak & Lokasi
-        </a>
-        <a href="https://wa.me/6287888855877" target="_blank" rel="noopener"
-           class="btn-primary mt-1 flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-bold text-navy-950">
+      <div class="mt-2 overflow-hidden rounded-2xl border border-slate-200 bg-white/95 p-2 shadow-2xl backdrop-blur-2xl">
+        <a href="#warisan" class="mobile-link flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-slate-600 transition-colors hover:bg-brand-blueSoft hover:text-brand-blueDark"><i data-lucide="scroll" class="h-4 w-4 text-brand-blue"></i> Warisan Pengabdian</a>
+        <a href="#tentang" class="mobile-link flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-slate-600 transition-colors hover:bg-brand-blueSoft hover:text-brand-blueDark"><i data-lucide="building-2" class="h-4 w-4 text-brand-blue"></i> Tentang Judison</a>
+        <a href="#layanan" class="mobile-link flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-slate-600 transition-colors hover:bg-brand-blueSoft hover:text-brand-blueDark"><i data-lucide="layers" class="h-4 w-4 text-brand-blue"></i> Layanan</a>
+        <a href="#proyek" class="mobile-link flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-slate-600 transition-colors hover:bg-brand-blueSoft hover:text-brand-blueDark"><i data-lucide="hard-hat" class="h-4 w-4 text-brand-blue"></i> Proyek</a>
+        <a href="#legalitas" class="mobile-link flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-slate-600 transition-colors hover:bg-brand-blueSoft hover:text-brand-blueDark"><i data-lucide="shield-check" class="h-4 w-4 text-brand-blue"></i> Legalitas</a>
+        <a href="#struktur" class="mobile-link flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-slate-600 transition-colors hover:bg-brand-blueSoft hover:text-brand-blueDark"><i data-lucide="network" class="h-4 w-4 text-brand-blue"></i> Struktur Organisasi</a>
+        <a href="#direktur" class="mobile-link flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-slate-600 transition-colors hover:bg-brand-blueSoft hover:text-brand-blueDark"><i data-lucide="user-round" class="h-4 w-4 text-brand-blue"></i> Pesan Direktur</a>
+        <a href="#kontak" class="mobile-link flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-slate-600 transition-colors hover:bg-brand-blueSoft hover:text-brand-blueDark"><i data-lucide="map-pin" class="h-4 w-4 text-brand-blue"></i> Kontak</a>
+        <a href="https://wa.me/628788855877" target="_blank" rel="noopener"
+           class="btn-primary mt-1 flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-bold text-white">
           <i data-lucide="message-circle" class="h-4 w-4"></i> WhatsApp Kami
         </a>
       </div>
@@ -231,65 +179,65 @@
 </header>
 
 
-<!-- ============================================================
+<!-- =========================================================
      HERO
-============================================================ -->
+========================================================= -->
 <section id="home" class="relative overflow-hidden pt-32 pb-20 sm:pt-40 lg:pt-44 lg:pb-28">
-  <!-- Background layers -->
   <div class="pointer-events-none absolute inset-0 -z-10">
-    <div class="absolute inset-0 bg-navy-950"></div>
-    <div class="absolute inset-0 bg-grid opacity-[0.55]"></div>
-    <div class="absolute inset-0 radial-gold"></div>
-    <div class="absolute inset-0 radial-blue"></div>
-    <div class="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-navy-950"></div>
+    <div class="absolute inset-0 bg-white"></div>
+    <div class="absolute inset-0 bg-grid opacity-60"></div>
+    <div class="absolute inset-0 radial-blue-soft"></div>
+    <div class="absolute inset-0 radial-red-soft"></div>
+    <div class="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-white"></div>
   </div>
 
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div class="grid items-center gap-14 lg:grid-cols-12 lg:gap-10">
+    <div class="grid items-center gap-14 lg:grid-cols-12 lg:gap-12">
 
       <!-- Copy -->
       <div class="lg:col-span-7">
-        <div class="reveal inline-flex items-center gap-2.5 rounded-full border border-gold-500/25 bg-gold-500/[0.07] px-4 py-1.5">
-          <span class="pulse-dot h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
-          <span class="text-[11px] font-semibold uppercase tracking-[0.16em] text-gold-400">Mitra Strategis Pembangunan Nasional</span>
+        <div class="reveal inline-flex items-center gap-2.5 rounded-full border border-brand-blue/25 bg-brand-blueSoft px-4 py-1.5">
+          <span class="pulse-dot h-1.5 w-1.5 rounded-full bg-brand-blue"></span>
+          <span class="text-[11px] font-bold uppercase tracking-[0.16em] text-brand-blueDark">Penerus Warisan H.M. Joesoef Emdhy</span>
         </div>
 
-        <h1 class="reveal mt-6 text-[2.1rem] font-extrabold leading-[1.08] tracking-tight text-white sm:text-5xl lg:text-[3.6rem]" style="transition-delay:.08s">
-          Membangun Infrastruktur,<br class="hidden sm:block">
-          Menguatkan <span class="text-gradient-gold">Ketahanan Pangan</span> Nasional.
+        <h1 class="reveal mt-6 text-[2.2rem] font-extrabold leading-[1.06] tracking-tight text-slate-900 sm:text-5xl lg:text-[3.7rem]" style="transition-delay:.08s">
+          Membangun Infrastruktur.<br class="hidden sm:block">
+          Menguatkan <span class="text-brand-blue">Ketahanan Pangan</span>.<br class="hidden sm:block">
+          <span class="text-brand-red">Melanjutkan Pengabdian.</span>
         </h1>
 
-        <p class="reveal mt-6 max-w-2xl text-[15.5px] leading-relaxed text-slate-400 sm:text-base" style="transition-delay:.16s">
-          <strong class="font-semibold text-slate-200">PT Medwa Judison Perkasa (MJP)</strong> adalah perusahaan nasional
+        <p class="reveal mt-6 max-w-2xl text-[15.5px] leading-relaxed text-slate-600 sm:text-base" style="transition-delay:.16s">
+          <strong class="font-semibold text-slate-900">Judison</strong> — nama pendek dari
+          <strong class="font-semibold text-slate-900">PT Medwa Judison Perkasa</strong> — adalah perusahaan nasional
           yang bergerak di bidang konstruksi &amp; infrastruktur, agrikultur, distribusi pangan, dan perdagangan besar.
-          Didukung pengalaman lebih dari 25 tahun, kami hadir sebagai mitra andal dalam pembangunan infrastruktur,
-          ketahanan pangan, dan rantai pasok nasional.
+          Kami hadir sebagai penerus nilai-nilai pengabdian <em class="not-italic font-medium text-slate-700">H.M. Joesoef Emdhy</em>,
+          pejuang kemerdekaan dan tokoh perkebunan nasional.
         </p>
 
         <div class="reveal mt-9 flex flex-col gap-3 sm:flex-row sm:items-center" style="transition-delay:.24s">
-          <a href="#layanan" class="btn-primary inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3.5 text-sm font-bold text-navy-950">
+          <a href="#layanan" class="btn-primary inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3.5 text-sm font-bold text-white">
             Jelajahi Layanan Kami
             <i data-lucide="arrow-right" class="h-4 w-4"></i>
           </a>
-          <a href="#proyek" class="btn-ghost inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/[0.03] px-6 py-3.5 text-sm font-semibold text-white">
-            <i data-lucide="play-circle" class="h-4 w-4 text-gold-500"></i>
-            Lihat Proyek Unggulan
+          <a href="#warisan" class="btn-ghost inline-flex items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white px-6 py-3.5 text-sm font-semibold text-slate-800">
+            <i data-lucide="scroll" class="h-4 w-4 text-brand-red"></i>
+            Baca Warisan Kami
           </a>
         </div>
 
-        <!-- Social proof -->
-        <div class="reveal mt-10 flex flex-wrap items-center gap-x-7 gap-y-4 border-t border-white/[0.07] pt-7" style="transition-delay:.32s">
+        <div class="reveal mt-10 flex flex-wrap items-center gap-x-7 gap-y-4 border-t border-slate-200 pt-7" style="transition-delay:.32s">
           <div class="flex items-center gap-2.5">
-            <i data-lucide="shield-check" class="h-4 w-4 text-gold-500"></i>
-            <span class="text-[12.5px] font-medium text-slate-400">Badan Hukum Resmi &amp; NIB OSS RBA</span>
+            <i data-lucide="shield-check" class="h-4 w-4 text-brand-blue"></i>
+            <span class="text-[12.5px] font-medium text-slate-600">Badan Hukum Resmi &amp; NIB OSS RBA</span>
           </div>
           <div class="flex items-center gap-2.5">
-            <i data-lucide="award" class="h-4 w-4 text-gold-500"></i>
-            <span class="text-[12.5px] font-medium text-slate-400">SBU Konstruksi Terverifikasi</span>
+            <i data-lucide="award" class="h-4 w-4 text-brand-blue"></i>
+            <span class="text-[12.5px] font-medium text-slate-600">SBU Konstruksi Terverifikasi</span>
           </div>
           <div class="flex items-center gap-2.5">
-            <i data-lucide="flag" class="h-4 w-4 text-gold-500"></i>
-            <span class="text-[12.5px] font-medium text-slate-400">Proyek Strategis Nasional</span>
+            <i data-lucide="flag" class="h-4 w-4 text-brand-red"></i>
+            <span class="text-[12.5px] font-medium text-slate-600">Proyek Strategis Nasional</span>
           </div>
         </div>
       </div>
@@ -297,22 +245,22 @@
       <!-- Visual -->
       <div class="reveal lg:col-span-5" style="transition-delay:.2s">
         <div class="relative">
-          <!-- Main feature card -->
-          <div class="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-b from-navy-800 to-navy-900 p-7 shadow-card sm:p-8">
-            <div class="absolute inset-0 bg-grid-sm opacity-40"></div>
-            <div class="absolute -right-20 -top-20 h-56 w-56 rounded-full bg-gold-500/10 blur-3xl"></div>
+          <div class="relative overflow-hidden rounded-3xl border border-slate-200 bg-gradient-to-b from-white to-slate-50 p-7 shadow-card sm:p-8">
+            <div class="absolute inset-0 bg-grid opacity-40"></div>
+            <div class="absolute -right-20 -top-20 h-56 w-56 rounded-full bg-brand-blue/10 blur-3xl"></div>
+            <div class="absolute -left-20 -bottom-20 h-56 w-56 rounded-full bg-brand-red/10 blur-3xl"></div>
 
             <div class="relative">
               <div class="flex items-center justify-between">
-                <span class="text-[10.5px] font-bold uppercase tracking-[0.22em] text-gold-500">Proyek Unggulan</span>
-                <span class="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-slate-400">2023 — Kini</span>
+                <span class="text-[10.5px] font-bold uppercase tracking-[0.22em] text-brand-red">Proyek Unggulan</span>
+                <span class="rounded-full border border-slate-200 bg-white px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-slate-500">2023 — Kini</span>
               </div>
 
-              <h3 class="mt-4 text-[1.6rem] font-extrabold leading-tight tracking-tight text-white sm:text-[1.85rem]">
+              <h3 class="mt-4 text-[1.55rem] font-extrabold leading-tight tracking-tight text-slate-900 sm:text-[1.8rem]">
                 Lumbung Pangan Nasional
               </h3>
-              <p class="mt-2 flex items-center gap-2 text-[13px] font-medium text-slate-400">
-                <i data-lucide="map-pin" class="h-3.5 w-3.5 text-gold-500"></i>
+              <p class="mt-2 flex items-center gap-2 text-[13px] font-medium text-slate-500">
+                <i data-lucide="map-pin" class="h-3.5 w-3.5 text-brand-blue"></i>
                 Majalengka, Jawa Barat
               </p>
 
@@ -320,49 +268,46 @@
 
               <div class="flex items-end justify-between gap-4">
                 <div class="max-w-[58%]">
-                  <p class="text-[12.5px] leading-relaxed text-slate-400">
-                    Pembangunan lumbung pangan nasional bersama Kementerian Pertahanan RI — proyek terbesar MJP hingga saat ini.
+                  <p class="text-[12.5px] leading-relaxed text-slate-600">
+                    Pembangunan lumbung pangan nasional bersama Kementerian Pertahanan RI — proyek terbesar Judison hingga saat ini.
                   </p>
                 </div>
                 <div class="text-right">
-                  <div class="text-gradient-gold text-4xl font-extrabold leading-none tracking-tight sm:text-5xl">2.000</div>
-                  <div class="mt-1 text-[10.5px] font-bold uppercase tracking-[0.2em] text-slate-500">Hektar</div>
+                  <div class="text-gradient-blue text-4xl font-extrabold leading-none tracking-tight sm:text-5xl">2.000</div>
+                  <div class="mt-1 text-[10.5px] font-bold uppercase tracking-[0.2em] text-slate-400">Hektar</div>
                 </div>
               </div>
 
-              <!-- Mini bar -->
               <div class="mt-7 grid grid-cols-3 gap-3">
-                <div class="rounded-xl border border-white/[0.07] bg-white/[0.03] px-3 py-2.5">
-                  <div class="text-[10px] font-semibold uppercase tracking-wider text-slate-500">Sektor</div>
-                  <div class="mt-0.5 text-[12.5px] font-semibold text-slate-200">Agrikultur</div>
+                <div class="rounded-xl border border-slate-200 bg-white px-3 py-2.5">
+                  <div class="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Sektor</div>
+                  <div class="mt-0.5 text-[12.5px] font-semibold text-slate-800">Agrikultur</div>
                 </div>
-                <div class="rounded-xl border border-white/[0.07] bg-white/[0.03] px-3 py-2.5">
-                  <div class="text-[10px] font-semibold uppercase tracking-wider text-slate-500">Mitra</div>
-                  <div class="mt-0.5 text-[12.5px] font-semibold text-slate-200">Kemhan RI</div>
+                <div class="rounded-xl border border-slate-200 bg-white px-3 py-2.5">
+                  <div class="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Mitra</div>
+                  <div class="mt-0.5 text-[12.5px] font-semibold text-slate-800">Kemhan RI</div>
                 </div>
-                <div class="rounded-xl border border-white/[0.07] bg-white/[0.03] px-3 py-2.5">
-                  <div class="text-[10px] font-semibold uppercase tracking-wider text-slate-500">Status</div>
-                  <div class="mt-0.5 text-[12.5px] font-semibold text-emerald-400">Berjalan</div>
+                <div class="rounded-xl border border-slate-200 bg-white px-3 py-2.5">
+                  <div class="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Status</div>
+                  <div class="mt-0.5 text-[12.5px] font-semibold text-emerald-600">Berjalan</div>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- Floating badge -->
-          <div class="absolute -bottom-5 -left-3 hidden items-center gap-3 rounded-2xl border border-white/10 bg-navy-900/95 px-4 py-3 shadow-soft backdrop-blur-xl sm:flex">
-            <div class="grid h-9 w-9 place-items-center rounded-xl bg-gold-500/10 text-gold-500">
+          <div class="absolute -bottom-5 -left-3 hidden items-center gap-3 rounded-2xl border border-slate-200 bg-white/95 px-4 py-3 shadow-card backdrop-blur-xl sm:flex">
+            <div class="grid h-9 w-9 place-items-center rounded-xl bg-brand-blueSoft text-brand-blue">
               <i data-lucide="badge-check" class="h-4.5 w-4.5"></i>
             </div>
             <div class="leading-tight">
-              <div class="text-[12.5px] font-bold text-white">Teregistrasi LPJK</div>
+              <div class="text-[12.5px] font-bold text-slate-900">Teregistrasi LPJK</div>
               <div class="text-[10.5px] font-medium text-slate-500">Berlaku s.d. 2028</div>
             </div>
           </div>
 
-          <!-- Floating badge 2 -->
-          <div class="absolute -right-3 -top-5 hidden items-center gap-2.5 rounded-2xl border border-white/10 bg-navy-900/95 px-4 py-3 shadow-soft backdrop-blur-xl md:flex">
-            <i data-lucide="trending-up" class="h-4 w-4 text-emerald-400"></i>
-            <div class="text-[12px] font-semibold text-slate-200">4 Pilar Usaha Terintegrasi</div>
+          <div class="absolute -right-3 -top-5 hidden items-center gap-2.5 rounded-2xl border border-slate-200 bg-white/95 px-4 py-3 shadow-card backdrop-blur-xl md:flex">
+            <i data-lucide="network" class="h-4 w-4 text-brand-red"></i>
+            <div class="text-[12px] font-semibold text-slate-800">4 Pilar Usaha Terintegrasi</div>
           </div>
         </div>
       </div>
@@ -372,43 +317,43 @@
 </section>
 
 
-<!-- ============================================================
-     METRICS / STATS
-============================================================ -->
-<section class="relative border-y border-white/[0.06] bg-navy-900/40">
+<!-- =========================================================
+     METRICS
+========================================================= -->
+<section class="relative border-y border-slate-200 bg-slate-50">
   <div class="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-16">
     <div class="grid grid-cols-2 gap-x-6 gap-y-10 lg:grid-cols-4">
 
       <div class="reveal text-center lg:text-left">
         <div class="flex items-baseline justify-center gap-1 lg:justify-start">
-          <span class="text-4xl font-extrabold tracking-tight text-white sm:text-5xl" data-counter="25" data-suffix="+">0</span>
+          <span class="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl" data-counter="25" data-suffix="+">0</span>
         </div>
-        <div class="mt-2 text-[12px] font-bold uppercase tracking-[0.16em] text-gold-500">Tahun Pengalaman</div>
+        <div class="mt-2 text-[12px] font-bold uppercase tracking-[0.16em] text-brand-blue">Tahun Pengalaman</div>
         <p class="mt-2 text-[12.5px] leading-relaxed text-slate-500">Pengalaman tim di sektor konstruksi, agrikultur &amp; perdagangan besar.</p>
       </div>
 
       <div class="reveal text-center lg:text-left" style="transition-delay:.08s">
         <div class="flex items-baseline justify-center gap-1 lg:justify-start">
-          <span class="text-4xl font-extrabold tracking-tight text-white sm:text-5xl" data-counter="2000" data-suffix="">0</span>
-          <span class="text-lg font-bold text-gold-500">Ha</span>
+          <span class="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl" data-counter="2000">0</span>
+          <span class="text-lg font-bold text-brand-blue">Ha</span>
         </div>
-        <div class="mt-2 text-[12px] font-bold uppercase tracking-[0.16em] text-gold-500">Lahan Lumbung Pangan</div>
+        <div class="mt-2 text-[12px] font-bold uppercase tracking-[0.16em] text-brand-blue">Lahan Lumbung Pangan</div>
         <p class="mt-2 text-[12.5px] leading-relaxed text-slate-500">Proyek strategis nasional di Majalengka, Jawa Barat.</p>
       </div>
 
       <div class="reveal text-center lg:text-left" style="transition-delay:.16s">
         <div class="flex items-baseline justify-center gap-1 lg:justify-start">
-          <span class="text-4xl font-extrabold tracking-tight text-white sm:text-5xl" data-counter="4" data-suffix="">0</span>
+          <span class="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl" data-counter="4">0</span>
         </div>
-        <div class="mt-2 text-[12px] font-bold uppercase tracking-[0.16em] text-gold-500">Pilar Usaha</div>
+        <div class="mt-2 text-[12px] font-bold uppercase tracking-[0.16em] text-brand-blue">Pilar Usaha</div>
         <p class="mt-2 text-[12.5px] leading-relaxed text-slate-500">Konstruksi, agrikultur, distribusi pangan, perdagangan besar.</p>
       </div>
 
       <div class="reveal text-center lg:text-left" style="transition-delay:.24s">
         <div class="flex items-baseline justify-center gap-1 lg:justify-start">
-          <span class="text-4xl font-extrabold tracking-tight text-white sm:text-5xl" data-counter="2" data-suffix="">0</span>
+          <span class="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl" data-counter="2">0</span>
         </div>
-        <div class="mt-2 text-[12px] font-bold uppercase tracking-[0.16em] text-gold-500">Kota Operasional</div>
+        <div class="mt-2 text-[12px] font-bold uppercase tracking-[0.16em] text-brand-red">Kota Operasional</div>
         <p class="mt-2 text-[12.5px] leading-relaxed text-slate-500">Kantor pusat di Palembang dan perwakilan di Jakarta.</p>
       </div>
 
@@ -417,130 +362,106 @@
 </section>
 
 
-<!-- ============================================================
-     TENTANG KAMI & VISI MISI
-============================================================ -->
-<section id="tentang" class="relative scroll-mt-28 py-20 sm:py-28">
-  <div class="pointer-events-none absolute inset-0 -z-10 radial-blue opacity-60"></div>
+<!-- =========================================================
+     WARISAN PENGABDIAN (dark, emotional core)
+========================================================= -->
+<section id="warisan" class="relative scroll-mt-28 overflow-hidden bg-brand-navy py-24 sm:py-32">
+  <div class="pointer-events-none absolute inset-0">
+    <div class="absolute inset-0 bg-grid-dark opacity-40"></div>
+    <div class="absolute inset-0 radial-blue-dark"></div>
+    <div class="absolute inset-0 radial-red-dark"></div>
+    <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/15 to-transparent"></div>
+  </div>
 
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-
-    <!-- Section header -->
-    <div class="reveal mx-auto max-w-3xl text-center">
-      <span class="text-[11px] font-bold uppercase tracking-[0.24em] text-gold-500">Tentang Kami</span>
-      <h2 class="mt-4 text-3xl font-extrabold leading-tight tracking-tight text-white sm:text-4xl lg:text-[2.75rem]">
-        Mitra Nasional yang <span class="text-gradient-gold">Dapat Diandalkan</span>
-      </h2>
-    </div>
-
-    <div class="mt-14 grid gap-12 lg:grid-cols-12 lg:gap-14">
+  <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="grid gap-14 lg:grid-cols-12 lg:gap-16">
 
       <!-- Narrative -->
-      <div class="reveal lg:col-span-7">
-        <div class="space-y-5 text-[15px] leading-relaxed text-slate-400">
-          <p>
-            <strong class="font-semibold text-white">PT Medwa Judison Perkasa (MJP)</strong> adalah perusahaan nasional
-            yang berdiri pada tahun <span class="font-semibold text-slate-200">2023</span>, berpusat di
-            <span class="font-semibold text-slate-200">Palembang</span> dan <span class="font-semibold text-slate-200">Jakarta</span>.
+      <div class="lg:col-span-7">
+        <div class="reveal inline-flex items-center gap-2.5 rounded-full border border-brand-red/30 bg-brand-red/10 px-4 py-1.5">
+          <i data-lucide="scroll" class="h-3.5 w-3.5 text-brand-red"></i>
+          <span class="text-[11px] font-bold uppercase tracking-[0.16em] text-red-300">Warisan Pengabdian</span>
+        </div>
+
+        <h2 class="reveal mt-6 text-[2rem] font-extrabold leading-[1.12] tracking-tight text-white sm:text-4xl lg:text-[2.85rem]" style="transition-delay:.08s">
+          Dari Tanah Ini,<br>
+          <span class="text-gradient-blue">Kami Tumbuh.</span>
+        </h2>
+
+        <div class="reveal mt-8 space-y-5 text-[15px] leading-relaxed text-slate-300" style="transition-delay:.16s">
+          <p class="text-[16px] leading-relaxed text-slate-200">
+            Ada sesuatu yang tak terlihat, tapi selalu hadir dalam setiap langkah Judison.
           </p>
           <p>
-            Berbekal pengalaman lebih dari <span class="font-semibold text-slate-200">25 tahun</span> di sektor konstruksi,
-            agrikultur, dan perdagangan besar, MJP hadir sebagai mitra andal dalam pembangunan infrastruktur,
-            ketahanan pangan, dan rantai pasok nasional.
+            Itu bukan sekadar visi bisnis, bukan hanya strategi atau inovasi. Itu adalah semangat dari seseorang
+            yang hidup di masa yang jauh berbeda, tapi jasanya terasa hingga hari ini.
           </p>
           <p>
-            MJP telah dipercaya menjalankan proyek strategis nasional, termasuk pembangunan
-            <span class="font-semibold text-gold-400">Lumbung Pangan Nasional seluas 2.000 hektar di Majalengka</span>
-            bersama Kementerian Pertahanan RI, serta beragam pekerjaan konstruksi dan pengaspalan jalan di Jawa Barat.
+            Kami, keluarga yang mendirikan perusahaan ini, tumbuh dalam bayang-bayang seorang pejuang — bukan pejuang
+            yang mencari kemuliaan, tapi seorang yang memilih untuk berdiri di garis depan saat negara memanggil, dan
+            tetap setia saat tugas berpindah dari medan tempur ke meja kerja.
+          </p>
+          <p>
+            Beliau adalah bagian dari generasi yang tidak banyak bicara, tapi bekerja tanpa pamrih. Di masa kritis
+            setelah Proklamasi, beliau memimpin pasukan di wilayah pedalaman Sumatera Selatan, menjaga kedaulatan
+            dari ancaman yang datang dari segala arah. Setelah masa perjuangan, beliau tidak berhenti — ia melanjutkan
+            pengabdiannya di sektor pembangunan nasional, menjadi salah satu tokoh kunci dalam pengelolaan
+            perkebunan negara.
+          </p>
+          <p class="text-slate-200">
+            Dari beliau, kami belajar bahwa kekuatan bukan hanya diukur dari pangkat, tapi dari keteguhan hati.
+            Bahwa kemajuan tidak datang dari sorotan, tapi dari kerja yang konsisten, di balik layar.
           </p>
         </div>
 
-        <!-- Pillars chips -->
-        <div class="mt-9 flex flex-wrap gap-2.5">
-          <span class="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.03] px-3.5 py-2 text-[12.5px] font-semibold text-slate-300">
-            <i data-lucide="hard-hat" class="h-3.5 w-3.5 text-gold-500"></i> Konstruksi &amp; Infrastruktur
-          </span>
-          <span class="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.03] px-3.5 py-2 text-[12.5px] font-semibold text-slate-300">
-            <i data-lucide="sprout" class="h-3.5 w-3.5 text-gold-500"></i> Agrikultur
-          </span>
-          <span class="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.03] px-3.5 py-2 text-[12.5px] font-semibold text-slate-300">
-            <i data-lucide="truck" class="h-3.5 w-3.5 text-gold-500"></i> Distribusi Pangan
-          </span>
-          <span class="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.03] px-3.5 py-2 text-[12.5px] font-semibold text-slate-300">
-            <i data-lucide="package" class="h-3.5 w-3.5 text-gold-500"></i> Perdagangan Besar
-          </span>
-        </div>
-
-        <!-- Value grid -->
-        <div class="mt-10 grid gap-4 sm:grid-cols-3">
-          <div class="reveal rounded-2xl border border-white/[0.07] bg-white/[0.02] p-5">
-            <i data-lucide="shield" class="h-5 w-5 text-gold-500"></i>
-            <h4 class="mt-3 text-[13.5px] font-bold text-white">Integritas</h4>
-            <p class="mt-1.5 text-[12.5px] leading-relaxed text-slate-500">Menjalankan bisnis secara transparan dan profesional sesuai regulasi.</p>
+        <div class="reveal mt-10 flex flex-wrap items-center gap-x-8 gap-y-4 border-t border-white/10 pt-7" style="transition-delay:.24s">
+          <div class="flex items-center gap-3">
+            <div class="grid h-10 w-10 place-items-center rounded-xl bg-brand-blue/15 text-brand-blueLight">
+              <i data-lucide="award" class="h-5 w-5"></i>
+            </div>
+            <div class="leading-tight">
+              <div class="text-[12.5px] font-bold text-white">Mayor Jenderal TNI (Purn.)</div>
+              <div class="text-[11px] font-medium text-slate-400">H.M. Joesoef Emdhy</div>
+            </div>
           </div>
-          <div class="reveal rounded-2xl border border-white/[0.07] bg-white/[0.02] p-5" style="transition-delay:.08s">
-            <i data-lucide="lightbulb" class="h-5 w-5 text-gold-500"></i>
-            <h4 class="mt-3 text-[13.5px] font-bold text-white">Inovasi</h4>
-            <p class="mt-1.5 text-[12.5px] leading-relaxed text-slate-500">Pengelolaan lahan modern, efisien, dan ramah lingkungan.</p>
-          </div>
-          <div class="reveal rounded-2xl border border-white/[0.07] bg-white/[0.02] p-5" style="transition-delay:.16s">
-            <i data-lucide="heart-handshake" class="h-5 w-5 text-gold-500"></i>
-            <h4 class="mt-3 text-[13.5px] font-bold text-white">Tanggung Jawab Sosial</h4>
-            <p class="mt-1.5 text-[12.5px] leading-relaxed text-slate-500">Memberdayakan petani mitra dan mendukung program sosial nasional.</p>
+          <div class="flex items-center gap-3">
+            <div class="grid h-10 w-10 place-items-center rounded-xl bg-brand-red/15 text-red-300">
+              <i data-lucide="sprout" class="h-5 w-5"></i>
+            </div>
+            <div class="leading-tight">
+              <div class="text-[12.5px] font-bold text-white">Tokoh Perkebunan Negara</div>
+              <div class="text-[11px] font-medium text-slate-400">Pembangunan nasional</div>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- Visi & Misi -->
+      <!-- Monument quote -->
       <div class="reveal lg:col-span-5" style="transition-delay:.1s">
-        <div class="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-b from-navy-800/90 to-navy-900/90 p-7 shadow-card sm:p-8">
-          <div class="absolute -right-24 -top-24 h-56 w-56 rounded-full bg-brand-blue/15 blur-3xl"></div>
+        <div class="relative h-full">
+          <div class="relative h-full overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-brand-blueDeep/40 via-brand-navy to-brand-navyDeep p-8 shadow-glow sm:p-10">
+            <div class="absolute inset-0 bg-grid-dark opacity-30"></div>
+            <div class="absolute -right-24 -top-24 h-64 w-64 rounded-full bg-brand-blue/25 blur-3xl"></div>
+            <div class="absolute -left-24 -bottom-24 h-64 w-64 rounded-full bg-brand-red/20 blur-3xl"></div>
 
-          <div class="relative">
-            <!-- Visi -->
-            <div class="flex items-center gap-3">
-              <div class="grid h-10 w-10 place-items-center rounded-xl bg-gold-500/10 text-gold-500">
-                <i data-lucide="eye" class="h-5 w-5"></i>
+            <div class="relative flex h-full flex-col">
+              <span class="quote-mark text-7xl text-brand-blueLight/40 sm:text-8xl">“</span>
+
+              <blockquote class="mt-2 font-serif text-[1.55rem] font-medium italic leading-[1.3] text-white sm:text-[1.85rem]">
+                Patah tumbuh, hilang berganti. Gugur satu, tumbuh seribu.
+              </blockquote>
+
+              <div class="mt-auto pt-10">
+                <div class="h-px w-16 bg-brand-blueLight/60"></div>
+                <div class="mt-5">
+                  <div class="text-[13.5px] font-bold text-white">H.M. Joesoef Emdhy</div>
+                  <div class="mt-0.5 text-[11.5px] font-medium tracking-wide text-slate-400">Pejuang Kemerdekaan · Tokoh Perkebunan Nasional</div>
+                </div>
+                <p class="mt-5 font-serif text-[13.5px] italic leading-relaxed text-slate-300">
+                  "Teruskan, teruskanlah djiwa kami."
+                </p>
               </div>
-              <h3 class="text-lg font-extrabold tracking-tight text-white">Visi</h3>
             </div>
-            <p class="mt-4 text-[13.5px] leading-relaxed text-slate-400">
-              Menjadi perusahaan nasional yang unggul dan berkelanjutan dalam mendukung pembangunan infrastruktur,
-              ketahanan pangan, dan perekonomian rakyat — dengan integritas, inovasi, dan tanggung jawab sosial.
-            </p>
-
-            <div class="my-7 h-px hairline"></div>
-
-            <!-- Misi -->
-            <div class="flex items-center gap-3">
-              <div class="grid h-10 w-10 place-items-center rounded-xl bg-brand-blue/15 text-brand-bluelight">
-                <i data-lucide="target" class="h-5 w-5"></i>
-              </div>
-              <h3 class="text-lg font-extrabold tracking-tight text-white">Misi</h3>
-            </div>
-
-            <ul class="mt-4 space-y-3.5">
-              <li class="flex gap-3">
-                <i data-lucide="check-circle-2" class="mt-0.5 h-4 w-4 shrink-0 text-gold-500"></i>
-                <span class="text-[13px] leading-relaxed text-slate-400">Membangun infrastruktur strategis yang berkualitas, tepat waktu, dan berkelanjutan, termasuk pekerjaan jalan dan pengaspalan.</span>
-              </li>
-              <li class="flex gap-3">
-                <i data-lucide="check-circle-2" class="mt-0.5 h-4 w-4 shrink-0 text-gold-500"></i>
-                <span class="text-[13px] leading-relaxed text-slate-400">Mengembangkan sektor agrikultur melalui pengelolaan lahan modern dan berkelanjutan.</span>
-              </li>
-              <li class="flex gap-3">
-                <i data-lucide="check-circle-2" class="mt-0.5 h-4 w-4 shrink-0 text-gold-500"></i>
-                <span class="text-[13px] leading-relaxed text-slate-400">Menjadi mitra terpercaya dalam perdagangan besar komoditas strategis: batubara, CPO, bahan bangunan, dan pangan.</span>
-              </li>
-              <li class="flex gap-3">
-                <i data-lucide="check-circle-2" class="mt-0.5 h-4 w-4 shrink-0 text-gold-500"></i>
-                <span class="text-[13px] leading-relaxed text-slate-400">Mendukung ketahanan pangan nasional melalui distribusi efisien dan kemitraan dengan petani serta program sosial.</span>
-              </li>
-              <li class="flex gap-3">
-                <i data-lucide="check-circle-2" class="mt-0.5 h-4 w-4 shrink-0 text-gold-500"></i>
-                <span class="text-[13px] leading-relaxed text-slate-400">Menjalankan bisnis secara transparan dan profesional sesuai regulasi yang berlaku.</span>
-              </li>
-            </ul>
           </div>
         </div>
       </div>
@@ -550,53 +471,162 @@
 </section>
 
 
-<!-- ============================================================
-     LAYANAN / BIDANG USAHA
-============================================================ -->
-<section id="layanan" class="relative scroll-mt-28 border-y border-white/[0.06] bg-navy-900/30 py-20 sm:py-28">
+<!-- =========================================================
+     TENTANG / NAMA JUDISON
+========================================================= -->
+<section id="tentang" class="relative scroll-mt-28 py-20 sm:py-28">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
     <div class="reveal mx-auto max-w-3xl text-center">
-      <span class="text-[11px] font-bold uppercase tracking-[0.24em] text-gold-500">Layanan Kami</span>
-      <h2 class="mt-4 text-3xl font-extrabold leading-tight tracking-tight text-white sm:text-4xl lg:text-[2.75rem]">
+      <span class="text-[11px] font-bold uppercase tracking-[0.24em] text-brand-blue">Tentang Kami</span>
+      <h2 class="mt-4 text-3xl font-extrabold leading-tight tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem]">
+        Mengapa Kami Bernama <span class="text-gradient-blue">Judison</span>
+      </h2>
+      <p class="mt-5 text-[15px] leading-relaxed text-slate-600">
+        <strong class="font-semibold text-slate-900">PT Medwa Judison Perkasa</strong> — dikenal sebagai
+        <strong class="font-semibold text-slate-900">Judison</strong> — berdiri pada 2023, berpusat di Palembang
+        dan Jakarta. Nama kami bukan sekadar gabungan suku kata. Setiap bagian adalah penghormatan, janji, dan doa.
+      </p>
+    </div>
+
+    <!-- 3 cards -->
+    <div class="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+
+      <article class="card-lift reveal group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-7 shadow-card">
+        <div class="icon-tile grid h-12 w-12 place-items-center rounded-2xl bg-brand-blueSoft text-brand-blue">
+          <i data-lucide="users-round" class="h-6 w-6"></i>
+        </div>
+        <div class="mt-5 text-[11px] font-bold uppercase tracking-[0.18em] text-brand-blue">Medwa</div>
+        <h3 class="mt-2 text-[16px] font-extrabold tracking-tight text-slate-900">Nama Cucu-Cucu Beliau</h3>
+        <p class="mt-3 text-[13.5px] leading-relaxed text-slate-600">
+          Menggabungkan nama cucu-cucu H.M. Joesoef Emdhy — <strong class="font-semibold text-slate-800">Medira</strong> dan
+          <strong class="font-semibold text-slate-800">Adhwa</strong> — sebagai simbol generasi baru yang diharapkan
+          mewarisi semangat beliau.
+        </p>
+      </article>
+
+      <article class="card-lift reveal group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-7 shadow-card" style="transition-delay:.08s">
+        <div class="icon-tile grid h-12 w-12 place-items-center rounded-2xl bg-brand-redSoft text-brand-red">
+          <i data-lucide="heart-handshake" class="h-6 w-6"></i>
+        </div>
+        <div class="mt-5 text-[11px] font-bold uppercase tracking-[0.18em] text-brand-red">Judison</div>
+        <h3 class="mt-2 text-[16px] font-extrabold tracking-tight text-slate-900">Joesoef Emdhy and Son</h3>
+        <p class="mt-3 text-[13.5px] leading-relaxed text-slate-600">
+          Akronim dari <strong class="font-semibold text-slate-800">Joesoef Emdhy and Son</strong> — pengakuan bahwa
+          perusahaan ini berakar dari beliau, dan dibangun oleh anak-cucunya sebagai kelanjutan pengabdian.
+        </p>
+      </article>
+
+      <article class="card-lift reveal group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-7 shadow-card sm:col-span-2 lg:col-span-1" style="transition-delay:.16s">
+        <div class="icon-tile grid h-12 w-12 place-items-center rounded-2xl bg-slate-100 text-slate-800">
+          <i data-lucide="shield" class="h-6 w-6"></i>
+        </div>
+        <div class="mt-5 text-[11px] font-bold uppercase tracking-[0.18em] text-slate-500">Perkasa</div>
+        <h3 class="mt-2 text-[16px] font-extrabold tracking-tight text-slate-900">Tekad untuk Kuat</h3>
+        <p class="mt-3 text-[13.5px] leading-relaxed text-slate-600">
+          Tekad kami untuk menjadi kuat — bukan hanya secara bisnis, tapi secara moral, mandiri, dan berdampak.
+          Kuat untuk memberi manfaat bagi banyak orang.
+        </p>
+      </article>
+
+    </div>
+
+    <!-- Narrative + Kembali ke Tanah -->
+    <div class="mt-16 grid gap-10 lg:grid-cols-12 lg:gap-14">
+      <div class="reveal lg:col-span-6">
+        <h3 class="text-2xl font-extrabold tracking-tight text-slate-900 sm:text-[1.75rem]">
+          <span class="text-brand-red">Kembali ke Tanah,</span> Seperti Beliau
+        </h3>
+        <div class="mt-5 space-y-4 text-[14.5px] leading-relaxed text-slate-600">
+          <p>
+            H.M. Joesoef Emdhy membangun perkebunan negara untuk kemandirian pangan dan kesejahteraan rakyat.
+            Kami melanjutkan misi itu dengan cara kami sendiri.
+          </p>
+          <p>
+            Judison bergerak di sektor agrikultur modern, dengan fokus pada tanaman pangan, perkebunan berkelanjutan,
+            dan teknologi pertanian yang ramah lingkungan. Kami percaya, tanah adalah sumber kehidupan, dan
+            pembangunan yang sejati dimulai dari desa.
+          </p>
+          <p>
+            Dengan membangun pertanian yang produktif dan adil, kami ingin membuktikan bahwa semangat beliau masih
+            hidup — bukan dalam bentuk seragam, tapi dalam bentuk panen yang melimpah, petani yang sejahtera,
+            dan tanah yang dihormati.
+          </p>
+        </div>
+      </div>
+
+      <div class="reveal lg:col-span-6" style="transition-delay:.1s">
+        <div class="rounded-3xl border border-slate-200 bg-gradient-to-br from-brand-blueSoft via-white to-brand-redSoft p-7 shadow-card sm:p-8">
+          <div class="flex items-center gap-3">
+            <div class="grid h-10 w-10 place-items-center rounded-xl bg-white text-brand-blue shadow-sm">
+              <i data-lucide="scroll-text" class="h-5 w-5"></i>
+            </div>
+            <div class="text-[11.5px] font-bold uppercase tracking-[0.16em] text-slate-700">Bukan Tentang Satu Orang</div>
+          </div>
+          <p class="mt-5 text-[14px] leading-relaxed text-slate-700">
+            Warisan ini bukan milik satu orang. Ini adalah milik seluruh keluarga, yang dari generasi ke generasi
+            memilih untuk tetap setia pada nilai-nilai yang diajarkan.
+          </p>
+          <p class="mt-4 text-[14px] leading-relaxed text-slate-700">
+            Ada yang meneruskan di bidang pendidikan, ada yang mengabdi di sektor publik, dan ada yang, seperti kami,
+            memilih jalan kewirausahaan. Semuanya punya satu benang merah: <strong class="font-semibold text-slate-900">rasa tanggung jawab
+            yang dalam terhadap tanah air.</strong>
+          </p>
+          <div class="mt-6 rounded-2xl border border-white bg-white/70 p-5">
+            <p class="font-serif text-[15px] italic leading-relaxed text-slate-800">
+              "Kami tidak ingin menjadi perusahaan besar yang kosong makna. Kami ingin menjadi perusahaan yang
+              dihormati karena caranya, bukan hanya karena hasilnya."
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- =========================================================
+     LAYANAN - 4 PILAR
+========================================================= -->
+<section id="layanan" class="relative scroll-mt-28 border-y border-slate-200 bg-slate-50 py-20 sm:py-28">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+
+    <div class="reveal mx-auto max-w-3xl text-center">
+      <span class="text-[11px] font-bold uppercase tracking-[0.24em] text-brand-blue">Layanan Kami</span>
+      <h2 class="mt-4 text-3xl font-extrabold leading-tight tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem]">
         Empat Pilar Usaha
       </h2>
-      <p class="mt-5 text-[15px] leading-relaxed text-slate-400">
-        Portofolio bisnis MJP dirancang untuk saling menguatkan — dari pembangunan fisik hingga penguatan
+      <p class="mt-5 text-[15px] leading-relaxed text-slate-600">
+        Portofolio bisnis Judison dirancang untuk saling menguatkan — dari pembangunan fisik hingga penguatan
         rantai pasok dan ketahanan pangan nasional.
       </p>
     </div>
 
     <div class="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
 
-      <!-- Card 01 -->
-      <article class="card-lift reveal group relative overflow-hidden rounded-3xl border border-white/[0.08] bg-gradient-to-b from-navy-800/70 to-navy-900/70 p-6 sm:p-7">
-        <span class="absolute right-5 top-5 text-[38px] font-extrabold leading-none tracking-tight text-white/[0.05] transition-colors duration-500 group-hover:text-gold-500/10">01</span>
-        <div class="icon-tile grid h-12 w-12 place-items-center rounded-2xl bg-gold-500/10 text-gold-500">
+      <article class="card-lift reveal group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-6 shadow-card sm:p-7">
+        <span class="absolute right-5 top-5 text-[38px] font-extrabold leading-none tracking-tight text-slate-100 transition-colors duration-500 group-hover:text-brand-blue/15">01</span>
+        <div class="icon-tile grid h-12 w-12 place-items-center rounded-2xl bg-brand-blueSoft text-brand-blue">
           <i data-lucide="hard-hat" class="h-6 w-6"></i>
         </div>
-        <h3 class="mt-5 text-[16px] font-extrabold leading-snug tracking-tight text-white">Konstruksi &amp; Infrastruktur</h3>
-        <p class="mt-2.5 text-[13px] leading-relaxed text-slate-400">
-          Pengaspalan jalan, pengerasan &amp; paving, konstruksi bangunan sipil dan gedung.
-        </p>
+        <h3 class="mt-5 text-[16px] font-extrabold leading-snug tracking-tight text-slate-900">Konstruksi &amp; Infrastruktur</h3>
+        <p class="mt-2.5 text-[13px] leading-relaxed text-slate-600">Pengaspalan jalan, pengerasan &amp; paving, konstruksi bangunan sipil dan gedung.</p>
         <div class="my-5 h-px hairline"></div>
         <ul class="space-y-2">
-          <li class="flex items-start gap-2 text-[12px] text-slate-500"><i data-lucide="minus" class="mt-1 h-3 w-3 shrink-0 text-gold-600"></i> Pengaspalan hotmix &amp; overlay</li>
-          <li class="flex items-start gap-2 text-[12px] text-slate-500"><i data-lucide="minus" class="mt-1 h-3 w-3 shrink-0 text-gold-600"></i> Paving block &amp; pengerasan jalan</li>
-          <li class="flex items-start gap-2 text-[12px] text-slate-500"><i data-lucide="minus" class="mt-1 h-3 w-3 shrink-0 text-gold-600"></i> Jalan, irigasi &amp; drainase</li>
+          <li class="flex items-start gap-2 text-[12px] text-slate-500"><i data-lucide="minus" class="mt-1 h-3 w-3 shrink-0 text-brand-blue"></i> Pengaspalan hotmix &amp; overlay</li>
+          <li class="flex items-start gap-2 text-[12px] text-slate-500"><i data-lucide="minus" class="mt-1 h-3 w-3 shrink-0 text-brand-blue"></i> Paving block &amp; pengerasan jalan</li>
+          <li class="flex items-start gap-2 text-[12px] text-slate-500"><i data-lucide="minus" class="mt-1 h-3 w-3 shrink-0 text-brand-blue"></i> Jalan, irigasi &amp; drainase</li>
         </ul>
       </article>
 
-      <!-- Card 02 -->
-      <article class="card-lift reveal group relative overflow-hidden rounded-3xl border border-white/[0.08] bg-gradient-to-b from-navy-800/70 to-navy-900/70 p-6 sm:p-7" style="transition-delay:.08s">
-        <span class="absolute right-5 top-5 text-[38px] font-extrabold leading-none tracking-tight text-white/[0.05] transition-colors duration-500 group-hover:text-gold-500/10">02</span>
-        <div class="icon-tile grid h-12 w-12 place-items-center rounded-2xl bg-emerald-500/10 text-emerald-400">
+      <article class="card-lift reveal group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-6 shadow-card sm:p-7" style="transition-delay:.08s">
+        <span class="absolute right-5 top-5 text-[38px] font-extrabold leading-none tracking-tight text-slate-100 transition-colors duration-500 group-hover:text-emerald-500/15">02</span>
+        <div class="icon-tile grid h-12 w-12 place-items-center rounded-2xl bg-emerald-50 text-emerald-600">
           <i data-lucide="sprout" class="h-6 w-6"></i>
         </div>
-        <h3 class="mt-5 text-[16px] font-extrabold leading-snug tracking-tight text-white">Agrikultur</h3>
-        <p class="mt-2.5 text-[13px] leading-relaxed text-slate-400">
-          Penanaman &amp; pengembangan jagung dengan kemitraan petani dan praktik modern.
-        </p>
+        <h3 class="mt-5 text-[16px] font-extrabold leading-snug tracking-tight text-slate-900">Agrikultur</h3>
+        <p class="mt-2.5 text-[13px] leading-relaxed text-slate-600">Penanaman &amp; pengembangan jagung dengan kemitraan petani dan praktik modern.</p>
         <div class="my-5 h-px hairline"></div>
         <ul class="space-y-2">
           <li class="flex items-start gap-2 text-[12px] text-slate-500"><i data-lucide="minus" class="mt-1 h-3 w-3 shrink-0 text-emerald-500"></i> Benih unggul &amp; tahan hama</li>
@@ -605,39 +635,33 @@
         </ul>
       </article>
 
-      <!-- Card 03 -->
-      <article class="card-lift reveal group relative overflow-hidden rounded-3xl border border-white/[0.08] bg-gradient-to-b from-navy-800/70 to-navy-900/70 p-6 sm:p-7" style="transition-delay:.16s">
-        <span class="absolute right-5 top-5 text-[38px] font-extrabold leading-none tracking-tight text-white/[0.05] transition-colors duration-500 group-hover:text-gold-500/10">03</span>
-        <div class="icon-tile grid h-12 w-12 place-items-center rounded-2xl bg-brand-blue/15 text-brand-bluelight">
+      <article class="card-lift reveal group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-6 shadow-card sm:p-7" style="transition-delay:.16s">
+        <span class="absolute right-5 top-5 text-[38px] font-extrabold leading-none tracking-tight text-slate-100 transition-colors duration-500 group-hover:text-brand-red/15">03</span>
+        <div class="icon-tile grid h-12 w-12 place-items-center rounded-2xl bg-brand-redSoft text-brand-red">
           <i data-lucide="truck" class="h-6 w-6"></i>
         </div>
-        <h3 class="mt-5 text-[16px] font-extrabold leading-snug tracking-tight text-white">Distribusi Pangan</h3>
-        <p class="mt-2.5 text-[13px] leading-relaxed text-slate-400">
-          Supplier pangan bergizi untuk program sosial &amp; ketahanan pangan nasional.
-        </p>
+        <h3 class="mt-5 text-[16px] font-extrabold leading-snug tracking-tight text-slate-900">Distribusi Pangan</h3>
+        <p class="mt-2.5 text-[13px] leading-relaxed text-slate-600">Supplier pangan bergizi untuk program sosial &amp; ketahanan pangan nasional.</p>
         <div class="my-5 h-px hairline"></div>
         <ul class="space-y-2">
-          <li class="flex items-start gap-2 text-[12px] text-slate-500"><i data-lucide="minus" class="mt-1 h-3 w-3 shrink-0 text-brand-blue"></i> Jaminan kualitas produk segar</li>
-          <li class="flex items-start gap-2 text-[12px] text-slate-500"><i data-lucide="minus" class="mt-1 h-3 w-3 shrink-0 text-brand-blue"></i> Pasokan stabil &amp; terjadwal</li>
-          <li class="flex items-start gap-2 text-[12px] text-slate-500"><i data-lucide="minus" class="mt-1 h-3 w-3 shrink-0 text-brand-blue"></i> Jaringan logistik efisien</li>
+          <li class="flex items-start gap-2 text-[12px] text-slate-500"><i data-lucide="minus" class="mt-1 h-3 w-3 shrink-0 text-brand-red"></i> Jaminan kualitas produk segar</li>
+          <li class="flex items-start gap-2 text-[12px] text-slate-500"><i data-lucide="minus" class="mt-1 h-3 w-3 shrink-0 text-brand-red"></i> Pasokan stabil &amp; terjadwal</li>
+          <li class="flex items-start gap-2 text-[12px] text-slate-500"><i data-lucide="minus" class="mt-1 h-3 w-3 shrink-0 text-brand-red"></i> Jaringan logistik efisien</li>
         </ul>
       </article>
 
-      <!-- Card 04 -->
-      <article class="card-lift reveal group relative overflow-hidden rounded-3xl border border-white/[0.08] bg-gradient-to-b from-navy-800/70 to-navy-900/70 p-6 sm:p-7" style="transition-delay:.24s">
-        <span class="absolute right-5 top-5 text-[38px] font-extrabold leading-none tracking-tight text-white/[0.05] transition-colors duration-500 group-hover:text-gold-500/10">04</span>
-        <div class="icon-tile grid h-12 w-12 place-items-center rounded-2xl bg-purple-500/10 text-purple-300">
+      <article class="card-lift reveal group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-6 shadow-card sm:p-7" style="transition-delay:.24s">
+        <span class="absolute right-5 top-5 text-[38px] font-extrabold leading-none tracking-tight text-slate-100 transition-colors duration-500 group-hover:text-slate-400/40">04</span>
+        <div class="icon-tile grid h-12 w-12 place-items-center rounded-2xl bg-slate-100 text-slate-700">
           <i data-lucide="package" class="h-6 w-6"></i>
         </div>
-        <h3 class="mt-5 text-[16px] font-extrabold leading-snug tracking-tight text-white">Perdagangan Besar</h3>
-        <p class="mt-2.5 text-[13px] leading-relaxed text-slate-400">
-          Batubara, CPO, karet, sembako, bahan bakar, alat berat &amp; suku cadang.
-        </p>
+        <h3 class="mt-5 text-[16px] font-extrabold leading-snug tracking-tight text-slate-900">Perdagangan Besar</h3>
+        <p class="mt-2.5 text-[13px] leading-relaxed text-slate-600">Batubara, CPO, karet, sembako, bahan bakar, alat berat &amp; suku cadang.</p>
         <div class="my-5 h-px hairline"></div>
         <ul class="space-y-2">
-          <li class="flex items-start gap-2 text-[12px] text-slate-500"><i data-lucide="minus" class="mt-1 h-3 w-3 shrink-0 text-purple-400"></i> Komoditas strategis</li>
-          <li class="flex items-start gap-2 text-[12px] text-slate-500"><i data-lucide="minus" class="mt-1 h-3 w-3 shrink-0 text-purple-400"></i> Pasokan stabil &amp; berkualitas</li>
-          <li class="flex items-start gap-2 text-[12px] text-slate-500"><i data-lucide="minus" class="mt-1 h-3 w-3 shrink-0 text-purple-400"></i> Kemitraan bisnis jangka panjang</li>
+          <li class="flex items-start gap-2 text-[12px] text-slate-500"><i data-lucide="minus" class="mt-1 h-3 w-3 shrink-0 text-slate-500"></i> Komoditas strategis</li>
+          <li class="flex items-start gap-2 text-[12px] text-slate-500"><i data-lucide="minus" class="mt-1 h-3 w-3 shrink-0 text-slate-500"></i> Pasokan stabil &amp; berkualitas</li>
+          <li class="flex items-start gap-2 text-[12px] text-slate-500"><i data-lucide="minus" class="mt-1 h-3 w-3 shrink-0 text-slate-500"></i> Kemitraan jangka panjang</li>
         </ul>
       </article>
 
@@ -646,20 +670,20 @@
 </section>
 
 
-<!-- ============================================================
-     PROYEK UNGGULAN
-============================================================ -->
+<!-- =========================================================
+     PROYEK
+========================================================= -->
 <section id="proyek" class="relative scroll-mt-28 py-20 sm:py-28">
-  <div class="pointer-events-none absolute inset-0 -z-10 radial-gold opacity-70"></div>
+  <div class="pointer-events-none absolute inset-0 -z-10 radial-blue-soft opacity-70"></div>
 
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
     <div class="reveal mx-auto max-w-3xl text-center">
-      <span class="text-[11px] font-bold uppercase tracking-[0.24em] text-gold-500">Rekam Jejak</span>
-      <h2 class="mt-4 text-3xl font-extrabold leading-tight tracking-tight text-white sm:text-4xl lg:text-[2.75rem]">
+      <span class="text-[11px] font-bold uppercase tracking-[0.24em] text-brand-red">Rekam Jejak</span>
+      <h2 class="mt-4 text-3xl font-extrabold leading-tight tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem]">
         Proyek &amp; Pekerjaan Terlaksana
       </h2>
-      <p class="mt-5 text-[15px] leading-relaxed text-slate-400">
+      <p class="mt-5 text-[15px] leading-relaxed text-slate-600">
         Dipercaya oleh institusi pemerintah dan mitra strategis nasional dalam pekerjaan konstruksi,
         pengaspalan jalan, serta pengembangan lahan pertanian.
       </p>
@@ -667,116 +691,111 @@
 
     <div class="mt-14 grid gap-5 lg:grid-cols-12">
 
-      <!-- Feature -->
       <div class="reveal lg:col-span-7">
-        <div class="relative h-full overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-navy-800 via-navy-850 to-navy-900 p-7 shadow-card sm:p-9">
-          <div class="absolute inset-0 bg-grid-sm opacity-30"></div>
-          <div class="absolute -right-24 -bottom-24 h-64 w-64 rounded-full bg-gold-500/10 blur-3xl"></div>
+        <div class="relative h-full overflow-hidden rounded-3xl border border-slate-200 bg-gradient-to-br from-white via-brand-blueSoft to-white p-7 shadow-card sm:p-9">
+          <div class="absolute inset-0 bg-grid opacity-40"></div>
+          <div class="absolute -right-24 -bottom-24 h-64 w-64 rounded-full bg-brand-blue/10 blur-3xl"></div>
 
           <div class="relative flex h-full flex-col">
             <div class="flex flex-wrap items-center gap-2.5">
-              <span class="rounded-full border border-gold-500/30 bg-gold-500/10 px-3 py-1 text-[10.5px] font-bold uppercase tracking-[0.16em] text-gold-400">Proyek Strategis Nasional</span>
-              <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[10.5px] font-semibold uppercase tracking-wider text-slate-400">Agrikultur</span>
+              <span class="rounded-full border border-brand-red/30 bg-brand-redSoft px-3 py-1 text-[10.5px] font-bold uppercase tracking-[0.16em] text-brand-red">Proyek Strategis Nasional</span>
+              <span class="rounded-full border border-slate-200 bg-white px-3 py-1 text-[10.5px] font-semibold uppercase tracking-wider text-slate-500">Agrikultur</span>
             </div>
 
-            <h3 class="mt-6 text-2xl font-extrabold leading-tight tracking-tight text-white sm:text-[2rem]">
+            <h3 class="mt-6 text-2xl font-extrabold leading-tight tracking-tight text-slate-900 sm:text-[2rem]">
               Lumbung Pangan Nasional
             </h3>
-            <p class="mt-2.5 flex items-center gap-2 text-[13.5px] font-medium text-slate-400">
-              <i data-lucide="map-pin" class="h-4 w-4 text-gold-500"></i>
+            <p class="mt-2.5 flex items-center gap-2 text-[13.5px] font-medium text-slate-500">
+              <i data-lucide="map-pin" class="h-4 w-4 text-brand-blue"></i>
               Majalengka, Jawa Barat
             </p>
 
-            <p class="mt-5 max-w-xl text-[14px] leading-relaxed text-slate-400">
+            <p class="mt-5 max-w-xl text-[14px] leading-relaxed text-slate-600">
               Pembangunan Lumbung Pangan Nasional bersama Kementerian Pertahanan RI — menangani area seluas
-              2.000 hektar, menjadikannya proyek terbesar MJP hingga saat ini.
+              2.000 hektar, menjadikannya proyek terbesar Judison hingga saat ini.
             </p>
 
             <div class="mt-auto grid grid-cols-2 gap-4 pt-9 sm:grid-cols-3">
-              <div class="rounded-2xl border border-white/[0.07] bg-white/[0.03] px-4 py-3.5">
-                <div class="text-[10px] font-bold uppercase tracking-[0.16em] text-slate-500">Luas Area</div>
-                <div class="mt-1 text-lg font-extrabold text-white">2.000 Ha</div>
+              <div class="rounded-2xl border border-slate-200 bg-white px-4 py-3.5">
+                <div class="text-[10px] font-bold uppercase tracking-[0.16em] text-slate-400">Luas Area</div>
+                <div class="mt-1 text-lg font-extrabold text-slate-900">2.000 Ha</div>
               </div>
-              <div class="rounded-2xl border border-white/[0.07] bg-white/[0.03] px-4 py-3.5">
-                <div class="text-[10px] font-bold uppercase tracking-[0.16em] text-slate-500">Mitra</div>
-                <div class="mt-1 text-lg font-extrabold text-white">Kemhan RI</div>
+              <div class="rounded-2xl border border-slate-200 bg-white px-4 py-3.5">
+                <div class="text-[10px] font-bold uppercase tracking-[0.16em] text-slate-400">Mitra</div>
+                <div class="mt-1 text-lg font-extrabold text-slate-900">Kemhan RI</div>
               </div>
-              <div class="col-span-2 rounded-2xl border border-white/[0.07] bg-white/[0.03] px-4 py-3.5 sm:col-span-1">
-                <div class="text-[10px] font-bold uppercase tracking-[0.16em] text-slate-500">Lingkup</div>
-                <div class="mt-1 text-lg font-extrabold text-white">Lahan &amp; Infrastruktur</div>
+              <div class="col-span-2 rounded-2xl border border-slate-200 bg-white px-4 py-3.5 sm:col-span-1">
+                <div class="text-[10px] font-bold uppercase tracking-[0.16em] text-slate-400">Lingkup</div>
+                <div class="mt-1 text-lg font-extrabold text-slate-900">Lahan &amp; Infrastruktur</div>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Side records -->
       <div class="grid gap-5 lg:col-span-5">
 
-        <!-- Record 1 -->
-        <div class="reveal rounded-3xl border border-white/[0.08] bg-navy-900/60 p-6 shadow-card sm:p-7" style="transition-delay:.08s">
+        <div class="reveal rounded-3xl border border-slate-200 bg-white p-6 shadow-card sm:p-7" style="transition-delay:.08s">
           <div class="flex items-start justify-between gap-4">
-            <div class="icon-tile grid h-11 w-11 place-items-center rounded-2xl bg-gold-500/10 text-gold-500">
+            <div class="icon-tile grid h-11 w-11 place-items-center rounded-2xl bg-brand-blueSoft text-brand-blue">
               <i data-lucide="layers" class="h-5 w-5"></i>
             </div>
-            <span class="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-slate-400">2022</span>
+            <span class="rounded-full border border-slate-200 bg-white px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-slate-500">2022</span>
           </div>
-          <h4 class="mt-4 text-[15.5px] font-extrabold tracking-tight text-white">Paving Block &amp; Pengerasan Jalan</h4>
+          <h4 class="mt-4 text-[15.5px] font-extrabold tracking-tight text-slate-900">Paving Block &amp; Pengerasan Jalan</h4>
           <div class="mt-4 space-y-2.5">
             <div class="flex items-start justify-between gap-4 text-[12.5px]">
               <span class="text-slate-500">Sektor</span>
-              <span class="text-right font-semibold text-slate-300">Perumahan &amp; Program Pemerintah</span>
+              <span class="text-right font-semibold text-slate-800">Perumahan &amp; Pemerintah</span>
             </div>
             <div class="h-px hairline"></div>
             <div class="flex items-start justify-between gap-4 text-[12.5px]">
               <span class="text-slate-500">Lokasi</span>
-              <span class="text-right font-semibold text-slate-300">Purwakarta, Jawa Barat</span>
+              <span class="text-right font-semibold text-slate-800">Purwakarta, Jawa Barat</span>
             </div>
             <div class="h-px hairline"></div>
             <div class="flex items-start justify-between gap-4 text-[12.5px]">
               <span class="text-slate-500">Periode</span>
-              <span class="text-right font-semibold text-slate-300">Maret – September 2022</span>
+              <span class="text-right font-semibold text-slate-800">Maret – September 2022</span>
             </div>
             <div class="h-px hairline"></div>
             <div class="flex items-start justify-between gap-4 text-[12.5px]">
               <span class="text-slate-500">Lingkup</span>
-              <span class="text-right font-semibold text-slate-300">Sitework, Paving, Finishing</span>
+              <span class="text-right font-semibold text-slate-800">Sitework · Paving · Finishing</span>
             </div>
           </div>
         </div>
 
-        <!-- Record 2 -->
-        <div class="reveal rounded-3xl border border-white/[0.08] bg-navy-900/60 p-6 shadow-card sm:p-7" style="transition-delay:.16s">
+        <div class="reveal rounded-3xl border border-slate-200 bg-white p-6 shadow-card sm:p-7" style="transition-delay:.16s">
           <div class="flex items-start justify-between gap-4">
-            <div class="icon-tile grid h-11 w-11 place-items-center rounded-2xl bg-brand-blue/15 text-brand-bluelight">
+            <div class="icon-tile grid h-11 w-11 place-items-center rounded-2xl bg-brand-redSoft text-brand-red">
               <i data-lucide="route" class="h-5 w-5"></i>
             </div>
-            <span class="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-slate-400">Jawa Barat</span>
+            <span class="rounded-full border border-slate-200 bg-white px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-slate-500">Jawa Barat</span>
           </div>
-          <h4 class="mt-4 text-[15.5px] font-extrabold tracking-tight text-white">Pengaspalan &amp; Konstruksi Jalan</h4>
-          <p class="mt-3 text-[13px] leading-relaxed text-slate-400">
-            Pekerjaan pengaspalan dan konstruksi jalan didukung armada <em class="not-italic font-semibold text-slate-300">asphalt finisher</em>
-            dan <em class="not-italic font-semibold text-slate-300">tandem roller</em>, serta tim pelaksana yang mengutamakan standar
+          <h4 class="mt-4 text-[15.5px] font-extrabold tracking-tight text-slate-900">Pengaspalan &amp; Konstruksi Jalan</h4>
+          <p class="mt-3 text-[13px] leading-relaxed text-slate-600">
+            Pekerjaan pengaspalan dan konstruksi jalan didukung armada <em class="not-italic font-semibold text-slate-800">asphalt finisher</em>
+            dan <em class="not-italic font-semibold text-slate-800">tandem roller</em>, serta tim pelaksana yang mengutamakan standar
             keselamatan kerja (K3).
           </p>
           <div class="mt-5 flex flex-wrap gap-2">
-            <span class="rounded-lg border border-white/10 bg-white/[0.03] px-2.5 py-1 text-[11px] font-medium text-slate-400">Cibenda</span>
-            <span class="rounded-lg border border-white/10 bg-white/[0.03] px-2.5 py-1 text-[11px] font-medium text-slate-400">Cikuluwung</span>
-            <span class="rounded-lg border border-white/10 bg-white/[0.03] px-2.5 py-1 text-[11px] font-medium text-slate-400">Citalang</span>
-            <span class="rounded-lg border border-white/10 bg-white/[0.03] px-2.5 py-1 text-[11px] font-medium text-slate-400">Purwakarta</span>
-            <span class="rounded-lg border border-white/10 bg-white/[0.03] px-2.5 py-1 text-[11px] font-medium text-slate-400">Sumedang</span>
+            <span class="rounded-lg border border-slate-200 bg-slate-50 px-2.5 py-1 text-[11px] font-medium text-slate-600">Cibenda</span>
+            <span class="rounded-lg border border-slate-200 bg-slate-50 px-2.5 py-1 text-[11px] font-medium text-slate-600">Cikuluwung</span>
+            <span class="rounded-lg border border-slate-200 bg-slate-50 px-2.5 py-1 text-[11px] font-medium text-slate-600">Citalang</span>
+            <span class="rounded-lg border border-slate-200 bg-slate-50 px-2.5 py-1 text-[11px] font-medium text-slate-600">Purwakarta</span>
+            <span class="rounded-lg border border-slate-200 bg-slate-50 px-2.5 py-1 text-[11px] font-medium text-slate-600">Sumedang</span>
           </div>
         </div>
 
-        <!-- Record 3 -->
-        <div class="reveal rounded-3xl border border-white/[0.08] bg-navy-900/60 p-6 shadow-card sm:p-7" style="transition-delay:.24s">
+        <div class="reveal rounded-3xl border border-slate-200 bg-white p-6 shadow-card sm:p-7" style="transition-delay:.24s">
           <div class="flex items-start gap-4">
-            <div class="icon-tile grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-emerald-500/10 text-emerald-400">
+            <div class="icon-tile grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-emerald-50 text-emerald-600">
               <i data-lucide="utensils" class="h-5 w-5"></i>
             </div>
             <div>
-              <h4 class="text-[15.5px] font-extrabold tracking-tight text-white">Supplier Program Dapur MBG</h4>
-              <p class="mt-2.5 text-[13px] leading-relaxed text-slate-400">
+              <h4 class="text-[15.5px] font-extrabold tracking-tight text-slate-900">Supplier Program Dapur MBG</h4>
+              <p class="mt-2.5 text-[13px] leading-relaxed text-slate-600">
                 Dipercaya sebagai supplier daging ayam dan telur untuk program Dapur Makan Bergizi (MBG)
                 yang diselenggarakan Yayasan Kartika Eka Paksi (YKEP).
               </p>
@@ -787,11 +806,10 @@
       </div>
     </div>
 
-    <!-- Group entity note -->
-    <div class="reveal mt-8 rounded-2xl border border-white/[0.07] bg-white/[0.02] px-5 py-4 sm:px-6">
+    <div class="reveal mt-8 rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 sm:px-6">
       <p class="flex items-start gap-3 text-[12.5px] leading-relaxed text-slate-500">
-        <i data-lucide="info" class="mt-0.5 h-4 w-4 shrink-0 text-gold-500"></i>
-        <span>Sebagian pekerjaan konstruksi &amp; pengaspalan dilaksanakan oleh <strong class="font-semibold text-slate-300">CV Ribu Jaya Mandiri</strong> — entitas satu grup, kepemilikan sama dengan PT Medwa Judison Perkasa.</span>
+        <i data-lucide="info" class="mt-0.5 h-4 w-4 shrink-0 text-brand-blue"></i>
+        <span>Sebagian pekerjaan konstruksi &amp; pengaspalan dilaksanakan oleh <strong class="font-semibold text-slate-800">CV Ribu Jaya Mandiri</strong> — entitas satu grup, kepemilikan sama dengan PT Medwa Judison Perkasa.</span>
       </p>
     </div>
 
@@ -799,79 +817,64 @@
 </section>
 
 
-<!-- ============================================================
-     LEGALITAS & KEMITRAAN
-============================================================ -->
-<section id="legalitas" class="relative scroll-mt-28 border-y border-white/[0.06] bg-navy-900/30 py-20 sm:py-28">
+<!-- =========================================================
+     LEGALITAS
+========================================================= -->
+<section id="legalitas" class="relative scroll-mt-28 border-y border-slate-200 bg-slate-50 py-20 sm:py-28">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
     <div class="grid gap-14 lg:grid-cols-12 lg:gap-12">
 
-      <!-- Legalitas -->
       <div class="lg:col-span-6">
         <div class="reveal">
-          <span class="text-[11px] font-bold uppercase tracking-[0.24em] text-gold-500">Legalitas &amp; Sertifikasi</span>
-          <h2 class="mt-4 text-3xl font-extrabold leading-tight tracking-tight text-white sm:text-4xl">
+          <span class="text-[11px] font-bold uppercase tracking-[0.24em] text-brand-blue">Legalitas &amp; Sertifikasi</span>
+          <h2 class="mt-4 text-3xl font-extrabold leading-tight tracking-tight text-slate-900 sm:text-4xl">
             Dasar Hukum &amp; Kualifikasi
           </h2>
-          <p class="mt-5 text-[15px] leading-relaxed text-slate-400">
+          <p class="mt-5 text-[15px] leading-relaxed text-slate-600">
             Beroperasi sebagai badan hukum resmi, didukung kualifikasi konstruksi terverifikasi pada grup usaha.
           </p>
         </div>
 
-        <!-- Badan Hukum -->
-        <div class="reveal mt-9 rounded-3xl border border-white/[0.08] bg-navy-900/60 p-6 shadow-card sm:p-7" style="transition-delay:.08s">
+        <div class="reveal mt-9 rounded-3xl border border-slate-200 bg-white p-6 shadow-card sm:p-7" style="transition-delay:.08s">
           <div class="flex items-center gap-3">
-            <div class="grid h-10 w-10 place-items-center rounded-xl bg-gold-500/10 text-gold-500">
+            <div class="grid h-10 w-10 place-items-center rounded-xl bg-brand-blueSoft text-brand-blue">
               <i data-lucide="landmark" class="h-5 w-5"></i>
             </div>
-            <h3 class="text-[15px] font-extrabold tracking-tight text-white">Badan Hukum Perusahaan</h3>
+            <h3 class="text-[15px] font-extrabold tracking-tight text-slate-900">Badan Hukum Perusahaan</h3>
           </div>
           <ul class="mt-5 grid gap-3 sm:grid-cols-2">
-            <li class="flex items-start gap-2.5 rounded-xl border border-white/[0.06] bg-white/[0.02] px-3.5 py-3">
-              <i data-lucide="file-check-2" class="mt-0.5 h-4 w-4 shrink-0 text-gold-500"></i>
-              <span class="text-[12.5px] leading-relaxed text-slate-400">Akta Pendirian &amp; SK Kemenkumham RI</span>
+            <li class="flex items-start gap-2.5 rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-3">
+              <i data-lucide="file-check-2" class="mt-0.5 h-4 w-4 shrink-0 text-brand-blue"></i>
+              <span class="text-[12.5px] leading-relaxed text-slate-600">Akta Pendirian &amp; SK Kemenkumham RI</span>
             </li>
-            <li class="flex items-start gap-2.5 rounded-xl border border-white/[0.06] bg-white/[0.02] px-3.5 py-3">
-              <i data-lucide="file-check-2" class="mt-0.5 h-4 w-4 shrink-0 text-gold-500"></i>
-              <span class="text-[12.5px] leading-relaxed text-slate-400">Nomor Induk Berusaha (NIB) — 2312230034726 (OSS RBA)</span>
+            <li class="flex items-start gap-2.5 rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-3">
+              <i data-lucide="file-check-2" class="mt-0.5 h-4 w-4 shrink-0 text-brand-blue"></i>
+              <span class="text-[12.5px] leading-relaxed text-slate-600">NIB — 2312230034726 (OSS RBA)</span>
             </li>
-            <li class="flex items-start gap-2.5 rounded-xl border border-white/[0.06] bg-white/[0.02] px-3.5 py-3">
-              <i data-lucide="file-check-2" class="mt-0.5 h-4 w-4 shrink-0 text-gold-500"></i>
-              <span class="text-[12.5px] leading-relaxed text-slate-400">NPWP Perusahaan</span>
+            <li class="flex items-start gap-2.5 rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-3">
+              <i data-lucide="file-check-2" class="mt-0.5 h-4 w-4 shrink-0 text-brand-blue"></i>
+              <span class="text-[12.5px] leading-relaxed text-slate-600">NPWP Perusahaan</span>
             </li>
-            <li class="flex items-start gap-2.5 rounded-xl border border-white/[0.06] bg-white/[0.02] px-3.5 py-3">
-              <i data-lucide="file-check-2" class="mt-0.5 h-4 w-4 shrink-0 text-gold-500"></i>
-              <span class="text-[12.5px] leading-relaxed text-slate-400">Status Penanaman Modal Dalam Negeri (PMDN)</span>
+            <li class="flex items-start gap-2.5 rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-3">
+              <i data-lucide="file-check-2" class="mt-0.5 h-4 w-4 shrink-0 text-brand-blue"></i>
+              <span class="text-[12.5px] leading-relaxed text-slate-600">Status PMDN</span>
             </li>
           </ul>
         </div>
 
-        <!-- Kualifikasi Konstruksi -->
-        <div class="reveal mt-5 rounded-3xl border border-white/[0.08] bg-navy-900/60 p-6 shadow-card sm:p-7" style="transition-delay:.16s">
+        <div class="reveal mt-5 rounded-3xl border border-slate-200 bg-white p-6 shadow-card sm:p-7" style="transition-delay:.16s">
           <div class="flex items-center gap-3">
-            <div class="grid h-10 w-10 place-items-center rounded-xl bg-brand-blue/15 text-brand-bluelight">
+            <div class="grid h-10 w-10 place-items-center rounded-xl bg-brand-redSoft text-brand-red">
               <i data-lucide="shield-check" class="h-5 w-5"></i>
             </div>
-            <h3 class="text-[15px] font-extrabold tracking-tight text-white">Kualifikasi Konstruksi Terverifikasi</h3>
+            <h3 class="text-[15px] font-extrabold tracking-tight text-slate-900">Kualifikasi Konstruksi Terverifikasi</h3>
           </div>
           <ul class="mt-5 space-y-3">
-            <li class="flex items-start gap-3">
-              <i data-lucide="check-circle-2" class="mt-0.5 h-4 w-4 shrink-0 text-brand-blue"></i>
-              <span class="text-[12.5px] leading-relaxed text-slate-400">SBU — Konstruksi Bangunan Sipil Jalan (KBLI 42101)</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <i data-lucide="check-circle-2" class="mt-0.5 h-4 w-4 shrink-0 text-brand-blue"></i>
-              <span class="text-[12.5px] leading-relaxed text-slate-400">SBU — Konstruksi Jaringan Irigasi &amp; Drainase (KBLI 42201)</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <i data-lucide="check-circle-2" class="mt-0.5 h-4 w-4 shrink-0 text-brand-blue"></i>
-              <span class="text-[12.5px] leading-relaxed text-slate-400">Anggota ASPEKNAS (Perkumpulan Pelaksana Konstruksi Nasional)</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <i data-lucide="check-circle-2" class="mt-0.5 h-4 w-4 shrink-0 text-brand-blue"></i>
-              <span class="text-[12.5px] leading-relaxed text-slate-400">Teregistrasi LPJK — berlaku s.d. 2028</span>
-            </li>
+            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="mt-0.5 h-4 w-4 shrink-0 text-brand-red"></i><span class="text-[12.5px] leading-relaxed text-slate-600">SBU — Konstruksi Bangunan Sipil Jalan (KBLI 42101)</span></li>
+            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="mt-0.5 h-4 w-4 shrink-0 text-brand-red"></i><span class="text-[12.5px] leading-relaxed text-slate-600">SBU — Konstruksi Jaringan Irigasi &amp; Drainase (KBLI 42201)</span></li>
+            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="mt-0.5 h-4 w-4 shrink-0 text-brand-red"></i><span class="text-[12.5px] leading-relaxed text-slate-600">Anggota ASPEKNAS (Perkumpulan Pelaksana Konstruksi Nasional)</span></li>
+            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="mt-0.5 h-4 w-4 shrink-0 text-brand-red"></i><span class="text-[12.5px] leading-relaxed text-slate-600">Teregistrasi LPJK — berlaku s.d. 2028</span></li>
           </ul>
         </div>
       </div>
@@ -879,11 +882,11 @@
       <!-- Mitra -->
       <div class="lg:col-span-6">
         <div class="reveal">
-          <span class="text-[11px] font-bold uppercase tracking-[0.24em] text-gold-500">Kepercayaan</span>
-          <h2 class="mt-4 text-3xl font-extrabold leading-tight tracking-tight text-white sm:text-4xl">
+          <span class="text-[11px] font-bold uppercase tracking-[0.24em] text-brand-red">Kepercayaan</span>
+          <h2 class="mt-4 text-3xl font-extrabold leading-tight tracking-tight text-slate-900 sm:text-4xl">
             Klien &amp; Mitra Strategis
           </h2>
-          <p class="mt-5 text-[15px] leading-relaxed text-slate-400">
+          <p class="mt-5 text-[15px] leading-relaxed text-slate-600">
             Dipercaya oleh institusi pemerintah dan mitra strategis nasional dalam berbagai proyek
             infrastruktur, ketahanan pangan, dan program sosial.
           </p>
@@ -891,58 +894,58 @@
 
         <div class="reveal mt-9 grid grid-cols-1 gap-3.5 sm:grid-cols-2" style="transition-delay:.1s">
 
-          <div class="card-lift flex items-center gap-3.5 rounded-2xl border border-white/[0.08] bg-navy-900/60 px-4 py-4">
-            <div class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-red-500/10 text-red-400"><i data-lucide="star" class="h-5 w-5"></i></div>
+          <div class="card-lift flex items-center gap-3.5 rounded-2xl border border-slate-200 bg-white px-4 py-4">
+            <div class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-brand-redSoft text-brand-red"><i data-lucide="star" class="h-5 w-5"></i></div>
             <div class="leading-tight">
-              <div class="text-[12.5px] font-bold text-white">Kementerian Pertahanan RI</div>
+              <div class="text-[12.5px] font-bold text-slate-900">Kementerian Pertahanan RI</div>
               <div class="mt-0.5 text-[11px] text-slate-500">Mitra proyek strategis</div>
             </div>
           </div>
 
-          <div class="card-lift flex items-center gap-3.5 rounded-2xl border border-white/[0.08] bg-navy-900/60 px-4 py-4">
-            <div class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-emerald-500/10 text-emerald-400"><i data-lucide="wheat" class="h-5 w-5"></i></div>
+          <div class="card-lift flex items-center gap-3.5 rounded-2xl border border-slate-200 bg-white px-4 py-4">
+            <div class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-emerald-50 text-emerald-600"><i data-lucide="wheat" class="h-5 w-5"></i></div>
             <div class="leading-tight">
-              <div class="text-[12.5px] font-bold text-white">Badan Gizi Nasional</div>
+              <div class="text-[12.5px] font-bold text-slate-900">Badan Gizi Nasional</div>
               <div class="mt-0.5 text-[11px] text-slate-500">Program gizi nasional</div>
             </div>
           </div>
 
-          <div class="card-lift flex items-center gap-3.5 rounded-2xl border border-white/[0.08] bg-navy-900/60 px-4 py-4">
-            <div class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-amber-500/10 text-amber-400"><i data-lucide="heart-handshake" class="h-5 w-5"></i></div>
+          <div class="card-lift flex items-center gap-3.5 rounded-2xl border border-slate-200 bg-white px-4 py-4">
+            <div class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-amber-50 text-amber-600"><i data-lucide="heart-handshake" class="h-5 w-5"></i></div>
             <div class="leading-tight">
-              <div class="text-[12.5px] font-bold text-white">Yayasan Kartika Eka Paksi</div>
+              <div class="text-[12.5px] font-bold text-slate-900">Yayasan Kartika Eka Paksi</div>
               <div class="mt-0.5 text-[11px] text-slate-500">Program Dapur MBG</div>
             </div>
           </div>
 
-          <div class="card-lift flex items-center gap-3.5 rounded-2xl border border-white/[0.08] bg-navy-900/60 px-4 py-4">
-            <div class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-orange-500/10 text-orange-400"><i data-lucide="building" class="h-5 w-5"></i></div>
+          <div class="card-lift flex items-center gap-3.5 rounded-2xl border border-slate-200 bg-white px-4 py-4">
+            <div class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-orange-50 text-orange-600"><i data-lucide="building" class="h-5 w-5"></i></div>
             <div class="leading-tight">
-              <div class="text-[12.5px] font-bold text-white">BNI</div>
+              <div class="text-[12.5px] font-bold text-slate-900">BNI</div>
               <div class="mt-0.5 text-[11px] text-slate-500">Mitra perbankan</div>
             </div>
           </div>
 
-          <div class="card-lift flex items-center gap-3.5 rounded-2xl border border-white/[0.08] bg-navy-900/60 px-4 py-4">
-            <div class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-brand-blue/15 text-brand-bluelight"><i data-lucide="scale" class="h-5 w-5"></i></div>
+          <div class="card-lift flex items-center gap-3.5 rounded-2xl border border-slate-200 bg-white px-4 py-4">
+            <div class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-brand-blueSoft text-brand-blue"><i data-lucide="scale" class="h-5 w-5"></i></div>
             <div class="leading-tight">
-              <div class="text-[12.5px] font-bold text-white">DPD RI</div>
+              <div class="text-[12.5px] font-bold text-slate-900">DPD RI</div>
               <div class="mt-0.5 text-[11px] text-slate-500">Institusi negara</div>
             </div>
           </div>
 
-          <div class="card-lift flex items-center gap-3.5 rounded-2xl border border-white/[0.08] bg-navy-900/60 px-4 py-4">
-            <div class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-sky-500/10 text-sky-400"><i data-lucide="receipt" class="h-5 w-5"></i></div>
+          <div class="card-lift flex items-center gap-3.5 rounded-2xl border border-slate-200 bg-white px-4 py-4">
+            <div class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-sky-50 text-sky-600"><i data-lucide="receipt" class="h-5 w-5"></i></div>
             <div class="leading-tight">
-              <div class="text-[12.5px] font-bold text-white">Kemenkeu — DJBC</div>
-              <div class="mt-0.5 text-[11px] text-slate-500">Direktorat Jenderal Bea &amp; Cukai</div>
+              <div class="text-[12.5px] font-bold text-slate-900">Kemenkeu — DJBC</div>
+              <div class="mt-0.5 text-[11px] text-slate-500">Bea &amp; Cukai</div>
             </div>
           </div>
 
-          <div class="card-lift flex items-center gap-3.5 rounded-2xl border border-white/[0.08] bg-navy-900/60 px-4 py-4 sm:col-span-2">
-            <div class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-slate-500/10 text-slate-300"><i data-lucide="factory" class="h-5 w-5"></i></div>
+          <div class="card-lift flex items-center gap-3.5 rounded-2xl border border-slate-200 bg-white px-4 py-4 sm:col-span-2">
+            <div class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-slate-100 text-slate-700"><i data-lucide="factory" class="h-5 w-5"></i></div>
             <div class="leading-tight">
-              <div class="text-[12.5px] font-bold text-white">TKG Taekwang</div>
+              <div class="text-[12.5px] font-bold text-slate-900">TKG Taekwang</div>
               <div class="mt-0.5 text-[11px] text-slate-500">Mitra industri &amp; perdagangan</div>
             </div>
           </div>
@@ -955,690 +958,64 @@
 </section>
 
 
-<!-- ============================================================
-     TIM MANAJEMEN
-============================================================ -->
-<section id="tim" class="relative scroll-mt-28 py-20 sm:py-28">
+<!-- =========================================================
+     STRUKTUR ORGANISASI (mind-map, tanpa foto)
+========================================================= -->
+<section id="struktur" class="relative scroll-mt-28 py-20 sm:py-28">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
     <div class="reveal mx-auto max-w-3xl text-center">
-      <span class="text-[11px] font-bold uppercase tracking-[0.24em] text-gold-500">Struktur Perusahaan</span>
-      <h2 class="mt-4 text-3xl font-extrabold leading-tight tracking-tight text-white sm:text-4xl lg:text-[2.75rem]">
-        Manajemen &amp; Pengurus
+      <span class="text-[11px] font-bold uppercase tracking-[0.24em] text-brand-blue">Struktur Perusahaan</span>
+      <h2 class="mt-4 text-3xl font-extrabold leading-tight tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem]">
+        Struktur Organisasi
       </h2>
-      <p class="mt-5 text-[15px] leading-relaxed text-slate-400">
-        Dikelola oleh tim profesional dengan keahlian lintas sektor — konstruksi, agribisnis,
-        keuangan, dan tata kelola perusahaan.
+      <p class="mt-5 text-[15px] leading-relaxed text-slate-600">
+        Tata kelola perusahaan dijalankan oleh tim profesional dengan keahlian lintas sektor — konstruksi,
+        agribisnis, keuangan, dan legal.
       </p>
     </div>
 
-    <!-- Board -->
-    <div class="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-
-      <article class="card-lift reveal group rounded-3xl border border-white/[0.08] bg-gradient-to-b from-navy-800/60 to-navy-900/60 p-6 text-center sm:p-7">
-        <div class="mx-auto grid h-16 w-16 place-items-center rounded-2xl bg-gradient-to-br from-gold-400 to-gold-600 text-navy-950 shadow-lg shadow-gold-600/20">
-          <i data-lucide="crown" class="h-7 w-7"></i>
-        </div>
-        <h3 class="mt-5 text-[15px] font-extrabold tracking-tight text-white">Andre Milko Pelawi</h3>
-        <p class="mt-1 text-[12px] font-semibold uppercase tracking-[0.14em] text-gold-500">Komisaris Utama</p>
-      </article>
-
-      <article class="card-lift reveal group rounded-3xl border border-white/[0.08] bg-gradient-to-b from-navy-800/60 to-navy-900/60 p-6 text-center sm:p-7" style="transition-delay:.06s">
-        <div class="mx-auto grid h-16 w-16 place-items-center rounded-2xl bg-gradient-to-br from-slate-500 to-slate-700 text-white shadow-lg shadow-slate-900/30">
-          <i data-lucide="user-check" class="h-7 w-7"></i>
-        </div>
-        <h3 class="mt-5 text-[15px] font-extrabold tracking-tight text-white">Ulii Risvano</h3>
-        <p class="mt-1 text-[12px] font-semibold uppercase tracking-[0.14em] text-gold-500">Komisaris</p>
-      </article>
-
-      <article class="card-lift reveal group rounded-3xl border border-gold-500/25 bg-gradient-to-b from-navy-800/80 to-navy-900/80 p-6 text-center shadow-glow sm:p-7" style="transition-delay:.12s">
-        <div class="mx-auto grid h-16 w-16 place-items-center rounded-2xl bg-gradient-to-br from-brand-bluelight to-brand-blue text-white shadow-lg shadow-brand-blue/30">
-          <i data-lucide="briefcase" class="h-7 w-7"></i>
-        </div>
-        <h3 class="mt-5 text-[15px] font-extrabold tracking-tight text-white">M. Azka Medira Joesoef</h3>
-        <p class="mt-1 text-[12px] font-semibold uppercase tracking-[0.14em] text-gold-500">Direktur Utama</p>
-      </article>
-
-      <article class="card-lift reveal group rounded-3xl border border-white/[0.08] bg-gradient-to-b from-navy-800/60 to-navy-900/60 p-6 text-center sm:p-7" style="transition-delay:.18s">
-        <div class="mx-auto grid h-16 w-16 place-items-center rounded-2xl bg-gradient-to-br from-slate-600 to-slate-800 text-white shadow-lg shadow-slate-900/30">
-          <i data-lucide="gavel" class="h-7 w-7"></i>
-        </div>
-        <h3 class="mt-5 text-[15px] font-extrabold tracking-tight text-white">Efrem Ndruru</h3>
-        <p class="mt-1 text-[12px] font-semibold uppercase tracking-[0.14em] text-gold-500">Legal Counsel</p>
-      </article>
-
-      <article class="card-lift reveal group rounded-3xl border border-white/[0.08] bg-gradient-to-b from-navy-800/60 to-navy-900/60 p-6 text-center sm:p-7" style="transition-delay:.24s">
-        <div class="mx-auto grid h-16 w-16 place-items-center rounded-2xl bg-gradient-to-br from-emerald-500 to-emerald-700 text-white shadow-lg shadow-emerald-900/30">
-          <i data-lucide="trending-up" class="h-7 w-7"></i>
-        </div>
-        <h3 class="mt-5 text-[15px] font-extrabold tracking-tight text-white">Karim Nasar</h3>
-        <p class="mt-1 text-[12px] font-semibold uppercase tracking-[0.14em] text-gold-500">Direktur Pengembangan Bisnis</p>
-      </article>
-
-      <article class="card-lift reveal group rounded-3xl border border-white/[0.08] bg-gradient-to-b from-navy-800/60 to-navy-900/60 p-6 text-center sm:p-7" style="transition-delay:.3s">
-        <div class="mx-auto grid h-16 w-16 place-items-center rounded-2xl bg-gradient-to-br from-sky-500 to-sky-700 text-white shadow-lg shadow-sky-900/30">
-          <i data-lucide="settings-2" class="h-7 w-7"></i>
-        </div>
-        <h3 class="mt-5 text-[15px] font-extrabold tracking-tight text-white">Kelvin David Sudomo</h3>
-        <p class="mt-1 text-[12px] font-semibold uppercase tracking-[0.14em] text-gold-500">Direktur Operasional</p>
-      </article>
-
-      <article class="card-lift reveal group rounded-3xl border border-white/[0.08] bg-gradient-to-b from-navy-800/60 to-navy-900/60 p-6 text-center sm:p-7" style="transition-delay:.36s">
-        <div class="mx-auto grid h-16 w-16 place-items-center rounded-2xl bg-gradient-to-br from-violet-500 to-violet-700 text-white shadow-lg shadow-violet-900/30">
-          <i data-lucide="calculator" class="h-7 w-7"></i>
-        </div>
-        <h3 class="mt-5 text-[15px] font-extrabold tracking-tight text-white">Dzakwan Yazid Thalib</h3>
-        <p class="mt-1 text-[12px] font-semibold uppercase tracking-[0.14em] text-gold-500">GM Keuangan</p>
-      </article>
-
-      <article class="card-lift reveal group rounded-3xl border border-white/[0.08] bg-gradient-to-b from-navy-800/60 to-navy-900/60 p-6 text-center sm:p-7" style="transition-delay:.42s">
-        <div class="mx-auto grid h-16 w-16 place-items-center rounded-2xl bg-gradient-to-br from-rose-500 to-rose-700 text-white shadow-lg shadow-rose-900/30">
-          <i data-lucide="clipboard-list" class="h-7 w-7"></i>
-        </div>
-        <h3 class="mt-5 text-[15px] font-extrabold tracking-tight text-white">Dedi</h3>
-        <p class="mt-1 text-[12px] font-semibold uppercase tracking-[0.14em] text-gold-500">Administration &amp; Procurement</p>
-      </article>
-
-    </div>
-  </div>
-</section>
-
-
-<!-- ============================================================
-     KONTAK
-============================================================ -->
-<section id="kontak" class="relative scroll-mt-28 border-y border-white/[0.06] bg-navy-900/30 py-20 sm:py-28">
-  <div class="pointer-events-none absolute inset-0 -z-10 radial-blue opacity-70"></div>
-
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-
-    <div class="reveal mx-auto max-w-3xl text-center">
-      <span class="text-[11px] font-bold uppercase tracking-[0.24em] text-gold-500">Hubungi Kami</span>
-      <h2 class="mt-4 text-3xl font-extrabold leading-tight tracking-tight text-white sm:text-4xl lg:text-[2.75rem]">
-        Mari Terhubung &amp; Berkembang Bersama
-      </h2>
-      <p class="mt-5 text-[15px] leading-relaxed text-slate-400">
-        Diskusikan kebutuhan konstruksi, pengadaan komoditas, distribusi pangan, atau kemitraan
-        strategis bersama tim kami.
-      </p>
-    </div>
-
-    <div class="mt-14 grid gap-6 lg:grid-cols-12">
-
-      <!-- Info -->
-      <div class="space-y-5 lg:col-span-5">
-
-        <!-- Palembang -->
-        <div class="reveal rounded-3xl border border-white/[0.08] bg-navy-900/60 p-6 shadow-card sm:p-7">
-          <div class="flex items-center gap-3">
-            <div class="grid h-10 w-10 place-items-center rounded-xl bg-gold-500/10 text-gold-500">
-              <i data-lucide="building-2" class="h-5 w-5"></i>
-            </div>
-            <div>
-              <h3 class="text-[14.5px] font-extrabold tracking-tight text-white">Kantor Palembang</h3>
-              <p class="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">Kantor Pusat</p>
-            </div>
-          </div>
-          <p class="mt-4 flex items-start gap-2.5 text-[13px] leading-relaxed text-slate-400">
-            <i data-lucide="map-pin" class="mt-0.5 h-4 w-4 shrink-0 text-slate-500"></i>
-            Jl. Jend. Sudirman No. 5206, Ario Kemuning, Ilir Timur 1, Palembang, 30128
-          </p>
-        </div>
-
-        <!-- Jakarta -->
-        <div class="reveal rounded-3xl border border-white/[0.08] bg-navy-900/60 p-6 shadow-card sm:p-7" style="transition-delay:.08s">
-          <div class="flex items-center gap-3">
-            <div class="grid h-10 w-10 place-items-center rounded-xl bg-brand-blue/15 text-brand-bluelight">
-              <i data-lucide="building" class="h-5 w-5"></i>
-            </div>
-            <div>
-              <h3 class="text-[14.5px] font-extrabold tracking-tight text-white">Kantor Jakarta</h3>
-              <p class="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">Perwakilan</p>
-            </div>
-          </div>
-          <p class="mt-4 flex items-start gap-2.5 text-[13px] leading-relaxed text-slate-400">
-            <i data-lucide="map-pin" class="mt-0.5 h-4 w-4 shrink-0 text-slate-500"></i>
-            Jl. Balai Pustaka Barat No. 337, RT.4/RW.12, Rawamangun, Kec. Pulo Gadung, Kota Jakarta Timur, DKI Jakarta 13220
-          </p>
-        </div>
-
-        <!-- Direct contact -->
-        <div class="reveal rounded-3xl border border-white/[0.08] bg-navy-900/60 p-6 shadow-card sm:p-7" style="transition-delay:.16s">
-          <h3 class="text-[14.5px] font-extrabold tracking-tight text-white">Kontak Langsung</h3>
-          <div class="mt-5 space-y-4">
-
-            <a href="https://wa.me/6287888855877" target="_blank" rel="noopener" class="group flex items-center gap-3.5">
-              <div class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-emerald-500/10 text-emerald-400 transition-colors group-hover:bg-emerald-500/20">
-                <i data-lucide="phone" class="h-4.5 w-4.5"></i>
-              </div>
-              <div class="leading-tight">
-                <div class="text-[10.5px] font-semibold uppercase tracking-[0.14em] text-slate-500">Telepon / WhatsApp</div>
-                <div class="mt-0.5 text-[13.5px] font-semibold text-slate-200 transition-colors group-hover:text-white">+62 878 888 55877</div>
-              </div>
-            </a>
-
-            <div class="h-px hairline"></div>
-
-            <a href="mailto:info@judison.my.id" class="group flex items-center gap-3.5">
-              <div class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-gold-500/10 text-gold-500 transition-colors group-hover:bg-gold-500/20">
-                <i data-lucide="mail" class="h-4.5 w-4.5"></i>
-              </div>
-              <div class="leading-tight">
-                <div class="text-[10.5px] font-semibold uppercase tracking-[0.14em] text-slate-500">Email</div>
-                <div class="mt-0.5 text-[13.5px] font-semibold text-slate-200 transition-colors group-hover:text-white">info@judison.my.id</div>
-              </div>
-            </a>
-
-            <div class="h-px hairline"></div>
-
-            <a href="https://instagram.com/mjp1927" target="_blank" rel="noopener" class="group flex items-center gap-3.5">
-              <div class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-pink-500/10 text-pink-400 transition-colors group-hover:bg-pink-500/20">
-                <i data-lucide="instagram" class="h-4.5 w-4.5"></i>
-              </div>
-              <div class="leading-tight">
-                <div class="text-[10.5px] font-semibold uppercase tracking-[0.14em] text-slate-500">Instagram</div>
-                <div class="mt-0.5 text-[13.5px] font-semibold text-slate-200 transition-colors group-hover:text-white">@mjp1927</div>
-              </div>
-            </a>
-
-            <div class="h-px hairline"></div>
-
-            <a href="https://www.judison.my.id" target="_blank" rel="noopener" class="group flex items-center gap-3.5">
-              <div class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-brand-blue/15 text-brand-bluelight transition-colors group-hover:bg-brand-blue/25">
-                <i data-lucide="globe" class="h-4.5 w-4.5"></i>
-              </div>
-              <div class="leading-tight">
-                <div class="text-[10.5px] font-semibold uppercase tracking-[0.14em] text-slate-500">Website</div>
-                <div class="mt-0.5 text-[13.5px] font-semibold text-slate-200 transition-colors group-hover:text-white">www.judison.my.id</div>
-              </div>
-            </a>
-
-          </div>
-        </div>
-
-        <!-- Jam operasional -->
-        <div class="reveal rounded-3xl border border-white/[0.08] bg-navy-900/60 p-6 shadow-card sm:p-7" style="transition-delay:.24s">
-          <div class="flex items-center gap-3">
-            <div class="grid h-10 w-10 place-items-center rounded-xl bg-white/5 text-slate-300">
-              <i data-lucide="clock" class="h-5 w-5"></i>
-            </div>
-            <h3 class="text-[14.5px] font-extrabold tracking-tight text-white">Jam Operasional</h3>
+    <div class="reveal mx-auto mt-16 max-w-4xl">
+      <!-- Level 1: Dewan Komisaris -->
+      <div class="flex justify-center">
+        <div class="w-full max-w-md rounded-2xl border-2 border-brand-red/25 bg-gradient-to-b from-brand-redSoft to-white p-6 text-center shadow-redglow">
+          <div class="inline-flex items-center gap-2 rounded-full bg-brand-red/10 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-brand-red">
+            <i data-lucide="crown" class="h-3 w-3"></i> Dewan Komisaris
           </div>
           <div class="mt-5 space-y-3">
-            <div class="flex items-center justify-between text-[12.5px]">
-              <span class="text-slate-500">Senin – Jumat</span>
-              <span class="font-semibold text-slate-200">08.00 – 17.00 WIB</span>
+            <div>
+              <div class="text-[14.5px] font-bold text-slate-900">Andre Milko Pelawi</div>
+              <div class="mt-0.5 text-[11px] font-medium text-slate-500">Komisaris Utama</div>
             </div>
-            <div class="h-px hairline"></div>
-            <div class="flex items-center justify-between text-[12.5px]">
-              <span class="text-slate-500">Sabtu</span>
-              <span class="font-semibold text-slate-200">08.00 – 13.00 WIB</span>
-            </div>
-            <div class="h-px hairline"></div>
-            <div class="flex items-center justify-between text-[12.5px]">
-              <span class="text-slate-500">Minggu &amp; Hari Libur</span>
-              <span class="font-semibold text-slate-500">Tutup</span>
+            <div class="mx-auto h-px w-14 bg-slate-200"></div>
+            <div>
+              <div class="text-[14.5px] font-bold text-slate-900">Ulii Risvano</div>
+              <div class="mt-0.5 text-[11px] font-medium text-slate-500">Komisaris</div>
             </div>
           </div>
         </div>
-
       </div>
 
-      <!-- Form -->
-      <div class="reveal lg:col-span-7" style="transition-delay:.1s">
-        <div class="relative h-full overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-b from-navy-800/80 to-navy-900/80 p-7 shadow-card sm:p-9">
-          <div class="absolute -right-24 -top-24 h-64 w-64 rounded-full bg-gold-500/10 blur-3xl"></div>
+      <!-- Connector -->
+      <div class="flex justify-center"><div class="h-10 w-px bg-slate-300"></div></div>
 
-          <div class="relative">
-            <h3 class="text-xl font-extrabold tracking-tight text-white sm:text-2xl">Kirim Pesan</h3>
-            <p class="mt-2.5 text-[13.5px] leading-relaxed text-slate-400">
-              Lengkapi formulir di bawah ini. Tim kami akan merespons dalam 1×24 jam kerja.
-            </p>
-
-            <form id="contactForm" class="mt-8 space-y-5" novalidate>
-
-              <div class="grid gap-5 sm:grid-cols-2">
-                <div>
-                  <label for="nama" class="mb-2 block text-[11.5px] font-bold uppercase tracking-[0.12em] text-slate-500">Nama Lengkap <span class="text-gold-500">*</span></label>
-                  <input id="nama" name="nama" type="text" required placeholder="Nama Anda"
-                         class="w-full rounded-xl border border-white/10 bg-navy-950/60 px-4 py-3 text-[13.5px] text-slate-200 placeholder-slate-600 outline-none transition-all duration-300 focus:border-gold-500/50 focus:bg-navy-950 focus:ring-2 focus:ring-gold-500/15">
-                </div>
-                <div>
-                  <label for="perusahaan" class="mb-2 block text-[11.5px] font-bold uppercase tracking-[0.12em] text-slate-500">Perusahaan / Instansi</label>
-                  <input id="perusahaan" name="perusahaan" type="text" placeholder="Opsional"
-                         class="w-full rounded-xl border border-white/10 bg-navy-950/60 px-4 py-3 text-[13.5px] text-slate-200 placeholder-slate-600 outline-none transition-all duration-300 focus:border-gold-500/50 focus:bg-navy-950 focus:ring-2 focus:ring-gold-500/15">
-                </div>
-              </div>
-
-              <div class="grid gap-5 sm:grid-cols-2">
-                <div>
-                  <label for="email" class="mb-2 block text-[11.5px] font-bold uppercase tracking-[0.12em] text-slate-500">Email <span class="text-gold-500">*</span></label>
-                  <input id="email" name="email" type="email" required placeholder="nama@perusahaan.com"
-                         class="w-full rounded-xl border border-white/10 bg-navy-950/60 px-4 py-3 text-[13.5px] text-slate-200 placeholder-slate-600 outline-none transition-all duration-300 focus:border-gold-500/50 focus:bg-navy-950 focus:ring-2 focus:ring-gold-500/15">
-                </div>
-                <div>
-                  <label for="telepon" class="mb-2 block text-[11.5px] font-bold uppercase tracking-[0.12em] text-slate-500">Telepon / WhatsApp</label>
-                  <input id="telepon" name="telepon" type="tel" placeholder="+62 ..."
-                         class="w-full rounded-xl border border-white/10 bg-navy-950/60 px-4 py-3 text-[13.5px] text-slate-200 placeholder-slate-600 outline-none transition-all duration-300 focus:border-gold-500/50 focus:bg-navy-950 focus:ring-2 focus:ring-gold-500/15">
-                </div>
-              </div>
-
-              <div>
-                <label for="topik" class="mb-2 block text-[11.5px] font-bold uppercase tracking-[0.12em] text-slate-500">Kebutuhan <span class="text-gold-500">*</span></label>
-                <select id="topik" name="topik" required
-                        class="w-full appearance-none rounded-xl border border-white/10 bg-navy-950/60 px-4 py-3 text-[13.5px] text-slate-200 outline-none transition-all duration-300 focus:border-gold-500/50 focus:bg-navy-950 focus:ring-2 focus:ring-gold-500/15">
-                  <option value="" class="bg-navy-900">Pilih kategori kebutuhan…</option>
-                  <option class="bg-navy-900">Konstruksi &amp; Infrastruktur</option>
-                  <option class="bg-navy-900">Agrikultur &amp; Kemitraan Lahan</option>
-                  <option class="bg-navy-900">Distribusi Pangan</option>
-                  <option class="bg-navy-900">Perdagangan Besar / Pengadaan Komoditas</option>
-                  <option class="bg-navy-900">Kemitraan Strategis / Lainnya</option>
-                </select>
-              </div>
-
-              <div>
-                <label for="pesan" class="mb-2 block text-[11.5px] font-bold uppercase tracking-[0.12em] text-slate-500">Pesan <span class="text-gold-500">*</span></label>
-                <textarea id="pesan" name="pesan" rows="5" required placeholder="Jelaskan kebutuhan atau proyek Anda secara singkat…"
-                          class="w-full resize-none rounded-xl border border-white/10 bg-navy-950/60 px-4 py-3 text-[13.5px] leading-relaxed text-slate-200 placeholder-slate-600 outline-none transition-all duration-300 focus:border-gold-500/50 focus:bg-navy-950 focus:ring-2 focus:ring-gold-500/15"></textarea>
-              </div>
-
-              <div class="flex flex-col gap-4 pt-1 sm:flex-row sm:items-center sm:justify-between">
-                <p class="flex items-start gap-2 text-[11.5px] leading-relaxed text-slate-500 sm:max-w-xs">
-                  <i data-lucide="lock" class="mt-0.5 h-3.5 w-3.5 shrink-0 text-slate-600"></i>
-                  Informasi Anda kami jaga kerahasiaannya dan hanya digunakan untuk keperluan komunikasi bisnis.
-                </p>
-                <button type="submit"
-                        class="btn-primary inline-flex shrink-0 items-center justify-center gap-2 rounded-xl px-7 py-3.5 text-[13.5px] font-bold text-navy-950">
-                  Kirim Pesan
-                  <i data-lucide="send" class="h-4 w-4"></i>
-                </button>
-              </div>
-
-              <!-- Feedback -->
-              <div id="formFeedback" class="hidden items-start gap-3 rounded-2xl border border-emerald-500/25 bg-emerald-500/[0.07] px-4 py-3.5">
-                <i data-lucide="check-circle-2" class="mt-0.5 h-4.5 w-4.5 shrink-0 text-emerald-400"></i>
-                <div>
-                  <div class="text-[13px] font-bold text-emerald-300">Pesan berhasil terkirim!</div>
-                  <div class="mt-0.5 text-[12px] leading-relaxed text-emerald-200/70">Terima kasih telah menghubungi PT Medwa Judison Perkasa. Tim kami akan segera menghubungi Anda.</div>
-                </div>
-              </div>
-
-            </form>
+      <!-- Level 2: Direktur Utama + Legal Counsel -->
+      <div class="flex flex-col items-center gap-4 md:flex-row md:justify-center md:gap-6">
+        <div class="w-full max-w-sm rounded-2xl border-2 border-brand-blue/30 bg-gradient-to-b from-brand-blueSoft to-white p-6 text-center shadow-glow">
+          <div class="inline-flex items-center gap-2 rounded-full bg-brand-blue/10 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-brand-blue">
+            <i data-lucide="briefcase" class="h-3 w-3"></i> Direktur Utama
           </div>
+          <div class="mt-5 text-[15px] font-extrabold text-slate-900">M. Azka Medira Joesoef</div>
+        </div>
+
+        <div class="hidden h-px w-10 bg-slate-300 md:block"></div>
+
+        <div class="w-full max-w-[220px] rounded-2xl border border-slate-200 bg-white p-5 text-center shadow-card">
+          <div class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Legal Counsel</div>
+          <div class="mt-2 text-[13.5px] font-bold text-slate-900">Efrem Ndruru</div>
         </div>
       </div>
 
-    </div>
-  </div>
-</section>
-
-
-<!-- ============================================================
-     CTA STRIP
-============================================================ -->
-<section class="relative overflow-hidden py-16 sm:py-20">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div class="reveal relative overflow-hidden rounded-3xl border border-gold-500/20 bg-gradient-to-br from-navy-800 via-navy-850 to-navy-900 px-7 py-12 text-center shadow-glow sm:px-12 sm:py-14">
-      <div class="absolute inset-0 bg-grid-sm opacity-25"></div>
-      <div class="absolute -left-24 -top-24 h-56 w-56 rounded-full bg-brand-blue/15 blur-3xl"></div>
-      <div class="absolute -bottom-24 -right-24 h-56 w-56 rounded-full bg-gold-500/15 blur-3xl"></div>
-
-      <div class="relative">
-        <h2 class="mx-auto max-w-2xl text-2xl font-extrabold leading-tight tracking-tight text-white sm:text-3xl lg:text-[2.15rem]">
-          Siap menjadi mitra pembangunan nasional bersama kami?
-        </h2>
-        <p class="mx-auto mt-4 max-w-xl text-[14.5px] leading-relaxed text-slate-400">
-          Konsultasikan kebutuhan proyek, pengadaan, atau kemitraan Anda dengan tim PT Medwa Judison Perkasa.
-        </p>
-        <div class="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
-          <a href="https://wa.me/6287888855877" target="_blank" rel="noopener"
-             class="btn-primary inline-flex items-center justify-center gap-2 rounded-xl px-7 py-3.5 text-sm font-bold text-navy-950">
-            <i data-lucide="message-circle" class="h-4 w-4"></i>
-            Chat via WhatsApp
-          </a>
-          <a href="mailto:info@judison.my.id"
-             class="btn-ghost inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/[0.03] px-7 py-3.5 text-sm font-semibold text-white">
-            <i data-lucide="mail" class="h-4 w-4 text-gold-500"></i>
-            Kirim Email
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ============================================================
-     FOOTER
-============================================================ -->
-<footer class="relative border-t border-white/[0.07] bg-navy-950">
-  <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-
-    <div class="grid gap-12 lg:grid-cols-12">
-
-      <!-- Brand -->
-      <div class="lg:col-span-4">
-        <a href="#home" class="group flex items-center gap-3">
-          <div class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-gradient-to-br from-brand-bluelight via-brand-blue to-brand-red shadow-lg shadow-brand-blue/20 transition-transform duration-500 group-hover:scale-105">
-            <span class="text-[13px] font-extrabold tracking-tight text-white">MJP</span>
-          </div>
-          <div class="leading-tight">
-            <div class="text-[15px] font-extrabold tracking-tight text-white">Medwa Judison <span class="text-gold-500">Perkasa</span></div>
-            <div class="text-[10px] font-medium uppercase tracking-[0.18em] text-slate-500">PT Medwa Judison Perkasa</div>
-          </div>
-        </a>
-
-        <p class="mt-5 max-w-sm text-[13px] leading-relaxed text-slate-500">
-          Mitra nasional yang dapat diandalkan dalam pembangunan infrastruktur, ketahanan pangan,
-          dan rantai pasok nasional.
-        </p>
-
-        <div class="mt-6 flex items-center gap-2.5">
-          <a href="https://instagram.com/mjp1927" target="_blank" rel="noopener" aria-label="Instagram"
-             class="grid h-9 w-9 place-items-center rounded-xl border border-white/10 bg-white/[0.03] text-slate-400 transition-all duration-300 hover:border-gold-500/40 hover:bg-gold-500/10 hover:text-gold-400">
-            <i data-lucide="instagram" class="h-4 w-4"></i>
-          </a>
-          <a href="https://wa.me/6287888855877" target="_blank" rel="noopener" aria-label="WhatsApp"
-             class="grid h-9 w-9 place-items-center rounded-xl border border-white/10 bg-white/[0.03] text-slate-400 transition-all duration-300 hover:border-emerald-500/40 hover:bg-emerald-500/10 hover:text-emerald-400">
-            <i data-lucide="message-circle" class="h-4 w-4"></i>
-          </a>
-          <a href="mailto:info@judison.my.id" aria-label="Email"
-             class="grid h-9 w-9 place-items-center rounded-xl border border-white/10 bg-white/[0.03] text-slate-400 transition-all duration-300 hover:border-gold-500/40 hover:bg-gold-500/10 hover:text-gold-400">
-            <i data-lucide="mail" class="h-4 w-4"></i>
-          </a>
-          <a href="https://www.judison.my.id" target="_blank" rel="noopener" aria-label="Website"
-             class="grid h-9 w-9 place-items-center rounded-xl border border-white/10 bg-white/[0.03] text-slate-400 transition-all duration-300 hover:border-brand-blue/40 hover:bg-brand-blue/10 hover:text-brand-bluelight">
-            <i data-lucide="globe" class="h-4 w-4"></i>
-          </a>
-        </div>
-      </div>
-
-      <!-- Nav -->
-      <div class="lg:col-span-2">
-        <h4 class="text-[11.5px] font-bold uppercase tracking-[0.16em] text-white">Perusahaan</h4>
-        <ul class="mt-5 space-y-3">
-          <li><a href="#tentang" class="text-[13px] text-slate-500 transition-colors hover:text-gold-400">Tentang Kami</a></li>
-          <li><a href="#layanan" class="text-[13px] text-slate-500 transition-colors hover:text-gold-400">Layanan</a></li>
-          <li><a href="#proyek" class="text-[13px] text-slate-500 transition-colors hover:text-gold-400">Proyek</a></li>
-          <li><a href="#tim" class="text-[13px] text-slate-500 transition-colors hover:text-gold-400">Manajemen</a></li>
-        </ul>
-      </div>
-
-      <!-- Layanan -->
-      <div class="lg:col-span-3">
-        <h4 class="text-[11.5px] font-bold uppercase tracking-[0.16em] text-white">Bidang Usaha</h4>
-        <ul class="mt-5 space-y-3">
-          <li><a href="#layanan" class="text-[13px] text-slate-500 transition-colors hover:text-gold-400">Konstruksi &amp; Infrastruktur</a></li>
-          <li><a href="#layanan" class="text-[13px] text-slate-500 transition-colors hover:text-gold-400">Agrikultur</a></li>
-          <li><a href="#layanan" class="text-[13px] text-slate-500 transition-colors hover:text-gold-400">Distribusi Pangan</a></li>
-          <li><a href="#layanan" class="text-[13px] text-slate-500 transition-colors hover:text-gold-400">Perdagangan Besar</a></li>
-        </ul>
-      </div>
-
-      <!-- Kontak -->
-      <div class="lg:col-span-3">
-        <h4 class="text-[11.5px] font-bold uppercase tracking-[0.16em] text-white">Kontak</h4>
-        <ul class="mt-5 space-y-4">
-          <li class="flex items-start gap-2.5">
-            <i data-lucide="map-pin" class="mt-0.5 h-4 w-4 shrink-0 text-gold-500"></i>
-            <span class="text-[12.5px] leading-relaxed text-slate-500">Jl. Jend. Sudirman No. 5206, Ario Kemuning, Ilir Timur 1, Palembang, 30128</span>
-          </li>
-          <li class="flex items-start gap-2.5">
-            <i data-lucide="phone" class="mt-0.5 h-4 w-4 shrink-0 text-gold-500"></i>
-            <a href="https://wa.me/6287888855877" target="_blank" rel="noopener" class="text-[12.5px] text-slate-500 transition-colors hover:text-gold-400">+62 878 888 55877</a>
-          </li>
-          <li class="flex items-start gap-2.5">
-            <i data-lucide="mail" class="mt-0.5 h-4 w-4 shrink-0 text-gold-500"></i>
-            <a href="mailto:info@judison.my.id" class="text-[12.5px] text-slate-500 transition-colors hover:text-gold-400">info@judison.my.id</a>
-          </li>
-        </ul>
-      </div>
-
-    </div>
-
-    <div class="mt-14 h-px hairline"></div>
-
-    <div class="mt-7 flex flex-col items-center justify-between gap-4 sm:flex-row">
-      <p class="text-center text-[12px] text-slate-600 sm:text-left">
-        © <span id="year">2026</span> PT Medwa Judison Perkasa. Seluruh hak cipta dilindungi.
-      </p>
-      <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
-        <a href="#legalitas" class="text-[12px] text-slate-600 transition-colors hover:text-gold-400">Legalitas &amp; Sertifikasi</a>
-        <a href="#kontak" class="text-[12px] text-slate-600 transition-colors hover:text-gold-400">Kebijakan Privasi</a>
-        <a href="#kontak" class="text-[12px] text-slate-600 transition-colors hover:text-gold-400">Syarat &amp; Ketentuan</a>
-      </div>
-    </div>
-
-  </div>
-</footer>
-
-
-<!-- ============================================================
-     FLOATING WHATSAPP
-============================================================ -->
-<a href="https://wa.me/6287888855877" target="_blank" rel="noopener" aria-label="Hubungi via WhatsApp"
-   class="group fixed bottom-5 right-5 z-40 inline-flex items-center gap-2.5 rounded-2xl border border-emerald-500/30 bg-emerald-500/95 px-4 py-3 text-[13px] font-bold text-white shadow-2xl shadow-emerald-900/50 backdrop-blur transition-all duration-500 hover:scale-[1.04] hover:bg-emerald-500 sm:bottom-7 sm:right-7">
-  <i data-lucide="message-circle" class="h-5 w-5"></i>
-  <span class="hidden sm:inline">WhatsApp</span>
-</a>
-
-
-<!-- ============================================================
-     SCRIPTS
-============================================================ -->
-<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
-<script>
-(function () {
-  'use strict';
-
-  /* ---------- 1. Icons ---------- */
-  if (window.lucide && typeof window.lucide.createIcons === 'function') {
-    window.lucide.createIcons();
-  }
-
-  /* ---------- 2. Sticky navbar state ---------- */
-  var navInner = document.getElementById('navInner');
-  function handleScroll() {
-    if (!navInner) return;
-    if (window.scrollY > 20) {
-      navInner.classList.add('nav-scrolled');
-    } else {
-      navInner.classList.remove('nav-scrolled');
-    }
-  }
-  handleScroll();
-  window.addEventListener('scroll', handleScroll, { passive: true });
-
-  /* ---------- 3. Mobile menu ---------- */
-  var menuBtn = document.getElementById('menuBtn');
-  var mobileMenu = document.getElementById('mobileMenu');
-
-  function setMenuIcon(isOpen) {
-    if (!menuBtn) return;
-    menuBtn.innerHTML = isOpen
-      ? '<i data-lucide="x" class="h-5 w-5"></i>'
-      : '<i data-lucide="menu" class="h-5 w-5"></i>';
-    menuBtn.setAttribute('aria-label', isOpen ? 'Tutup menu' : 'Buka menu');
-    if (window.lucide && typeof window.lucide.createIcons === 'function') {
-      window.lucide.createIcons();
-    }
-  }
-
-  if (menuBtn && mobileMenu) {
-    menuBtn.addEventListener('click', function () {
-      var isOpen = mobileMenu.classList.toggle('hidden') === false;
-      setMenuIcon(isOpen);
-    });
-
-    mobileMenu.querySelectorAll('.mobile-link, a').forEach(function (link) {
-      link.addEventListener('click', function () {
-        mobileMenu.classList.add('hidden');
-        setMenuIcon(false);
-      });
-    });
-
-    window.addEventListener('resize', function () {
-      if (window.innerWidth >= 1024 && !mobileMenu.classList.contains('hidden')) {
-        mobileMenu.classList.add('hidden');
-        setMenuIcon(false);
-      }
-    });
-  }
-
-  /* ---------- 4. Reveal on scroll ---------- */
-  var revealEls = document.querySelectorAll('.reveal');
-  if ('IntersectionObserver' in window) {
-    var revealObserver = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in');
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
-
-    revealEls.forEach(function (el) { revealObserver.observe(el); });
-  } else {
-    revealEls.forEach(function (el) { el.classList.add('in'); });
-  }
-
-  /* ---------- 5. Animated counters ---------- */
-  var counters = document.querySelectorAll('[data-counter]');
-
-  function animateCounter(el) {
-    var target = parseFloat(el.getAttribute('data-counter')) || 0;
-    var suffix = el.getAttribute('data-suffix') || '';
-    var duration = 1700;
-    var startTime = null;
-
-    function step(timestamp) {
-      if (startTime === null) startTime = timestamp;
-      var progress = Math.min((timestamp - startTime) / duration, 1);
-      var eased = 1 - Math.pow(1 - progress, 3);
-      var value = Math.floor(eased * target);
-      el.textContent = value.toLocaleString('id-ID') + suffix;
-      if (progress < 1) {
-        requestAnimationFrame(step);
-      } else {
-        el.textContent = target.toLocaleString('id-ID') + suffix;
-      }
-    }
-    requestAnimationFrame(step);
-  }
-
-  if ('IntersectionObserver' in window) {
-    var counterObserver = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          animateCounter(entry.target);
-          counterObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.5 });
-    counters.forEach(function (el) { counterObserver.observe(el); });
-  } else {
-    counters.forEach(function (el) {
-      el.textContent = (parseFloat(el.getAttribute('data-counter')) || 0).toLocaleString('id-ID') + (el.getAttribute('data-suffix') || '');
-    });
-  }
-
-  /* ---------- 6. Scrollspy for nav links ---------- */
-  var sections = document.querySelectorAll('section[id]');
-  var navLinks = document.querySelectorAll('.nav-link');
-
-  function setActiveLink(id) {
-    navLinks.forEach(function (link) {
-      var href = link.getAttribute('href');
-      if (href === '#' + id) {
-        link.classList.add('text-white', 'bg-white/[0.06]');
-        link.classList.remove('text-slate-400');
-      } else {
-        link.classList.remove('text-white', 'bg-white/[0.06]');
-        link.classList.add('text-slate-400');
-      }
-    });
-  }
-
-  if ('IntersectionObserver' in window && sections.length) {
-    var spyObserver = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) setActiveLink(entry.target.id);
-      });
-    }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
-    sections.forEach(function (section) { spyObserver.observe(section); });
-  }
-
-  /* ---------- 7. Contact form ---------- */
-  var form = document.getElementById('contactForm');
-  var feedback = document.getElementById('formFeedback');
-
-  if (form) {
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-
-      var required = form.querySelectorAll('[required]');
-      var valid = true;
-
-      required.forEach(function (field) {
-        if (!field.value.trim()) {
-          valid = false;
-          field.classList.add('border-red-500/60', 'ring-2', 'ring-red-500/15');
-        } else {
-          field.classList.remove('border-red-500/60', 'ring-2', 'ring-red-500/15');
-        }
-      });
-
-      var email = document.getElementById('email');
-      if (email && email.value.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) {
-        valid = false;
-        email.classList.add('border-red-500/60', 'ring-2', 'ring-red-500/15');
-      }
-
-      if (!valid) return;
-
-      var submitBtn = form.querySelector('button[type="submit"]');
-      var originalHTML = submitBtn.innerHTML;
-      submitBtn.disabled = true;
-      submitBtn.innerHTML = '<span class="inline-block h-4 w-4 animate-spin rounded-full border-2 border-navy-950/30 border-t-navy-950"></span> Mengirim…';
-
-      setTimeout(function () {
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = originalHTML;
-        if (window.lucide && typeof window.lucide.createIcons === 'function') {
-          window.lucide.createIcons();
-        }
-
-        if (feedback) {
-          feedback.classList.remove('hidden');
-          feedback.classList.add('flex');
-        }
-        form.reset();
-
-        setTimeout(function () {
-          if (feedback) {
-            feedback.classList.add('hidden');
-            feedback.classList.remove('flex');
-          }
-        }, 7000);
-      }, 1100);
-    });
-
-    form.querySelectorAll('input, select, textarea').forEach(function (field) {
-      field.addEventListener('input', function () {
-        field.classList.remove('border-red-500/60', 'ring-2', 'ring-red-500/15');
-      });
-      field.addEventListener('change', function () {
-        field.classList.remove('border-red-500/60', 'ring-2', 'ring-red-500/15');
-      });
-    });
-  }
-
-  /* ---------- 8. Dynamic year ---------- */
-  var yearEl = document.getElementById('year');
-  if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-})();
-</script>
-
-</body>
-</html>
+      <!-- Split connector to 3 branches -->
+      <div class="relative mx-auto mt-0 h-12 max-w-3xl">
+        <div class="absolute left-
