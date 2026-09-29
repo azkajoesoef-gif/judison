@@ -29,11 +29,10 @@ tailwind.config = {
       'glow':'0 0 0 1px rgba(37,99,235,.14), 0 30px 65px -30px rgba(37,99,235,.5)',
       'redglow':'0 0 0 1px rgba(220,38,38,.12), 0 30px 65px -30px rgba(220,38,38,.4)'
     },
-    animation: { 'float':'float 6s ease-in-out infinite', 'shine':'shine 6s linear infinite', 'fade-in':'fadeIn .4s ease forwards' },
+    animation: { 'float':'float 6s ease-in-out infinite', 'shine':'shine 6s linear infinite' },
     keyframes: {
       float: { '0%,100%':{transform:'translateY(0)'}, '50%':{transform:'translateY(-12px)'} },
-      shine: { '0%':{backgroundPosition:'-200% 0'}, '100%':{backgroundPosition:'200% 0'} },
-      fadeIn: { from:{opacity:0, transform:'translateY(8px)'}, to:{opacity:1, transform:'none'} }
+      shine: { '0%':{backgroundPosition:'-200% 0'}, '100%':{backgroundPosition:'200% 0'} }
     }
   } }
 }
@@ -49,7 +48,6 @@ tailwind.config = {
   .radial-red-dark{background:radial-gradient(55% 55% at 85% 80%,rgba(220,38,38,.24) 0%,rgba(220,38,38,0) 72%)}
   .text-gradient-blue{background:linear-gradient(100deg,#60A5FA 0%,#2563EB 55%,#1D4ED8 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
   .text-gradient-hero{background:linear-gradient(110deg,#2563EB 0%,#60A5FA 25%,#DC2626 60%,#2563EB 100%);background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 6s linear infinite}
-  .text-gradient-white{background:linear-gradient(100deg,#FFFFFF 0%,#BFDBFE 50%,#FFFFFF 100%);background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 5s linear infinite}
   .hairline{background:linear-gradient(90deg,transparent,rgba(10,31,68,.12),transparent)}
   .dark .hairline{background:linear-gradient(90deg,transparent,rgba(255,255,255,.14),transparent)}
 
@@ -101,6 +99,23 @@ tailwind.config = {
 
   .ring-bg{stroke-dasharray:126;stroke-dashoffset:126;transition:stroke-dashoffset .2s linear}
 
+  /* Section Navigator */
+  #sectionNav{transition:opacity .4s ease,transform .4s ease}
+  #sectionNav.nav-hidden{opacity:0;pointer-events:none;transform:translateY(-50%) translateX(-12px)}
+  .section-nav-item{display:flex;align-items:center;gap:10px;padding:5px 0;cursor:pointer;text-decoration:none}
+  .section-dot{display:block;width:8px;height:8px;border-radius:9999px;background:#CBD5E1;transition:all .35s cubic-bezier(.16,1,.3,1);flex-shrink:0}
+  .section-nav-label{font-size:11px;font-weight:700;letter-spacing:.02em;color:#64748B;white-space:nowrap;opacity:0;transform:translateX(-6px);transition:all .35s cubic-bezier(.16,1,.3,1)}
+  .section-nav-item:hover .section-nav-label{opacity:1;transform:translateX(0)}
+  .section-nav-item:hover .section-dot{background:#94A3B8;transform:scale(1.15)}
+  .section-nav-item.active .section-dot{width:12px;height:12px;background:#2563EB;box-shadow:0 0 0 4px rgba(37,99,235,.18)}
+  .section-nav-item.active .section-nav-label{opacity:1;transform:translateX(0);color:#1D4ED8}
+  .dark .section-dot{background:#475569}
+  .dark .section-nav-item:hover .section-dot{background:#94A3B8}
+  .dark .section-nav-item.active .section-dot{background:#60A5FA;box-shadow:0 0 0 4px rgba(96,165,250,.22)}
+  .dark .section-nav-label{color:#94A3B8}
+  .dark .section-nav-item.active .section-nav-label{color:#60A5FA}
+  @media (max-width:1023px){#sectionNav{display:none!important}}
+
   .partner-logo{filter:grayscale(100%);opacity:.65;transition:filter .4s ease,opacity .4s ease,transform .4s ease}
   .partner-card:hover .partner-logo{filter:grayscale(0%);opacity:1;transform:scale(1.04)}
   .dark .partner-logo{filter:grayscale(100%) brightness(1.2);opacity:.7}
@@ -135,9 +150,8 @@ tailwind.config = {
   #chatPanel{transition:opacity .3s ease,transform .3s ease,visibility .3s ease;transform-origin:bottom right}
   #chatPanel.hidden-chat{opacity:0;visibility:hidden;transform:translateY(12px) scale(.96)}
 
-  /* Print styles */
   @media print {
-    header, footer, .no-print, #backToTop, #chatWidget, #floatingActions {display:none !important}
+    header, footer, .no-print, #backToTop, #chatWidget, #floatingActions, #sectionNav, #readingBadge {display:none !important}
     body {background:white !important; color:black !important}
   }
 
@@ -172,6 +186,28 @@ tailwind.config = {
 </style>
 </head>
 <body class="bg-white font-sans text-slate-700 antialiased selection:bg-brand-blue/15 selection:text-brand-blueDark dark:bg-slate-950 dark:text-slate-300">
+
+<!-- SECTION NAVIGATOR (TOC Floating) -->
+<nav id="sectionNav" class="fixed left-4 top-1/2 z-40 -translate-y-1/2 no-print sm:left-6" aria-label="Navigasi halaman">
+  <div class="rounded-2xl border border-slate-200/70 bg-white/80 p-3 shadow-lg backdrop-blur-xl dark:border-white/10 dark:bg-slate-900/70">
+    <div class="mb-2 text-center text-[9px] font-bold uppercase tracking-[0.2em] text-slate-400">Section</div>
+    <ul class="space-y-0.5">
+      <li><a href="#home" class="section-nav-item active" data-section="home"><span class="section-dot"></span><span class="section-nav-label">Beranda</span></a></li>
+      <li><a href="#mitra" class="section-nav-item" data-section="mitra"><span class="section-dot"></span><span class="section-nav-label">Mitra</span></a></li>
+      <li><a href="#tentang" class="section-nav-item" data-section="tentang"><span class="section-dot"></span><span class="section-nav-label">Tentang</span></a></li>
+      <li><a href="#layanan" class="section-nav-item" data-section="layanan"><span class="section-dot"></span><span class="section-nav-label">Layanan</span></a></li>
+      <li><a href="#proyek" class="section-nav-item" data-section="proyek"><span class="section-dot"></span><span class="section-nav-label">Proyek</span></a></li>
+      <li><a href="#testimoni" class="section-nav-item" data-section="testimoni"><span class="section-dot"></span><span class="section-nav-label">Testimoni</span></a></li>
+      <li><a href="#timeline" class="section-nav-item" data-section="timeline"><span class="section-dot"></span><span class="section-nav-label">Perjalanan</span></a></li>
+      <li><a href="#legalitas" class="section-nav-item" data-section="legalitas"><span class="section-dot"></span><span class="section-nav-label">Legalitas</span></a></li>
+      <li><a href="#struktur" class="section-nav-item" data-section="struktur"><span class="section-dot"></span><span class="section-nav-label">Struktur</span></a></li>
+      <li><a href="#direktur" class="section-nav-item" data-section="direktur"><span class="section-dot"></span><span class="section-nav-label">Pimpinan</span></a></li>
+      <li><a href="#form-hub" class="section-nav-item" data-section="form-hub"><span class="section-dot"></span><span class="section-nav-label">Layanan Digital</span></a></li>
+      <li><a href="#faq" class="section-nav-item" data-section="faq"><span class="section-dot"></span><span class="section-nav-label">FAQ</span></a></li>
+      <li><a href="#kontak" class="section-nav-item" data-section="kontak"><span class="section-dot"></span><span class="section-nav-label">Kontak</span></a></li>
+    </ul>
+  </div>
+</nav>
 
 <!-- LOADER -->
 <div id="loader" class="fixed inset-0 z-[9999] flex items-center justify-center bg-white dark:bg-slate-950">
@@ -208,10 +244,10 @@ tailwind.config = {
         <li><a href="#faq" class="nav-link rounded-lg px-3 py-2 text-[13px] font-medium text-slate-500 transition-colors hover:text-brand-blueDark dark:text-slate-400 dark:hover:text-white">FAQ</a></li>
       </ul>
       <div class="flex items-center gap-2">
-        <a href="#" id="shareBtnNav" aria-label="Bagikan" class="hidden h-10 w-10 place-items-center rounded-xl border border-slate-200 bg-white text-slate-600 transition-all hover:border-brand-blue/40 hover:bg-brand-blueSoft hover:text-brand-blue dark:border-white/10 dark:bg-slate-800 dark:text-slate-300 sm:grid">
+        <button id="shareBtnNav" aria-label="Bagikan" class="hidden h-10 w-10 place-items-center rounded-xl border border-slate-200 bg-white text-slate-600 transition-all hover:border-brand-blue/40 hover:bg-brand-blueSoft hover:text-brand-blue dark:border-white/10 dark:bg-slate-800 dark:text-slate-300 sm:grid">
           <i data-lucide="share-2" class="h-[18px] w-[18px]"></i>
-        </a>
-        <button id="themeToggle" type="button" aria-label="Ganti tema" class="grid h-10 w-10 place-items-center rounded-xl border border-slate-200 bg-white text-slate-600 transition-all hover:border-brand-blue/40 hover:bg-brand-blueSoft hover:text-brand-blue dark:border-white/10 dark:bg-slate-800 dark:text-slate-300 dark:hover:border-brand-blue/40 dark:hover:bg-brand-blue/20">
+        </button>
+        <button id="themeToggle" type="button" aria-label="Ganti tema" class="grid h-10 w-10 place-items-center rounded-xl border border-slate-200 bg-white text-slate-600 transition-all hover:border-brand-blue/40 hover:bg-brand-blueSoft hover:text-brand-blue dark:border-white/10 dark:bg-slate-800 dark:text-slate-300">
           <i data-lucide="sun" class="theme-icon-sun h-[18px] w-[18px]"></i>
           <i data-lucide="moon" class="theme-icon-moon hidden h-[18px] w-[18px]"></i>
         </button>
@@ -244,9 +280,8 @@ tailwind.config = {
   </div>
 </header>
 
-<!-- HERO with video background -->
+<!-- HERO -->
 <section id="home" class="relative overflow-hidden pt-32 pb-20 sm:pt-40 lg:pt-44 lg:pb-28">
-  <!-- Video bg -->
   <div class="pointer-events-none absolute inset-0 -z-10">
     <video class="absolute inset-0 h-full w-full object-cover opacity-25 dark:opacity-40" autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1920&q=80">
       <source src="https://assets.mixkit.co/videos/preview/mixkit-going-down-a-curved-highway-through-a-mountain-range-41576-large.mp4" type="video/mp4">
@@ -277,15 +312,9 @@ tailwind.config = {
           <strong class="font-semibold text-slate-900 dark:text-white">Judison</strong> — nama pendek dari <strong class="font-semibold text-slate-900 dark:text-white">PT Medwa Judison Perkasa</strong> — bergerak di bidang konstruksi &amp; infrastruktur, agrikultur, distribusi pangan, dan perdagangan besar. Mitra andal dalam pembangunan infrastruktur, ketahanan pangan, dan rantai pasok nasional.
         </p>
         <div class="reveal mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center" style="transition-delay:.24s">
-          <a href="#layanan" class="btn-primary inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3.5 text-sm font-bold text-white">
-            Jelajahi Layanan <i data-lucide="arrow-right" class="h-4 w-4"></i>
-          </a>
-          <a href="#form-hub" class="btn-ghost inline-flex items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white/80 px-6 py-3.5 text-sm font-semibold text-slate-800 backdrop-blur dark:border-white/15 dark:bg-white/5 dark:text-white">
-            <i data-lucide="file-text" class="h-4 w-4 text-brand-red"></i> Request Quote
-          </a>
-          <button id="downloadPdf" type="button" class="btn-ghost inline-flex items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white/80 px-6 py-3.5 text-sm font-semibold text-slate-800 backdrop-blur dark:border-white/15 dark:bg-white/5 dark:text-white">
-            <i data-lucide="download" class="h-4 w-4 text-brand-blue"></i> Unduh Compro
-          </button>
+          <a href="#layanan" class="btn-primary inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3.5 text-sm font-bold text-white">Jelajahi Layanan <i data-lucide="arrow-right" class="h-4 w-4"></i></a>
+          <a href="#form-hub" class="btn-ghost inline-flex items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white/80 px-6 py-3.5 text-sm font-semibold text-slate-800 backdrop-blur dark:border-white/15 dark:bg-white/5 dark:text-white"><i data-lucide="file-text" class="h-4 w-4 text-brand-red"></i> Request Quote</a>
+          <button id="downloadPdf" type="button" class="btn-ghost inline-flex items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white/80 px-6 py-3.5 text-sm font-semibold text-slate-800 backdrop-blur dark:border-white/15 dark:bg-white/5 dark:text-white"><i data-lucide="download" class="h-4 w-4 text-brand-blue"></i> Unduh Compro</button>
         </div>
         <div class="reveal mt-10 flex flex-wrap items-center gap-x-7 gap-y-4 border-t border-slate-200 pt-7 dark:border-white/10" style="transition-delay:.32s">
           <div class="flex items-center gap-2.5"><i data-lucide="shield-check" class="h-4 w-4 text-brand-blue"></i><span class="text-[12.5px] font-medium text-slate-600 dark:text-slate-400">Badan Hukum Resmi &amp; NIB OSS RBA</span></div>
@@ -313,7 +342,6 @@ tailwind.config = {
                   <div class="mt-1 text-[10.5px] font-bold uppercase tracking-[0.2em] text-slate-400">Hektar</div>
                 </div>
               </div>
-              <!-- Progress bar -->
               <div class="mt-6">
                 <div class="flex items-center justify-between text-[11px] font-semibold">
                   <span class="text-slate-500 dark:text-slate-400">Progress</span>
@@ -340,20 +368,20 @@ tailwind.config = {
     <div class="marquee-mask relative overflow-hidden">
       <div class="marquee-track flex w-max items-center gap-12 sm:gap-16">
         <div class="flex shrink-0 items-center gap-12 sm:gap-16">
-          <img src="https://www.kemhan.go.id/wp-content/themes/menhan/images/logo.png" alt="Kemhan RI" class="h-14 w-auto opacity-70" onerror="this.style.display='none'">
-          <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7b/Emblem_of_Indonesia_and_Logo_of_the_Ministry_of_Maritime_Affairs_and_Fisheries_of_the_Republic_of_Indonesia_%28Indonesian_version_2021%29.svg/1920px-Emblem_of_Indonesia_and_Logo_of_the_Ministry_of_Maritime_Affairs_and_Fisheries_of_the_Republic_of_Indonesia_%28Indonesian_version_2021%29.svg.png" alt="KKP" class="h-14 w-auto opacity-70" onerror="this.style.display='none'">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/4/43/Lambang_TNI_2013.png" alt="TNI" class="h-14 w-auto opacity-70" onerror="this.style.display='none'">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/d/dd/Insignia_of_the_Indonesian_National_Police.svg" alt="Polri" class="h-14 w-auto opacity-70" onerror="this.style.display='none'">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/LOGO_MARINIR.png" alt="Marinir" class="h-14 w-auto opacity-70" onerror="this.style.display='none'">
-          <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5b/Logo_Unhan.png/1280px-Logo_Unhan.png" alt="Unhan" class="h-14 w-auto opacity-70" onerror="this.style.display='none'">
-          <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f0/Bank_Negara_Indonesia_logo_%282004%29.svg/500px-Bank_Negara_Indonesia_logo_%282004%29.svg.png" alt="BNI" class="h-10 w-auto opacity-70" onerror="this.style.display='none'">
-          <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/2/27/Lambang_Bea_dan_Cukai.svg/1920px-Lambang_Bea_dan_Cukai.svg.png" alt="Bea Cukai" class="h-14 w-auto opacity-70" onerror="this.style.display='none'">
-          <img src="https://i.pinimg.com/736x/1c/c7/07/1cc70794090bfed9f902a0de548f5be7.jpg" alt="DPD RI" class="h-14 w-auto opacity-70" onerror="this.style.display='none'">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Logo_Badan_Gizi_Nasional_%282024%29.png" alt="BGN" class="h-14 w-auto opacity-70" onerror="this.style.display='none'">
-          <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ad/LOGO_YKEP.png/960px-LOGO_YKEP.png" alt="YKEP" class="h-14 w-auto opacity-70" onerror="this.style.display='none'">
-          <img src="https://csr.subang.go.id/assets/upload/company/TKG.png" alt="TKG" class="h-12 w-auto opacity-70" onerror="this.style.display='none'">
-          <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f9/Lambang_Kabupaten_Subang.jpeg/250px-Lambang_Kabupaten_Subang.jpeg" alt="Pemkab Subang" class="h-14 w-auto opacity-70" onerror="this.style.display='none'">
-          <img src="https://bnsp.go.id/assets/images/logo-bnsp.png" alt="BNSP" class="h-12 w-auto opacity-70" onerror="this.style.display='none'">
+          <img src="https://www.kemhan.go.id/wp-content/themes/menhan/images/logo.png" alt="Kemhan RI" class="h-14 w-auto opacity-70">
+          <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7b/Emblem_of_Indonesia_and_Logo_of_the_Ministry_of_Maritime_Affairs_and_Fisheries_of_the_Republic_of_Indonesia_%28Indonesian_version_2021%29.svg/1920px-Emblem_of_Indonesia_and_Logo_of_the_Ministry_of_Maritime_Affairs_and_Fisheries_of_the_Republic_of_Indonesia_%28Indonesian_version_2021%29.svg.png" alt="KKP" class="h-14 w-auto opacity-70">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/4/43/Lambang_TNI_2013.png" alt="TNI" class="h-14 w-auto opacity-70">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/d/dd/Insignia_of_the_Indonesian_National_Police.svg" alt="Polri" class="h-14 w-auto opacity-70">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/LOGO_MARINIR.png" alt="Marinir" class="h-14 w-auto opacity-70">
+          <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5b/Logo_Unhan.png/1280px-Logo_Unhan.png" alt="Unhan" class="h-14 w-auto opacity-70">
+          <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f0/Bank_Negara_Indonesia_logo_%282004%29.svg/500px-Bank_Negara_Indonesia_logo_%282004%29.svg.png" alt="BNI" class="h-10 w-auto opacity-70">
+          <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/2/27/Lambang_Bea_dan_Cukai.svg/1920px-Lambang_Bea_dan_Cukai.svg.png" alt="Bea Cukai" class="h-14 w-auto opacity-70">
+          <img src="https://i.pinimg.com/736x/1c/c7/07/1cc70794090bfed9f902a0de548f5be7.jpg" alt="DPD RI" class="h-14 w-auto opacity-70">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Logo_Badan_Gizi_Nasional_%282024%29.png" alt="BGN" class="h-14 w-auto opacity-70">
+          <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ad/LOGO_YKEP.png/960px-LOGO_YKEP.png" alt="YKEP" class="h-14 w-auto opacity-70">
+          <img src="https://csr.subang.go.id/assets/upload/company/TKG.png" alt="TKG" class="h-12 w-auto opacity-70">
+          <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f9/Lambang_Kabupaten_Subang.jpeg/250px-Lambang_Kabupaten_Subang.jpeg" alt="Pemkab Subang" class="h-14 w-auto opacity-70">
+          <img src="https://bnsp.go.id/assets/images/logo-bnsp.png" alt="BNSP" class="h-12 w-auto opacity-70">
         </div>
         <div class="flex shrink-0 items-center gap-12 sm:gap-16" aria-hidden="true">
           <img src="https://www.kemhan.go.id/wp-content/themes/menhan/images/logo.png" alt="" class="h-14 w-auto opacity-70">
@@ -417,13 +445,13 @@ tailwind.config = {
         <div class="icon-tile grid h-12 w-12 place-items-center rounded-2xl bg-brand-blueSoft text-brand-blue"><i data-lucide="users-round" class="h-6 w-6"></i></div>
         <div class="mt-5 text-[11px] font-bold uppercase tracking-[0.18em] text-brand-blue">Medwa</div>
         <h3 class="mt-2 text-[16px] font-extrabold tracking-tight text-slate-900 dark:text-white">Nama Generasi Baru</h3>
-        <p class="mt-3 text-[13.5px] leading-relaxed text-slate-600 dark:text-slate-400">Menggabungkan nama <strong class="font-semibold text-slate-800 dark:text-slate-200">Medira</strong> dan <strong class="font-semibold text-slate-800 dark:text-slate-200">Adhwa</strong> — sebagai simbol generasi baru yang diharapkan mewarisi semangat pendiri.</p>
+        <p class="mt-3 text-[13.5px] leading-relaxed text-slate-600 dark:text-slate-400">Menggabungkan nama <strong class="font-semibold text-slate-800 dark:text-slate-200">Medira</strong> dan <strong class="font-semibold text-slate-800 dark:text-slate-200">Adhwa</strong> — simbol generasi baru yang diharapkan mewarisi semangat pendiri.</p>
       </article>
       <article class="card-lift reveal group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-7 shadow-card dark:border-white/10 dark:bg-slate-900" style="transition-delay:.08s">
         <div class="icon-tile grid h-12 w-12 place-items-center rounded-2xl bg-brand-redSoft text-brand-red"><i data-lucide="heart-handshake" class="h-6 w-6"></i></div>
         <div class="mt-5 text-[11px] font-bold uppercase tracking-[0.18em] text-brand-red">Judison</div>
         <h3 class="mt-2 text-[16px] font-extrabold tracking-tight text-slate-900 dark:text-white">Joesoef Emdhy and Son</h3>
-        <p class="mt-3 text-[13.5px] leading-relaxed text-slate-600 dark:text-slate-400">Akronim dari <strong class="font-semibold text-slate-800 dark:text-slate-200">Joesoef Emdhy and Son</strong> — pengakuan bahwa perusahaan ini dibangun oleh anak-cucunya sebagai kelanjutan pengabdian keluarga.</p>
+        <p class="mt-3 text-[13.5px] leading-relaxed text-slate-600 dark:text-slate-400">Akronim dari <strong class="font-semibold text-slate-800 dark:text-slate-200">Joesoef Emdhy and Son</strong> — dibangun oleh anak-cucunya sebagai kelanjutan pengabdian keluarga.</p>
       </article>
       <article class="card-lift reveal group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-7 shadow-card dark:border-white/10 dark:bg-slate-900 sm:col-span-2 lg:col-span-1" style="transition-delay:.16s">
         <div class="icon-tile grid h-12 w-12 place-items-center rounded-2xl bg-slate-100 text-slate-800 dark:bg-slate-800 dark:text-slate-200"><i data-lucide="shield" class="h-6 w-6"></i></div>
@@ -437,7 +465,7 @@ tailwind.config = {
         <h3 class="text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-[1.75rem]"><span class="text-brand-red">Kembali ke Tanah,</span> Seperti Semangat Awal</h3>
         <div class="mt-5 space-y-4 text-[14.5px] leading-relaxed text-slate-600 dark:text-slate-400">
           <p>Judison bergerak di sektor agrikultur modern, dengan fokus pada tanaman pangan, perkebunan berkelanjutan, dan teknologi pertanian yang ramah lingkungan.</p>
-          <p>Kami percaya, tanah adalah sumber kehidupan, dan pembangunan yang sejati dimulai dari desa. Dengan membangun pertanian yang produktif dan adil, kami ingin membuktikan bahwa pengabdian itu masih hidup — dalam bentuk panen yang melimpah, petani yang sejahtera, dan tanah yang dihormati.</p>
+          <p>Kami percaya, tanah adalah sumber kehidupan, dan pembangunan yang sejati dimulai dari desa. Dengan membangun pertanian yang produktif dan adil, kami ingin membuktikan bahwa pengabdian itu masih hidup.</p>
         </div>
       </div>
       <div class="reveal lg:col-span-6" style="transition-delay:.1s">
@@ -476,7 +504,7 @@ tailwind.config = {
         </h2>
         <div class="reveal mt-8 space-y-5 text-[15px] leading-relaxed text-slate-300" style="transition-delay:.16s">
           <p class="text-[16px] leading-relaxed text-slate-200">Ada sesuatu yang tak terlihat, tapi selalu hadir dalam setiap langkah Judison.</p>
-          <p>Kami, keluarga yang mendirikan perusahaan ini, tumbuh dari sebuah nilai sederhana: bahwa pengabdian tidak berhenti pada satu generasi. Bahwa kekuatan bukan hanya diukur dari pencapaian, tapi dari keteguhan hati. Bahwa kemajuan tidak datang dari sorotan, tapi dari kerja yang konsisten — di balik layar.</p>
+          <p>Kami, keluarga yang mendirikan perusahaan ini, tumbuh dari sebuah nilai sederhana: bahwa pengabdian tidak berhenti pada satu generasi. Bahwa kekuatan bukan hanya diukur dari pencapaian, tapi dari keteguhan hati.</p>
           <p>Dari situlah nama <strong class="font-semibold text-white">Judison</strong> lahir: <em class="not-italic font-medium text-brand-blueLight">Joesoef Emdhy and Son</em>. Sebuah janji bahwa semangat awal akan terus hidup dalam setiap proyek, setiap kemitraan, dan setiap panen.</p>
           <p class="text-slate-200">Kami tidak ingin menjadi perusahaan besar yang kosong makna. Kami ingin menjadi perusahaan yang dihormati karena caranya, bukan hanya karena hasilnya.</p>
         </div>
@@ -497,7 +525,7 @@ tailwind.config = {
           <div class="absolute -right-24 -top-24 h-64 w-64 rounded-full bg-brand-blue/25 blur-3xl"></div>
           <div class="absolute -left-24 -bottom-24 h-64 w-64 rounded-full bg-brand-red/20 blur-3xl"></div>
           <div class="relative flex h-full flex-col">
-            <span class="quote-mark text-7xl text-brand-blueLight/40 sm:text-8xl">“</span>
+            <span class="quote-mark text-7xl text-brand-blueLight/40 sm:text-8xl">"</span>
             <blockquote class="mt-2 font-serif text-[1.55rem] font-medium italic leading-[1.3] text-white sm:text-[1.85rem]">
               Patah tumbuh, hilang berganti. Gugur satu, tumbuh seribu.
             </blockquote>
@@ -521,7 +549,7 @@ tailwind.config = {
     <div class="reveal mx-auto max-w-3xl text-center">
       <span class="text-[11px] font-bold uppercase tracking-[0.24em] text-brand-blue">Layanan Kami</span>
       <h2 class="mt-4 text-3xl font-extrabold leading-tight tracking-tight text-slate-900 dark:text-white sm:text-4xl lg:text-[2.75rem]">Empat Pilar Usaha</h2>
-      <p class="mt-5 text-[15px] leading-relaxed text-slate-600 dark:text-slate-400">Portofolio bisnis Judison dirancang untuk saling menguatkan — dari pembangunan fisik hingga penguatan rantai pasok nasional.</p>
+      <p class="mt-5 text-[15px] leading-relaxed text-slate-600 dark:text-slate-400">Portofolio bisnis Judison dirancang untuk saling menguatkan.</p>
     </div>
     <div class="reveal mt-10 flex flex-wrap justify-center gap-2">
       <button data-tab="tab-1" class="tab-btn rounded-xl border border-brand-blue/30 bg-brand-blue text-white px-5 py-3 text-[13px] font-bold shadow-md"><i data-lucide="hard-hat" class="mr-1.5 inline h-4 w-4"></i> Konstruksi</button>
@@ -535,7 +563,7 @@ tailwind.config = {
           <div>
             <div class="grid h-14 w-14 place-items-center rounded-2xl bg-brand-blueSoft text-brand-blue"><i data-lucide="hard-hat" class="h-7 w-7"></i></div>
             <h3 class="mt-5 text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white">Konstruksi &amp; Infrastruktur</h3>
-            <p class="mt-3 text-[14.5px] leading-relaxed text-slate-600 dark:text-slate-400">Pengaspalan jalan, pengerasan &amp; paving, konstruksi bangunan sipil dan gedung. Didukung armada asphalt finisher dan tandem roller, serta tim pelaksana yang mengutamakan standar keselamatan kerja (K3).</p>
+            <p class="mt-3 text-[14.5px] leading-relaxed text-slate-600 dark:text-slate-400">Pengaspalan jalan, pengerasan &amp; paving, konstruksi bangunan sipil dan gedung. Didukung armada asphalt finisher dan tandem roller, dengan standar keselamatan kerja (K3).</p>
             <ul class="mt-6 space-y-3">
               <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="mt-0.5 h-4 w-4 shrink-0 text-brand-blue"></i><span class="text-[13.5px] text-slate-600 dark:text-slate-400">Pengaspalan hotmix &amp; overlay</span></li>
               <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="mt-0.5 h-4 w-4 shrink-0 text-brand-blue"></i><span class="text-[13.5px] text-slate-600 dark:text-slate-400">Pengerasan jalan &amp; paving block</span></li>
@@ -555,7 +583,7 @@ tailwind.config = {
           <div>
             <div class="grid h-14 w-14 place-items-center rounded-2xl bg-emerald-50 text-emerald-600 dark:bg-emerald-500/10"><i data-lucide="sprout" class="h-7 w-7"></i></div>
             <h3 class="mt-5 text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white">Agrikultur</h3>
-            <p class="mt-3 text-[14.5px] leading-relaxed text-slate-600 dark:text-slate-400">Fokus pada penanaman dan pengembangan jagung komoditas strategis. Kami mengelola lahan secara berkelanjutan dan memberdayakan petani lokal melalui skema kemitraan.</p>
+            <p class="mt-3 text-[14.5px] leading-relaxed text-slate-600 dark:text-slate-400">Fokus pada penanaman dan pengembangan jagung komoditas strategis. Kami mengelola lahan secara berkelanjutan dan memberdayakan petani lokal.</p>
             <ul class="mt-6 space-y-3">
               <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="mt-0.5 h-4 w-4 shrink-0 text-emerald-600"></i><span class="text-[13.5px] text-slate-600 dark:text-slate-400">Benih unggul &amp; tahan hama</span></li>
               <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="mt-0.5 h-4 w-4 shrink-0 text-emerald-600"></i><span class="text-[13.5px] text-slate-600 dark:text-slate-400">Pengolahan lahan efisien &amp; ramah lingkungan</span></li>
@@ -579,7 +607,7 @@ tailwind.config = {
           <div>
             <div class="grid h-14 w-14 place-items-center rounded-2xl bg-brand-redSoft text-brand-red dark:bg-brand-red/10"><i data-lucide="truck" class="h-7 w-7"></i></div>
             <h3 class="mt-5 text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white">Distribusi Pangan</h3>
-            <p class="mt-3 text-[14.5px] leading-relaxed text-slate-600 dark:text-slate-400">Distributor pangan strategis dengan jaminan kualitas produk segar, pasokan stabil, dan jaringan logistik efisien. Dipercaya sebagai supplier untuk program Dapur Makan Bergizi (MBG).</p>
+            <p class="mt-3 text-[14.5px] leading-relaxed text-slate-600 dark:text-slate-400">Distributor pangan strategis dengan jaminan kualitas produk segar. Dipercaya sebagai supplier untuk program Dapur Makan Bergizi (MBG).</p>
             <ul class="mt-6 space-y-3">
               <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="mt-0.5 h-4 w-4 shrink-0 text-brand-red"></i><span class="text-[13.5px] text-slate-600 dark:text-slate-400">Jaminan kualitas produk segar (ayam &amp; telur)</span></li>
               <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="mt-0.5 h-4 w-4 shrink-0 text-brand-red"></i><span class="text-[13.5px] text-slate-600 dark:text-slate-400">Pasokan stabil &amp; terjadwal</span></li>
@@ -601,7 +629,7 @@ tailwind.config = {
           <div>
             <div class="grid h-14 w-14 place-items-center rounded-2xl bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-200"><i data-lucide="package" class="h-7 w-7"></i></div>
             <h3 class="mt-5 text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white">Perdagangan Besar</h3>
-            <p class="mt-3 text-[14.5px] leading-relaxed text-slate-600 dark:text-slate-400">Beroperasi sebagai wholesale trader yang menyediakan komoditas dan kebutuhan usaha dengan pasokan stabil dan berkualitas bagi mitra bisnis.</p>
+            <p class="mt-3 text-[14.5px] leading-relaxed text-slate-600 dark:text-slate-400">Beroperasi sebagai wholesale trader yang menyediakan komoditas dengan pasokan stabil dan berkualitas bagi mitra bisnis.</p>
             <ul class="mt-6 space-y-3">
               <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="mt-0.5 h-4 w-4 shrink-0 text-slate-600 dark:text-slate-300"></i><span class="text-[13.5px] text-slate-600 dark:text-slate-400">Batubara</span></li>
               <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="mt-0.5 h-4 w-4 shrink-0 text-slate-600 dark:text-slate-300"></i><span class="text-[13.5px] text-slate-600 dark:text-slate-400">Minyak Kelapa Sawit (CPO)</span></li>
@@ -625,7 +653,7 @@ tailwind.config = {
   </div>
 </section>
 
-<!-- PROYEK dengan FILTER + BEFORE-AFTER + PROGRESS -->
+<!-- PROYEK -->
 <section id="proyek" class="relative scroll-mt-28 py-20 sm:py-28">
   <div class="pointer-events-none absolute inset-0 -z-10 radial-blue-soft opacity-70 dark:opacity-30"></div>
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -635,7 +663,6 @@ tailwind.config = {
       <p class="mt-5 text-[15px] leading-relaxed text-slate-600 dark:text-slate-400">Dipercaya oleh institusi pemerintah dan mitra strategis nasional dalam pekerjaan konstruksi, pengaspalan jalan, program pangan, dan pemberdayaan masyarakat.</p>
     </div>
 
-    <!-- FILTER CHIPS -->
     <div class="reveal mt-10 flex flex-wrap justify-center gap-2">
       <button data-filter="all" class="filter-chip active rounded-full border border-slate-200 bg-white px-5 py-2 text-[12.5px] font-bold text-slate-600 dark:border-white/10 dark:bg-slate-900 dark:text-slate-300">Semua</button>
       <button data-filter="konstruksi" class="filter-chip rounded-full border border-slate-200 bg-white px-5 py-2 text-[12.5px] font-semibold text-slate-600 dark:border-white/10 dark:bg-slate-900 dark:text-slate-300">Konstruksi</button>
@@ -644,11 +671,11 @@ tailwind.config = {
       <button data-filter="sosial" class="filter-chip rounded-full border border-slate-200 bg-white px-5 py-2 text-[12.5px] font-semibold text-slate-600 dark:border-white/10 dark:bg-slate-900 dark:text-slate-300">Program Sosial</button>
     </div>
 
-    <!-- PROYEK GRID -->
-    <div id="proyekGrid" class="mt-10 grid gap-5 lg:grid-cols-12">
+    <!-- PROYEK GRID - FIXED 3 columns -->
+    <div id="proyekGrid" class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
 
-      <!-- Lumbung Pangan (Featured) -->
-      <div class="reveal proyek-card lg:col-span-7" data-cat="agrikultur" data-year="2023">
+      <!-- Lumbung Pangan (Featured - span 2) -->
+      <div class="reveal proyek-card sm:col-span-2" data-cat="agrikultur" data-year="2023">
         <div class="relative h-full overflow-hidden rounded-3xl border border-slate-200 bg-gradient-to-br from-white via-brand-blueSoft to-white p-7 shadow-card dark:border-white/10 dark:from-slate-900 dark:via-brand-blue/10 dark:to-slate-900 sm:p-9">
           <div class="absolute inset-0 bg-grid opacity-40 dark:hidden"></div>
           <div class="relative flex h-full flex-col">
@@ -664,7 +691,6 @@ tailwind.config = {
               <div class="rounded-2xl border border-slate-200 bg-white px-4 py-3.5 dark:border-white/10 dark:bg-slate-800"><div class="text-[10px] font-bold uppercase tracking-[0.16em] text-slate-400">Mitra</div><div class="mt-1 text-lg font-extrabold text-slate-900 dark:text-white">Kemhan RI</div></div>
               <div class="col-span-2 rounded-2xl border border-slate-200 bg-white px-4 py-3.5 dark:border-white/10 dark:bg-slate-800 sm:col-span-1"><div class="text-[10px] font-bold uppercase tracking-[0.16em] text-slate-400">Tahun</div><div class="mt-1 text-lg font-extrabold text-slate-900 dark:text-white">2023</div></div>
             </div>
-            <!-- Progress -->
             <div class="mt-6">
               <div class="flex items-center justify-between text-[11px] font-semibold">
                 <span class="text-slate-500 dark:text-slate-400">Progress proyek</span>
@@ -678,38 +704,38 @@ tailwind.config = {
         </div>
       </div>
 
-      <!-- Side cards -->
-      <div class="grid gap-5 lg:col-span-5">
-        <div class="reveal proyek-card rounded-3xl border border-slate-200 bg-white p-6 shadow-card dark:border-white/10 dark:bg-slate-900 sm:p-7" data-cat="konstruksi" data-year="2022">
-          <div class="flex items-start justify-between gap-4">
-            <div class="icon-tile grid h-11 w-11 place-items-center rounded-2xl bg-brand-blueSoft text-brand-blue dark:bg-brand-blue/10"><i data-lucide="layers" class="h-5 w-5"></i></div>
-            <span class="rounded-full border border-slate-200 bg-white px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-slate-500 dark:border-white/10 dark:bg-white/5 dark:text-slate-400">2022</span>
-          </div>
-          <h4 class="mt-4 text-[15.5px] font-extrabold tracking-tight text-slate-900 dark:text-white">Paving Block &amp; Pengerasan Jalan</h4>
-          <div class="mt-4 space-y-2.5">
-            <div class="flex items-start justify-between gap-4 text-[12.5px]"><span class="text-slate-500 dark:text-slate-400">Sektor</span><span class="text-right font-semibold text-slate-800 dark:text-slate-200">Perumahan &amp; Pemerintah</span></div>
-            <div class="h-px hairline"></div>
-            <div class="flex items-start justify-between gap-4 text-[12.5px]"><span class="text-slate-500 dark:text-slate-400">Lokasi</span><span class="text-right font-semibold text-slate-800 dark:text-slate-200">Purwakarta, Jawa Barat</span></div>
-            <div class="h-px hairline"></div>
-            <div class="flex items-start justify-between gap-4 text-[12.5px]"><span class="text-slate-500 dark:text-slate-400">Periode</span><span class="text-right font-semibold text-slate-800 dark:text-slate-200">Maret – Sept 2022</span></div>
-          </div>
+      <!-- Paving -->
+      <div class="reveal proyek-card rounded-3xl border border-slate-200 bg-white p-6 shadow-card dark:border-white/10 dark:bg-slate-900 sm:p-7" data-cat="konstruksi" data-year="2022">
+        <div class="flex items-start justify-between gap-4">
+          <div class="icon-tile grid h-11 w-11 place-items-center rounded-2xl bg-brand-blueSoft text-brand-blue dark:bg-brand-blue/10"><i data-lucide="layers" class="h-5 w-5"></i></div>
+          <span class="rounded-full border border-slate-200 bg-white px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-slate-500 dark:border-white/10 dark:bg-white/5 dark:text-slate-400">2022</span>
         </div>
-        <div class="reveal proyek-card rounded-3xl border border-slate-200 bg-white p-6 shadow-card dark:border-white/10 dark:bg-slate-900 sm:p-7" data-cat="konstruksi" data-year="2023" style="transition-delay:.08s">
-          <div class="flex items-start justify-between gap-4">
-            <div class="icon-tile grid h-11 w-11 place-items-center rounded-2xl bg-brand-redSoft text-brand-red dark:bg-brand-red/10"><i data-lucide="route" class="h-5 w-5"></i></div>
-            <span class="rounded-full border border-slate-200 bg-white px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-slate-500 dark:border-white/10 dark:bg-white/5 dark:text-slate-400">Jabar</span>
-          </div>
-          <h4 class="mt-4 text-[15.5px] font-extrabold tracking-tight text-slate-900 dark:text-white">Pengaspalan &amp; Konstruksi Jalan</h4>
-          <p class="mt-3 text-[13px] leading-relaxed text-slate-600 dark:text-slate-400">Didukung armada asphalt finisher &amp; tandem roller, tim pelaksana dengan standar K3.</p>
-          <div class="mt-5 flex flex-wrap gap-2">
-            <span class="rounded-lg border border-slate-200 bg-slate-50 px-2.5 py-1 text-[11px] font-medium text-slate-600 dark:border-white/10 dark:bg-slate-800 dark:text-slate-400">Cibenda</span>
-            <span class="rounded-lg border border-slate-200 bg-slate-50 px-2.5 py-1 text-[11px] font-medium text-slate-600 dark:border-white/10 dark:bg-slate-800 dark:text-slate-400">Cikuluwung</span>
-            <span class="rounded-lg border border-slate-200 bg-slate-50 px-2.5 py-1 text-[11px] font-medium text-slate-600 dark:border-white/10 dark:bg-slate-800 dark:text-slate-400">Citalang</span>
-          </div>
+        <h4 class="mt-4 text-[15.5px] font-extrabold tracking-tight text-slate-900 dark:text-white">Paving Block &amp; Pengerasan Jalan</h4>
+        <div class="mt-4 space-y-2.5">
+          <div class="flex items-start justify-between gap-4 text-[12.5px]"><span class="text-slate-500 dark:text-slate-400">Sektor</span><span class="text-right font-semibold text-slate-800 dark:text-slate-200">Perumahan &amp; Pemerintah</span></div>
+          <div class="h-px hairline"></div>
+          <div class="flex items-start justify-between gap-4 text-[12.5px]"><span class="text-slate-500 dark:text-slate-400">Lokasi</span><span class="text-right font-semibold text-slate-800 dark:text-slate-200">Purwakarta, Jawa Barat</span></div>
+          <div class="h-px hairline"></div>
+          <div class="flex items-start justify-between gap-4 text-[12.5px]"><span class="text-slate-500 dark:text-slate-400">Periode</span><span class="text-right font-semibold text-slate-800 dark:text-slate-200">Maret – Sept 2022</span></div>
         </div>
       </div>
 
-      <!-- 3 NEW PROJECTS -->
+      <!-- Pengaspalan -->
+      <div class="reveal proyek-card rounded-3xl border border-slate-200 bg-white p-6 shadow-card dark:border-white/10 dark:bg-slate-900 sm:p-7" data-cat="konstruksi" data-year="2023">
+        <div class="flex items-start justify-between gap-4">
+          <div class="icon-tile grid h-11 w-11 place-items-center rounded-2xl bg-brand-redSoft text-brand-red dark:bg-brand-red/10"><i data-lucide="route" class="h-5 w-5"></i></div>
+          <span class="rounded-full border border-slate-200 bg-white px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-slate-500 dark:border-white/10 dark:bg-white/5 dark:text-slate-400">Jabar</span>
+        </div>
+        <h4 class="mt-4 text-[15.5px] font-extrabold tracking-tight text-slate-900 dark:text-white">Pengaspalan &amp; Konstruksi Jalan</h4>
+        <p class="mt-3 text-[13px] leading-relaxed text-slate-600 dark:text-slate-400">Didukung armada asphalt finisher &amp; tandem roller, tim pelaksana dengan standar K3.</p>
+        <div class="mt-5 flex flex-wrap gap-2">
+          <span class="rounded-lg border border-slate-200 bg-slate-50 px-2.5 py-1 text-[11px] font-medium text-slate-600 dark:border-white/10 dark:bg-slate-800 dark:text-slate-400">Cibenda</span>
+          <span class="rounded-lg border border-slate-200 bg-slate-50 px-2.5 py-1 text-[11px] font-medium text-slate-600 dark:border-white/10 dark:bg-slate-800 dark:text-slate-400">Cikuluwung</span>
+          <span class="rounded-lg border border-slate-200 bg-slate-50 px-2.5 py-1 text-[11px] font-medium text-slate-600 dark:border-white/10 dark:bg-slate-800 dark:text-slate-400">Citalang</span>
+        </div>
+      </div>
+
+      <!-- Koperasi Desa -->
       <article class="card-lift reveal proyek-card group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-6 shadow-card dark:border-white/10 dark:bg-slate-900 sm:p-7" data-cat="sosial" data-year="2024">
         <div class="flex items-start justify-between gap-4">
           <div class="icon-tile grid h-12 w-12 place-items-center rounded-2xl bg-red-50 text-brand-red dark:bg-red-500/10"><i data-lucide="store" class="h-6 w-6"></i></div>
@@ -719,7 +745,8 @@ tailwind.config = {
         <p class="mt-2.5 text-[13px] leading-relaxed text-slate-600 dark:text-slate-400">Pembangunan dan pendampingan Koperasi Desa Merah Putih sebagai pilar ekonomi kerakyatan di pedesaan — kemandirian ekonomi desa, distribusi sembako, dan pemberdayaan UMKM lokal.</p>
       </article>
 
-      <article class="card-lift reveal proyek-card group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-6 shadow-card dark:border-white/10 dark:bg-slate-900 sm:p-7" data-cat="sosial pangan" data-year="2024" style="transition-delay:.08s">
+      <!-- Dapur MBG -->
+      <article class="card-lift reveal proyek-card group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-6 shadow-card dark:border-white/10 dark:bg-slate-900 sm:p-7" data-cat="sosial pangan" data-year="2024">
         <div class="flex items-start justify-between gap-4">
           <div class="icon-tile grid h-12 w-12 place-items-center rounded-2xl bg-emerald-50 text-emerald-600 dark:bg-emerald-500/10"><i data-lucide="utensils" class="h-6 w-6"></i></div>
           <span class="rounded-full border border-emerald-500/30 bg-emerald-50 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400">2024</span>
@@ -728,7 +755,8 @@ tailwind.config = {
         <p class="mt-2.5 text-[13px] leading-relaxed text-slate-600 dark:text-slate-400">Pembangunan dapur fasilitas Makan Bergizi Gratis (MBG) beserta instalasi dan operasionalnya — bersama Badan Gizi Nasional &amp; Yayasan Kartika Eka Paksi.</p>
       </article>
 
-      <article class="card-lift reveal proyek-card group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-6 shadow-card dark:border-white/10 dark:bg-slate-900 sm:p-7" data-cat="sosial" data-year="2024" style="transition-delay:.16s">
+      <!-- Koperasi Nelayan -->
+      <article class="card-lift reveal proyek-card group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-6 shadow-card dark:border-white/10 dark:bg-slate-900 sm:p-7" data-cat="sosial" data-year="2024">
         <div class="flex items-start justify-between gap-4">
           <div class="icon-tile grid h-12 w-12 place-items-center rounded-2xl bg-sky-50 text-sky-600 dark:bg-sky-500/10"><i data-lucide="fish" class="h-6 w-6"></i></div>
           <span class="rounded-full border border-sky-500/30 bg-sky-50 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:bg-sky-500/10 dark:text-sky-400">2024</span>
@@ -743,7 +771,7 @@ tailwind.config = {
       <p class="mt-3 text-[13.5px] font-medium text-slate-500 dark:text-slate-400">Tidak ada proyek yang sesuai dengan filter ini.</p>
     </div>
 
-    <!-- BEFORE / AFTER -->
+    <!-- BEFORE / AFTER - FIXED IMAGES -->
     <div class="reveal mt-20">
       <div class="mb-6 text-center">
         <span class="text-[11px] font-bold uppercase tracking-[0.24em] text-brand-red">Sebelum &amp; Sesudah</span>
@@ -752,8 +780,8 @@ tailwind.config = {
       </div>
       <div class="mx-auto max-w-3xl">
         <div class="ba-wrap aspect-[16/9] shadow-card">
-          <img class="ba-img" src="https://images.unsplash.com/photo-1597007066704-67bf2068d5b2?w=1400&q=80" alt="Sebelum" loading="lazy">
-          <img class="ba-img ba-img-after" src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1400&q=80" alt="Sesudah" loading="lazy">
+          <img class="ba-img" src="https://placehold.co/1400x788/334155/FFFFFF?text=SEBELUM%0AJalan+Rusak%2C+Berlubang+%26+Berdebu" alt="Sebelum" loading="lazy">
+          <img class="ba-img ba-img-after" src="https://placehold.co/1400x788/2563EB/FFFFFF?text=SESUDAH%0AAspal+Hotmix+Baru+%26+Mulus" alt="Sesudah" loading="lazy">
           <div class="ba-handle"><div class="ba-knob">⇔</div></div>
           <input type="range" min="0" max="100" value="50" class="ba-range" aria-label="Before after slider">
           <div class="pointer-events-none absolute left-3 top-3 rounded-lg bg-black/60 px-3 py-1.5 text-[11px] font-bold uppercase tracking-wider text-white backdrop-blur">Sebelum</div>
@@ -800,63 +828,35 @@ tailwind.config = {
     <div class="reveal mx-auto max-w-3xl text-center">
       <span class="text-[11px] font-bold uppercase tracking-[0.24em] text-brand-blue">Testimoni</span>
       <h2 class="mt-4 text-3xl font-extrabold leading-tight tracking-tight text-slate-900 dark:text-white sm:text-4xl lg:text-[2.75rem]">Apa Kata Mitra Kami</h2>
-      <p class="mt-5 text-[15px] leading-relaxed text-slate-600 dark:text-slate-400">Kepercayaan mitra adalah aset terbesar kami. Berikut sebagian tanggapan dari kolaborasi yang telah berjalan.</p>
+      <p class="mt-5 text-[15px] leading-relaxed text-slate-600 dark:text-slate-400">Kepercayaan mitra adalah aset terbesar kami.</p>
     </div>
     <div class="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-      <!-- Testimonial cards -->
       <div class="reveal card-lift rounded-3xl border border-slate-200 bg-white p-7 shadow-card dark:border-white/10 dark:bg-slate-900">
-        <div class="flex items-center gap-1 text-amber-400">
-          <i data-lucide="star" class="h-4 w-4 fill-current"></i>
-          <i data-lucide="star" class="h-4 w-4 fill-current"></i>
-          <i data-lucide="star" class="h-4 w-4 fill-current"></i>
-          <i data-lucide="star" class="h-4 w-4 fill-current"></i>
-          <i data-lucide="star" class="h-4 w-4 fill-current"></i>
-        </div>
+        <div class="flex items-center gap-1 text-amber-400"><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i></div>
         <p class="mt-5 font-serif text-[15px] italic leading-relaxed text-slate-700 dark:text-slate-300">"Kerja sama dalam pembangunan lumbung pangan berjalan sesuai target. Tim Judison responsif, disiplin, dan mengutamakan kualitas di setiap tahap."</p>
         <div class="mt-6 flex items-center gap-3 border-t border-slate-200 pt-5 dark:border-white/10">
           <div class="grid h-11 w-11 place-items-center rounded-xl bg-brand-redSoft text-brand-red dark:bg-brand-red/10"><i data-lucide="shield" class="h-5 w-5"></i></div>
-          <div class="leading-tight">
-            <div class="text-[13px] font-bold text-slate-900 dark:text-white">Mitra Kementerian</div>
-            <div class="mt-0.5 text-[11px] text-slate-500 dark:text-slate-400">Proyek Lumbung Pangan Nasional</div>
-          </div>
+          <div class="leading-tight"><div class="text-[13px] font-bold text-slate-900 dark:text-white">Mitra Kementerian</div><div class="mt-0.5 text-[11px] text-slate-500 dark:text-slate-400">Proyek Lumbung Pangan Nasional</div></div>
         </div>
       </div>
       <div class="reveal card-lift rounded-3xl border border-slate-200 bg-white p-7 shadow-card dark:border-white/10 dark:bg-slate-900" style="transition-delay:.08s">
-        <div class="flex items-center gap-1 text-amber-400">
-          <i data-lucide="star" class="h-4 w-4 fill-current"></i>
-          <i data-lucide="star" class="h-4 w-4 fill-current"></i>
-          <i data-lucide="star" class="h-4 w-4 fill-current"></i>
-          <i data-lucide="star" class="h-4 w-4 fill-current"></i>
-          <i data-lucide="star" class="h-4 w-4 fill-current"></i>
-        </div>
+        <div class="flex items-center gap-1 text-amber-400"><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i></div>
         <p class="mt-5 font-serif text-[15px] italic leading-relaxed text-slate-700 dark:text-slate-300">"Pasokan daging ayam dan telur selalu tepat waktu dengan kualitas yang konsisten. Sangat mendukung kelancaran operasional dapur MBG."</p>
         <div class="mt-6 flex items-center gap-3 border-t border-slate-200 pt-5 dark:border-white/10">
           <div class="grid h-11 w-11 place-items-center rounded-xl bg-emerald-50 text-emerald-600 dark:bg-emerald-500/10"><i data-lucide="utensils" class="h-5 w-5"></i></div>
-          <div class="leading-tight">
-            <div class="text-[13px] font-bold text-slate-900 dark:text-white">Mitra Program Gizi</div>
-            <div class="mt-0.5 text-[11px] text-slate-500 dark:text-slate-400">Distribusi Pangan MBG</div>
-          </div>
+          <div class="leading-tight"><div class="text-[13px] font-bold text-slate-900 dark:text-white">Mitra Program Gizi</div><div class="mt-0.5 text-[11px] text-slate-500 dark:text-slate-400">Distribusi Pangan MBG</div></div>
         </div>
       </div>
       <div class="reveal card-lift rounded-3xl border border-slate-200 bg-white p-7 shadow-card dark:border-white/10 dark:bg-slate-900" style="transition-delay:.16s">
-        <div class="flex items-center gap-1 text-amber-400">
-          <i data-lucide="star" class="h-4 w-4 fill-current"></i>
-          <i data-lucide="star" class="h-4 w-4 fill-current"></i>
-          <i data-lucide="star" class="h-4 w-4 fill-current"></i>
-          <i data-lucide="star" class="h-4 w-4 fill-current"></i>
-          <i data-lucide="star" class="h-4 w-4 fill-current"></i>
-        </div>
+        <div class="flex items-center gap-1 text-amber-400"><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i></div>
         <p class="mt-5 font-serif text-[15px] italic leading-relaxed text-slate-700 dark:text-slate-300">"Hasil pengaspalan rapi dan kokoh. Komunikasi dengan tim pelaksana di lapangan sangat baik, deadline terpenuhi."</p>
         <div class="mt-6 flex items-center gap-3 border-t border-slate-200 pt-5 dark:border-white/10">
           <div class="grid h-11 w-11 place-items-center rounded-xl bg-brand-blueSoft text-brand-blue dark:bg-brand-blue/10"><i data-lucide="route" class="h-5 w-5"></i></div>
-          <div class="leading-tight">
-            <div class="text-[13px] font-bold text-slate-900 dark:text-white">Klien Pengaspalan</div>
-            <div class="mt-0.5 text-[11px] text-slate-500 dark:text-slate-400">Proyek Jawa Barat</div>
-          </div>
+          <div class="leading-tight"><div class="text-[13px] font-bold text-slate-900 dark:text-white">Klien Pengaspalan</div><div class="mt-0.5 text-[11px] text-slate-500 dark:text-slate-400">Proyek Jawa Barat</div></div>
         </div>
       </div>
     </div>
-    <p class="reveal mt-8 text-center text-[11.5px] italic text-slate-400">* Testimoni di atas adalah ringkasan kolaborasi. Untuk referensi lengkap dan kontak mitra, silakan hubungi tim kami.</p>
+    <p class="reveal mt-8 text-center text-[11.5px] italic text-slate-400">* Testimoni di atas adalah ringkasan kolaborasi. Untuk referensi lengkap, silakan hubungi tim kami.</p>
   </div>
 </section>
 
@@ -904,7 +904,7 @@ tailwind.config = {
   </div>
 </section>
 
-<!-- LEGALITAS + QR CODE + MITRA GRID -->
+<!-- LEGALITAS -->
 <section id="legalitas" class="relative scroll-mt-28 border-y border-slate-200 bg-slate-50 py-20 dark:border-white/10 dark:bg-slate-900/50 sm:py-28">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="grid gap-14 lg:grid-cols-12 lg:gap-12">
@@ -915,7 +915,6 @@ tailwind.config = {
           <p class="mt-5 text-[15px] leading-relaxed text-slate-600 dark:text-slate-400">Beroperasi sebagai badan hukum resmi, didukung kualifikasi konstruksi terverifikasi.</p>
         </div>
 
-        <!-- QR VERIFICATION -->
         <div class="reveal mt-9 rounded-3xl border border-slate-200 bg-white p-6 shadow-card dark:border-white/10 dark:bg-slate-900 sm:p-7" style="transition-delay:.08s">
           <div class="flex flex-col items-center gap-5 sm:flex-row">
             <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https%3A%2F%2Foss.go.id%2Fportal%2Fdata%2Fizin%3Fnib%3D2312230034726&bgcolor=ffffff&color=1E3A8A&margin=8" alt="QR Verifikasi Legalitas" class="h-28 w-28 rounded-xl border border-slate-200 bg-white p-2 dark:border-white/10">
@@ -925,9 +924,7 @@ tailwind.config = {
               <p class="mt-2 text-[12.5px] leading-relaxed text-slate-600 dark:text-slate-400">Scan QR untuk cek legalitas NIB <strong class="font-semibold">2312230034726</strong> di portal OSS RBA.</p>
             </div>
           </div>
-          <button id="downloadPdfLegal" type="button" class="btn-primary mt-5 inline-flex w-full items-center justify-center gap-2 rounded-xl px-5 py-3 text-[13px] font-bold text-white">
-            <i data-lucide="file-down" class="h-4 w-4"></i> Unduh Company Profile (PDF)
-          </button>
+          <button id="downloadPdfLegal" type="button" class="btn-primary mt-5 inline-flex w-full items-center justify-center gap-2 rounded-xl px-5 py-3 text-[13px] font-bold text-white"><i data-lucide="file-down" class="h-4 w-4"></i> Unduh Company Profile (PDF)</button>
         </div>
 
         <div class="reveal mt-5 rounded-3xl border border-slate-200 bg-white p-6 shadow-card dark:border-white/10 dark:bg-slate-900 sm:p-7" style="transition-delay:.14s">
@@ -949,7 +946,6 @@ tailwind.config = {
         </div>
       </div>
 
-      <!-- MITRA GRID -->
       <div class="lg:col-span-7">
         <div class="reveal">
           <span class="text-[11px] font-bold uppercase tracking-[0.24em] text-brand-red">Kepercayaan</span>
@@ -1152,21 +1148,21 @@ tailwind.config = {
           <span class="text-[14.5px] font-bold text-slate-900 dark:text-white">Bagaimana cara menjalin kemitraan dengan Judison?</span>
           <span class="faq-icon grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-brand-blueSoft text-brand-blue dark:bg-brand-blue/10"><i data-lucide="plus" class="h-4 w-4"></i></span>
         </button>
-        <div class="faq-body"><div class="px-5 pb-5 text-[13.5px] leading-relaxed text-slate-600 dark:text-slate-400 sm:px-6 sm:pb-6">Anda dapat menghubungi kami melalui WhatsApp di <strong class="font-semibold text-slate-800 dark:text-slate-200">0878 8885 5877</strong>, email <strong class="font-semibold text-slate-800 dark:text-slate-200">info@judison.my.id</strong>, atau menggunakan salah satu form di section <a href="#form-hub" class="font-semibold text-brand-blue underline">Layanan Digital</a>. Tim kami akan merespons dalam 1×24 jam kerja.</div></div>
+        <div class="faq-body"><div class="px-5 pb-5 text-[13.5px] leading-relaxed text-slate-600 dark:text-slate-400 sm:px-6 sm:pb-6">Anda dapat menghubungi kami melalui WhatsApp di <strong class="font-semibold text-slate-800 dark:text-slate-200">0878 8885 5877</strong>, email <strong class="font-semibold text-slate-800 dark:text-slate-200">info@judison.my.id</strong>, atau menggunakan salah satu form di section Layanan Digital. Tim kami akan merespons dalam 1×24 jam kerja.</div></div>
       </div>
       <div class="faq-item rounded-2xl border border-slate-200 bg-white shadow-card transition-all dark:border-white/10 dark:bg-slate-900">
         <button class="faq-trigger flex w-full items-center justify-between gap-4 p-5 text-left sm:p-6">
           <span class="text-[14.5px] font-bold text-slate-900 dark:text-white">Bagaimana cara mengajukan penawaran harga (RFQ)?</span>
           <span class="faq-icon grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-brand-blueSoft text-brand-blue dark:bg-brand-blue/10"><i data-lucide="plus" class="h-4 w-4"></i></span>
         </button>
-        <div class="faq-body"><div class="px-5 pb-5 text-[13.5px] leading-relaxed text-slate-600 dark:text-slate-400 sm:px-6 sm:pb-6">Gunakan form <strong class="font-semibold text-slate-800 dark:text-slate-200">Request for Quote (RFQ)</strong> di section <a href="#form-hub" class="font-semibold text-brand-blue underline">Layanan Digital</a>. Lampirkan spesifikasi/RAB/desain (PDF, DOC, XLS, atau gambar) untuk mempercepat proses penawaran.</div></div>
+        <div class="faq-body"><div class="px-5 pb-5 text-[13.5px] leading-relaxed text-slate-600 dark:text-slate-400 sm:px-6 sm:pb-6">Gunakan form <strong class="font-semibold text-slate-800 dark:text-slate-200">Request for Quote (RFQ)</strong> di section Layanan Digital. Lampirkan spesifikasi/RAB/desain (PDF, DOC, XLS, atau gambar) untuk mempercepat proses penawaran.</div></div>
       </div>
       <div class="faq-item rounded-2xl border border-slate-200 bg-white shadow-card transition-all dark:border-white/10 dark:bg-slate-900">
         <button class="faq-trigger flex w-full items-center justify-between gap-4 p-5 text-left sm:p-6">
           <span class="text-[14.5px] font-bold text-slate-900 dark:text-white">Bagaimana proses menjadi vendor/supplier Judison?</span>
           <span class="faq-icon grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-brand-blueSoft text-brand-blue dark:bg-brand-blue/10"><i data-lucide="plus" class="h-4 w-4"></i></span>
         </button>
-        <div class="faq-body"><div class="px-5 pb-5 text-[13.5px] leading-relaxed text-slate-600 dark:text-slate-400 sm:px-6 sm:pb-6">Isi form <strong class="font-semibold text-slate-800 dark:text-slate-200">Registrasi Vendor</strong> di section <a href="#form-hub" class="font-semibold text-brand-blue underline">Layanan Digital</a>. Tim procurement kami akan meninjau data Anda dan menghubungi jika ada kebutuhan yang sesuai.</div></div>
+        <div class="faq-body"><div class="px-5 pb-5 text-[13.5px] leading-relaxed text-slate-600 dark:text-slate-400 sm:px-6 sm:pb-6">Isi form <strong class="font-semibold text-slate-800 dark:text-slate-200">Registrasi Vendor</strong> di section Layanan Digital. Tim procurement kami akan meninjau data Anda dan menghubungi jika ada kebutuhan yang sesuai.</div></div>
       </div>
       <div class="faq-item rounded-2xl border border-slate-200 bg-white shadow-card transition-all dark:border-white/10 dark:bg-slate-900">
         <button class="faq-trigger flex w-full items-center justify-between gap-4 p-5 text-left sm:p-6">
@@ -1179,7 +1175,7 @@ tailwind.config = {
   </div>
 </section>
 
-<!-- FORM HUB - 4 forms in tabs -->
+<!-- FORM HUB -->
 <section id="form-hub" class="relative scroll-mt-28 border-y border-slate-200 bg-slate-50 py-20 dark:border-white/10 dark:bg-slate-900/50 sm:py-28">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="reveal mx-auto max-w-3xl text-center">
@@ -1197,7 +1193,7 @@ tailwind.config = {
 
     <div class="reveal mt-10 rounded-3xl border border-slate-200 bg-white p-7 shadow-card dark:border-white/10 dark:bg-slate-900 sm:p-10">
 
-      <!-- FORM 1: Multi-step Pesan Cepat -->
+      <!-- FORM 1 -->
       <div id="form-1" class="tab-panel active">
         <div class="mx-auto max-w-2xl">
           <div class="mb-8 flex items-center justify-between gap-3">
@@ -1218,7 +1214,6 @@ tailwind.config = {
           </div>
 
           <form id="multiStepForm" novalidate data-multi>
-            <!-- STEP 1 -->
             <div class="step-panel active" data-step="1">
               <h3 class="text-xl font-extrabold tracking-tight text-slate-900 dark:text-white">Data Identitas</h3>
               <p class="mt-2 text-[13.5px] text-slate-600 dark:text-slate-400">Silakan isi data Anda terlebih dahulu.</p>
@@ -1237,8 +1232,6 @@ tailwind.config = {
                 </div>
               </div>
             </div>
-
-            <!-- STEP 2 -->
             <div class="step-panel" data-step="2">
               <h3 class="text-xl font-extrabold tracking-tight text-slate-900 dark:text-white">Kebutuhan Anda</h3>
               <p class="mt-2 text-[13.5px] text-slate-600 dark:text-slate-400">Beri tahu kami tentang kebutuhan Anda.</p>
@@ -1274,8 +1267,6 @@ tailwind.config = {
                 </div>
               </div>
             </div>
-
-            <!-- STEP 3 -->
             <div class="step-panel" data-step="3">
               <h3 class="text-xl font-extrabold tracking-tight text-slate-900 dark:text-white">Pesan Anda</h3>
               <p class="mt-2 text-[13.5px] text-slate-600 dark:text-slate-400">Tuliskan detail kebutuhan atau pertanyaan Anda.</p>
@@ -1290,32 +1281,21 @@ tailwind.config = {
                 </label>
               </div>
             </div>
-
             <div class="mt-8 flex items-center justify-between gap-3">
-              <button type="button" data-nav="prev" class="btn-ghost inline-flex items-center gap-2 rounded-xl border border-slate-300 bg-white px-5 py-3 text-[13px] font-semibold text-slate-800 dark:border-white/15 dark:bg-white/5 dark:text-white disabled:opacity-40" disabled>
-                <i data-lucide="arrow-left" class="h-4 w-4"></i> Sebelumnya
-              </button>
+              <button type="button" data-nav="prev" class="btn-ghost inline-flex items-center gap-2 rounded-xl border border-slate-300 bg-white px-5 py-3 text-[13px] font-semibold text-slate-800 dark:border-white/15 dark:bg-white/5 dark:text-white disabled:opacity-40" disabled><i data-lucide="arrow-left" class="h-4 w-4"></i> Sebelumnya</button>
               <div class="text-[11.5px] font-semibold text-slate-500 dark:text-slate-400"><span data-current-step>1</span> / 3</div>
-              <button type="button" data-nav="next" class="btn-primary inline-flex items-center gap-2 rounded-xl px-5 py-3 text-[13px] font-bold text-white">
-                Berikutnya <i data-lucide="arrow-right" class="h-4 w-4"></i>
-              </button>
-              <button type="submit" data-nav="submit" class="btn-primary hidden items-center gap-2 rounded-xl px-6 py-3 text-[13px] font-bold text-white">
-                <i data-lucide="send" class="h-4 w-4"></i> Kirim Pesan
-              </button>
+              <button type="button" data-nav="next" class="btn-primary inline-flex items-center gap-2 rounded-xl px-5 py-3 text-[13px] font-bold text-white">Berikutnya <i data-lucide="arrow-right" class="h-4 w-4"></i></button>
+              <button type="submit" data-nav="submit" class="btn-primary hidden items-center gap-2 rounded-xl px-6 py-3 text-[13px] font-bold text-white"><i data-lucide="send" class="h-4 w-4"></i> Kirim Pesan</button>
             </div>
-
             <div data-form-feedback class="hidden items-start gap-3 rounded-2xl border border-emerald-500/25 bg-emerald-50 px-4 py-3.5 dark:bg-emerald-500/10 mt-6">
               <i data-lucide="check-circle-2" class="mt-0.5 h-4.5 w-4.5 shrink-0 text-emerald-600"></i>
-              <div>
-                <div class="text-[13px] font-bold text-emerald-700 dark:text-emerald-300">Pesan berhasil terkirim!</div>
-                <div class="mt-0.5 text-[12px] text-emerald-700/70 dark:text-emerald-300/70">Tim kami akan merespons dalam 1×24 jam kerja.</div>
-              </div>
+              <div><div class="text-[13px] font-bold text-emerald-700 dark:text-emerald-300">Pesan berhasil terkirim!</div><div class="mt-0.5 text-[12px] text-emerald-700/70 dark:text-emerald-300/70">Tim kami akan merespons dalam 1×24 jam kerja.</div></div>
             </div>
           </form>
         </div>
       </div>
 
-      <!-- FORM 2: RFQ with file upload -->
+      <!-- FORM 2 -->
       <div id="form-2" class="tab-panel">
         <div class="mx-auto max-w-3xl">
           <div class="text-center">
@@ -1350,8 +1330,6 @@ tailwind.config = {
               <div><label class="mb-2 block text-[11.5px] font-bold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">Target Mulai</label><input type="date" class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-[13.5px] text-slate-800 outline-none transition-all focus:border-brand-blue/50 focus:bg-white focus:ring-2 focus:ring-brand-blue/15 dark:border-white/10 dark:bg-slate-800 dark:text-slate-200"></div>
             </div>
             <div><label class="mb-2 block text-[11.5px] font-bold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">Deskripsi / Spesifikasi <span class="text-brand-red">*</span></label><textarea rows="5" required placeholder="Jelaskan lingkup pekerjaan, volume, spesifikasi teknis…" class="w-full resize-none rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-[13.5px] leading-relaxed text-slate-800 placeholder-slate-400 outline-none transition-all focus:border-brand-blue/50 focus:bg-white focus:ring-2 focus:ring-brand-blue/15 dark:border-white/10 dark:bg-slate-800 dark:text-slate-200 dark:placeholder-slate-500"></textarea></div>
-
-            <!-- FILE UPLOAD -->
             <div>
               <label class="mb-2 block text-[11.5px] font-bold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">Lampiran Dokumen</label>
               <div id="fileDrop" class="file-drop flex flex-col items-center justify-center rounded-2xl border-2 border-dashed border-slate-300 bg-slate-50 p-8 text-center transition-all dark:border-white/15 dark:bg-slate-800/60">
@@ -1359,13 +1337,10 @@ tailwind.config = {
                 <div class="mt-3 text-[13.5px] font-semibold text-slate-700 dark:text-slate-200">Tarik file ke sini atau klik untuk memilih</div>
                 <div class="mt-1 text-[11.5px] text-slate-500 dark:text-slate-400">PDF, DOC, XLS, JPG, PNG, DWG (maks 10 MB / file)</div>
                 <input id="fileInput" type="file" multiple class="hidden" accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png,.dwg">
-                <button type="button" id="fileBrowseBtn" class="btn-ghost mt-4 inline-flex items-center gap-2 rounded-xl border border-slate-300 bg-white px-4 py-2 text-[12.5px] font-semibold text-slate-800 dark:border-white/15 dark:bg-white/5 dark:text-white">
-                  <i data-lucide="folder-open" class="h-3.5 w-3.5"></i> Pilih File
-                </button>
+                <button type="button" id="fileBrowseBtn" class="btn-ghost mt-4 inline-flex items-center gap-2 rounded-xl border border-slate-300 bg-white px-4 py-2 text-[12.5px] font-semibold text-slate-800 dark:border-white/15 dark:bg-white/5 dark:text-white"><i data-lucide="folder-open" class="h-3.5 w-3.5"></i> Pilih File</button>
               </div>
               <ul id="fileList" class="mt-3 space-y-2"></ul>
             </div>
-
             <div class="flex items-center justify-end gap-3 pt-2">
               <button type="submit" class="btn-primary inline-flex items-center gap-2 rounded-xl px-7 py-3.5 text-[13.5px] font-bold text-white">Kirim RFQ <i data-lucide="send" class="h-4 w-4"></i></button>
             </div>
@@ -1377,25 +1352,25 @@ tailwind.config = {
         </div>
       </div>
 
-      <!-- FORM 3: Booking Konsultasi -->
+      <!-- FORM 3 -->
       <div id="form-3" class="tab-panel">
         <div class="mx-auto max-w-3xl">
           <div class="text-center">
             <div class="inline-flex items-center gap-2 rounded-full bg-emerald-50 px-3 py-1 text-[10.5px] font-bold uppercase tracking-wider text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400"><i data-lucide="calendar-check" class="h-3 w-3"></i> Booking Konsultasi</div>
             <h3 class="mt-4 text-xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-2xl">Jadwalkan Konsultasi Gratis</h3>
-            <p class="mt-2 text-[13.5px] text-slate-600 dark:text-slate-400">Pilih tanggal, jam, dan topik konsultasi. Kami akan konfirmasi via WhatsApp/Email.</p>
+            <p class="mt-2 text-[13.5px] text-slate-600 dark:text-slate-400">Pilih tanggal, jam, dan topik konsultasi.</p>
           </div>
           <form data-simple class="mt-8 space-y-5">
             <div class="grid gap-5 sm:grid-cols-2">
               <div><label class="mb-2 block text-[11.5px] font-bold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">Nama Lengkap <span class="text-brand-red">*</span></label><input type="text" required placeholder="Nama Anda" class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-[13.5px] text-slate-800 placeholder-slate-400 outline-none transition-all focus:border-brand-blue/50 focus:bg-white focus:ring-2 focus:ring-brand-blue/15 dark:border-white/10 dark:bg-slate-800 dark:text-slate-200 dark:placeholder-slate-500"></div>
-              <div><label class="mb-2 block text-[11.5px] font-bold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">Perusahaan / Instansi</label><input type="text" placeholder="Opsional" class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-[13.5px] text-slate-800 placeholder-slate-400 outline-none transition-all focus:border-brand-blue/50 focus:bg-white focus:ring-2 focus:ring-brand-blue/15 dark:border-white/10 dark:bg-slate-800 dark:text-slate-200 dark:placeholder-slate-500"></div>
+              <div><label class="mb-2 block text-[11.5px] font-bold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">Perusahaan</label><input type="text" placeholder="Opsional" class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-[13.5px] text-slate-800 placeholder-slate-400 outline-none transition-all focus:border-brand-blue/50 focus:bg-white focus:ring-2 focus:ring-brand-blue/15 dark:border-white/10 dark:bg-slate-800 dark:text-slate-200 dark:placeholder-slate-500"></div>
             </div>
             <div class="grid gap-5 sm:grid-cols-2">
               <div><label class="mb-2 block text-[11.5px] font-bold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">Email <span class="text-brand-red">*</span></label><input type="email" required placeholder="email@domain.com" class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-[13.5px] text-slate-800 placeholder-slate-400 outline-none transition-all focus:border-brand-blue/50 focus:bg-white focus:ring-2 focus:ring-brand-blue/15 dark:border-white/10 dark:bg-slate-800 dark:text-slate-200 dark:placeholder-slate-500"></div>
               <div><label class="mb-2 block text-[11.5px] font-bold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">WhatsApp <span class="text-brand-red">*</span></label><input type="tel" required placeholder="+62 ..." class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-[13.5px] text-slate-800 placeholder-slate-400 outline-none transition-all focus:border-brand-blue/50 focus:bg-white focus:ring-2 focus:ring-brand-blue/15 dark:border-white/10 dark:bg-slate-800 dark:text-slate-200 dark:placeholder-slate-500"></div>
             </div>
             <div class="grid gap-5 sm:grid-cols-2">
-              <div><label class="mb-2 block text-[11.5px] font-bold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">Tanggal <span class="text-brand-red">*</span></label><input type="date" required min="2026-01-01" class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-[13.5px] text-slate-800 outline-none transition-all focus:border-brand-blue/50 focus:bg-white focus:ring-2 focus:ring-brand-blue/15 dark:border-white/10 dark:bg-slate-800 dark:text-slate-200"></div>
+              <div><label class="mb-2 block text-[11.5px] font-bold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">Tanggal <span class="text-brand-red">*</span></label><input type="date" required class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-[13.5px] text-slate-800 outline-none transition-all focus:border-brand-blue/50 focus:bg-white focus:ring-2 focus:ring-brand-blue/15 dark:border-white/10 dark:bg-slate-800 dark:text-slate-200"></div>
               <div><label class="mb-2 block text-[11.5px] font-bold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">Jam <span class="text-brand-red">*</span></label>
                 <select required class="w-full appearance-none rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-[13.5px] text-slate-800 outline-none transition-all focus:border-brand-blue/50 focus:bg-white focus:ring-2 focus:ring-brand-blue/15 dark:border-white/10 dark:bg-slate-800 dark:text-slate-200">
                   <option value="">Pilih jam…</option>
@@ -1404,38 +1379,25 @@ tailwind.config = {
                 </select>
               </div>
             </div>
-            <div><label class="mb-2 block text-[11.5px] font-bold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">Metode <span class="text-brand-red">*</span></label>
-              <div class="grid grid-cols-3 gap-3">
-                <label class="flex cursor-pointer items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-3 py-3 text-[12.5px] font-semibold text-slate-700 has-[:checked]:border-brand-blue has-[:checked]:bg-brand-blueSoft has-[:checked]:text-brand-blue dark:border-white/10 dark:bg-slate-800 dark:text-slate-300">
-                  <input type="radio" name="metode" value="online" checked class="text-brand-blue focus:ring-brand-blue/30"> Online
-                </label>
-                <label class="flex cursor-pointer items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-3 py-3 text-[12.5px] font-semibold text-slate-700 has-[:checked]:border-brand-blue has-[:checked]:bg-brand-blueSoft has-[:checked]:text-brand-blue dark:border-white/10 dark:bg-slate-800 dark:text-slate-300">
-                  <input type="radio" name="metode" value="kantor" class="text-brand-blue focus:ring-brand-blue/30"> Kantor
-                </label>
-                <label class="flex cursor-pointer items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-3 py-3 text-[12.5px] font-semibold text-slate-700 has-[:checked]:border-brand-blue has-[:checked]:bg-brand-blueSoft has-[:checked]:text-brand-blue dark:border-white/10 dark:bg-slate-800 dark:text-slate-300">
-                  <input type="radio" name="metode" value="lapangan" class="text-brand-blue focus:ring-brand-blue/30"> Lapangan
-                </label>
-              </div>
-            </div>
             <div><label class="mb-2 block text-[11.5px] font-bold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">Topik Konsultasi</label><textarea rows="4" placeholder="Topik yang ingin dibahas…" class="w-full resize-none rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-[13.5px] leading-relaxed text-slate-800 placeholder-slate-400 outline-none transition-all focus:border-brand-blue/50 focus:bg-white focus:ring-2 focus:ring-brand-blue/15 dark:border-white/10 dark:bg-slate-800 dark:text-slate-200 dark:placeholder-slate-500"></textarea></div>
             <div class="flex items-center justify-end gap-3 pt-2">
               <button type="submit" class="btn-primary inline-flex items-center gap-2 rounded-xl px-7 py-3.5 text-[13.5px] font-bold text-white">Booking Sekarang <i data-lucide="calendar-check" class="h-4 w-4"></i></button>
             </div>
             <div data-form-feedback class="hidden items-start gap-3 rounded-2xl border border-emerald-500/25 bg-emerald-50 px-4 py-3.5 dark:bg-emerald-500/10">
               <i data-lucide="check-circle-2" class="mt-0.5 h-4.5 w-4.5 shrink-0 text-emerald-600"></i>
-              <div><div class="text-[13px] font-bold text-emerald-700 dark:text-emerald-300">Booking berhasil!</div><div class="mt-0.5 text-[12px] text-emerald-700/70 dark:text-emerald-300/70">Kami akan mengirimkan konfirmasi jadwal via WhatsApp/Email.</div></div>
+              <div><div class="text-[13px] font-bold text-emerald-700 dark:text-emerald-300">Booking berhasil!</div><div class="mt-0.5 text-[12px] text-emerald-700/70 dark:text-emerald-300/70">Kami akan mengirimkan konfirmasi jadwal.</div></div>
             </div>
           </form>
         </div>
       </div>
 
-      <!-- FORM 4: Vendor Registration -->
+      <!-- FORM 4 -->
       <div id="form-4" class="tab-panel">
         <div class="mx-auto max-w-3xl">
           <div class="text-center">
             <div class="inline-flex items-center gap-2 rounded-full bg-amber-50 px-3 py-1 text-[10.5px] font-bold uppercase tracking-wider text-amber-700 dark:bg-amber-500/10 dark:text-amber-400"><i data-lucide="building-2" class="h-3 w-3"></i> Vendor Registration</div>
             <h3 class="mt-4 text-xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-2xl">Daftar sebagai Vendor / Supplier</h3>
-            <p class="mt-2 text-[13.5px] text-slate-600 dark:text-slate-400">Bergabung dalam jaringan vendor Judison untuk peluang kerja sama di masa depan.</p>
+            <p class="mt-2 text-[13.5px] text-slate-600 dark:text-slate-400">Bergabung dalam jaringan vendor Judison.</p>
           </div>
           <form data-simple class="mt-8 space-y-5">
             <div><label class="mb-2 block text-[11.5px] font-bold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">Nama Perusahaan <span class="text-brand-red">*</span></label><input type="text" required placeholder="PT / CV ..." class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-[13.5px] text-slate-800 placeholder-slate-400 outline-none transition-all focus:border-brand-blue/50 focus:bg-white focus:ring-2 focus:ring-brand-blue/15 dark:border-white/10 dark:bg-slate-800 dark:text-slate-200 dark:placeholder-slate-500"></div>
@@ -1452,7 +1414,7 @@ tailwind.config = {
                   <option>Lainnya</option>
                 </select>
               </div>
-              <div><label class="mb-2 block text-[11.5px] font-bold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">NPWP Perusahaan <span class="text-brand-red">*</span></label><input type="text" required placeholder="00.000.000.0-000.000" class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-[13.5px] text-slate-800 placeholder-slate-400 outline-none transition-all focus:border-brand-blue/50 focus:bg-white focus:ring-2 focus:ring-brand-blue/15 dark:border-white/10 dark:bg-slate-800 dark:text-slate-200 dark:placeholder-slate-500"></div>
+              <div><label class="mb-2 block text-[11.5px] font-bold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">NPWP <span class="text-brand-red">*</span></label><input type="text" required placeholder="00.000.000.0-000.000" class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-[13.5px] text-slate-800 placeholder-slate-400 outline-none transition-all focus:border-brand-blue/50 focus:bg-white focus:ring-2 focus:ring-brand-blue/15 dark:border-white/10 dark:bg-slate-800 dark:text-slate-200 dark:placeholder-slate-500"></div>
             </div>
             <div class="grid gap-5 sm:grid-cols-2">
               <div><label class="mb-2 block text-[11.5px] font-bold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">Nama PIC <span class="text-brand-red">*</span></label><input type="text" required placeholder="Nama penanggung jawab" class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-[13.5px] text-slate-800 placeholder-slate-400 outline-none transition-all focus:border-brand-blue/50 focus:bg-white focus:ring-2 focus:ring-brand-blue/15 dark:border-white/10 dark:bg-slate-800 dark:text-slate-200 dark:placeholder-slate-500"></div>
@@ -1462,13 +1424,13 @@ tailwind.config = {
               <div><label class="mb-2 block text-[11.5px] font-bold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">Email PIC <span class="text-brand-red">*</span></label><input type="email" required placeholder="pic@perusahaan.com" class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-[13.5px] text-slate-800 placeholder-slate-400 outline-none transition-all focus:border-brand-blue/50 focus:bg-white focus:ring-2 focus:ring-brand-blue/15 dark:border-white/10 dark:bg-slate-800 dark:text-slate-200 dark:placeholder-slate-500"></div>
               <div><label class="mb-2 block text-[11.5px] font-bold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">Kota Operasional <span class="text-brand-red">*</span></label><input type="text" required placeholder="Kota / Kabupaten" class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-[13.5px] text-slate-800 placeholder-slate-400 outline-none transition-all focus:border-brand-blue/50 focus:bg-white focus:ring-2 focus:ring-brand-blue/15 dark:border-white/10 dark:bg-slate-800 dark:text-slate-200 dark:placeholder-slate-500"></div>
             </div>
-            <div><label class="mb-2 block text-[11.5px] font-bold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">Produk / Layanan yang Ditawarkan <span class="text-brand-red">*</span></label><textarea rows="4" required placeholder="Jelaskan produk/layanan, kapasitas, dan pengalaman Anda…" class="w-full resize-none rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-[13.5px] leading-relaxed text-slate-800 placeholder-slate-400 outline-none transition-all focus:border-brand-blue/50 focus:bg-white focus:ring-2 focus:ring-brand-blue/15 dark:border-white/10 dark:bg-slate-800 dark:text-slate-200 dark:placeholder-slate-500"></textarea></div>
+            <div><label class="mb-2 block text-[11.5px] font-bold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">Produk / Layanan <span class="text-brand-red">*</span></label><textarea rows="4" required placeholder="Jelaskan produk/layanan, kapasitas, dan pengalaman Anda…" class="w-full resize-none rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-[13.5px] leading-relaxed text-slate-800 placeholder-slate-400 outline-none transition-all focus:border-brand-blue/50 focus:bg-white focus:ring-2 focus:ring-brand-blue/15 dark:border-white/10 dark:bg-slate-800 dark:text-slate-200 dark:placeholder-slate-500"></textarea></div>
             <div class="flex items-center justify-end gap-3 pt-2">
               <button type="submit" class="btn-primary inline-flex items-center gap-2 rounded-xl px-7 py-3.5 text-[13.5px] font-bold text-white">Daftar Vendor <i data-lucide="user-plus" class="h-4 w-4"></i></button>
             </div>
             <div data-form-feedback class="hidden items-start gap-3 rounded-2xl border border-emerald-500/25 bg-emerald-50 px-4 py-3.5 dark:bg-emerald-500/10">
               <i data-lucide="check-circle-2" class="mt-0.5 h-4.5 w-4.5 shrink-0 text-emerald-600"></i>
-              <div><div class="text-[13px] font-bold text-emerald-700 dark:text-emerald-300">Registrasi berhasil!</div><div class="mt-0.5 text-[12px] text-emerald-700/70 dark:text-emerald-300/70">Data Anda tersimpan di database vendor kami. Tim procurement akan menghubungi jika ada kebutuhan.</div></div>
+              <div><div class="text-[13px] font-bold text-emerald-700 dark:text-emerald-300">Registrasi berhasil!</div><div class="mt-0.5 text-[12px] text-emerald-700/70 dark:text-emerald-300/70">Data Anda tersimpan. Tim procurement akan menghubungi jika ada kebutuhan.</div></div>
             </div>
           </form>
         </div>
@@ -1477,7 +1439,7 @@ tailwind.config = {
   </div>
 </section>
 
-<!-- KONTAK + MAPS -->
+<!-- KONTAK -->
 <section id="kontak" class="relative scroll-mt-28 py-20 sm:py-28">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="reveal mx-auto max-w-3xl text-center">
@@ -1488,7 +1450,6 @@ tailwind.config = {
 
     <div class="mt-14 grid gap-6 lg:grid-cols-12">
       <div class="space-y-5 lg:col-span-5">
-        <!-- Live clock -->
         <div class="reveal rounded-3xl border border-slate-200 bg-gradient-to-br from-brand-blue to-brand-blueDark p-6 shadow-glow sm:p-7">
           <div class="flex items-center gap-3 text-white"><i data-lucide="clock" class="h-5 w-5"></i><span class="text-[11.5px] font-bold uppercase tracking-[0.16em] opacity-90">Waktu Indonesia Barat</span></div>
           <div id="wibClock" class="mt-3 font-mono text-3xl font-extrabold tracking-tight text-white">--:--:--</div>
@@ -1520,7 +1481,7 @@ tailwind.config = {
                 <div class="text-[10.5px] font-semibold uppercase tracking-[0.14em] text-slate-500 dark:text-slate-400">Telepon / WhatsApp</div>
                 <div class="mt-0.5 text-[13.5px] font-semibold text-slate-800 dark:text-slate-200">0878 8885 5877</div>
               </div>
-              <button data-copy="087888855877" class="copy-btn grid h-8 w-8 shrink-0 place-items-center rounded-lg border border-slate-200 bg-white text-slate-500 transition-all hover:border-brand-blue/40 hover:text-brand-blue dark:border-white/10 dark:bg-slate-900 dark:text-slate-400"><i data-lucide="copy" class="h-3.5 w-3.5"></i></button>
+              <button data-copy="087888855877" class="copy-btn grid h-8 w-8 shrink-0 place-items-center rounded-lg border border-slate-200 bg-white text-slate-500 transition-all hover:border-brand-blue/40 hover:text-brand-blue dark:border-white/10 dark:bg-slate-900 dark:text-slate-400" aria-label="Copy"><i data-lucide="copy" class="h-3.5 w-3.5"></i></button>
             </div>
             <div class="group flex items-center gap-3.5 rounded-xl border border-slate-200 bg-slate-50 p-3.5 dark:border-white/10 dark:bg-slate-800">
               <div class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-brand-blueSoft text-brand-blue dark:bg-brand-blue/10"><i data-lucide="mail" class="h-4.5 w-4.5"></i></div>
@@ -1528,24 +1489,33 @@ tailwind.config = {
                 <div class="text-[10.5px] font-semibold uppercase tracking-[0.14em] text-slate-500 dark:text-slate-400">Email</div>
                 <div class="mt-0.5 truncate text-[13.5px] font-semibold text-slate-800 dark:text-slate-200">info@judison.my.id</div>
               </div>
-              <button data-copy="info@judison.my.id" class="copy-btn grid h-8 w-8 shrink-0 place-items-center rounded-lg border border-slate-200 bg-white text-slate-500 transition-all hover:border-brand-blue/40 hover:text-brand-blue dark:border-white/10 dark:bg-slate-900 dark:text-slate-400"><i data-lucide="copy" class="h-3.5 w-3.5"></i></button>
+              <button data-copy="info@judison.my.id" class="copy-btn grid h-8 w-8 shrink-0 place-items-center rounded-lg border border-slate-200 bg-white text-slate-500 transition-all hover:border-brand-blue/40 hover:text-brand-blue dark:border-white/10 dark:bg-slate-900 dark:text-slate-400" aria-label="Copy"><i data-lucide="copy" class="h-3.5 w-3.5"></i></button>
             </div>
           </div>
-          <!-- SHARE -->
+          <!-- SHARE BUTTONS - FIXED WITH INLINE SVG -->
           <div class="mt-5">
             <div class="text-[11px] font-bold uppercase tracking-[0.14em] text-slate-500 dark:text-slate-400">Bagikan Halaman Ini</div>
             <div class="mt-3 flex flex-wrap gap-2">
-              <a data-share="whatsapp" href="#" class="grid h-9 w-9 place-items-center rounded-xl border border-slate-200 bg-white text-emerald-600 transition-all hover:border-emerald-500/40 hover:bg-emerald-50 dark:border-white/10 dark:bg-slate-800" aria-label="WhatsApp"><i data-lucide="message-circle" class="h-4 w-4"></i></a>
-              <a data-share="facebook" href="#" class="grid h-9 w-9 place-items-center rounded-xl border border-slate-200 bg-white text-blue-600 transition-all hover:border-blue-500/40 hover:bg-blue-50 dark:border-white/10 dark:bg-slate-800" aria-label="Facebook"><i data-lucide="facebook" class="h-4 w-4"></i></a>
-              <a data-share="twitter" href="#" class="grid h-9 w-9 place-items-center rounded-xl border border-slate-200 bg-white text-slate-800 transition-all hover:border-slate-500/40 hover:bg-slate-100 dark:border-white/10 dark:bg-slate-800 dark:text-slate-200" aria-label="X"><i data-lucide="twitter" class="h-4 w-4"></i></a>
-              <a data-share="linkedin" href="#" class="grid h-9 w-9 place-items-center rounded-xl border border-slate-200 bg-white text-sky-700 transition-all hover:border-sky-500/40 hover:bg-sky-50 dark:border-white/10 dark:bg-slate-800" aria-label="LinkedIn"><i data-lucide="linkedin" class="h-4 w-4"></i></a>
-              <button data-share="copy" class="grid h-9 w-9 place-items-center rounded-xl border border-slate-200 bg-white text-slate-600 transition-all hover:border-brand-blue/40 hover:bg-brand-blueSoft dark:border-white/10 dark:bg-slate-800 dark:text-slate-300" aria-label="Copy link"><i data-lucide="link" class="h-4 w-4"></i></button>
+              <a data-share="whatsapp" href="#" class="grid h-9 w-9 place-items-center rounded-xl border border-slate-200 bg-white text-emerald-600 transition-all hover:border-emerald-500/40 hover:bg-emerald-50 dark:border-white/10 dark:bg-slate-800" aria-label="WhatsApp">
+                <svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              </a>
+              <a data-share="facebook" href="#" class="grid h-9 w-9 place-items-center rounded-xl border border-slate-200 bg-white text-blue-600 transition-all hover:border-blue-500/40 hover:bg-blue-50 dark:border-white/10 dark:bg-slate-800" aria-label="Facebook">
+                <svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              </a>
+              <a data-share="twitter" href="#" class="grid h-9 w-9 place-items-center rounded-xl border border-slate-200 bg-white text-slate-900 transition-all hover:border-slate-500/40 hover:bg-slate-100 dark:border-white/10 dark:bg-slate-800 dark:text-slate-200" aria-label="X">
+                <svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              </a>
+              <a data-share="linkedin" href="#" class="grid h-9 w-9 place-items-center rounded-xl border border-slate-200 bg-white text-sky-700 transition-all hover:border-sky-500/40 hover:bg-sky-50 dark:border-white/10 dark:bg-slate-800" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.062 2.062 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg>
+              </a>
+              <button data-share="copy" class="grid h-9 w-9 place-items-center rounded-xl border border-slate-200 bg-white text-slate-600 transition-all hover:border-brand-blue/40 hover:bg-brand-blueSoft dark:border-white/10 dark:bg-slate-800 dark:text-slate-300" aria-label="Copy link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+              </button>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- MAPS -->
       <div class="reveal space-y-5 lg:col-span-7" style="transition-delay:.1s">
         <div class="overflow-hidden rounded-3xl border border-slate-200 shadow-card dark:border-white/10">
           <div class="flex items-center justify-between gap-3 border-b border-slate-200 bg-white px-5 py-3 dark:border-white/10 dark:bg-slate-900">
@@ -1566,7 +1536,7 @@ tailwind.config = {
   </div>
 </section>
 
-<!-- NEWSLETTER CTA -->
+<!-- NEWSLETTER -->
 <section class="relative overflow-hidden border-y border-slate-200 bg-gradient-to-br from-brand-blue via-brand-blueDark to-brand-blueDeep py-16 dark:border-white/10 sm:py-20 no-print">
   <div class="pointer-events-none absolute inset-0 bg-grid-dark opacity-20"></div>
   <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -1574,14 +1544,12 @@ tailwind.config = {
       <div class="reveal text-white">
         <div class="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-3 py-1 text-[10.5px] font-bold uppercase tracking-wider backdrop-blur"><i data-lucide="mail" class="h-3 w-3"></i> Newsletter</div>
         <h2 class="mt-4 text-2xl font-extrabold leading-tight tracking-tight sm:text-3xl lg:text-[2rem]">Dapatkan update proyek &amp; berita terbaru</h2>
-        <p class="mt-3 text-[14.5px] leading-relaxed text-white/80">Berlangganan newsletter kami untuk menerima informasi proyek, program, dan peluang kemitraan langsung di email Anda.</p>
+        <p class="mt-3 text-[14.5px] leading-relaxed text-white/80">Berlangganan newsletter kami untuk menerima informasi proyek, program, dan peluang kemitraan.</p>
       </div>
       <div class="reveal" style="transition-delay:.1s">
         <form id="newsletterForm" class="flex flex-col gap-3 sm:flex-row" novalidate>
           <input id="nlEmail" type="email" required placeholder="email@perusahaan.com" class="w-full rounded-xl border border-white/30 bg-white/10 px-4 py-3.5 text-[13.5px] text-white placeholder-white/60 outline-none backdrop-blur transition-all focus:border-white focus:bg-white/20 focus:ring-2 focus:ring-white/30">
-          <button type="submit" class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl bg-white px-6 py-3.5 text-[13.5px] font-bold text-brand-blueDark shadow-lg transition-all hover:-translate-y-0.5 hover:shadow-xl">
-            <i data-lucide="send" class="h-4 w-4"></i> Berlangganan
-          </button>
+          <button type="submit" class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl bg-white px-6 py-3.5 text-[13.5px] font-bold text-brand-blueDark shadow-lg transition-all hover:-translate-y-0.5 hover:shadow-xl"><i data-lucide="send" class="h-4 w-4"></i> Berlangganan</button>
         </form>
         <p class="mt-3 text-[11.5px] text-white/70">Kami tidak mengirim spam. Anda bisa berhenti kapan saja.</p>
       </div>
@@ -1659,20 +1627,13 @@ tailwind.config = {
   <div class="flex items-center justify-between bg-gradient-to-r from-brand-blue to-brand-blueDark p-4 text-white">
     <div class="flex items-center gap-3">
       <div class="relative grid h-9 w-9 place-items-center rounded-full bg-white/20"><i data-lucide="headphones" class="h-4.5 w-4.5"></i><span class="absolute -right-0.5 -bottom-0.5 h-3 w-3 rounded-full border-2 border-brand-blue bg-emerald-400"></span></div>
-      <div class="leading-tight">
-        <div class="text-[13px] font-extrabold">Tim Judison</div>
-        <div class="text-[10.5px] text-white/80">Online — biasanya balas cepat</div>
-      </div>
+      <div class="leading-tight"><div class="text-[13px] font-extrabold">Tim Judison</div><div class="text-[10.5px] text-white/80">Online — biasanya balas cepat</div></div>
     </div>
     <button id="chatClose" aria-label="Tutup" class="grid h-8 w-8 place-items-center rounded-lg transition-colors hover:bg-white/15"><i data-lucide="x" class="h-4 w-4"></i></button>
   </div>
   <div class="max-h-80 overflow-y-auto p-4" id="chatMessages">
-    <div class="mb-3 rounded-2xl rounded-tl-sm bg-slate-100 p-3 text-[13px] text-slate-700 dark:bg-slate-800 dark:text-slate-200">
-      Halo! 👋 Selamat datang di Judison. Ada yang bisa kami bantu?
-    </div>
-    <div class="mb-3 ml-auto max-w-[80%] rounded-2xl rounded-tr-sm bg-brand-blue p-3 text-[13px] text-white">
-      Pilih topik di bawah untuk mulai.
-    </div>
+    <div class="mb-3 rounded-2xl rounded-tl-sm bg-slate-100 p-3 text-[13px] text-slate-700 dark:bg-slate-800 dark:text-slate-200">Halo! 👋 Selamat datang di Judison. Ada yang bisa kami bantu?</div>
+    <div class="mb-3 ml-auto max-w-[80%] rounded-2xl rounded-tr-sm bg-brand-blue p-3 text-[13px] text-white">Pilih topik di bawah untuk mulai.</div>
   </div>
   <div class="border-t border-slate-200 p-3 dark:border-white/10">
     <div class="grid grid-cols-2 gap-2">
@@ -1685,7 +1646,7 @@ tailwind.config = {
   </div>
 </div>
 
-<!-- BACK TO TOP with reading % -->
+<!-- BACK TO TOP -->
 <button id="backToTop" aria-label="Kembali ke atas" class="hidden-btn fixed bottom-5 left-5 z-40 flex h-12 w-12 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 shadow-xl transition-all hover:border-brand-blue/40 hover:text-brand-blue dark:border-white/10 dark:bg-slate-800 dark:text-slate-300 no-print sm:bottom-7 sm:left-7">
   <svg class="absolute inset-0" viewBox="0 0 44 44" fill="none">
     <circle cx="22" cy="22" r="20" stroke="currentColor" stroke-opacity="0.1" stroke-width="2"/>
@@ -1695,10 +1656,8 @@ tailwind.config = {
   <i data-lucide="arrow-up" class="relative h-5 w-5"></i>
 </button>
 
-<!-- READING PROGRESS BADGE -->
-<div id="readingBadge" class="pointer-events-none fixed bottom-20 left-5 z-40 hidden rounded-full border border-slate-200 bg-white/95 px-3 py-1.5 text-[11px] font-bold text-slate-600 shadow-lg backdrop-blur dark:border-white/10 dark:bg-slate-800/95 dark:text-slate-300 no-print sm:bottom-24 sm:left-7">
-  <span id="readingBadgeText">0%</span>
-</div>
+<!-- READING BADGE -->
+<div id="readingBadge" class="pointer-events-none fixed bottom-20 left-5 z-40 hidden rounded-full border border-slate-200 bg-white/95 px-3 py-1.5 text-[11px] font-bold text-slate-600 shadow-lg backdrop-blur dark:border-white/10 dark:bg-slate-800/95 dark:text-slate-300 no-print sm:bottom-24 sm:left-7"><span id="readingBadgeText">0%</span></div>
 
 <!-- LIGHTBOX -->
 <div id="lightbox" class="hidden-lb fixed inset-0 z-[200] flex items-center justify-center bg-black/90 p-4 backdrop-blur-sm no-print">
@@ -1714,11 +1673,11 @@ tailwind.config = {
       <button data-share="close" class="grid h-8 w-8 place-items-center rounded-lg text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800"><i data-lucide="x" class="h-4 w-4"></i></button>
     </div>
     <div class="mt-5 grid grid-cols-5 gap-3">
-      <a data-share="whatsapp" href="#" class="flex flex-col items-center gap-2"><div class="grid h-12 w-12 place-items-center rounded-2xl bg-emerald-50 text-emerald-600 dark:bg-emerald-500/10"><i data-lucide="message-circle" class="h-5 w-5"></i></div><span class="text-[10.5px] font-semibold text-slate-500 dark:text-slate-400">WA</span></a>
-      <a data-share="facebook" href="#" class="flex flex-col items-center gap-2"><div class="grid h-12 w-12 place-items-center rounded-2xl bg-blue-50 text-blue-600 dark:bg-blue-500/10"><i data-lucide="facebook" class="h-5 w-5"></i></div><span class="text-[10.5px] font-semibold text-slate-500 dark:text-slate-400">FB</span></a>
-      <a data-share="twitter" href="#" class="flex flex-col items-center gap-2"><div class="grid h-12 w-12 place-items-center rounded-2xl bg-slate-100 text-slate-800 dark:bg-slate-800 dark:text-slate-200"><i data-lucide="twitter" class="h-5 w-5"></i></div><span class="text-[10.5px] font-semibold text-slate-500 dark:text-slate-400">X</span></a>
-      <a data-share="linkedin" href="#" class="flex flex-col items-center gap-2"><div class="grid h-12 w-12 place-items-center rounded-2xl bg-sky-50 text-sky-700 dark:bg-sky-500/10"><i data-lucide="linkedin" class="h-5 w-5"></i></div><span class="text-[10.5px] font-semibold text-slate-500 dark:text-slate-400">IN</span></a>
-      <button data-share="copy" class="flex flex-col items-center gap-2"><div class="grid h-12 w-12 place-items-center rounded-2xl bg-brand-blueSoft text-brand-blue dark:bg-brand-blue/10"><i data-lucide="link" class="h-5 w-5"></i></div><span class="text-[10.5px] font-semibold text-slate-500 dark:text-slate-400">Salin</span></button>
+      <a data-share="whatsapp" href="#" class="flex flex-col items-center gap-2"><div class="grid h-12 w-12 place-items-center rounded-2xl bg-emerald-50 text-emerald-600 dark:bg-emerald-500/10"><svg viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></div><span class="text-[10.5px] font-semibold text-slate-500 dark:text-slate-400">WA</span></a>
+      <a data-share="facebook" href="#" class="flex flex-col items-center gap-2"><div class="grid h-12 w-12 place-items-center rounded-2xl bg-blue-50 text-blue-600 dark:bg-blue-500/10"><svg viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></div><span class="text-[10.5px] font-semibold text-slate-500 dark:text-slate-400">FB</span></a>
+      <a data-share="twitter" href="#" class="flex flex-col items-center gap-2"><div class="grid h-12 w-12 place-items-center rounded-2xl bg-slate-100 text-slate-800 dark:bg-slate-800 dark:text-slate-200"><svg viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></div><span class="text-[10.5px] font-semibold text-slate-500 dark:text-slate-400">X</span></a>
+      <a data-share="linkedin" href="#" class="flex flex-col items-center gap-2"><div class="grid h-12 w-12 place-items-center rounded-2xl bg-sky-50 text-sky-700 dark:bg-sky-500/10"><svg viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.062 2.062 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg></div><span class="text-[10.5px] font-semibold text-slate-500 dark:text-slate-400">IN</span></a>
+      <button data-share="copy" class="flex flex-col items-center gap-2"><div class="grid h-12 w-12 place-items-center rounded-2xl bg-brand-blueSoft text-brand-blue dark:bg-brand-blue/10"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg></div><span class="text-[10.5px] font-semibold text-slate-500 dark:text-slate-400">Salin</span></button>
     </div>
   </div>
 </div>
@@ -1748,7 +1707,7 @@ tailwind.config = {
     }
   }, 150);
 
-  /* THEME with AUTO BY TIME */
+  /* THEME */
   var themeToggle = document.getElementById('themeToggle');
   var sunIcon = document.querySelector('.theme-icon-sun');
   var moonIcon = document.querySelector('.theme-icon-moon');
@@ -1767,10 +1726,8 @@ tailwind.config = {
   if (savedTheme === 'dark') applyTheme(true);
   else if (savedTheme === 'light') applyTheme(false);
   else {
-    // Auto: dark if hour is 18-23 or 0-5
     var hour = new Date().getHours();
-    var autoDark = hour >= 18 || hour < 6;
-    applyTheme(autoDark);
+    applyTheme(hour >= 18 || hour < 6);
   }
   if (themeToggle) themeToggle.addEventListener('click', function () {
     var isDark = !document.documentElement.classList.contains('dark');
@@ -1778,12 +1735,13 @@ tailwind.config = {
     localStorage.setItem('judison-theme', isDark ? 'dark' : 'light');
   });
 
-  /* SCROLL + READING PROGRESS */
+  /* SCROLL */
   var scrollProgress = document.getElementById('scrollProgress');
   var backToTop = document.getElementById('backToTop');
   var ringProgress = document.getElementById('ringProgress');
   var readingBadge = document.getElementById('readingBadge');
   var readingBadgeText = document.getElementById('readingBadgeText');
+  var sectionNavEl = document.getElementById('sectionNav');
   function handleScroll() {
     var winScroll = document.documentElement.scrollTop;
     var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
@@ -1802,6 +1760,10 @@ tailwind.config = {
       else readingBadge.classList.add('hidden');
     }
     if (readingBadgeText) readingBadgeText.textContent = Math.round(scrolled) + '%';
+    if (sectionNavEl) {
+      if (winScroll > 600) sectionNavEl.classList.remove('nav-hidden');
+      else sectionNavEl.classList.add('nav-hidden');
+    }
     var navInner = document.getElementById('navInner');
     if (navInner) {
       if (winScroll > 20) navInner.classList.add('nav-scrolled');
@@ -1867,14 +1829,13 @@ tailwind.config = {
     counters.forEach(function (el) { co.observe(el); });
   }
 
-  /* PROGRESS BARS (project) */
+  /* PROGRESS BARS */
   var progBars = document.querySelectorAll('.prog-fill');
   if ('IntersectionObserver' in window) {
     var pObserver = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
         if (e.isIntersecting) {
-          var val = e.target.getAttribute('data-prog') || '0';
-          e.target.style.width = val + '%';
+          e.target.style.width = (e.target.getAttribute('data-prog') || '0') + '%';
           pObserver.unobserve(e.target);
         }
       });
@@ -1887,7 +1848,6 @@ tailwind.config = {
       entries.forEach(function (e) {
         if (e.isIntersecting) {
           var target = parseInt(e.target.getAttribute('data-prog-label'), 10) || 0;
-          var start = 0;
           var startTime = null;
           function stepProg(ts) {
             if (startTime === null) startTime = ts;
@@ -1905,13 +1865,13 @@ tailwind.config = {
     progLabels.forEach(function (el) { plObserver.observe(el); });
   }
 
-  /* SCROLLSPY */
+  /* SCROLLSPY + SECTION NAV */
   var sections = document.querySelectorAll('section[id]');
   var navLinks = document.querySelectorAll('.nav-link');
-  function setActive(id) {
+  var sectionNavItems = document.querySelectorAll('.section-nav-item');
+  function setActiveSection(id) {
     navLinks.forEach(function (link) {
-      var href = link.getAttribute('href');
-      if (href === '#' + id) {
+      if (link.getAttribute('href') === '#' + id) {
         link.classList.add('text-brand-blueDark', 'bg-brand-blueSoft', 'dark:text-white', 'dark:bg-brand-blue/10');
         link.classList.remove('text-slate-500', 'dark:text-slate-400');
       } else {
@@ -1919,19 +1879,21 @@ tailwind.config = {
         link.classList.add('text-slate-500', 'dark:text-slate-400');
       }
     });
+    sectionNavItems.forEach(function (item) {
+      item.classList.toggle('active', item.getAttribute('data-section') === id);
+    });
   }
   if ('IntersectionObserver' in window && sections.length) {
     var so = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) { if (e.isIntersecting) setActive(e.target.id); });
+      entries.forEach(function (e) { if (e.isIntersecting) setActiveSection(e.target.id); });
     }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
     sections.forEach(function (s) { so.observe(s); });
   }
 
-  /* TABS (generic) */
+  /* TABS */
   document.querySelectorAll('[data-tab]').forEach(function (btn) {
     btn.addEventListener('click', function () {
       var target = btn.getAttribute('data-tab');
-      // Sibling tabs
       var parent = btn.parentElement;
       parent.querySelectorAll('[data-tab]').forEach(function (b) {
         b.classList.remove('bg-brand-blue', 'text-white', 'border-brand-blue/30', 'shadow-md');
@@ -1939,7 +1901,6 @@ tailwind.config = {
       });
       btn.classList.add('bg-brand-blue', 'text-white', 'border-brand-blue/30', 'shadow-md');
       btn.classList.remove('bg-white', 'text-slate-600', 'border-slate-200', 'dark:bg-slate-900', 'dark:text-slate-300', 'dark:border-white/10');
-      // Find panels within the same wrapping card
       var card = btn.closest('section').querySelectorAll('.tab-panel');
       card.forEach(function (p) { p.classList.remove('active'); });
       var targetPanel = document.getElementById(target);
@@ -1964,8 +1925,7 @@ tailwind.config = {
   var lbClose = document.getElementById('lbClose');
   document.querySelectorAll('[data-lb]').forEach(function (btn) {
     btn.addEventListener('click', function () {
-      var src = btn.getAttribute('data-lb');
-      if (lbImage) lbImage.src = src;
+      if (lbImage) lbImage.src = btn.getAttribute('data-lb');
       if (lightbox) lightbox.classList.remove('hidden-lb');
       document.body.style.overflow = 'hidden';
     });
@@ -2002,7 +1962,7 @@ tailwind.config = {
   }
   updateClock(); setInterval(updateClock, 1000);
 
-  /* FILTER PROYEK */
+  /* FILTER */
   var filterChips = document.querySelectorAll('[data-filter]');
   var proyekCards = document.querySelectorAll('.proyek-card');
   var emptyFilter = document.getElementById('emptyFilter');
@@ -2040,7 +2000,15 @@ tailwind.config = {
 
   /* SHARE */
   function getShareUrl() { return window.location.href; }
-  function getShareText() { return 'Judison — PT Medwa Judison Perkasa | Konstruksi, Agrikultur, Pangan & Perdagangan'; }
+  function getShareText() { return 'Judison — PT Medwa Judison Perkasa'; }
+  function showToast(msg) {
+    var t = document.createElement('div');
+    t.className = 'fixed bottom-24 left-1/2 z-[500] -translate-x-1/2 rounded-xl bg-slate-900 px-5 py-3 text-[13px] font-semibold text-white shadow-2xl transition-all duration-300 dark:bg-white dark:text-slate-900';
+    t.textContent = msg;
+    document.body.appendChild(t);
+    setTimeout(function () { t.style.opacity = '0'; t.style.transform = 'translate(-50%, 20px)'; }, 2000);
+    setTimeout(function () { t.remove(); }, 2400);
+  }
   document.querySelectorAll('[data-share]').forEach(function (el) {
     el.addEventListener('click', function (e) {
       var kind = el.getAttribute('data-share');
@@ -2072,17 +2040,7 @@ tailwind.config = {
     });
   }
 
-  /* TOAST */
-  function showToast(msg) {
-    var t = document.createElement('div');
-    t.className = 'fixed bottom-24 left-1/2 z-[500] -translate-x-1/2 rounded-xl bg-slate-900 px-5 py-3 text-[13px] font-semibold text-white shadow-2xl transition-all duration-300 dark:bg-white dark:text-slate-900';
-    t.textContent = msg;
-    document.body.appendChild(t);
-    setTimeout(function () { t.style.opacity = '0'; t.style.transform = 'translate(-50%, 20px)'; }, 2000);
-    setTimeout(function () { t.remove(); }, 2400);
-  }
-
-  /* MULTI-STEP FORM */
+  /* MULTI-STEP */
   document.querySelectorAll('[data-multi]').forEach(function (form) {
     var stepPanels = form.querySelectorAll('.step-panel');
     var stepDots = form.querySelectorAll('.step-dot');
@@ -2104,13 +2062,12 @@ tailwind.config = {
       if (prevBtn) prevBtn.disabled = current === 1;
       if (nextBtn) nextBtn.classList.toggle('hidden', current === total);
       if (submitBtn) submitBtn.classList.toggle('hidden', current !== total);
-      if (submitBtn) submitBtn.style.display = current === total ? 'inline-flex' : 'none';
     }
     function validateStep(step) {
       var panel = form.querySelector('.step-panel[data-step="' + step + '"]');
       var valid = true;
       panel.querySelectorAll('[required]').forEach(function (f) {
-        if ((f.type === 'checkbox' || f.type === 'radio') && !f.checked) { /* handled later */ }
+        if ((f.type === 'checkbox' || f.type === 'radio') && !f.checked) { valid = false; }
         else if (!f.value.trim()) { valid = false; f.classList.add('border-red-500/60', 'ring-2', 'ring-red-500/15'); }
         else f.classList.remove('border-red-500/60', 'ring-2', 'ring-red-500/15');
       });
@@ -2135,7 +2092,6 @@ tailwind.config = {
         if (window.lucide) window.lucide.createIcons();
         var fb = form.querySelector('[data-form-feedback]');
         if (fb) { fb.classList.remove('hidden'); fb.classList.add('flex'); }
-        // Confetti
         if (window.confetti) window.confetti({ particleCount: 120, spread: 70, origin: { y: 0.7 }, colors: ['#2563EB', '#60A5FA', '#DC2626', '#FFFFFF'] });
         setTimeout(function () { form.reset(); current = 1; render(); }, 400);
         setTimeout(function () { if (fb) { fb.classList.add('hidden'); fb.classList.remove('flex'); } }, 8000);
@@ -2205,8 +2161,7 @@ tailwind.config = {
     if (window.lucide) window.lucide.createIcons();
     fileList.querySelectorAll('[data-remove]').forEach(function (btn) {
       btn.addEventListener('click', function () {
-        var i = parseInt(btn.getAttribute('data-remove'), 10);
-        files.splice(i, 1);
+        files.splice(parseInt(btn.getAttribute('data-remove'), 10), 1);
         renderFiles();
       });
     });
@@ -2233,20 +2188,12 @@ tailwind.config = {
     });
   }
 
-  /* CHAT WIDGET */
+  /* CHAT */
   var chatToggle = document.getElementById('chatToggle');
   var chatClose = document.getElementById('chatClose');
   var chatPanel = document.getElementById('chatPanel');
-  if (chatToggle && chatPanel) {
-    chatToggle.addEventListener('click', function () {
-      chatPanel.classList.toggle('hidden-chat');
-    });
-  }
-  if (chatClose && chatPanel) {
-    chatClose.addEventListener('click', function () {
-      chatPanel.classList.add('hidden-chat');
-    });
-  }
+  if (chatToggle && chatPanel) chatToggle.addEventListener('click', function () { chatPanel.classList.toggle('hidden-chat'); });
+  if (chatClose && chatPanel) chatClose.addEventListener('click', function () { chatPanel.classList.add('hidden-chat'); });
   document.querySelectorAll('[data-chat-reply]').forEach(function (btn) {
     btn.addEventListener('click', function () {
       var reply = btn.getAttribute('data-chat-reply');
@@ -2261,10 +2208,10 @@ tailwind.config = {
           var botMsg = document.createElement('div');
           botMsg.className = 'mb-3 max-w-[85%] rounded-2xl rounded-tl-sm bg-slate-100 p-3 text-[13px] text-slate-700 dark:bg-slate-800 dark:text-slate-200';
           var responses = {
-            'Konsultasi proyek konstruksi': 'Baik! Silakan isi form "Booking Konsultasi" atau chat kami di WhatsApp 0878 8885 5877. Kami akan menghubungkan Anda dengan tim terkait.',
-            'Request penawaran harga': 'Untuk penawaran harga, silakan isi form "Request Quote (RFQ)" di section Layanan Digital. Lampirkan spesifikasi untuk hasil yang lebih akurat.',
-            'Info kemitraan & vendor': 'Kami terbuka untuk kemitraan! Daftarkan perusahaan Anda melalui form "Registrasi Vendor". Tim procurement akan meninjau.',
-            'Lainnya': 'Silakan sampaikan pertanyaan Anda via WhatsApp 0878 8885 5877 atau email info@judison.my.id. Tim kami siap membantu!'
+            'Konsultasi proyek konstruksi': 'Baik! Silakan isi form "Booking Konsultasi" atau chat kami di WhatsApp 0878 8885 5877.',
+            'Request penawaran harga': 'Untuk penawaran harga, silakan isi form "Request Quote (RFQ)" di section Layanan Digital.',
+            'Info kemitraan & vendor': 'Kami terbuka untuk kemitraan! Daftarkan perusahaan Anda melalui form "Registrasi Vendor".',
+            'Lainnya': 'Silakan sampaikan pertanyaan Anda via WhatsApp 0878 8885 5877 atau email info@judison.my.id.'
           };
           botMsg.textContent = responses[reply] || responses['Lainnya'];
           chatMessages.appendChild(botMsg);
@@ -2274,7 +2221,7 @@ tailwind.config = {
     });
   });
 
-  /* DOWNLOAD PDF (print) */
+  /* PDF */
   function triggerPrint() {
     showToast('Menyiapkan dokumen…');
     setTimeout(function () { window.print(); }, 400);
