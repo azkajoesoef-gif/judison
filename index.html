@@ -6,35 +6,34 @@
 <title>Judison — PT Medwa Judison Perkasa | Konstruksi, Agrikultur, Pangan & Perdagangan</title>
 <meta name="description" content="Judison (PT Medwa Judison Perkasa) — mitra nasional dalam konstruksi, agrikultur, distribusi pangan, dan perdagangan besar.">
 <meta name="theme-color" content="#2563EB">
+<meta property="og:title" content="Judison — PT Medwa Judison Perkasa">
+<meta property="og:description" content="Mitra nasional dalam konstruksi, agrikultur, distribusi pangan, dan perdagangan besar.">
+<meta property="og:image" content="https://i.ibb.co.com/PvQ0vFtx/logo-mjp.png">
 <link rel="icon" href="https://i.ibb.co.com/PvQ0vFtx/logo-mjp.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fraunces:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
 <script>
 tailwind.config = {
   darkMode: 'class',
   theme: { extend: {
     fontFamily: { sans:['"Plus Jakarta Sans"','sans-serif'], serif:['Fraunces','serif'] },
     colors: {
-      brand: {
-        blue:'#2563EB', blueDark:'#1D4ED8', blueDeep:'#1E3A8A', blueLight:'#60A5FA', blueSoft:'#EFF6FF',
-        red:'#DC2626', redDark:'#B91C1C', redSoft:'#FEF2F2',
-        navy:'#0A1F44', navyDeep:'#061530'
-      }
+      brand: { blue:'#2563EB', blueDark:'#1D4ED8', blueDeep:'#1E3A8A', blueLight:'#60A5FA', blueSoft:'#EFF6FF',
+        red:'#DC2626', redDark:'#B91C1C', redSoft:'#FEF2F2', navy:'#0A1F44', navyDeep:'#061530' }
     },
     boxShadow: {
       'card':'0 1px 3px rgba(10,31,68,.06), 0 22px 50px -28px rgba(10,31,68,.18)',
       'glow':'0 0 0 1px rgba(37,99,235,.14), 0 30px 65px -30px rgba(37,99,235,.5)',
       'redglow':'0 0 0 1px rgba(220,38,38,.12), 0 30px 65px -30px rgba(220,38,38,.4)'
     },
-    animation: {
-      'float':'float 6s ease-in-out infinite',
-      'shine':'shine 6s linear infinite'
-    },
+    animation: { 'float':'float 6s ease-in-out infinite', 'shine':'shine 6s linear infinite', 'fade-in':'fadeIn .4s ease forwards' },
     keyframes: {
       float: { '0%,100%':{transform:'translateY(0)'}, '50%':{transform:'translateY(-12px)'} },
-      shine: { '0%':{backgroundPosition:'-200% 0'}, '100%':{backgroundPosition:'200% 0'} }
+      shine: { '0%':{backgroundPosition:'-200% 0'}, '100%':{backgroundPosition:'200% 0'} },
+      fadeIn: { from:{opacity:0, transform:'translateY(8px)'}, to:{opacity:1, transform:'none'} }
     }
   } }
 }
@@ -50,9 +49,9 @@ tailwind.config = {
   .radial-red-dark{background:radial-gradient(55% 55% at 85% 80%,rgba(220,38,38,.24) 0%,rgba(220,38,38,0) 72%)}
   .text-gradient-blue{background:linear-gradient(100deg,#60A5FA 0%,#2563EB 55%,#1D4ED8 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
   .text-gradient-hero{background:linear-gradient(110deg,#2563EB 0%,#60A5FA 25%,#DC2626 60%,#2563EB 100%);background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 6s linear infinite}
+  .text-gradient-white{background:linear-gradient(100deg,#FFFFFF 0%,#BFDBFE 50%,#FFFFFF 100%);background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 5s linear infinite}
   .hairline{background:linear-gradient(90deg,transparent,rgba(10,31,68,.12),transparent)}
   .dark .hairline{background:linear-gradient(90deg,transparent,rgba(255,255,255,.14),transparent)}
-  .hairline-dark{background:linear-gradient(90deg,transparent,rgba(255,255,255,.14),transparent)}
 
   #navInner{transition:background-color .4s ease,border-color .4s ease,box-shadow .4s ease}
   #navInner.nav-scrolled{background-color:rgba(255,255,255,.92);border-color:rgba(10,31,68,.08);box-shadow:0 18px 45px -25px rgba(10,31,68,.25)}
@@ -82,15 +81,14 @@ tailwind.config = {
   .marquee-track:hover{animation-play-state:paused}
   @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
-  #scrollProgress{transition:width .15s ease-out}
   #backToTop{transition:opacity .35s ease,transform .35s ease}
   #backToTop.hidden-btn{opacity:0;pointer-events:none;transform:translateY(20px)}
   #loader{transition:opacity .6s ease,visibility .6s ease}
   #loader.done{opacity:0;visibility:hidden}
 
   .tab-btn{transition:all .35s cubic-bezier(.16,1,.3,1)}
-  .tab-panel{display:none;animation:fadeSlide .5s ease forwards}
-  .tab-panel.active{display:block}
+  .tab-panel{display:none}
+  .tab-panel.active{display:block;animation:fadeSlide .5s ease forwards}
   @keyframes fadeSlide{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
 
   .faq-item.open .faq-body{max-height:600px;opacity:1}
@@ -103,11 +101,45 @@ tailwind.config = {
 
   .ring-bg{stroke-dasharray:126;stroke-dashoffset:126;transition:stroke-dashoffset .2s linear}
 
-  /* Partner logo cards */
   .partner-logo{filter:grayscale(100%);opacity:.65;transition:filter .4s ease,opacity .4s ease,transform .4s ease}
   .partner-card:hover .partner-logo{filter:grayscale(0%);opacity:1;transform:scale(1.04)}
   .dark .partner-logo{filter:grayscale(100%) brightness(1.2);opacity:.7}
   .dark .partner-card:hover .partner-logo{filter:grayscale(0%) brightness(1);opacity:1}
+
+  /* Before-After slider */
+  .ba-wrap{position:relative;overflow:hidden;border-radius:1rem;user-select:none;touch-action:none}
+  .ba-img{display:block;width:100%;height:100%;object-fit:cover;pointer-events:none}
+  .ba-img-after{position:absolute;inset:0;clip-path:inset(0 0 0 50%)}
+  .ba-handle{position:absolute;top:0;bottom:0;width:3px;background:white;box-shadow:0 0 20px rgba(0,0,0,.4);left:50%;transform:translateX(-50%);pointer-events:none}
+  .ba-knob{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:9999px;background:white;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,.35);pointer-events:none;font-weight:700;color:#2563EB}
+  .ba-range{position:absolute;inset:0;opacity:0;cursor:ew-resize;width:100%;height:100%;margin:0;padding:0}
+
+  /* Filter chips */
+  .filter-chip{transition:all .3s ease}
+  .filter-chip.active{background:linear-gradient(100deg,#3B82F6 0%,#2563EB 100%);color:white;border-color:transparent;box-shadow:0 8px 20px -8px rgba(37,99,235,.6)}
+
+  /* Progress bar */
+  .prog-fill{transition:width 1.6s cubic-bezier(.16,1,.3,1)}
+
+  /* Multi-step */
+  .step-dot{transition:all .4s ease}
+  .step-dot.active{background:#2563EB;color:white;transform:scale(1.1)}
+  .step-dot.done{background:#10B981;color:white}
+  .step-panel{display:none}
+  .step-panel.active{display:block;animation:fadeSlide .4s ease}
+
+  /* File drop */
+  .file-drop.dragover{border-color:#2563EB;background:rgba(37,99,235,.06)}
+
+  /* Chat widget */
+  #chatPanel{transition:opacity .3s ease,transform .3s ease,visibility .3s ease;transform-origin:bottom right}
+  #chatPanel.hidden-chat{opacity:0;visibility:hidden;transform:translateY(12px) scale(.96)}
+
+  /* Print styles */
+  @media print {
+    header, footer, .no-print, #backToTop, #chatWidget, #floatingActions {display:none !important}
+    body {background:white !important; color:black !important}
+  }
 
   ::-webkit-scrollbar{width:10px;height:10px}
   ::-webkit-scrollbar-track{background:#F1F5F9}
@@ -152,28 +184,33 @@ tailwind.config = {
   </div>
 </div>
 
-<!-- SCROLL PROGRESS -->
-<div class="fixed inset-x-0 top-0 z-[100] h-[3px] bg-transparent">
-  <div id="scrollProgress" class="h-full w-0 bg-gradient-to-r from-brand-blue via-brand-blueDark to-brand-red"></div>
+<!-- SCROLL / READING PROGRESS -->
+<div class="fixed inset-x-0 top-0 z-[100] h-[3px] bg-transparent no-print">
+  <div id="scrollProgress" class="h-full w-0 bg-gradient-to-r from-brand-blue via-brand-blueDark to-brand-red transition-[width] duration-150"></div>
 </div>
 
 <!-- NAVBAR -->
-<header class="fixed inset-x-0 top-0 z-50">
+<header class="fixed inset-x-0 top-0 z-50 no-print">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <nav id="navInner" class="mt-3 flex items-center justify-between rounded-2xl border border-slate-200/70 bg-white/70 px-3 py-2.5 backdrop-blur-xl dark:border-white/10 dark:bg-slate-900/60 sm:px-4 sm:py-3">
       <a href="#home" class="group flex items-center gap-3">
         <img src="https://i.ibb.co.com/PvQ0vFtx/logo-mjp.png" alt="Judison" class="h-9 w-auto sm:h-11 transition-transform duration-500 group-hover:scale-[1.03]">
       </a>
-      <ul class="hidden items-center gap-0.5 lg:flex">
+      <ul class="hidden items-center gap-0.5 xl:flex">
         <li><a href="#mitra" class="nav-link rounded-lg px-3 py-2 text-[13px] font-medium text-slate-500 transition-colors hover:text-brand-blueDark dark:text-slate-400 dark:hover:text-white">Mitra</a></li>
         <li><a href="#tentang" class="nav-link rounded-lg px-3 py-2 text-[13px] font-medium text-slate-500 transition-colors hover:text-brand-blueDark dark:text-slate-400 dark:hover:text-white">Tentang</a></li>
         <li><a href="#layanan" class="nav-link rounded-lg px-3 py-2 text-[13px] font-medium text-slate-500 transition-colors hover:text-brand-blueDark dark:text-slate-400 dark:hover:text-white">Layanan</a></li>
         <li><a href="#proyek" class="nav-link rounded-lg px-3 py-2 text-[13px] font-medium text-slate-500 transition-colors hover:text-brand-blueDark dark:text-slate-400 dark:hover:text-white">Proyek</a></li>
+        <li><a href="#testimoni" class="nav-link rounded-lg px-3 py-2 text-[13px] font-medium text-slate-500 transition-colors hover:text-brand-blueDark dark:text-slate-400 dark:hover:text-white">Testimoni</a></li>
         <li><a href="#timeline" class="nav-link rounded-lg px-3 py-2 text-[13px] font-medium text-slate-500 transition-colors hover:text-brand-blueDark dark:text-slate-400 dark:hover:text-white">Perjalanan</a></li>
         <li><a href="#struktur" class="nav-link rounded-lg px-3 py-2 text-[13px] font-medium text-slate-500 transition-colors hover:text-brand-blueDark dark:text-slate-400 dark:hover:text-white">Struktur</a></li>
+        <li><a href="#form-hub" class="nav-link rounded-lg px-3 py-2 text-[13px] font-medium text-slate-500 transition-colors hover:text-brand-blueDark dark:text-slate-400 dark:hover:text-white">Layanan Digital</a></li>
         <li><a href="#faq" class="nav-link rounded-lg px-3 py-2 text-[13px] font-medium text-slate-500 transition-colors hover:text-brand-blueDark dark:text-slate-400 dark:hover:text-white">FAQ</a></li>
       </ul>
       <div class="flex items-center gap-2">
+        <a href="#" id="shareBtnNav" aria-label="Bagikan" class="hidden h-10 w-10 place-items-center rounded-xl border border-slate-200 bg-white text-slate-600 transition-all hover:border-brand-blue/40 hover:bg-brand-blueSoft hover:text-brand-blue dark:border-white/10 dark:bg-slate-800 dark:text-slate-300 sm:grid">
+          <i data-lucide="share-2" class="h-[18px] w-[18px]"></i>
+        </a>
         <button id="themeToggle" type="button" aria-label="Ganti tema" class="grid h-10 w-10 place-items-center rounded-xl border border-slate-200 bg-white text-slate-600 transition-all hover:border-brand-blue/40 hover:bg-brand-blueSoft hover:text-brand-blue dark:border-white/10 dark:bg-slate-800 dark:text-slate-300 dark:hover:border-brand-blue/40 dark:hover:bg-brand-blue/20">
           <i data-lucide="sun" class="theme-icon-sun h-[18px] w-[18px]"></i>
           <i data-lucide="moon" class="theme-icon-moon hidden h-[18px] w-[18px]"></i>
@@ -181,36 +218,41 @@ tailwind.config = {
         <a href="https://wa.me/628788855877" target="_blank" rel="noopener" class="btn-primary hidden items-center gap-2 rounded-xl px-4 py-2.5 text-[13px] font-bold text-white sm:inline-flex">
           <i data-lucide="phone-call" class="h-4 w-4"></i> Hubungi
         </a>
-        <button id="menuBtn" type="button" aria-label="Buka menu" class="grid h-10 w-10 place-items-center rounded-xl border border-slate-200 bg-white text-slate-700 transition-colors hover:bg-slate-50 dark:border-white/10 dark:bg-slate-800 dark:text-slate-300 lg:hidden">
+        <button id="menuBtn" type="button" aria-label="Buka menu" class="grid h-10 w-10 place-items-center rounded-xl border border-slate-200 bg-white text-slate-700 transition-colors hover:bg-slate-50 dark:border-white/10 dark:bg-slate-800 dark:text-slate-300 xl:hidden">
           <i data-lucide="menu" class="h-5 w-5"></i>
         </button>
       </div>
     </nav>
-    <div id="mobileMenu" class="hidden lg:hidden">
-      <div class="mt-2 overflow-hidden rounded-2xl border border-slate-200 bg-white/95 p-2 shadow-2xl backdrop-blur-2xl dark:border-white/10 dark:bg-slate-900/95">
-        <a href="#mitra" class="mobile-link flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-slate-600 transition-colors hover:bg-brand-blueSoft hover:text-brand-blueDark dark:text-slate-300 dark:hover:bg-brand-blue/10 dark:hover:text-white"><i data-lucide="handshake" class="h-4 w-4 text-brand-blue"></i> Mitra</a>
-        <a href="#tentang" class="mobile-link flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-slate-600 transition-colors hover:bg-brand-blueSoft hover:text-brand-blueDark dark:text-slate-300 dark:hover:bg-brand-blue/10 dark:hover:text-white"><i data-lucide="building-2" class="h-4 w-4 text-brand-blue"></i> Tentang</a>
-        <a href="#warisan" class="mobile-link flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-slate-600 transition-colors hover:bg-brand-blueSoft hover:text-brand-blueDark dark:text-slate-300 dark:hover:bg-brand-blue/10 dark:hover:text-white"><i data-lucide="scroll" class="h-4 w-4 text-brand-blue"></i> Warisan</a>
-        <a href="#layanan" class="mobile-link flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-slate-600 transition-colors hover:bg-brand-blueSoft hover:text-brand-blueDark dark:text-slate-300 dark:hover:bg-brand-blue/10 dark:hover:text-white"><i data-lucide="layers" class="h-4 w-4 text-brand-blue"></i> Layanan</a>
-        <a href="#proyek" class="mobile-link flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-slate-600 transition-colors hover:bg-brand-blueSoft hover:text-brand-blueDark dark:text-slate-300 dark:hover:bg-brand-blue/10 dark:hover:text-white"><i data-lucide="hard-hat" class="h-4 w-4 text-brand-blue"></i> Proyek</a>
-        <a href="#timeline" class="mobile-link flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-slate-600 transition-colors hover:bg-brand-blueSoft hover:text-brand-blueDark dark:text-slate-300 dark:hover:bg-brand-blue/10 dark:hover:text-white"><i data-lucide="milestone" class="h-4 w-4 text-brand-blue"></i> Perjalanan</a>
-        <a href="#legalitas" class="mobile-link flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-slate-600 transition-colors hover:bg-brand-blueSoft hover:text-brand-blueDark dark:text-slate-300 dark:hover:bg-brand-blue/10 dark:hover:text-white"><i data-lucide="shield-check" class="h-4 w-4 text-brand-blue"></i> Legalitas</a>
-        <a href="#struktur" class="mobile-link flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-slate-600 transition-colors hover:bg-brand-blueSoft hover:text-brand-blueDark dark:text-slate-300 dark:hover:bg-brand-blue/10 dark:hover:text-white"><i data-lucide="network" class="h-4 w-4 text-brand-blue"></i> Struktur</a>
-        <a href="#direktur" class="mobile-link flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-slate-600 transition-colors hover:bg-brand-blueSoft hover:text-brand-blueDark dark:text-slate-300 dark:hover:bg-brand-blue/10 dark:hover:text-white"><i data-lucide="user-round" class="h-4 w-4 text-brand-blue"></i> Pimpinan</a>
-        <a href="#faq" class="mobile-link flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-slate-600 transition-colors hover:bg-brand-blueSoft hover:text-brand-blueDark dark:text-slate-300 dark:hover:bg-brand-blue/10 dark:hover:text-white"><i data-lucide="help-circle" class="h-4 w-4 text-brand-blue"></i> FAQ</a>
-        <a href="#kontak" class="mobile-link flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-slate-600 transition-colors hover:bg-brand-blueSoft hover:text-brand-blueDark dark:text-slate-300 dark:hover:bg-brand-blue/10 dark:hover:text-white"><i data-lucide="map-pin" class="h-4 w-4 text-brand-blue"></i> Kontak</a>
-        <a href="https://wa.me/628788855877" target="_blank" rel="noopener" class="btn-primary mt-1 flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-bold text-white">
-          <i data-lucide="message-circle" class="h-4 w-4"></i> WhatsApp Kami
-        </a>
+    <div id="mobileMenu" class="hidden xl:hidden">
+      <div class="mt-2 max-h-[80vh] overflow-y-auto rounded-2xl border border-slate-200 bg-white/95 p-2 shadow-2xl backdrop-blur-2xl dark:border-white/10 dark:bg-slate-900/95">
+        <a href="#mitra" class="mobile-link flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-slate-600 transition-colors hover:bg-brand-blueSoft hover:text-brand-blueDark dark:text-slate-300"><i data-lucide="handshake" class="h-4 w-4 text-brand-blue"></i> Mitra</a>
+        <a href="#tentang" class="mobile-link flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-slate-600 transition-colors hover:bg-brand-blueSoft hover:text-brand-blueDark dark:text-slate-300"><i data-lucide="building-2" class="h-4 w-4 text-brand-blue"></i> Tentang</a>
+        <a href="#warisan" class="mobile-link flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-slate-600 transition-colors hover:bg-brand-blueSoft hover:text-brand-blueDark dark:text-slate-300"><i data-lucide="scroll" class="h-4 w-4 text-brand-blue"></i> Warisan</a>
+        <a href="#layanan" class="mobile-link flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-slate-600 transition-colors hover:bg-brand-blueSoft hover:text-brand-blueDark dark:text-slate-300"><i data-lucide="layers" class="h-4 w-4 text-brand-blue"></i> Layanan</a>
+        <a href="#proyek" class="mobile-link flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-slate-600 transition-colors hover:bg-brand-blueSoft hover:text-brand-blueDark dark:text-slate-300"><i data-lucide="hard-hat" class="h-4 w-4 text-brand-blue"></i> Proyek</a>
+        <a href="#testimoni" class="mobile-link flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-slate-600 transition-colors hover:bg-brand-blueSoft hover:text-brand-blueDark dark:text-slate-300"><i data-lucide="quote" class="h-4 w-4 text-brand-blue"></i> Testimoni</a>
+        <a href="#timeline" class="mobile-link flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-slate-600 transition-colors hover:bg-brand-blueSoft hover:text-brand-blueDark dark:text-slate-300"><i data-lucide="milestone" class="h-4 w-4 text-brand-blue"></i> Perjalanan</a>
+        <a href="#legalitas" class="mobile-link flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-slate-600 transition-colors hover:bg-brand-blueSoft hover:text-brand-blueDark dark:text-slate-300"><i data-lucide="shield-check" class="h-4 w-4 text-brand-blue"></i> Legalitas</a>
+        <a href="#struktur" class="mobile-link flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-slate-600 transition-colors hover:bg-brand-blueSoft hover:text-brand-blueDark dark:text-slate-300"><i data-lucide="network" class="h-4 w-4 text-brand-blue"></i> Struktur</a>
+        <a href="#direktur" class="mobile-link flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-slate-600 transition-colors hover:bg-brand-blueSoft hover:text-brand-blueDark dark:text-slate-300"><i data-lucide="user-round" class="h-4 w-4 text-brand-blue"></i> Pimpinan</a>
+        <a href="#form-hub" class="mobile-link flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-slate-600 transition-colors hover:bg-brand-blueSoft hover:text-brand-blueDark dark:text-slate-300"><i data-lucide="file-text" class="h-4 w-4 text-brand-blue"></i> Layanan Digital</a>
+        <a href="#faq" class="mobile-link flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-slate-600 transition-colors hover:bg-brand-blueSoft hover:text-brand-blueDark dark:text-slate-300"><i data-lucide="help-circle" class="h-4 w-4 text-brand-blue"></i> FAQ</a>
+        <a href="#kontak" class="mobile-link flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-slate-600 transition-colors hover:bg-brand-blueSoft hover:text-brand-blueDark dark:text-slate-300"><i data-lucide="map-pin" class="h-4 w-4 text-brand-blue"></i> Kontak</a>
+        <a href="https://wa.me/628788855877" target="_blank" rel="noopener" class="btn-primary mt-1 flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-bold text-white"><i data-lucide="message-circle" class="h-4 w-4"></i> WhatsApp Kami</a>
       </div>
     </div>
   </div>
 </header>
 
-<!-- HERO -->
+<!-- HERO with video background -->
 <section id="home" class="relative overflow-hidden pt-32 pb-20 sm:pt-40 lg:pt-44 lg:pb-28">
+  <!-- Video bg -->
   <div class="pointer-events-none absolute inset-0 -z-10">
+    <video class="absolute inset-0 h-full w-full object-cover opacity-25 dark:opacity-40" autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1920&q=80">
+      <source src="https://assets.mixkit.co/videos/preview/mixkit-going-down-a-curved-highway-through-a-mountain-range-41576-large.mp4" type="video/mp4">
+    </video>
     <div class="absolute inset-0 bg-white dark:bg-slate-950"></div>
+    <div class="absolute inset-0 bg-white/85 dark:bg-slate-950/80"></div>
     <div class="absolute inset-0 bg-grid dark:hidden opacity-60"></div>
     <div class="absolute inset-0 bg-grid-dark hidden dark:block opacity-30"></div>
     <div class="absolute inset-0 radial-blue-soft dark:opacity-60"></div>
@@ -222,7 +264,7 @@ tailwind.config = {
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="grid items-center gap-14 lg:grid-cols-12 lg:gap-12">
       <div class="lg:col-span-7">
-        <div class="reveal inline-flex items-center gap-2.5 rounded-full border border-brand-blue/25 bg-brand-blueSoft px-4 py-1.5 dark:border-brand-blue/30 dark:bg-brand-blue/10">
+        <div class="reveal inline-flex items-center gap-2.5 rounded-full border border-brand-blue/25 bg-brand-blueSoft/80 px-4 py-1.5 backdrop-blur dark:border-brand-blue/30 dark:bg-brand-blue/10">
           <span class="pulse-dot h-1.5 w-1.5 rounded-full bg-brand-blue"></span>
           <span class="text-[11px] font-bold uppercase tracking-[0.16em] text-brand-blueDark dark:text-brand-blueLight">Mitra Nasional Terpercaya Sejak 2023</span>
         </div>
@@ -231,16 +273,19 @@ tailwind.config = {
           Menguatkan <span class="text-brand-blue dark:text-brand-blueLight">Ketahanan Pangan</span>.<br class="hidden sm:block">
           <span class="text-gradient-hero">Tumbuh Berkelanjutan.</span>
         </h1>
-        <p class="reveal mt-6 max-w-2xl text-[15.5px] leading-relaxed text-slate-600 dark:text-slate-400 sm:text-base" style="transition-delay:.16s">
+        <p class="reveal mt-6 max-w-2xl text-[15.5px] leading-relaxed text-slate-700 dark:text-slate-400 sm:text-base" style="transition-delay:.16s">
           <strong class="font-semibold text-slate-900 dark:text-white">Judison</strong> — nama pendek dari <strong class="font-semibold text-slate-900 dark:text-white">PT Medwa Judison Perkasa</strong> — bergerak di bidang konstruksi &amp; infrastruktur, agrikultur, distribusi pangan, dan perdagangan besar. Mitra andal dalam pembangunan infrastruktur, ketahanan pangan, dan rantai pasok nasional.
         </p>
-        <div class="reveal mt-9 flex flex-col gap-3 sm:flex-row sm:items-center" style="transition-delay:.24s">
+        <div class="reveal mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center" style="transition-delay:.24s">
           <a href="#layanan" class="btn-primary inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3.5 text-sm font-bold text-white">
             Jelajahi Layanan <i data-lucide="arrow-right" class="h-4 w-4"></i>
           </a>
-          <a href="#mitra" class="btn-ghost inline-flex items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white px-6 py-3.5 text-sm font-semibold text-slate-800 dark:border-white/15 dark:bg-white/5 dark:text-white">
-            <i data-lucide="handshake" class="h-4 w-4 text-brand-red"></i> Lihat Mitra Kami
+          <a href="#form-hub" class="btn-ghost inline-flex items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white/80 px-6 py-3.5 text-sm font-semibold text-slate-800 backdrop-blur dark:border-white/15 dark:bg-white/5 dark:text-white">
+            <i data-lucide="file-text" class="h-4 w-4 text-brand-red"></i> Request Quote
           </a>
+          <button id="downloadPdf" type="button" class="btn-ghost inline-flex items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white/80 px-6 py-3.5 text-sm font-semibold text-slate-800 backdrop-blur dark:border-white/15 dark:bg-white/5 dark:text-white">
+            <i data-lucide="download" class="h-4 w-4 text-brand-blue"></i> Unduh Compro
+          </button>
         </div>
         <div class="reveal mt-10 flex flex-wrap items-center gap-x-7 gap-y-4 border-t border-slate-200 pt-7 dark:border-white/10" style="transition-delay:.32s">
           <div class="flex items-center gap-2.5"><i data-lucide="shield-check" class="h-4 w-4 text-brand-blue"></i><span class="text-[12.5px] font-medium text-slate-600 dark:text-slate-400">Badan Hukum Resmi &amp; NIB OSS RBA</span></div>
@@ -250,10 +295,9 @@ tailwind.config = {
       </div>
       <div class="reveal lg:col-span-5" style="transition-delay:.2s">
         <div class="relative">
-          <div class="relative overflow-hidden rounded-3xl border border-slate-200 bg-gradient-to-b from-white to-slate-50 p-7 shadow-card dark:border-white/10 dark:from-slate-900 dark:to-slate-800 sm:p-8">
+          <div class="relative overflow-hidden rounded-3xl border border-slate-200 bg-gradient-to-b from-white/95 to-slate-50/95 p-7 shadow-card backdrop-blur dark:border-white/10 dark:from-slate-900/95 dark:to-slate-800/95 sm:p-8">
             <div class="absolute inset-0 bg-grid opacity-40 dark:hidden"></div>
             <div class="absolute -right-20 -top-20 h-56 w-56 rounded-full bg-brand-blue/10 blur-3xl"></div>
-            <div class="absolute -left-20 -bottom-20 h-56 w-56 rounded-full bg-brand-red/10 blur-3xl"></div>
             <div class="relative">
               <div class="flex items-center justify-between">
                 <span class="text-[10.5px] font-bold uppercase tracking-[0.22em] text-brand-red">Proyek Unggulan</span>
@@ -269,18 +313,14 @@ tailwind.config = {
                   <div class="mt-1 text-[10.5px] font-bold uppercase tracking-[0.2em] text-slate-400">Hektar</div>
                 </div>
               </div>
-              <div class="mt-7 grid grid-cols-3 gap-3">
-                <div class="rounded-xl border border-slate-200 bg-white px-3 py-2.5 dark:border-white/10 dark:bg-slate-800">
-                  <div class="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Sektor</div>
-                  <div class="mt-0.5 text-[12.5px] font-semibold text-slate-800 dark:text-slate-200">Agrikultur</div>
+              <!-- Progress bar -->
+              <div class="mt-6">
+                <div class="flex items-center justify-between text-[11px] font-semibold">
+                  <span class="text-slate-500 dark:text-slate-400">Progress</span>
+                  <span class="text-brand-blue" data-prog-label="78">0%</span>
                 </div>
-                <div class="rounded-xl border border-slate-200 bg-white px-3 py-2.5 dark:border-white/10 dark:bg-slate-800">
-                  <div class="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Mitra</div>
-                  <div class="mt-0.5 text-[12.5px] font-semibold text-slate-800 dark:text-slate-200">Kemhan RI</div>
-                </div>
-                <div class="rounded-xl border border-slate-200 bg-white px-3 py-2.5 dark:border-white/10 dark:bg-slate-800">
-                  <div class="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Status</div>
-                  <div class="mt-0.5 text-[12.5px] font-semibold text-emerald-600 dark:text-emerald-400">Berjalan</div>
+                <div class="mt-2 h-2 overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800">
+                  <div class="prog-fill h-full w-0 rounded-full bg-gradient-to-r from-brand-blue to-brand-blueDark" data-prog="78"></div>
                 </div>
               </div>
             </div>
@@ -299,24 +339,22 @@ tailwind.config = {
     </div>
     <div class="marquee-mask relative overflow-hidden">
       <div class="marquee-track flex w-max items-center gap-12 sm:gap-16">
-        <!-- SET 1 -->
         <div class="flex shrink-0 items-center gap-12 sm:gap-16">
           <img src="https://www.kemhan.go.id/wp-content/themes/menhan/images/logo.png" alt="Kemhan RI" class="h-14 w-auto opacity-70" onerror="this.style.display='none'">
-          <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7b/Emblem_of_Indonesia_and_Logo_of_the_Ministry_of_Maritime_Affairs_and_Fisheries_of_the_Republic_of_Indonesia_%28Indonesian_version_2021%29.svg/1920px-Emblem_of_Indonesia_and_Logo_of_the_Ministry_of_Maritime_Affairs_and_Fisheries_of_the_Republic_of_Indonesia_%28Indonesian_version_2021%29.svg.png" alt="KKP RI" class="h-14 w-auto opacity-70" onerror="this.style.display='none'">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/4/43/Lambang_TNI_2013.png" alt="Mabes TNI" class="h-14 w-auto opacity-70" onerror="this.style.display='none'">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/d/dd/Insignia_of_the_Indonesian_National_Police.svg" alt="Mabes Polri" class="h-14 w-auto opacity-70" onerror="this.style.display='none'">
+          <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7b/Emblem_of_Indonesia_and_Logo_of_the_Ministry_of_Maritime_Affairs_and_Fisheries_of_the_Republic_of_Indonesia_%28Indonesian_version_2021%29.svg/1920px-Emblem_of_Indonesia_and_Logo_of_the_Ministry_of_Maritime_Affairs_and_Fisheries_of_the_Republic_of_Indonesia_%28Indonesian_version_2021%29.svg.png" alt="KKP" class="h-14 w-auto opacity-70" onerror="this.style.display='none'">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/4/43/Lambang_TNI_2013.png" alt="TNI" class="h-14 w-auto opacity-70" onerror="this.style.display='none'">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/d/dd/Insignia_of_the_Indonesian_National_Police.svg" alt="Polri" class="h-14 w-auto opacity-70" onerror="this.style.display='none'">
           <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/LOGO_MARINIR.png" alt="Marinir" class="h-14 w-auto opacity-70" onerror="this.style.display='none'">
           <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5b/Logo_Unhan.png/1280px-Logo_Unhan.png" alt="Unhan" class="h-14 w-auto opacity-70" onerror="this.style.display='none'">
           <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f0/Bank_Negara_Indonesia_logo_%282004%29.svg/500px-Bank_Negara_Indonesia_logo_%282004%29.svg.png" alt="BNI" class="h-10 w-auto opacity-70" onerror="this.style.display='none'">
           <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/2/27/Lambang_Bea_dan_Cukai.svg/1920px-Lambang_Bea_dan_Cukai.svg.png" alt="Bea Cukai" class="h-14 w-auto opacity-70" onerror="this.style.display='none'">
           <img src="https://i.pinimg.com/736x/1c/c7/07/1cc70794090bfed9f902a0de548f5be7.jpg" alt="DPD RI" class="h-14 w-auto opacity-70" onerror="this.style.display='none'">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Logo_Badan_Gizi_Nasional_%282024%29.png" alt="Badan Gizi Nasional" class="h-14 w-auto opacity-70" onerror="this.style.display='none'">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Logo_Badan_Gizi_Nasional_%282024%29.png" alt="BGN" class="h-14 w-auto opacity-70" onerror="this.style.display='none'">
           <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ad/LOGO_YKEP.png/960px-LOGO_YKEP.png" alt="YKEP" class="h-14 w-auto opacity-70" onerror="this.style.display='none'">
-          <img src="https://csr.subang.go.id/assets/upload/company/TKG.png" alt="TKG Taekwang" class="h-12 w-auto opacity-70" onerror="this.style.display='none'">
+          <img src="https://csr.subang.go.id/assets/upload/company/TKG.png" alt="TKG" class="h-12 w-auto opacity-70" onerror="this.style.display='none'">
           <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f9/Lambang_Kabupaten_Subang.jpeg/250px-Lambang_Kabupaten_Subang.jpeg" alt="Pemkab Subang" class="h-14 w-auto opacity-70" onerror="this.style.display='none'">
           <img src="https://bnsp.go.id/assets/images/logo-bnsp.png" alt="BNSP" class="h-12 w-auto opacity-70" onerror="this.style.display='none'">
         </div>
-        <!-- SET 2 duplicate -->
         <div class="flex shrink-0 items-center gap-12 sm:gap-16" aria-hidden="true">
           <img src="https://www.kemhan.go.id/wp-content/themes/menhan/images/logo.png" alt="" class="h-14 w-auto opacity-70">
           <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7b/Emblem_of_Indonesia_and_Logo_of_the_Ministry_of_Maritime_Affairs_and_Fisheries_of_the_Republic_of_Indonesia_%28Indonesian_version_2021%29.svg/1920px-Emblem_of_Indonesia_and_Logo_of_the_Ministry_of_Maritime_Affairs_and_Fisheries_of_the_Republic_of_Indonesia_%28Indonesian_version_2021%29.svg.png" alt="" class="h-14 w-auto opacity-70">
@@ -477,7 +515,7 @@ tailwind.config = {
   </div>
 </section>
 
-<!-- LAYANAN dengan TABS -->
+<!-- LAYANAN -->
 <section id="layanan" class="relative scroll-mt-28 border-b border-slate-200 bg-slate-50 py-20 dark:border-white/10 dark:bg-slate-900/50 sm:py-28">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="reveal mx-auto max-w-3xl text-center">
@@ -495,7 +533,7 @@ tailwind.config = {
       <div id="tab-1" class="tab-panel active">
         <div class="grid gap-8 md:grid-cols-2 md:items-center">
           <div>
-            <div class="grid h-14 w-14 place-items-center rounded-2xl bg-brand-blueSoft text-brand-blue dark:bg-brand-blue/10"><i data-lucide="hard-hat" class="h-7 w-7"></i></div>
+            <div class="grid h-14 w-14 place-items-center rounded-2xl bg-brand-blueSoft text-brand-blue"><i data-lucide="hard-hat" class="h-7 w-7"></i></div>
             <h3 class="mt-5 text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white">Konstruksi &amp; Infrastruktur</h3>
             <p class="mt-3 text-[14.5px] leading-relaxed text-slate-600 dark:text-slate-400">Pengaspalan jalan, pengerasan &amp; paving, konstruksi bangunan sipil dan gedung. Didukung armada asphalt finisher dan tandem roller, serta tim pelaksana yang mengutamakan standar keselamatan kerja (K3).</p>
             <ul class="mt-6 space-y-3">
@@ -508,7 +546,7 @@ tailwind.config = {
           <div class="grid grid-cols-2 gap-4">
             <div class="rounded-2xl border border-slate-200 bg-slate-50 p-5 dark:border-white/10 dark:bg-slate-800"><div class="text-2xl font-extrabold text-brand-blue">KBLI</div><div class="mt-1 text-[12px] font-semibold text-slate-500 dark:text-slate-400">42101 — Jalan</div></div>
             <div class="rounded-2xl border border-slate-200 bg-slate-50 p-5 dark:border-white/10 dark:bg-slate-800"><div class="text-2xl font-extrabold text-brand-blue">KBLI</div><div class="mt-1 text-[12px] font-semibold text-slate-500 dark:text-slate-400">42201 — Irigasi</div></div>
-            <div class="col-span-2 rounded-2xl border border-slate-200 bg-slate-50 p-5 dark:border-white/10 dark:bg-slate-800"><div class="text-[11px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">SBU Konstruksi</div><div class="mt-1.5 text-[13.5px] font-semibold text-slate-800 dark:text-slate-200">Terverifikasi · Teregistrasi LPJK s.d. 2028</div></div>
+            <div class="col-span-2 rounded-2xl border border-slate-200 bg-slate-50 p-5 dark:border-white/10 dark:bg-slate-800"><div class="text-[11px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">SBU Konstruksi</div><div class="mt-1.5 text-[13.5px] font-semibold text-slate-800 dark:text-slate-200">Terverifikasi · LPJK s.d. 2028</div></div>
           </div>
         </div>
       </div>
@@ -517,7 +555,7 @@ tailwind.config = {
           <div>
             <div class="grid h-14 w-14 place-items-center rounded-2xl bg-emerald-50 text-emerald-600 dark:bg-emerald-500/10"><i data-lucide="sprout" class="h-7 w-7"></i></div>
             <h3 class="mt-5 text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white">Agrikultur</h3>
-            <p class="mt-3 text-[14.5px] leading-relaxed text-slate-600 dark:text-slate-400">Fokus pada penanaman dan pengembangan jagung komoditas strategis untuk ketahanan pangan, bahan baku industri, dan pakan ternak. Kami mengelola lahan secara berkelanjutan dan memberdayakan petani lokal melalui skema kemitraan.</p>
+            <p class="mt-3 text-[14.5px] leading-relaxed text-slate-600 dark:text-slate-400">Fokus pada penanaman dan pengembangan jagung komoditas strategis. Kami mengelola lahan secara berkelanjutan dan memberdayakan petani lokal melalui skema kemitraan.</p>
             <ul class="mt-6 space-y-3">
               <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="mt-0.5 h-4 w-4 shrink-0 text-emerald-600"></i><span class="text-[13.5px] text-slate-600 dark:text-slate-400">Benih unggul &amp; tahan hama</span></li>
               <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="mt-0.5 h-4 w-4 shrink-0 text-emerald-600"></i><span class="text-[13.5px] text-slate-600 dark:text-slate-400">Pengolahan lahan efisien &amp; ramah lingkungan</span></li>
@@ -541,7 +579,7 @@ tailwind.config = {
           <div>
             <div class="grid h-14 w-14 place-items-center rounded-2xl bg-brand-redSoft text-brand-red dark:bg-brand-red/10"><i data-lucide="truck" class="h-7 w-7"></i></div>
             <h3 class="mt-5 text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white">Distribusi Pangan</h3>
-            <p class="mt-3 text-[14.5px] leading-relaxed text-slate-600 dark:text-slate-400">Distributor pangan strategis dengan jaminan kualitas produk segar, pasokan stabil, dan jaringan logistik efisien. Dipercaya sebagai supplier untuk program Dapur Makan Bergizi (MBG) yang diselenggarakan Yayasan Kartika Eka Paksi (YKEP).</p>
+            <p class="mt-3 text-[14.5px] leading-relaxed text-slate-600 dark:text-slate-400">Distributor pangan strategis dengan jaminan kualitas produk segar, pasokan stabil, dan jaringan logistik efisien. Dipercaya sebagai supplier untuk program Dapur Makan Bergizi (MBG).</p>
             <ul class="mt-6 space-y-3">
               <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="mt-0.5 h-4 w-4 shrink-0 text-brand-red"></i><span class="text-[13.5px] text-slate-600 dark:text-slate-400">Jaminan kualitas produk segar (ayam &amp; telur)</span></li>
               <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="mt-0.5 h-4 w-4 shrink-0 text-brand-red"></i><span class="text-[13.5px] text-slate-600 dark:text-slate-400">Pasokan stabil &amp; terjadwal</span></li>
@@ -549,8 +587,8 @@ tailwind.config = {
               <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="mt-0.5 h-4 w-4 shrink-0 text-brand-red"></i><span class="text-[13.5px] text-slate-600 dark:text-slate-400">Jaringan logistik yang efisien</span></li>
             </ul>
           </div>
-          <div class="grid grid-cols-2 gap-4">
-            <div class="col-span-2 rounded-2xl border border-slate-200 bg-gradient-to-br from-brand-redSoft to-white p-6 dark:border-white/10 dark:from-brand-red/10 dark:to-slate-800">
+          <div class="grid grid-cols-1 gap-4">
+            <div class="rounded-2xl border border-slate-200 bg-gradient-to-br from-brand-redSoft to-white p-6 dark:border-white/10 dark:from-brand-red/10 dark:to-slate-800">
               <div class="text-[11px] font-bold uppercase tracking-wider text-brand-red">Program Dapur MBG</div>
               <div class="mt-2 text-[15px] font-extrabold text-slate-900 dark:text-white">Yayasan Kartika Eka Paksi (YKEP)</div>
               <div class="mt-1 text-[12.5px] text-slate-600 dark:text-slate-400">Supplier daging ayam &amp; telur</div>
@@ -587,7 +625,7 @@ tailwind.config = {
   </div>
 </section>
 
-<!-- PROYEK + GALLERY -->
+<!-- PROYEK dengan FILTER + BEFORE-AFTER + PROGRESS -->
 <section id="proyek" class="relative scroll-mt-28 py-20 sm:py-28">
   <div class="pointer-events-none absolute inset-0 -z-10 radial-blue-soft opacity-70 dark:opacity-30"></div>
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -597,9 +635,20 @@ tailwind.config = {
       <p class="mt-5 text-[15px] leading-relaxed text-slate-600 dark:text-slate-400">Dipercaya oleh institusi pemerintah dan mitra strategis nasional dalam pekerjaan konstruksi, pengaspalan jalan, program pangan, dan pemberdayaan masyarakat.</p>
     </div>
 
-    <!-- Featured -->
-    <div class="mt-14 grid gap-5 lg:grid-cols-12">
-      <div class="reveal lg:col-span-7">
+    <!-- FILTER CHIPS -->
+    <div class="reveal mt-10 flex flex-wrap justify-center gap-2">
+      <button data-filter="all" class="filter-chip active rounded-full border border-slate-200 bg-white px-5 py-2 text-[12.5px] font-bold text-slate-600 dark:border-white/10 dark:bg-slate-900 dark:text-slate-300">Semua</button>
+      <button data-filter="konstruksi" class="filter-chip rounded-full border border-slate-200 bg-white px-5 py-2 text-[12.5px] font-semibold text-slate-600 dark:border-white/10 dark:bg-slate-900 dark:text-slate-300">Konstruksi</button>
+      <button data-filter="agrikultur" class="filter-chip rounded-full border border-slate-200 bg-white px-5 py-2 text-[12.5px] font-semibold text-slate-600 dark:border-white/10 dark:bg-slate-900 dark:text-slate-300">Agrikultur</button>
+      <button data-filter="pangan" class="filter-chip rounded-full border border-slate-200 bg-white px-5 py-2 text-[12.5px] font-semibold text-slate-600 dark:border-white/10 dark:bg-slate-900 dark:text-slate-300">Pangan</button>
+      <button data-filter="sosial" class="filter-chip rounded-full border border-slate-200 bg-white px-5 py-2 text-[12.5px] font-semibold text-slate-600 dark:border-white/10 dark:bg-slate-900 dark:text-slate-300">Program Sosial</button>
+    </div>
+
+    <!-- PROYEK GRID -->
+    <div id="proyekGrid" class="mt-10 grid gap-5 lg:grid-cols-12">
+
+      <!-- Lumbung Pangan (Featured) -->
+      <div class="reveal proyek-card lg:col-span-7" data-cat="agrikultur" data-year="2023">
         <div class="relative h-full overflow-hidden rounded-3xl border border-slate-200 bg-gradient-to-br from-white via-brand-blueSoft to-white p-7 shadow-card dark:border-white/10 dark:from-slate-900 dark:via-brand-blue/10 dark:to-slate-900 sm:p-9">
           <div class="absolute inset-0 bg-grid opacity-40 dark:hidden"></div>
           <div class="relative flex h-full flex-col">
@@ -613,13 +662,25 @@ tailwind.config = {
             <div class="mt-auto grid grid-cols-2 gap-4 pt-9 sm:grid-cols-3">
               <div class="rounded-2xl border border-slate-200 bg-white px-4 py-3.5 dark:border-white/10 dark:bg-slate-800"><div class="text-[10px] font-bold uppercase tracking-[0.16em] text-slate-400">Luas Area</div><div class="mt-1 text-lg font-extrabold text-slate-900 dark:text-white">2.000 Ha</div></div>
               <div class="rounded-2xl border border-slate-200 bg-white px-4 py-3.5 dark:border-white/10 dark:bg-slate-800"><div class="text-[10px] font-bold uppercase tracking-[0.16em] text-slate-400">Mitra</div><div class="mt-1 text-lg font-extrabold text-slate-900 dark:text-white">Kemhan RI</div></div>
-              <div class="col-span-2 rounded-2xl border border-slate-200 bg-white px-4 py-3.5 dark:border-white/10 dark:bg-slate-800 sm:col-span-1"><div class="text-[10px] font-bold uppercase tracking-[0.16em] text-slate-400">Lingkup</div><div class="mt-1 text-lg font-extrabold text-slate-900 dark:text-white">Lahan &amp; Infrastruktur</div></div>
+              <div class="col-span-2 rounded-2xl border border-slate-200 bg-white px-4 py-3.5 dark:border-white/10 dark:bg-slate-800 sm:col-span-1"><div class="text-[10px] font-bold uppercase tracking-[0.16em] text-slate-400">Tahun</div><div class="mt-1 text-lg font-extrabold text-slate-900 dark:text-white">2023</div></div>
+            </div>
+            <!-- Progress -->
+            <div class="mt-6">
+              <div class="flex items-center justify-between text-[11px] font-semibold">
+                <span class="text-slate-500 dark:text-slate-400">Progress proyek</span>
+                <span class="text-brand-blue" data-prog-label="78">0%</span>
+              </div>
+              <div class="mt-2 h-2 overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800">
+                <div class="prog-fill h-full w-0 rounded-full bg-gradient-to-r from-brand-blue to-brand-blueDark" data-prog="78"></div>
+              </div>
             </div>
           </div>
         </div>
       </div>
+
+      <!-- Side cards -->
       <div class="grid gap-5 lg:col-span-5">
-        <div class="reveal rounded-3xl border border-slate-200 bg-white p-6 shadow-card dark:border-white/10 dark:bg-slate-900 sm:p-7" style="transition-delay:.08s">
+        <div class="reveal proyek-card rounded-3xl border border-slate-200 bg-white p-6 shadow-card dark:border-white/10 dark:bg-slate-900 sm:p-7" data-cat="konstruksi" data-year="2022">
           <div class="flex items-start justify-between gap-4">
             <div class="icon-tile grid h-11 w-11 place-items-center rounded-2xl bg-brand-blueSoft text-brand-blue dark:bg-brand-blue/10"><i data-lucide="layers" class="h-5 w-5"></i></div>
             <span class="rounded-full border border-slate-200 bg-white px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-slate-500 dark:border-white/10 dark:bg-white/5 dark:text-slate-400">2022</span>
@@ -630,73 +691,79 @@ tailwind.config = {
             <div class="h-px hairline"></div>
             <div class="flex items-start justify-between gap-4 text-[12.5px]"><span class="text-slate-500 dark:text-slate-400">Lokasi</span><span class="text-right font-semibold text-slate-800 dark:text-slate-200">Purwakarta, Jawa Barat</span></div>
             <div class="h-px hairline"></div>
-            <div class="flex items-start justify-between gap-4 text-[12.5px]"><span class="text-slate-500 dark:text-slate-400">Periode</span><span class="text-right font-semibold text-slate-800 dark:text-slate-200">Maret – September 2022</span></div>
+            <div class="flex items-start justify-between gap-4 text-[12.5px]"><span class="text-slate-500 dark:text-slate-400">Periode</span><span class="text-right font-semibold text-slate-800 dark:text-slate-200">Maret – Sept 2022</span></div>
           </div>
         </div>
-        <div class="reveal rounded-3xl border border-slate-200 bg-white p-6 shadow-card dark:border-white/10 dark:bg-slate-900 sm:p-7" style="transition-delay:.16s">
+        <div class="reveal proyek-card rounded-3xl border border-slate-200 bg-white p-6 shadow-card dark:border-white/10 dark:bg-slate-900 sm:p-7" data-cat="konstruksi" data-year="2023" style="transition-delay:.08s">
           <div class="flex items-start justify-between gap-4">
             <div class="icon-tile grid h-11 w-11 place-items-center rounded-2xl bg-brand-redSoft text-brand-red dark:bg-brand-red/10"><i data-lucide="route" class="h-5 w-5"></i></div>
-            <span class="rounded-full border border-slate-200 bg-white px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-slate-500 dark:border-white/10 dark:bg-white/5 dark:text-slate-400">Jawa Barat</span>
+            <span class="rounded-full border border-slate-200 bg-white px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-slate-500 dark:border-white/10 dark:bg-white/5 dark:text-slate-400">Jabar</span>
           </div>
           <h4 class="mt-4 text-[15.5px] font-extrabold tracking-tight text-slate-900 dark:text-white">Pengaspalan &amp; Konstruksi Jalan</h4>
-          <p class="mt-3 text-[13px] leading-relaxed text-slate-600 dark:text-slate-400">Didukung armada asphalt finisher dan tandem roller, serta tim pelaksana yang mengutamakan standar K3.</p>
+          <p class="mt-3 text-[13px] leading-relaxed text-slate-600 dark:text-slate-400">Didukung armada asphalt finisher &amp; tandem roller, tim pelaksana dengan standar K3.</p>
           <div class="mt-5 flex flex-wrap gap-2">
             <span class="rounded-lg border border-slate-200 bg-slate-50 px-2.5 py-1 text-[11px] font-medium text-slate-600 dark:border-white/10 dark:bg-slate-800 dark:text-slate-400">Cibenda</span>
             <span class="rounded-lg border border-slate-200 bg-slate-50 px-2.5 py-1 text-[11px] font-medium text-slate-600 dark:border-white/10 dark:bg-slate-800 dark:text-slate-400">Cikuluwung</span>
             <span class="rounded-lg border border-slate-200 bg-slate-50 px-2.5 py-1 text-[11px] font-medium text-slate-600 dark:border-white/10 dark:bg-slate-800 dark:text-slate-400">Citalang</span>
-            <span class="rounded-lg border border-slate-200 bg-slate-50 px-2.5 py-1 text-[11px] font-medium text-slate-600 dark:border-white/10 dark:bg-slate-800 dark:text-slate-400">Purwakarta</span>
           </div>
+        </div>
+      </div>
+
+      <!-- 3 NEW PROJECTS -->
+      <article class="card-lift reveal proyek-card group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-6 shadow-card dark:border-white/10 dark:bg-slate-900 sm:p-7" data-cat="sosial" data-year="2024">
+        <div class="flex items-start justify-between gap-4">
+          <div class="icon-tile grid h-12 w-12 place-items-center rounded-2xl bg-red-50 text-brand-red dark:bg-red-500/10"><i data-lucide="store" class="h-6 w-6"></i></div>
+          <span class="rounded-full border border-brand-red/30 bg-brand-redSoft px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-brand-red dark:bg-brand-red/10">2024</span>
+        </div>
+        <h4 class="mt-5 text-[16px] font-extrabold tracking-tight text-slate-900 dark:text-white">Koperasi Desa Merah Putih</h4>
+        <p class="mt-2.5 text-[13px] leading-relaxed text-slate-600 dark:text-slate-400">Pembangunan dan pendampingan Koperasi Desa Merah Putih sebagai pilar ekonomi kerakyatan di pedesaan — kemandirian ekonomi desa, distribusi sembako, dan pemberdayaan UMKM lokal.</p>
+      </article>
+
+      <article class="card-lift reveal proyek-card group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-6 shadow-card dark:border-white/10 dark:bg-slate-900 sm:p-7" data-cat="sosial pangan" data-year="2024" style="transition-delay:.08s">
+        <div class="flex items-start justify-between gap-4">
+          <div class="icon-tile grid h-12 w-12 place-items-center rounded-2xl bg-emerald-50 text-emerald-600 dark:bg-emerald-500/10"><i data-lucide="utensils" class="h-6 w-6"></i></div>
+          <span class="rounded-full border border-emerald-500/30 bg-emerald-50 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400">2024</span>
+        </div>
+        <h4 class="mt-5 text-[16px] font-extrabold tracking-tight text-slate-900 dark:text-white">Pembangunan Dapur MBG</h4>
+        <p class="mt-2.5 text-[13px] leading-relaxed text-slate-600 dark:text-slate-400">Pembangunan dapur fasilitas Makan Bergizi Gratis (MBG) beserta instalasi dan operasionalnya — bersama Badan Gizi Nasional &amp; Yayasan Kartika Eka Paksi.</p>
+      </article>
+
+      <article class="card-lift reveal proyek-card group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-6 shadow-card dark:border-white/10 dark:bg-slate-900 sm:p-7" data-cat="sosial" data-year="2024" style="transition-delay:.16s">
+        <div class="flex items-start justify-between gap-4">
+          <div class="icon-tile grid h-12 w-12 place-items-center rounded-2xl bg-sky-50 text-sky-600 dark:bg-sky-500/10"><i data-lucide="fish" class="h-6 w-6"></i></div>
+          <span class="rounded-full border border-sky-500/30 bg-sky-50 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:bg-sky-500/10 dark:text-sky-400">2024</span>
+        </div>
+        <h4 class="mt-5 text-[16px] font-extrabold tracking-tight text-slate-900 dark:text-white">Pembangunan Koperasi Nelayan</h4>
+        <p class="mt-2.5 text-[13px] leading-relaxed text-slate-600 dark:text-slate-400">Pembangunan koperasi nelayan beserta sarana pendukungnya — penguatan ekonomi pesisir, distribusi hasil tangkapan, pemberdayaan keluarga nelayan. Bersama KKP RI.</p>
+      </article>
+    </div>
+
+    <div id="emptyFilter" class="hidden rounded-2xl border border-dashed border-slate-300 bg-slate-50 p-10 text-center dark:border-white/15 dark:bg-slate-900/50">
+      <i data-lucide="search-x" class="mx-auto h-8 w-8 text-slate-400"></i>
+      <p class="mt-3 text-[13.5px] font-medium text-slate-500 dark:text-slate-400">Tidak ada proyek yang sesuai dengan filter ini.</p>
+    </div>
+
+    <!-- BEFORE / AFTER -->
+    <div class="reveal mt-20">
+      <div class="mb-6 text-center">
+        <span class="text-[11px] font-bold uppercase tracking-[0.24em] text-brand-red">Sebelum &amp; Sesudah</span>
+        <h3 class="mt-3 text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-3xl">Hasil Pekerjaan Pengaspalan</h3>
+        <p class="mt-3 text-[14px] text-slate-600 dark:text-slate-400">Geser slider untuk melihat perbedaan sebelum dan sesudah pengaspalan.</p>
+      </div>
+      <div class="mx-auto max-w-3xl">
+        <div class="ba-wrap aspect-[16/9] shadow-card">
+          <img class="ba-img" src="https://images.unsplash.com/photo-1597007066704-67bf2068d5b2?w=1400&q=80" alt="Sebelum" loading="lazy">
+          <img class="ba-img ba-img-after" src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1400&q=80" alt="Sesudah" loading="lazy">
+          <div class="ba-handle"><div class="ba-knob">⇔</div></div>
+          <input type="range" min="0" max="100" value="50" class="ba-range" aria-label="Before after slider">
+          <div class="pointer-events-none absolute left-3 top-3 rounded-lg bg-black/60 px-3 py-1.5 text-[11px] font-bold uppercase tracking-wider text-white backdrop-blur">Sebelum</div>
+          <div class="pointer-events-none absolute right-3 top-3 rounded-lg bg-brand-blue/90 px-3 py-1.5 text-[11px] font-bold uppercase tracking-wider text-white backdrop-blur">Sesudah</div>
         </div>
       </div>
     </div>
 
-    <!-- NEW: 3 NEW PROJECT CARDS -->
-    <div class="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-      <!-- Koperasi Desa Merah Putih -->
-      <article class="card-lift reveal group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-6 shadow-card dark:border-white/10 dark:bg-slate-900 sm:p-7">
-        <div class="flex items-start justify-between gap-4">
-          <div class="icon-tile grid h-12 w-12 place-items-center rounded-2xl bg-red-50 text-brand-red dark:bg-red-500/10"><i data-lucide="store" class="h-6 w-6"></i></div>
-          <span class="rounded-full border border-brand-red/30 bg-brand-redSoft px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-brand-red dark:bg-brand-red/10">Program Pemerintah</span>
-        </div>
-        <h4 class="mt-5 text-[16px] font-extrabold tracking-tight text-slate-900 dark:text-white">Koperasi Desa Merah Putih</h4>
-        <p class="mt-2.5 text-[13px] leading-relaxed text-slate-600 dark:text-slate-400">Pembangunan dan pendampingan Koperasi Desa Merah Putih sebagai pilar ekonomi kerakyatan di pedesaan — mendukung kemandirian ekonomi desa, distribusi sembako, dan pemberdayaan UMKM lokal.</p>
-        <div class="mt-5 flex flex-wrap gap-2">
-          <span class="rounded-lg border border-slate-200 bg-slate-50 px-2.5 py-1 text-[11px] font-medium text-slate-600 dark:border-white/10 dark:bg-slate-800 dark:text-slate-400">Ekonomi Desa</span>
-          <span class="rounded-lg border border-slate-200 bg-slate-50 px-2.5 py-1 text-[11px] font-medium text-slate-600 dark:border-white/10 dark:bg-slate-800 dark:text-slate-400">UMKM</span>
-        </div>
-      </article>
-
-      <!-- Pembangunan Dapur MBG -->
-      <article class="card-lift reveal group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-6 shadow-card dark:border-white/10 dark:bg-slate-900 sm:p-7" style="transition-delay:.08s">
-        <div class="flex items-start justify-between gap-4">
-          <div class="icon-tile grid h-12 w-12 place-items-center rounded-2xl bg-emerald-50 text-emerald-600 dark:bg-emerald-500/10"><i data-lucide="utensils" class="h-6 w-6"></i></div>
-          <span class="rounded-full border border-emerald-500/30 bg-emerald-50 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400">Program Gizi</span>
-        </div>
-        <h4 class="mt-5 text-[16px] font-extrabold tracking-tight text-slate-900 dark:text-white">Pembangunan Dapur MBG</h4>
-        <p class="mt-2.5 text-[13px] leading-relaxed text-slate-600 dark:text-slate-400">Pembangunan dapur fasilitas Makan Bergizi Gratis (MBG) beserta instalasi dan operasionalnya — mendukung program gizi nasional bersama Badan Gizi Nasional &amp; Yayasan Kartika Eka Paksi.</p>
-        <div class="mt-5 flex flex-wrap gap-2">
-          <span class="rounded-lg border border-slate-200 bg-slate-50 px-2.5 py-1 text-[11px] font-medium text-slate-600 dark:border-white/10 dark:bg-slate-800 dark:text-slate-400">Gizi Nasional</span>
-          <span class="rounded-lg border border-slate-200 bg-slate-50 px-2.5 py-1 text-[11px] font-medium text-slate-600 dark:border-white/10 dark:bg-slate-800 dark:text-slate-400">Konstruksi</span>
-        </div>
-      </article>
-
-      <!-- Pembangunan Koperasi Nelayan -->
-      <article class="card-lift reveal group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-6 shadow-card dark:border-white/10 dark:bg-slate-900 sm:p-7" style="transition-delay:.16s">
-        <div class="flex items-start justify-between gap-4">
-          <div class="icon-tile grid h-12 w-12 place-items-center rounded-2xl bg-sky-50 text-sky-600 dark:bg-sky-500/10"><i data-lucide="fish" class="h-6 w-6"></i></div>
-          <span class="rounded-full border border-sky-500/30 bg-sky-50 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:bg-sky-500/10 dark:text-sky-400">Sektor Kelautan</span>
-        </div>
-        <h4 class="mt-5 text-[16px] font-extrabold tracking-tight text-slate-900 dark:text-white">Pembangunan Koperasi Nelayan</h4>
-        <p class="mt-2.5 text-[13px] leading-relaxed text-slate-600 dark:text-slate-400">Pembangunan koperasi nelayan beserta sarana pendukungnya — penguatan ekonomi pesisir, distribusi hasil tangkapan, dan pemberdayaan keluarga nelayan. Bekerja sama dengan Kementerian Kelautan dan Perikanan RI.</p>
-        <div class="mt-5 flex flex-wrap gap-2">
-          <span class="rounded-lg border border-slate-200 bg-slate-50 px-2.5 py-1 text-[11px] font-medium text-slate-600 dark:border-white/10 dark:bg-slate-800 dark:text-slate-400">Ekonomi Pesisir</span>
-          <span class="rounded-lg border border-slate-200 bg-slate-50 px-2.5 py-1 text-[11px] font-medium text-slate-600 dark:border-white/10 dark:bg-slate-800 dark:text-slate-400">KKP RI</span>
-        </div>
-      </article>
-    </div>
-
     <!-- GALLERY -->
-    <div class="reveal mt-16">
+    <div class="reveal mt-20">
       <div class="mb-6 flex items-center justify-between gap-4">
         <h3 class="text-lg font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-xl">Galeri Proyek</h3>
         <span class="text-[11.5px] font-semibold uppercase tracking-wider text-slate-400">Klik untuk memperbesar</span>
@@ -722,33 +789,79 @@ tailwind.config = {
           <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 transition-opacity group-hover:opacity-100"></div>
           <span class="absolute bottom-3 left-3 translate-y-2 text-[11.5px] font-bold text-white opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100">Distribusi Pangan</span>
         </button>
-        <button data-lb="https://images.unsplash.com/photo-1595273670150-bd0c3c392e46?w=1400&q=80" class="group relative aspect-[4/3] overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 dark:border-white/10 dark:bg-slate-800">
-          <img src="https://images.unsplash.com/photo-1595273670150-bd0c3c392e46?w=600&q=80" alt="Pertanian" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 transition-opacity group-hover:opacity-100"></div>
-          <span class="absolute bottom-3 left-3 translate-y-2 text-[11.5px] font-bold text-white opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100">Panen Jagung</span>
-        </button>
-        <button data-lb="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1400&q=80" class="group relative aspect-[4/3] overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 dark:border-white/10 dark:bg-slate-800">
-          <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=600&q=80" alt="Kolaborasi" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 transition-opacity group-hover:opacity-100"></div>
-          <span class="absolute bottom-3 left-3 translate-y-2 text-[11.5px] font-bold text-white opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100">Kolaborasi Tim</span>
-        </button>
-        <button data-lb="https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?w=1400&q=80" class="group relative aspect-[4/3] overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 dark:border-white/10 dark:bg-slate-800">
-          <img src="https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?w=600&q=80" alt="Pangan" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 transition-opacity group-hover:opacity-100"></div>
-          <span class="absolute bottom-3 left-3 translate-y-2 text-[11.5px] font-bold text-white opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100">Distribusi Pangan</span>
-        </button>
-        <button data-lb="https://images.unsplash.com/photo-1553413077-190dd305871c?w=1400&q=80" class="group relative aspect-[4/3] overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 dark:border-white/10 dark:bg-slate-800">
-          <img src="https://images.unsplash.com/photo-1553413077-190dd305871c?w=600&q=80" alt="Gudang" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 transition-opacity group-hover:opacity-100"></div>
-          <span class="absolute bottom-3 left-3 translate-y-2 text-[11.5px] font-bold text-white opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100">Gudang Logistik</span>
-        </button>
       </div>
     </div>
   </div>
 </section>
 
+<!-- TESTIMONI -->
+<section id="testimoni" class="relative scroll-mt-28 border-y border-slate-200 bg-slate-50 py-20 dark:border-white/10 dark:bg-slate-900/50 sm:py-28">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="reveal mx-auto max-w-3xl text-center">
+      <span class="text-[11px] font-bold uppercase tracking-[0.24em] text-brand-blue">Testimoni</span>
+      <h2 class="mt-4 text-3xl font-extrabold leading-tight tracking-tight text-slate-900 dark:text-white sm:text-4xl lg:text-[2.75rem]">Apa Kata Mitra Kami</h2>
+      <p class="mt-5 text-[15px] leading-relaxed text-slate-600 dark:text-slate-400">Kepercayaan mitra adalah aset terbesar kami. Berikut sebagian tanggapan dari kolaborasi yang telah berjalan.</p>
+    </div>
+    <div class="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+      <!-- Testimonial cards -->
+      <div class="reveal card-lift rounded-3xl border border-slate-200 bg-white p-7 shadow-card dark:border-white/10 dark:bg-slate-900">
+        <div class="flex items-center gap-1 text-amber-400">
+          <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+          <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+          <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+          <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+          <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+        </div>
+        <p class="mt-5 font-serif text-[15px] italic leading-relaxed text-slate-700 dark:text-slate-300">"Kerja sama dalam pembangunan lumbung pangan berjalan sesuai target. Tim Judison responsif, disiplin, dan mengutamakan kualitas di setiap tahap."</p>
+        <div class="mt-6 flex items-center gap-3 border-t border-slate-200 pt-5 dark:border-white/10">
+          <div class="grid h-11 w-11 place-items-center rounded-xl bg-brand-redSoft text-brand-red dark:bg-brand-red/10"><i data-lucide="shield" class="h-5 w-5"></i></div>
+          <div class="leading-tight">
+            <div class="text-[13px] font-bold text-slate-900 dark:text-white">Mitra Kementerian</div>
+            <div class="mt-0.5 text-[11px] text-slate-500 dark:text-slate-400">Proyek Lumbung Pangan Nasional</div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal card-lift rounded-3xl border border-slate-200 bg-white p-7 shadow-card dark:border-white/10 dark:bg-slate-900" style="transition-delay:.08s">
+        <div class="flex items-center gap-1 text-amber-400">
+          <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+          <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+          <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+          <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+          <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+        </div>
+        <p class="mt-5 font-serif text-[15px] italic leading-relaxed text-slate-700 dark:text-slate-300">"Pasokan daging ayam dan telur selalu tepat waktu dengan kualitas yang konsisten. Sangat mendukung kelancaran operasional dapur MBG."</p>
+        <div class="mt-6 flex items-center gap-3 border-t border-slate-200 pt-5 dark:border-white/10">
+          <div class="grid h-11 w-11 place-items-center rounded-xl bg-emerald-50 text-emerald-600 dark:bg-emerald-500/10"><i data-lucide="utensils" class="h-5 w-5"></i></div>
+          <div class="leading-tight">
+            <div class="text-[13px] font-bold text-slate-900 dark:text-white">Mitra Program Gizi</div>
+            <div class="mt-0.5 text-[11px] text-slate-500 dark:text-slate-400">Distribusi Pangan MBG</div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal card-lift rounded-3xl border border-slate-200 bg-white p-7 shadow-card dark:border-white/10 dark:bg-slate-900" style="transition-delay:.16s">
+        <div class="flex items-center gap-1 text-amber-400">
+          <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+          <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+          <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+          <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+          <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+        </div>
+        <p class="mt-5 font-serif text-[15px] italic leading-relaxed text-slate-700 dark:text-slate-300">"Hasil pengaspalan rapi dan kokoh. Komunikasi dengan tim pelaksana di lapangan sangat baik, deadline terpenuhi."</p>
+        <div class="mt-6 flex items-center gap-3 border-t border-slate-200 pt-5 dark:border-white/10">
+          <div class="grid h-11 w-11 place-items-center rounded-xl bg-brand-blueSoft text-brand-blue dark:bg-brand-blue/10"><i data-lucide="route" class="h-5 w-5"></i></div>
+          <div class="leading-tight">
+            <div class="text-[13px] font-bold text-slate-900 dark:text-white">Klien Pengaspalan</div>
+            <div class="mt-0.5 text-[11px] text-slate-500 dark:text-slate-400">Proyek Jawa Barat</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="reveal mt-8 text-center text-[11.5px] italic text-slate-400">* Testimoni di atas adalah ringkasan kolaborasi. Untuk referensi lengkap dan kontak mitra, silakan hubungi tim kami.</p>
+  </div>
+</section>
+
 <!-- TIMELINE -->
-<section id="timeline" class="relative scroll-mt-28 border-y border-slate-200 bg-slate-50 py-20 dark:border-white/10 dark:bg-slate-900/50 sm:py-28">
+<section id="timeline" class="relative scroll-mt-28 py-20 sm:py-28">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="reveal mx-auto max-w-3xl text-center">
       <span class="text-[11px] font-bold uppercase tracking-[0.24em] text-brand-blue">Perjalanan Kami</span>
@@ -760,162 +873,150 @@ tailwind.config = {
           <div class="absolute -left-[41px] top-1 h-4 w-4 rounded-full border-2 border-white bg-brand-blue shadow-md dark:border-slate-900 sm:-left-[49px]"></div>
           <div class="text-[11px] font-bold uppercase tracking-widest text-brand-blue">2023</div>
           <h3 class="mt-1.5 text-[16px] font-extrabold tracking-tight text-slate-900 dark:text-white">Pendirian PT Medwa Judison Perkasa</h3>
-          <p class="mt-1.5 text-[13.5px] leading-relaxed text-slate-600 dark:text-slate-400">Berdiri sebagai badan hukum resmi dengan kantor pusat di Palembang, fokus pada konstruksi, agrikultur, distribusi pangan, dan perdagangan besar.</p>
+          <p class="mt-1.5 text-[13.5px] leading-relaxed text-slate-600 dark:text-slate-400">Berdiri sebagai badan hukum resmi dengan kantor pusat di Palembang.</p>
         </div>
         <div class="relative mb-10">
           <div class="absolute -left-[41px] top-1 h-4 w-4 rounded-full border-2 border-white bg-brand-red shadow-md dark:border-slate-900 sm:-left-[49px]"></div>
           <div class="text-[11px] font-bold uppercase tracking-widest text-brand-red">2023 — 2024</div>
           <h3 class="mt-1.5 text-[16px] font-extrabold tracking-tight text-slate-900 dark:text-white">Proyek Lumbung Pangan Nasional 2.000 Ha</h3>
-          <p class="mt-1.5 text-[13.5px] leading-relaxed text-slate-600 dark:text-slate-400">Dipercaya oleh Kementerian Pertahanan RI mengelola lahan seluas 2.000 hektar di Majalengka, Jawa Barat.</p>
+          <p class="mt-1.5 text-[13.5px] leading-relaxed text-slate-600 dark:text-slate-400">Dipercaya Kementerian Pertahanan RI di Majalengka, Jawa Barat.</p>
         </div>
         <div class="relative mb-10">
           <div class="absolute -left-[41px] top-1 h-4 w-4 rounded-full border-2 border-white bg-emerald-500 shadow-md dark:border-slate-900 sm:-left-[49px]"></div>
           <div class="text-[11px] font-bold uppercase tracking-widest text-emerald-600">2024</div>
-          <h3 class="mt-1.5 text-[16px] font-extrabold tracking-tight text-slate-900 dark:text-white">Pembangunan Dapur MBG &amp; Koperasi Desa Merah Putih</h3>
-          <p class="mt-1.5 text-[13.5px] leading-relaxed text-slate-600 dark:text-slate-400">Pembangunan dapur fasilitas Makan Bergizi Gratis (MBG) bersama Yayasan Kartika Eka Paksi dan pengembangan Koperasi Desa Merah Putih.</p>
+          <h3 class="mt-1.5 text-[16px] font-extrabold tracking-tight text-slate-900 dark:text-white">Dapur MBG &amp; Koperasi Desa Merah Putih</h3>
+          <p class="mt-1.5 text-[13.5px] leading-relaxed text-slate-600 dark:text-slate-400">Pembangunan dapur MBG bersama YKEP dan pengembangan koperasi desa.</p>
         </div>
         <div class="relative mb-10">
           <div class="absolute -left-[41px] top-1 h-4 w-4 rounded-full border-2 border-white bg-sky-500 shadow-md dark:border-slate-900 sm:-left-[49px]"></div>
           <div class="text-[11px] font-bold uppercase tracking-widest text-sky-600">2024 — 2025</div>
           <h3 class="mt-1.5 text-[16px] font-extrabold tracking-tight text-slate-900 dark:text-white">Pembangunan Koperasi Nelayan</h3>
-          <p class="mt-1.5 text-[13.5px] leading-relaxed text-slate-600 dark:text-slate-400">Bersama Kementerian Kelautan dan Perikanan RI — membangun koperasi nelayan untuk penguatan ekonomi pesisir.</p>
+          <p class="mt-1.5 text-[13.5px] leading-relaxed text-slate-600 dark:text-slate-400">Bersama Kementerian Kelautan &amp; Perikanan RI.</p>
         </div>
         <div class="relative">
           <div class="absolute -left-[41px] top-1 h-4 w-4 rounded-full border-2 border-white bg-brand-blue shadow-md dark:border-slate-900 sm:-left-[49px]"></div>
           <div class="text-[11px] font-bold uppercase tracking-widest text-brand-blue">2025 — Kini</div>
           <h3 class="mt-1.5 text-[16px] font-extrabold tracking-tight text-slate-900 dark:text-white">Konsolidasi &amp; Pertumbuhan Berkelanjutan</h3>
-          <p class="mt-1.5 text-[13.5px] leading-relaxed text-slate-600 dark:text-slate-400">Fokus pada penguatan tata kelola, inovasi agrikultur modern, dan perluasan rantai pasok nasional.</p>
+          <p class="mt-1.5 text-[13.5px] leading-relaxed text-slate-600 dark:text-slate-400">Penguatan tata kelola, inovasi agrikultur, dan perluasan rantai pasok nasional.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- LEGALITAS + MITRA GRID -->
-<section id="legalitas" class="relative scroll-mt-28 py-20 sm:py-28">
+<!-- LEGALITAS + QR CODE + MITRA GRID -->
+<section id="legalitas" class="relative scroll-mt-28 border-y border-slate-200 bg-slate-50 py-20 dark:border-white/10 dark:bg-slate-900/50 sm:py-28">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="grid gap-14 lg:grid-cols-12 lg:gap-12">
       <div class="lg:col-span-5">
         <div class="reveal">
           <span class="text-[11px] font-bold uppercase tracking-[0.24em] text-brand-blue">Legalitas &amp; Sertifikasi</span>
           <h2 class="mt-4 text-3xl font-extrabold leading-tight tracking-tight text-slate-900 dark:text-white sm:text-4xl">Dasar Hukum &amp; Kualifikasi</h2>
-          <p class="mt-5 text-[15px] leading-relaxed text-slate-600 dark:text-slate-400">Beroperasi sebagai badan hukum resmi, didukung kualifikasi konstruksi terverifikasi pada grup usaha.</p>
+          <p class="mt-5 text-[15px] leading-relaxed text-slate-600 dark:text-slate-400">Beroperasi sebagai badan hukum resmi, didukung kualifikasi konstruksi terverifikasi.</p>
         </div>
+
+        <!-- QR VERIFICATION -->
         <div class="reveal mt-9 rounded-3xl border border-slate-200 bg-white p-6 shadow-card dark:border-white/10 dark:bg-slate-900 sm:p-7" style="transition-delay:.08s">
+          <div class="flex flex-col items-center gap-5 sm:flex-row">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https%3A%2F%2Foss.go.id%2Fportal%2Fdata%2Fizin%3Fnib%3D2312230034726&bgcolor=ffffff&color=1E3A8A&margin=8" alt="QR Verifikasi Legalitas" class="h-28 w-28 rounded-xl border border-slate-200 bg-white p-2 dark:border-white/10">
+            <div class="text-center sm:text-left">
+              <div class="text-[11px] font-bold uppercase tracking-[0.16em] text-brand-blue">Verifikasi Cepat</div>
+              <div class="mt-1 text-[14.5px] font-extrabold text-slate-900 dark:text-white">Scan untuk Verifikasi</div>
+              <p class="mt-2 text-[12.5px] leading-relaxed text-slate-600 dark:text-slate-400">Scan QR untuk cek legalitas NIB <strong class="font-semibold">2312230034726</strong> di portal OSS RBA.</p>
+            </div>
+          </div>
+          <button id="downloadPdfLegal" type="button" class="btn-primary mt-5 inline-flex w-full items-center justify-center gap-2 rounded-xl px-5 py-3 text-[13px] font-bold text-white">
+            <i data-lucide="file-down" class="h-4 w-4"></i> Unduh Company Profile (PDF)
+          </button>
+        </div>
+
+        <div class="reveal mt-5 rounded-3xl border border-slate-200 bg-white p-6 shadow-card dark:border-white/10 dark:bg-slate-900 sm:p-7" style="transition-delay:.14s">
           <div class="flex items-center gap-3">
             <div class="grid h-10 w-10 place-items-center rounded-xl bg-brand-blueSoft text-brand-blue dark:bg-brand-blue/10"><i data-lucide="landmark" class="h-5 w-5"></i></div>
             <h3 class="text-[15px] font-extrabold tracking-tight text-slate-900 dark:text-white">Badan Hukum Perusahaan</h3>
           </div>
           <ul class="mt-5 grid gap-3 sm:grid-cols-2">
             <li class="flex items-start gap-2.5 rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-3 dark:border-white/10 dark:bg-slate-800"><i data-lucide="file-check-2" class="mt-0.5 h-4 w-4 shrink-0 text-brand-blue"></i><span class="text-[12.5px] leading-relaxed text-slate-600 dark:text-slate-400">Akta Pendirian &amp; SK Kemenkumham RI</span></li>
-            <li class="flex items-start gap-2.5 rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-3 dark:border-white/10 dark:bg-slate-800"><i data-lucide="file-check-2" class="mt-0.5 h-4 w-4 shrink-0 text-brand-blue"></i><span class="text-[12.5px] leading-relaxed text-slate-600 dark:text-slate-400">NIB — 2312230034726 (OSS RBA)</span></li>
+            <li class="flex items-start gap-2.5 rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-3 dark:border-white/10 dark:bg-slate-800"><i data-lucide="file-check-2" class="mt-0.5 h-4 w-4 shrink-0 text-brand-blue"></i><span class="text-[12.5px] leading-relaxed text-slate-600 dark:text-slate-400">NIB — 2312230034726</span></li>
             <li class="flex items-start gap-2.5 rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-3 dark:border-white/10 dark:bg-slate-800"><i data-lucide="file-check-2" class="mt-0.5 h-4 w-4 shrink-0 text-brand-blue"></i><span class="text-[12.5px] leading-relaxed text-slate-600 dark:text-slate-400">NPWP Perusahaan</span></li>
             <li class="flex items-start gap-2.5 rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-3 dark:border-white/10 dark:bg-slate-800"><i data-lucide="file-check-2" class="mt-0.5 h-4 w-4 shrink-0 text-brand-blue"></i><span class="text-[12.5px] leading-relaxed text-slate-600 dark:text-slate-400">Status PMDN</span></li>
           </ul>
-        </div>
-        <div class="reveal mt-5 rounded-3xl border border-slate-200 bg-white p-6 shadow-card dark:border-white/10 dark:bg-slate-900 sm:p-7" style="transition-delay:.16s">
-          <div class="flex items-center gap-3">
-            <div class="grid h-10 w-10 place-items-center rounded-xl bg-brand-redSoft text-brand-red dark:bg-brand-red/10"><i data-lucide="shield-check" class="h-5 w-5"></i></div>
-            <h3 class="text-[15px] font-extrabold tracking-tight text-slate-900 dark:text-white">Kualifikasi Konstruksi Terverifikasi</h3>
-          </div>
-          <ul class="mt-5 space-y-3">
+          <ul class="mt-4 space-y-3">
             <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="mt-0.5 h-4 w-4 shrink-0 text-brand-red"></i><span class="text-[12.5px] leading-relaxed text-slate-600 dark:text-slate-400">SBU — Konstruksi Bangunan Sipil Jalan (KBLI 42101)</span></li>
-            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="mt-0.5 h-4 w-4 shrink-0 text-brand-red"></i><span class="text-[12.5px] leading-relaxed text-slate-600 dark:text-slate-400">SBU — Konstruksi Jaringan Irigasi &amp; Drainase (KBLI 42201)</span></li>
-            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="mt-0.5 h-4 w-4 shrink-0 text-brand-red"></i><span class="text-[12.5px] leading-relaxed text-slate-600 dark:text-slate-400">Anggota ASPEKNAS · BNSP</span></li>
-            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="mt-0.5 h-4 w-4 shrink-0 text-brand-red"></i><span class="text-[12.5px] leading-relaxed text-slate-600 dark:text-slate-400">Teregistrasi LPJK — berlaku s.d. 2028</span></li>
+            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="mt-0.5 h-4 w-4 shrink-0 text-brand-red"></i><span class="text-[12.5px] leading-relaxed text-slate-600 dark:text-slate-400">SBU — Jaringan Irigasi &amp; Drainase (KBLI 42201)</span></li>
+            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="mt-0.5 h-4 w-4 shrink-0 text-brand-red"></i><span class="text-[12.5px] leading-relaxed text-slate-600 dark:text-slate-400">Anggota ASPEKNAS · BNSP · LPJK s.d. 2028</span></li>
           </ul>
         </div>
       </div>
 
+      <!-- MITRA GRID -->
       <div class="lg:col-span-7">
         <div class="reveal">
           <span class="text-[11px] font-bold uppercase tracking-[0.24em] text-brand-red">Kepercayaan</span>
           <h2 class="mt-4 text-3xl font-extrabold leading-tight tracking-tight text-slate-900 dark:text-white sm:text-4xl">Klien &amp; Mitra Strategis</h2>
-          <p class="mt-5 text-[15px] leading-relaxed text-slate-600 dark:text-slate-400">Dipercaya oleh institusi pemerintah, TNI/Polri, dan mitra strategis nasional dalam berbagai proyek infrastruktur, ketahanan pangan, dan program sosial.</p>
+          <p class="mt-5 text-[15px] leading-relaxed text-slate-600 dark:text-slate-400">Dipercaya oleh institusi pemerintah, TNI/Polri, dan mitra strategis nasional.</p>
         </div>
-
         <div class="reveal mt-9 grid grid-cols-2 gap-3.5 sm:grid-cols-3" style="transition-delay:.1s">
-
           <div class="partner-card card-lift flex flex-col items-center gap-3 rounded-2xl border border-slate-200 bg-white p-5 text-center dark:border-white/10 dark:bg-slate-900">
-            <img src="https://www.kemhan.go.id/wp-content/themes/menhan/images/logo.png" alt="Kemhan RI" class="partner-logo h-16 w-auto" onerror="this.outerHTML='<i data-lucide=\'shield\' class=\'h-16 w-16 text-brand-red\'></i>'">
+            <img src="https://www.kemhan.go.id/wp-content/themes/menhan/images/logo.png" alt="Kemhan RI" class="partner-logo h-16 w-auto">
             <div class="text-[11px] font-bold leading-tight text-slate-800 dark:text-slate-200">Kementerian Pertahanan RI</div>
           </div>
-
           <div class="partner-card card-lift flex flex-col items-center gap-3 rounded-2xl border border-slate-200 bg-white p-5 text-center dark:border-white/10 dark:bg-slate-900">
-            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7b/Emblem_of_Indonesia_and_Logo_of_the_Ministry_of_Maritime_Affairs_and_Fisheries_of_the_Republic_of_Indonesia_%28Indonesian_version_2021%29.svg/1920px-Emblem_of_Indonesia_and_Logo_of_the_Ministry_of_Maritime_Affairs_and_Fisheries_of_the_Republic_of_Indonesia_%28Indonesian_version_2021%29.svg.png" alt="KKP RI" class="partner-logo h-16 w-auto" onerror="this.outerHTML='<i data-lucide=\'fish\' class=\'h-16 w-16 text-sky-600\'></i>'">
+            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7b/Emblem_of_Indonesia_and_Logo_of_the_Ministry_of_Maritime_Affairs_and_Fisheries_of_the_Republic_of_Indonesia_%28Indonesian_version_2021%29.svg/1920px-Emblem_of_Indonesia_and_Logo_of_the_Ministry_of_Maritime_Affairs_and_Fisheries_of_the_Republic_of_Indonesia_%28Indonesian_version_2021%29.svg.png" alt="KKP" class="partner-logo h-16 w-auto">
             <div class="text-[11px] font-bold leading-tight text-slate-800 dark:text-slate-200">Kementerian Kelautan &amp; Perikanan</div>
           </div>
-
           <div class="partner-card card-lift flex flex-col items-center gap-3 rounded-2xl border border-slate-200 bg-white p-5 text-center dark:border-white/10 dark:bg-slate-900">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/4/43/Lambang_TNI_2013.png" alt="Mabes TNI" class="partner-logo h-16 w-auto" onerror="this.outerHTML='<i data-lucide=\'shield\' class=\'h-16 w-16 text-emerald-700\'></i>'">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/43/Lambang_TNI_2013.png" alt="TNI" class="partner-logo h-16 w-auto">
             <div class="text-[11px] font-bold leading-tight text-slate-800 dark:text-slate-200">Mabes TNI</div>
           </div>
-
           <div class="partner-card card-lift flex flex-col items-center gap-3 rounded-2xl border border-slate-200 bg-white p-5 text-center dark:border-white/10 dark:bg-slate-900">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/d/dd/Insignia_of_the_Indonesian_National_Police.svg" alt="Mabes Polri" class="partner-logo h-16 w-auto" onerror="this.outerHTML='<i data-lucide=\'shield\' class=\'h-16 w-16 text-amber-700\'></i>'">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/d/dd/Insignia_of_the_Indonesian_National_Police.svg" alt="Polri" class="partner-logo h-16 w-auto">
             <div class="text-[11px] font-bold leading-tight text-slate-800 dark:text-slate-200">Mabes Polri</div>
           </div>
-
           <div class="partner-card card-lift flex flex-col items-center gap-3 rounded-2xl border border-slate-200 bg-white p-5 text-center dark:border-white/10 dark:bg-slate-900">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/LOGO_MARINIR.png" alt="Marinir" class="partner-logo h-16 w-auto" onerror="this.outerHTML='<i data-lucide=\'anchor\' class=\'h-16 w-16 text-purple-700\'></i>'">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/LOGO_MARINIR.png" alt="Marinir" class="partner-logo h-16 w-auto">
             <div class="text-[11px] font-bold leading-tight text-slate-800 dark:text-slate-200">Korps Marinir TNI AL</div>
           </div>
-
           <div class="partner-card card-lift flex flex-col items-center gap-3 rounded-2xl border border-slate-200 bg-white p-5 text-center dark:border-white/10 dark:bg-slate-900">
-            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5b/Logo_Unhan.png/1280px-Logo_Unhan.png" alt="Unhan" class="partner-logo h-16 w-auto" onerror="this.outerHTML='<i data-lucide=\'graduation-cap\' class=\'h-16 w-16 text-brand-blue\'></i>'">
+            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5b/Logo_Unhan.png/1280px-Logo_Unhan.png" alt="Unhan" class="partner-logo h-16 w-auto">
             <div class="text-[11px] font-bold leading-tight text-slate-800 dark:text-slate-200">Universitas Pertahanan RI</div>
           </div>
-
           <div class="partner-card card-lift flex flex-col items-center gap-3 rounded-2xl border border-slate-200 bg-white p-5 text-center dark:border-white/10 dark:bg-slate-900">
-            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f0/Bank_Negara_Indonesia_logo_%282004%29.svg/500px-Bank_Negara_Indonesia_logo_%282004%29.svg.png" alt="BNI" class="partner-logo h-12 w-auto" onerror="this.outerHTML='<i data-lucide=\'building\' class=\'h-16 w-16 text-orange-500\'></i>'">
+            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f0/Bank_Negara_Indonesia_logo_%282004%29.svg/500px-Bank_Negara_Indonesia_logo_%282004%29.svg.png" alt="BNI" class="partner-logo h-12 w-auto">
             <div class="text-[11px] font-bold leading-tight text-slate-800 dark:text-slate-200">Bank Negara Indonesia</div>
           </div>
-
           <div class="partner-card card-lift flex flex-col items-center gap-3 rounded-2xl border border-slate-200 bg-white p-5 text-center dark:border-white/10 dark:bg-slate-900">
-            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/2/27/Lambang_Bea_dan_Cukai.svg/1920px-Lambang_Bea_dan_Cukai.svg.png" alt="Bea Cukai" class="partner-logo h-16 w-auto" onerror="this.outerHTML='<i data-lucide=\'landmark\' class=\'h-16 w-16 text-blue-900\'></i>'">
+            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/2/27/Lambang_Bea_dan_Cukai.svg/1920px-Lambang_Bea_dan_Cukai.svg.png" alt="Bea Cukai" class="partner-logo h-16 w-auto">
             <div class="text-[11px] font-bold leading-tight text-slate-800 dark:text-slate-200">Direktorat Jenderal Bea &amp; Cukai</div>
           </div>
-
           <div class="partner-card card-lift flex flex-col items-center gap-3 rounded-2xl border border-slate-200 bg-white p-5 text-center dark:border-white/10 dark:bg-slate-900">
-            <img src="https://i.pinimg.com/736x/1c/c7/07/1cc70794090bfed9f902a0de548f5be7.jpg" alt="DPD RI" class="partner-logo h-16 w-auto" onerror="this.outerHTML='<i data-lucide=\'scale\' class=\'h-16 w-16 text-brand-blue\'></i>'">
+            <img src="https://i.pinimg.com/736x/1c/c7/07/1cc70794090bfed9f902a0de548f5be7.jpg" alt="DPD RI" class="partner-logo h-16 w-auto">
             <div class="text-[11px] font-bold leading-tight text-slate-800 dark:text-slate-200">DPD RI</div>
           </div>
-
           <div class="partner-card card-lift flex flex-col items-center gap-3 rounded-2xl border border-slate-200 bg-white p-5 text-center dark:border-white/10 dark:bg-slate-900">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Logo_Badan_Gizi_Nasional_%282024%29.png" alt="Badan Gizi Nasional" class="partner-logo h-16 w-auto" onerror="this.outerHTML='<i data-lucide=\'wheat\' class=\'h-16 w-16 text-emerald-600\'></i>'">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Logo_Badan_Gizi_Nasional_%282024%29.png" alt="BGN" class="partner-logo h-16 w-auto">
             <div class="text-[11px] font-bold leading-tight text-slate-800 dark:text-slate-200">Badan Gizi Nasional</div>
           </div>
-
           <div class="partner-card card-lift flex flex-col items-center gap-3 rounded-2xl border border-slate-200 bg-white p-5 text-center dark:border-white/10 dark:bg-slate-900">
-            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ad/LOGO_YKEP.png/960px-LOGO_YKEP.png" alt="YKEP" class="partner-logo h-16 w-auto" onerror="this.outerHTML='<i data-lucide=\'heart-handshake\' class=\'h-16 w-16 text-amber-600\'></i>'">
+            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ad/LOGO_YKEP.png/960px-LOGO_YKEP.png" alt="YKEP" class="partner-logo h-16 w-auto">
             <div class="text-[11px] font-bold leading-tight text-slate-800 dark:text-slate-200">Yayasan Kartika Eka Paksi</div>
           </div>
-
           <div class="partner-card card-lift flex flex-col items-center gap-3 rounded-2xl border border-slate-200 bg-white p-5 text-center dark:border-white/10 dark:bg-slate-900">
-            <img src="https://csr.subang.go.id/assets/upload/company/TKG.png" alt="TKG Taekwang" class="partner-logo h-12 w-auto" onerror="this.outerHTML='<i data-lucide=\'factory\' class=\'h-16 w-16 text-slate-600\'></i>'">
+            <img src="https://csr.subang.go.id/assets/upload/company/TKG.png" alt="TKG" class="partner-logo h-12 w-auto">
             <div class="text-[11px] font-bold leading-tight text-slate-800 dark:text-slate-200">TKG Taekwang</div>
           </div>
-
           <div class="partner-card card-lift flex flex-col items-center gap-3 rounded-2xl border border-slate-200 bg-white p-5 text-center dark:border-white/10 dark:bg-slate-900">
-            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f9/Lambang_Kabupaten_Subang.jpeg/250px-Lambang_Kabupaten_Subang.jpeg" alt="Pemkab Subang" class="partner-logo h-16 w-auto" onerror="this.outerHTML='<i data-lucide=\'building-2\' class=\'h-16 w-16 text-brand-blue\'></i>'">
+            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f9/Lambang_Kabupaten_Subang.jpeg/250px-Lambang_Kabupaten_Subang.jpeg" alt="Pemkab Subang" class="partner-logo h-16 w-auto">
             <div class="text-[11px] font-bold leading-tight text-slate-800 dark:text-slate-200">Pemkab Subang</div>
           </div>
-
           <div class="partner-card card-lift flex flex-col items-center gap-3 rounded-2xl border border-slate-200 bg-white p-5 text-center dark:border-white/10 dark:bg-slate-900">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKI1PU5XO8POPjHbOajBM7sVud1WudEyVMtn3s8Fzmdg&s" alt="Pemprov DKI" class="partner-logo h-16 w-auto" onerror="this.outerHTML='<i data-lucide=\'landmark\' class=\'h-16 w-16 text-brand-blue\'></i>'">
-            <div class="text-[11px] font-bold leading-tight text-slate-800 dark:text-slate-200">Pemprov DKI Jakarta</div>
-          </div>
-
-          <div class="partner-card card-lift flex flex-col items-center gap-3 rounded-2xl border border-slate-200 bg-white p-5 text-center dark:border-white/10 dark:bg-slate-900">
-            <img src="https://bnsp.go.id/assets/images/logo-bnsp.png" alt="BNSP" class="partner-logo h-12 w-auto" onerror="this.outerHTML='<i data-lucide=\'badge-check\' class=\'h-16 w-16 text-brand-blue\'></i>'">
+            <img src="https://bnsp.go.id/assets/images/logo-bnsp.png" alt="BNSP" class="partner-logo h-12 w-auto">
             <div class="text-[11px] font-bold leading-tight text-slate-800 dark:text-slate-200">BNSP</div>
           </div>
-
           <div class="partner-card card-lift flex flex-col items-center gap-3 rounded-2xl border border-slate-200 bg-white p-5 text-center dark:border-white/10 dark:bg-slate-900">
             <div class="grid h-16 w-16 place-items-center rounded-2xl bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300"><i data-lucide="building" class="h-8 w-8"></i></div>
             <div class="text-[11px] font-bold leading-tight text-slate-800 dark:text-slate-200">CV Ribu Jaya Mandiri</div>
           </div>
-
         </div>
       </div>
     </div>
@@ -923,7 +1024,7 @@ tailwind.config = {
 </section>
 
 <!-- STRUKTUR -->
-<section id="struktur" class="relative scroll-mt-28 border-y border-slate-200 bg-slate-50 py-20 dark:border-white/10 dark:bg-slate-900/50 sm:py-28">
+<section id="struktur" class="relative scroll-mt-28 py-20 sm:py-28">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="reveal mx-auto max-w-3xl text-center">
       <span class="text-[11px] font-bold uppercase tracking-[0.24em] text-brand-blue">Struktur Perusahaan</span>
@@ -996,9 +1097,7 @@ tailwind.config = {
           <img src="https://i.ibb.co.com/LX09X0xY/Chat-GPT-Image-Sep-23-2026-11-17-59-PM.png" alt="M. Azka Medira Joesoef" class="w-full h-auto object-cover">
           <div class="absolute inset-0 bg-gradient-to-t from-brand-navy/70 via-transparent to-transparent"></div>
           <div class="absolute bottom-0 left-0 right-0 p-6 sm:p-7">
-            <div class="inline-flex items-center gap-2 rounded-full border border-brand-blueLight/30 bg-brand-blue/20 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-brand-blueLight backdrop-blur-md">
-              <i data-lucide="briefcase" class="h-3 w-3"></i> Direktur Utama
-            </div>
+            <div class="inline-flex items-center gap-2 rounded-full border border-brand-blueLight/30 bg-brand-blue/20 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-brand-blueLight backdrop-blur-md"><i data-lucide="briefcase" class="h-3 w-3"></i> Direktur Utama</div>
             <div class="mt-3 text-[17px] font-extrabold text-white sm:text-lg">M. Azka Medira Joesoef</div>
           </div>
         </div>
@@ -1008,17 +1107,11 @@ tailwind.config = {
           <i data-lucide="message-square-quote" class="h-3.5 w-3.5 text-brand-blueLight"></i>
           <span class="text-[11px] font-bold uppercase tracking-[0.16em] text-brand-blueLight">Pesan Direktur Utama</span>
         </span>
-        <h2 class="mt-6 text-[1.75rem] font-extrabold leading-[1.15] tracking-tight text-white sm:text-3xl lg:text-[2.35rem]">
-          "Kami membangun dengan cara, bukan hanya dengan hasil."
-        </h2>
+        <h2 class="mt-6 text-[1.75rem] font-extrabold leading-[1.15] tracking-tight text-white sm:text-3xl lg:text-[2.35rem]">"Kami membangun dengan cara, bukan hanya dengan hasil."</h2>
         <div class="mt-7 space-y-5 text-[14.5px] leading-relaxed text-slate-300 sm:text-[15px]">
           <p>Judison lahir dari sebuah keyakinan sederhana: bahwa pengabdian tidak berhenti pada satu generasi. Kami membangun perusahaan ini dengan prinsip yang tidak pernah ditawar — <strong class="font-semibold text-white">integritas, inovasi, dan tanggung jawab</strong> terhadap tanah air.</p>
           <p>Dalam setiap proyek, setiap kemitraan, dan setiap panen, kami berkomitmen untuk memberi manfaat nyata bagi masyarakat. Bukan hanya bagi perusahaan, tapi bagi petani mitra, bagi institusi yang mempercayai kami, dan bagi generasi yang akan datang.</p>
           <p>Itu sebabnya kami menamai perusahaan ini <strong class="font-semibold text-white">Judison</strong>: <em class="not-italic font-medium text-brand-blueLight">Joesoef Emdhy and Son</em>. Sebuah janji bahwa warisan nilai akan terus hidup dalam setiap langkah kami.</p>
-        </div>
-        <div class="mt-8 rounded-2xl border border-white/10 bg-white/[0.04] p-6 backdrop-blur-sm">
-          <span class="quote-mark text-4xl text-brand-blueLight/50">"</span>
-          <p class="mt-1 font-serif text-[15px] italic leading-relaxed text-slate-200 sm:text-base">Kami tidak ingin menjadi perusahaan besar yang kosong makna. Kami ingin menjadi perusahaan yang dihormati karena caranya.</p>
         </div>
         <div class="mt-8 flex items-center gap-4 border-t border-white/10 pt-6">
           <div class="grid h-11 w-11 place-items-center rounded-xl bg-brand-blue/15 text-brand-blueLight"><i data-lucide="signature" class="h-5 w-5"></i></div>
@@ -1052,43 +1145,350 @@ tailwind.config = {
           <span class="text-[14.5px] font-bold text-slate-900 dark:text-white">Apakah Judison memiliki legalitas resmi?</span>
           <span class="faq-icon grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-brand-blueSoft text-brand-blue dark:bg-brand-blue/10"><i data-lucide="plus" class="h-4 w-4"></i></span>
         </button>
-        <div class="faq-body"><div class="px-5 pb-5 text-[13.5px] leading-relaxed text-slate-600 dark:text-slate-400 sm:px-6 sm:pb-6">Ya. Kami beroperasi sebagai badan hukum resmi dengan Akta Pendirian &amp; SK Kemenkumham RI, NIB (2312230034726) via OSS RBA, NPWP perusahaan, dan status PMDN. Kualifikasi konstruksi kami juga terverifikasi dengan SBU dan registrasi LPJK hingga 2028.</div></div>
+        <div class="faq-body"><div class="px-5 pb-5 text-[13.5px] leading-relaxed text-slate-600 dark:text-slate-400 sm:px-6 sm:pb-6">Ya. Kami beroperasi sebagai badan hukum resmi dengan Akta Pendirian &amp; SK Kemenkumham RI, NIB (2312230034726) via OSS RBA, NPWP perusahaan, dan status PMDN. Kualifikasi konstruksi kami juga terverifikasi dengan SBU dan registrasi LPJK hingga 2028. Scan QR di section Legalitas untuk verifikasi.</div></div>
       </div>
       <div class="faq-item rounded-2xl border border-slate-200 bg-white shadow-card transition-all dark:border-white/10 dark:bg-slate-900">
         <button class="faq-trigger flex w-full items-center justify-between gap-4 p-5 text-left sm:p-6">
           <span class="text-[14.5px] font-bold text-slate-900 dark:text-white">Bagaimana cara menjalin kemitraan dengan Judison?</span>
           <span class="faq-icon grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-brand-blueSoft text-brand-blue dark:bg-brand-blue/10"><i data-lucide="plus" class="h-4 w-4"></i></span>
         </button>
-        <div class="faq-body"><div class="px-5 pb-5 text-[13.5px] leading-relaxed text-slate-600 dark:text-slate-400 sm:px-6 sm:pb-6">Anda dapat menghubungi kami melalui WhatsApp di <strong class="font-semibold text-slate-800 dark:text-slate-200">0878 8885 5877</strong>, email ke <strong class="font-semibold text-slate-800 dark:text-slate-200">info@judison.my.id</strong>, atau mengisi formulir di section Kontak. Tim kami akan merespons dalam 1×24 jam kerja.</div></div>
+        <div class="faq-body"><div class="px-5 pb-5 text-[13.5px] leading-relaxed text-slate-600 dark:text-slate-400 sm:px-6 sm:pb-6">Anda dapat menghubungi kami melalui WhatsApp di <strong class="font-semibold text-slate-800 dark:text-slate-200">0878 8885 5877</strong>, email <strong class="font-semibold text-slate-800 dark:text-slate-200">info@judison.my.id</strong>, atau menggunakan salah satu form di section <a href="#form-hub" class="font-semibold text-brand-blue underline">Layanan Digital</a>. Tim kami akan merespons dalam 1×24 jam kerja.</div></div>
+      </div>
+      <div class="faq-item rounded-2xl border border-slate-200 bg-white shadow-card transition-all dark:border-white/10 dark:bg-slate-900">
+        <button class="faq-trigger flex w-full items-center justify-between gap-4 p-5 text-left sm:p-6">
+          <span class="text-[14.5px] font-bold text-slate-900 dark:text-white">Bagaimana cara mengajukan penawaran harga (RFQ)?</span>
+          <span class="faq-icon grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-brand-blueSoft text-brand-blue dark:bg-brand-blue/10"><i data-lucide="plus" class="h-4 w-4"></i></span>
+        </button>
+        <div class="faq-body"><div class="px-5 pb-5 text-[13.5px] leading-relaxed text-slate-600 dark:text-slate-400 sm:px-6 sm:pb-6">Gunakan form <strong class="font-semibold text-slate-800 dark:text-slate-200">Request for Quote (RFQ)</strong> di section <a href="#form-hub" class="font-semibold text-brand-blue underline">Layanan Digital</a>. Lampirkan spesifikasi/RAB/desain (PDF, DOC, XLS, atau gambar) untuk mempercepat proses penawaran.</div></div>
+      </div>
+      <div class="faq-item rounded-2xl border border-slate-200 bg-white shadow-card transition-all dark:border-white/10 dark:bg-slate-900">
+        <button class="faq-trigger flex w-full items-center justify-between gap-4 p-5 text-left sm:p-6">
+          <span class="text-[14.5px] font-bold text-slate-900 dark:text-white">Bagaimana proses menjadi vendor/supplier Judison?</span>
+          <span class="faq-icon grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-brand-blueSoft text-brand-blue dark:bg-brand-blue/10"><i data-lucide="plus" class="h-4 w-4"></i></span>
+        </button>
+        <div class="faq-body"><div class="px-5 pb-5 text-[13.5px] leading-relaxed text-slate-600 dark:text-slate-400 sm:px-6 sm:pb-6">Isi form <strong class="font-semibold text-slate-800 dark:text-slate-200">Registrasi Vendor</strong> di section <a href="#form-hub" class="font-semibold text-brand-blue underline">Layanan Digital</a>. Tim procurement kami akan meninjau data Anda dan menghubungi jika ada kebutuhan yang sesuai.</div></div>
       </div>
       <div class="faq-item rounded-2xl border border-slate-200 bg-white shadow-card transition-all dark:border-white/10 dark:bg-slate-900">
         <button class="faq-trigger flex w-full items-center justify-between gap-4 p-5 text-left sm:p-6">
           <span class="text-[14.5px] font-bold text-slate-900 dark:text-white">Di mana saja kantor operasional Judison?</span>
           <span class="faq-icon grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-brand-blueSoft text-brand-blue dark:bg-brand-blue/10"><i data-lucide="plus" class="h-4 w-4"></i></span>
         </button>
-        <div class="faq-body"><div class="px-5 pb-5 text-[13.5px] leading-relaxed text-slate-600 dark:text-slate-400 sm:px-6 sm:pb-6">Kantor pusat kami berada di Palembang (Jl. Jend. Sudirman No. 5206, Ario Kemuning), dan kami memiliki kantor perwakilan di Jakarta (Jl. Balai Pustaka Barat No. 337, Rawamangun, Pulo Gadung).</div></div>
-      </div>
-      <div class="faq-item rounded-2xl border border-slate-200 bg-white shadow-card transition-all dark:border-white/10 dark:bg-slate-900">
-        <button class="faq-trigger flex w-full items-center justify-between gap-4 p-5 text-left sm:p-6">
-          <span class="text-[14.5px] font-bold text-slate-900 dark:text-white">Program koperasi dan MBG apa saja yang sudah dikerjakan?</span>
-          <span class="faq-icon grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-brand-blueSoft text-brand-blue dark:bg-brand-blue/10"><i data-lucide="plus" class="h-4 w-4"></i></span>
-        </button>
-        <div class="faq-body"><div class="px-5 pb-5 text-[13.5px] leading-relaxed text-slate-600 dark:text-slate-400 sm:px-6 sm:pb-6">Kami telah terlibat dalam pembangunan <strong class="font-semibold text-slate-800 dark:text-slate-200">Koperasi Desa Merah Putih</strong>, <strong class="font-semibold text-slate-800 dark:text-slate-200">Dapur Makan Bergizi Gratis (MBG)</strong> bersama Badan Gizi Nasional &amp; YKEP, serta <strong class="font-semibold text-slate-800 dark:text-slate-200">Koperasi Nelayan</strong> bersama Kementerian Kelautan dan Perikanan RI.</div></div>
+        <div class="faq-body"><div class="px-5 pb-5 text-[13.5px] leading-relaxed text-slate-600 dark:text-slate-400 sm:px-6 sm:pb-6">Kantor pusat kami berada di Palembang (Jl. Jend. Sudirman No. 5206, Ario Kemuning), dan kantor perwakilan di Jakarta (Jl. Balai Pustaka Barat No. 337, Rawamangun, Pulo Gadung). Lihat peta di section Kontak.</div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- KONTAK -->
-<section id="kontak" class="relative scroll-mt-28 border-y border-slate-200 bg-slate-50 py-20 dark:border-white/10 dark:bg-slate-900/50 sm:py-28">
+<!-- FORM HUB - 4 forms in tabs -->
+<section id="form-hub" class="relative scroll-mt-28 border-y border-slate-200 bg-slate-50 py-20 dark:border-white/10 dark:bg-slate-900/50 sm:py-28">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="reveal mx-auto max-w-3xl text-center">
-      <span class="text-[11px] font-bold uppercase tracking-[0.24em] text-brand-blue">Hubungi Kami</span>
-      <h2 class="mt-4 text-3xl font-extrabold leading-tight tracking-tight text-slate-900 dark:text-white sm:text-4xl lg:text-[2.75rem]">Mari Terhubung &amp; Berkembang Bersama</h2>
-      <p class="mt-5 text-[15px] leading-relaxed text-slate-600 dark:text-slate-400">Diskusikan kebutuhan konstruksi, pengadaan komoditas, distribusi pangan, atau kemitraan strategis bersama tim kami.</p>
+      <span class="text-[11px] font-bold uppercase tracking-[0.24em] text-brand-blue">Layanan Digital</span>
+      <h2 class="mt-4 text-3xl font-extrabold leading-tight tracking-tight text-slate-900 dark:text-white sm:text-4xl lg:text-[2.75rem]">Satu Pintu untuk Semua Kebutuhan</h2>
+      <p class="mt-5 text-[15px] leading-relaxed text-slate-600 dark:text-slate-400">Pilih layanan yang Anda butuhkan. Semua form terintegrasi dan diproses oleh tim terkait dalam 1×24 jam kerja.</p>
     </div>
+
+    <div class="reveal mt-10 flex flex-wrap justify-center gap-2">
+      <button data-tab="form-1" class="tab-btn rounded-xl border border-brand-blue/30 bg-brand-blue text-white px-5 py-3 text-[13px] font-bold shadow-md"><i data-lucide="message-square" class="mr-1.5 inline h-4 w-4"></i> Pesan Cepat</button>
+      <button data-tab="form-2" class="tab-btn rounded-xl border border-slate-200 bg-white text-slate-600 px-5 py-3 text-[13px] font-semibold hover:border-brand-blue/30 hover:text-brand-blue dark:border-white/10 dark:bg-slate-900 dark:text-slate-300"><i data-lucide="file-text" class="mr-1.5 inline h-4 w-4"></i> Request Quote</button>
+      <button data-tab="form-3" class="tab-btn rounded-xl border border-slate-200 bg-white text-slate-600 px-5 py-3 text-[13px] font-semibold hover:border-brand-blue/30 hover:text-brand-blue dark:border-white/10 dark:bg-slate-900 dark:text-slate-300"><i data-lucide="calendar-check" class="mr-1.5 inline h-4 w-4"></i> Booking Konsultasi</button>
+      <button data-tab="form-4" class="tab-btn rounded-xl border border-slate-200 bg-white text-slate-600 px-5 py-3 text-[13px] font-semibold hover:border-brand-blue/30 hover:text-brand-blue dark:border-white/10 dark:bg-slate-900 dark:text-slate-300"><i data-lucide="building-2" class="mr-1.5 inline h-4 w-4"></i> Registrasi Vendor</button>
+    </div>
+
+    <div class="reveal mt-10 rounded-3xl border border-slate-200 bg-white p-7 shadow-card dark:border-white/10 dark:bg-slate-900 sm:p-10">
+
+      <!-- FORM 1: Multi-step Pesan Cepat -->
+      <div id="form-1" class="tab-panel active">
+        <div class="mx-auto max-w-2xl">
+          <div class="mb-8 flex items-center justify-between gap-3">
+            <div class="flex-1 text-center">
+              <div class="step-dot active mx-auto grid h-10 w-10 place-items-center rounded-full border-2 border-brand-blue bg-brand-blue text-white font-bold" data-step-ind="1">1</div>
+              <div class="mt-2 text-[11px] font-bold uppercase tracking-wider text-brand-blue">Identitas</div>
+            </div>
+            <div class="h-0.5 flex-1 bg-slate-200 dark:bg-slate-700"></div>
+            <div class="flex-1 text-center">
+              <div class="step-dot mx-auto grid h-10 w-10 place-items-center rounded-full border-2 border-slate-200 bg-white font-bold text-slate-400 dark:border-slate-700 dark:bg-slate-800" data-step-ind="2">2</div>
+              <div class="mt-2 text-[11px] font-bold uppercase tracking-wider text-slate-400">Kebutuhan</div>
+            </div>
+            <div class="h-0.5 flex-1 bg-slate-200 dark:bg-slate-700"></div>
+            <div class="flex-1 text-center">
+              <div class="step-dot mx-auto grid h-10 w-10 place-items-center rounded-full border-2 border-slate-200 bg-white font-bold text-slate-400 dark:border-slate-700 dark:bg-slate-800" data-step-ind="3">3</div>
+              <div class="mt-2 text-[11px] font-bold uppercase tracking-wider text-slate-400">Pesan</div>
+            </div>
+          </div>
+
+          <form id="multiStepForm" novalidate data-multi>
+            <!-- STEP 1 -->
+            <div class="step-panel active" data-step="1">
+              <h3 class="text-xl font-extrabold tracking-tight text-slate-900 dark:text-white">Data Identitas</h3>
+              <p class="mt-2 text-[13.5px] text-slate-600 dark:text-slate-400">Silakan isi data Anda terlebih dahulu.</p>
+              <div class="mt-6 space-y-5">
+                <div>
+                  <label class="mb-2 block text-[11.5px] font-bold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">Nama Lengkap <span class="text-brand-red">*</span></label>
+                  <input name="nama" type="text" required placeholder="Nama Anda" class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-[13.5px] text-slate-800 placeholder-slate-400 outline-none transition-all focus:border-brand-blue/50 focus:bg-white focus:ring-2 focus:ring-brand-blue/15 dark:border-white/10 dark:bg-slate-800 dark:text-slate-200 dark:placeholder-slate-500">
+                </div>
+                <div>
+                  <label class="mb-2 block text-[11.5px] font-bold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">Email <span class="text-brand-red">*</span></label>
+                  <input name="email" type="email" required placeholder="nama@perusahaan.com" class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-[13.5px] text-slate-800 placeholder-slate-400 outline-none transition-all focus:border-brand-blue/50 focus:bg-white focus:ring-2 focus:ring-brand-blue/15 dark:border-white/10 dark:bg-slate-800 dark:text-slate-200 dark:placeholder-slate-500">
+                </div>
+                <div>
+                  <label class="mb-2 block text-[11.5px] font-bold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">No. WhatsApp / Telepon</label>
+                  <input name="telepon" type="tel" placeholder="+62 ..." class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-[13.5px] text-slate-800 placeholder-slate-400 outline-none transition-all focus:border-brand-blue/50 focus:bg-white focus:ring-2 focus:ring-brand-blue/15 dark:border-white/10 dark:bg-slate-800 dark:text-slate-200 dark:placeholder-slate-500">
+                </div>
+              </div>
+            </div>
+
+            <!-- STEP 2 -->
+            <div class="step-panel" data-step="2">
+              <h3 class="text-xl font-extrabold tracking-tight text-slate-900 dark:text-white">Kebutuhan Anda</h3>
+              <p class="mt-2 text-[13.5px] text-slate-600 dark:text-slate-400">Beri tahu kami tentang kebutuhan Anda.</p>
+              <div class="mt-6 space-y-5">
+                <div>
+                  <label class="mb-2 block text-[11.5px] font-bold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">Perusahaan / Instansi</label>
+                  <input name="perusahaan" type="text" placeholder="Opsional" class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-[13.5px] text-slate-800 placeholder-slate-400 outline-none transition-all focus:border-brand-blue/50 focus:bg-white focus:ring-2 focus:ring-brand-blue/15 dark:border-white/10 dark:bg-slate-800 dark:text-slate-200 dark:placeholder-slate-500">
+                </div>
+                <div>
+                  <label class="mb-2 block text-[11.5px] font-bold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">Kategori Kebutuhan <span class="text-brand-red">*</span></label>
+                  <select name="topik" required class="w-full appearance-none rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-[13.5px] text-slate-800 outline-none transition-all focus:border-brand-blue/50 focus:bg-white focus:ring-2 focus:ring-brand-blue/15 dark:border-white/10 dark:bg-slate-800 dark:text-slate-200">
+                    <option value="">Pilih kategori…</option>
+                    <option>Konstruksi &amp; Infrastruktur</option>
+                    <option>Agrikultur &amp; Kemitraan Lahan</option>
+                    <option>Distribusi Pangan</option>
+                    <option>Perdagangan Besar / Komoditas</option>
+                    <option>Koperasi Desa / Nelayan</option>
+                    <option>Program Dapur MBG</option>
+                    <option>Kemitraan Strategis</option>
+                    <option>Lainnya</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="mb-2 block text-[11.5px] font-bold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">Estimasi Anggaran (opsional)</label>
+                  <select name="budget" class="w-full appearance-none rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-[13.5px] text-slate-800 outline-none transition-all focus:border-brand-blue/50 focus:bg-white focus:ring-2 focus:ring-brand-blue/15 dark:border-white/10 dark:bg-slate-800 dark:text-slate-200">
+                    <option value="">Pilih rentang…</option>
+                    <option>&lt; Rp 100 juta</option>
+                    <option>Rp 100 juta – 500 juta</option>
+                    <option>Rp 500 juta – 1 miliar</option>
+                    <option>Rp 1 miliar – 10 miliar</option>
+                    <option>&gt; Rp 10 miliar</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- STEP 3 -->
+            <div class="step-panel" data-step="3">
+              <h3 class="text-xl font-extrabold tracking-tight text-slate-900 dark:text-white">Pesan Anda</h3>
+              <p class="mt-2 text-[13.5px] text-slate-600 dark:text-slate-400">Tuliskan detail kebutuhan atau pertanyaan Anda.</p>
+              <div class="mt-6 space-y-5">
+                <div>
+                  <label class="mb-2 block text-[11.5px] font-bold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">Pesan <span class="text-brand-red">*</span></label>
+                  <textarea name="pesan" rows="6" required placeholder="Jelaskan kebutuhan atau proyek Anda…" class="w-full resize-none rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-[13.5px] leading-relaxed text-slate-800 placeholder-slate-400 outline-none transition-all focus:border-brand-blue/50 focus:bg-white focus:ring-2 focus:ring-brand-blue/15 dark:border-white/10 dark:bg-slate-800 dark:text-slate-200 dark:placeholder-slate-500"></textarea>
+                </div>
+                <label class="flex items-start gap-3 text-[12.5px] text-slate-600 dark:text-slate-400">
+                  <input type="checkbox" required class="mt-0.5 h-4 w-4 rounded border-slate-300 text-brand-blue focus:ring-brand-blue/30">
+                  <span>Saya setuju data ini digunakan untuk keperluan komunikasi bisnis dengan Judison.</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="mt-8 flex items-center justify-between gap-3">
+              <button type="button" data-nav="prev" class="btn-ghost inline-flex items-center gap-2 rounded-xl border border-slate-300 bg-white px-5 py-3 text-[13px] font-semibold text-slate-800 dark:border-white/15 dark:bg-white/5 dark:text-white disabled:opacity-40" disabled>
+                <i data-lucide="arrow-left" class="h-4 w-4"></i> Sebelumnya
+              </button>
+              <div class="text-[11.5px] font-semibold text-slate-500 dark:text-slate-400"><span data-current-step>1</span> / 3</div>
+              <button type="button" data-nav="next" class="btn-primary inline-flex items-center gap-2 rounded-xl px-5 py-3 text-[13px] font-bold text-white">
+                Berikutnya <i data-lucide="arrow-right" class="h-4 w-4"></i>
+              </button>
+              <button type="submit" data-nav="submit" class="btn-primary hidden items-center gap-2 rounded-xl px-6 py-3 text-[13px] font-bold text-white">
+                <i data-lucide="send" class="h-4 w-4"></i> Kirim Pesan
+              </button>
+            </div>
+
+            <div data-form-feedback class="hidden items-start gap-3 rounded-2xl border border-emerald-500/25 bg-emerald-50 px-4 py-3.5 dark:bg-emerald-500/10 mt-6">
+              <i data-lucide="check-circle-2" class="mt-0.5 h-4.5 w-4.5 shrink-0 text-emerald-600"></i>
+              <div>
+                <div class="text-[13px] font-bold text-emerald-700 dark:text-emerald-300">Pesan berhasil terkirim!</div>
+                <div class="mt-0.5 text-[12px] text-emerald-700/70 dark:text-emerald-300/70">Tim kami akan merespons dalam 1×24 jam kerja.</div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- FORM 2: RFQ with file upload -->
+      <div id="form-2" class="tab-panel">
+        <div class="mx-auto max-w-3xl">
+          <div class="text-center">
+            <div class="inline-flex items-center gap-2 rounded-full bg-brand-blueSoft px-3 py-1 text-[10.5px] font-bold uppercase tracking-wider text-brand-blue dark:bg-brand-blue/10"><i data-lucide="file-text" class="h-3 w-3"></i> Request for Quote</div>
+            <h3 class="mt-4 text-xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-2xl">Ajukan Penawaran Harga</h3>
+            <p class="mt-2 text-[13.5px] text-slate-600 dark:text-slate-400">Lampirkan spesifikasi, RAB, atau desain Anda untuk mempercepat proses penawaran.</p>
+          </div>
+          <form data-simple class="mt-8 space-y-5">
+            <div class="grid gap-5 sm:grid-cols-2">
+              <div><label class="mb-2 block text-[11.5px] font-bold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">Nama Perusahaan <span class="text-brand-red">*</span></label><input type="text" required placeholder="PT ..." class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-[13.5px] text-slate-800 placeholder-slate-400 outline-none transition-all focus:border-brand-blue/50 focus:bg-white focus:ring-2 focus:ring-brand-blue/15 dark:border-white/10 dark:bg-slate-800 dark:text-slate-200 dark:placeholder-slate-500"></div>
+              <div><label class="mb-2 block text-[11.5px] font-bold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">Nama PIC <span class="text-brand-red">*</span></label><input type="text" required placeholder="Nama penanggung jawab" class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-[13.5px] text-slate-800 placeholder-slate-400 outline-none transition-all focus:border-brand-blue/50 focus:bg-white focus:ring-2 focus:ring-brand-blue/15 dark:border-white/10 dark:bg-slate-800 dark:text-slate-200 dark:placeholder-slate-500"></div>
+            </div>
+            <div class="grid gap-5 sm:grid-cols-2">
+              <div><label class="mb-2 block text-[11.5px] font-bold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">Email <span class="text-brand-red">*</span></label><input type="email" required placeholder="pic@perusahaan.com" class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-[13.5px] text-slate-800 placeholder-slate-400 outline-none transition-all focus:border-brand-blue/50 focus:bg-white focus:ring-2 focus:ring-brand-blue/15 dark:border-white/10 dark:bg-slate-800 dark:text-slate-200 dark:placeholder-slate-500"></div>
+              <div><label class="mb-2 block text-[11.5px] font-bold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">No. Telepon <span class="text-brand-red">*</span></label><input type="tel" required placeholder="+62 ..." class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-[13.5px] text-slate-800 placeholder-slate-400 outline-none transition-all focus:border-brand-blue/50 focus:bg-white focus:ring-2 focus:ring-brand-blue/15 dark:border-white/10 dark:bg-slate-800 dark:text-slate-200 dark:placeholder-slate-500"></div>
+            </div>
+            <div><label class="mb-2 block text-[11.5px] font-bold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">Kategori Pekerjaan / Pengadaan <span class="text-brand-red">*</span></label>
+              <select required class="w-full appearance-none rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-[13.5px] text-slate-800 outline-none transition-all focus:border-brand-blue/50 focus:bg-white focus:ring-2 focus:ring-brand-blue/15 dark:border-white/10 dark:bg-slate-800 dark:text-slate-200">
+                <option value="">Pilih…</option>
+                <option>Pengaspalan Jalan / Overlay</option>
+                <option>Paving Block / Pengerasan</option>
+                <option>Konstruksi Gedung</option>
+                <option>Irigasi &amp; Drainase</option>
+                <option>Pengadaan Pangan</option>
+                <option>Pengadaan Komoditas (Batubara/CPO/Karet)</option>
+                <option>Alat Berat &amp; Suku Cadang</option>
+                <option>Lainnya</option>
+              </select>
+            </div>
+            <div class="grid gap-5 sm:grid-cols-2">
+              <div><label class="mb-2 block text-[11.5px] font-bold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">Lokasi Proyek</label><input type="text" placeholder="Kota / Kabupaten" class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-[13.5px] text-slate-800 placeholder-slate-400 outline-none transition-all focus:border-brand-blue/50 focus:bg-white focus:ring-2 focus:ring-brand-blue/15 dark:border-white/10 dark:bg-slate-800 dark:text-slate-200 dark:placeholder-slate-500"></div>
+              <div><label class="mb-2 block text-[11.5px] font-bold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">Target Mulai</label><input type="date" class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-[13.5px] text-slate-800 outline-none transition-all focus:border-brand-blue/50 focus:bg-white focus:ring-2 focus:ring-brand-blue/15 dark:border-white/10 dark:bg-slate-800 dark:text-slate-200"></div>
+            </div>
+            <div><label class="mb-2 block text-[11.5px] font-bold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">Deskripsi / Spesifikasi <span class="text-brand-red">*</span></label><textarea rows="5" required placeholder="Jelaskan lingkup pekerjaan, volume, spesifikasi teknis…" class="w-full resize-none rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-[13.5px] leading-relaxed text-slate-800 placeholder-slate-400 outline-none transition-all focus:border-brand-blue/50 focus:bg-white focus:ring-2 focus:ring-brand-blue/15 dark:border-white/10 dark:bg-slate-800 dark:text-slate-200 dark:placeholder-slate-500"></textarea></div>
+
+            <!-- FILE UPLOAD -->
+            <div>
+              <label class="mb-2 block text-[11.5px] font-bold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">Lampiran Dokumen</label>
+              <div id="fileDrop" class="file-drop flex flex-col items-center justify-center rounded-2xl border-2 border-dashed border-slate-300 bg-slate-50 p-8 text-center transition-all dark:border-white/15 dark:bg-slate-800/60">
+                <i data-lucide="cloud-upload" class="h-8 w-8 text-brand-blue"></i>
+                <div class="mt-3 text-[13.5px] font-semibold text-slate-700 dark:text-slate-200">Tarik file ke sini atau klik untuk memilih</div>
+                <div class="mt-1 text-[11.5px] text-slate-500 dark:text-slate-400">PDF, DOC, XLS, JPG, PNG, DWG (maks 10 MB / file)</div>
+                <input id="fileInput" type="file" multiple class="hidden" accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png,.dwg">
+                <button type="button" id="fileBrowseBtn" class="btn-ghost mt-4 inline-flex items-center gap-2 rounded-xl border border-slate-300 bg-white px-4 py-2 text-[12.5px] font-semibold text-slate-800 dark:border-white/15 dark:bg-white/5 dark:text-white">
+                  <i data-lucide="folder-open" class="h-3.5 w-3.5"></i> Pilih File
+                </button>
+              </div>
+              <ul id="fileList" class="mt-3 space-y-2"></ul>
+            </div>
+
+            <div class="flex items-center justify-end gap-3 pt-2">
+              <button type="submit" class="btn-primary inline-flex items-center gap-2 rounded-xl px-7 py-3.5 text-[13.5px] font-bold text-white">Kirim RFQ <i data-lucide="send" class="h-4 w-4"></i></button>
+            </div>
+            <div data-form-feedback class="hidden items-start gap-3 rounded-2xl border border-emerald-500/25 bg-emerald-50 px-4 py-3.5 dark:bg-emerald-500/10">
+              <i data-lucide="check-circle-2" class="mt-0.5 h-4.5 w-4.5 shrink-0 text-emerald-600"></i>
+              <div><div class="text-[13px] font-bold text-emerald-700 dark:text-emerald-300">RFQ berhasil dikirim!</div><div class="mt-0.5 text-[12px] text-emerald-700/70 dark:text-emerald-300/70">Tim penawaran kami akan menghubungi Anda dalam 1×24 jam kerja.</div></div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- FORM 3: Booking Konsultasi -->
+      <div id="form-3" class="tab-panel">
+        <div class="mx-auto max-w-3xl">
+          <div class="text-center">
+            <div class="inline-flex items-center gap-2 rounded-full bg-emerald-50 px-3 py-1 text-[10.5px] font-bold uppercase tracking-wider text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400"><i data-lucide="calendar-check" class="h-3 w-3"></i> Booking Konsultasi</div>
+            <h3 class="mt-4 text-xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-2xl">Jadwalkan Konsultasi Gratis</h3>
+            <p class="mt-2 text-[13.5px] text-slate-600 dark:text-slate-400">Pilih tanggal, jam, dan topik konsultasi. Kami akan konfirmasi via WhatsApp/Email.</p>
+          </div>
+          <form data-simple class="mt-8 space-y-5">
+            <div class="grid gap-5 sm:grid-cols-2">
+              <div><label class="mb-2 block text-[11.5px] font-bold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">Nama Lengkap <span class="text-brand-red">*</span></label><input type="text" required placeholder="Nama Anda" class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-[13.5px] text-slate-800 placeholder-slate-400 outline-none transition-all focus:border-brand-blue/50 focus:bg-white focus:ring-2 focus:ring-brand-blue/15 dark:border-white/10 dark:bg-slate-800 dark:text-slate-200 dark:placeholder-slate-500"></div>
+              <div><label class="mb-2 block text-[11.5px] font-bold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">Perusahaan / Instansi</label><input type="text" placeholder="Opsional" class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-[13.5px] text-slate-800 placeholder-slate-400 outline-none transition-all focus:border-brand-blue/50 focus:bg-white focus:ring-2 focus:ring-brand-blue/15 dark:border-white/10 dark:bg-slate-800 dark:text-slate-200 dark:placeholder-slate-500"></div>
+            </div>
+            <div class="grid gap-5 sm:grid-cols-2">
+              <div><label class="mb-2 block text-[11.5px] font-bold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">Email <span class="text-brand-red">*</span></label><input type="email" required placeholder="email@domain.com" class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-[13.5px] text-slate-800 placeholder-slate-400 outline-none transition-all focus:border-brand-blue/50 focus:bg-white focus:ring-2 focus:ring-brand-blue/15 dark:border-white/10 dark:bg-slate-800 dark:text-slate-200 dark:placeholder-slate-500"></div>
+              <div><label class="mb-2 block text-[11.5px] font-bold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">WhatsApp <span class="text-brand-red">*</span></label><input type="tel" required placeholder="+62 ..." class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-[13.5px] text-slate-800 placeholder-slate-400 outline-none transition-all focus:border-brand-blue/50 focus:bg-white focus:ring-2 focus:ring-brand-blue/15 dark:border-white/10 dark:bg-slate-800 dark:text-slate-200 dark:placeholder-slate-500"></div>
+            </div>
+            <div class="grid gap-5 sm:grid-cols-2">
+              <div><label class="mb-2 block text-[11.5px] font-bold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">Tanggal <span class="text-brand-red">*</span></label><input type="date" required min="2026-01-01" class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-[13.5px] text-slate-800 outline-none transition-all focus:border-brand-blue/50 focus:bg-white focus:ring-2 focus:ring-brand-blue/15 dark:border-white/10 dark:bg-slate-800 dark:text-slate-200"></div>
+              <div><label class="mb-2 block text-[11.5px] font-bold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">Jam <span class="text-brand-red">*</span></label>
+                <select required class="w-full appearance-none rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-[13.5px] text-slate-800 outline-none transition-all focus:border-brand-blue/50 focus:bg-white focus:ring-2 focus:ring-brand-blue/15 dark:border-white/10 dark:bg-slate-800 dark:text-slate-200">
+                  <option value="">Pilih jam…</option>
+                  <option>09:00 WIB</option><option>10:00 WIB</option><option>11:00 WIB</option>
+                  <option>13:00 WIB</option><option>14:00 WIB</option><option>15:00 WIB</option><option>16:00 WIB</option>
+                </select>
+              </div>
+            </div>
+            <div><label class="mb-2 block text-[11.5px] font-bold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">Metode <span class="text-brand-red">*</span></label>
+              <div class="grid grid-cols-3 gap-3">
+                <label class="flex cursor-pointer items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-3 py-3 text-[12.5px] font-semibold text-slate-700 has-[:checked]:border-brand-blue has-[:checked]:bg-brand-blueSoft has-[:checked]:text-brand-blue dark:border-white/10 dark:bg-slate-800 dark:text-slate-300">
+                  <input type="radio" name="metode" value="online" checked class="text-brand-blue focus:ring-brand-blue/30"> Online
+                </label>
+                <label class="flex cursor-pointer items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-3 py-3 text-[12.5px] font-semibold text-slate-700 has-[:checked]:border-brand-blue has-[:checked]:bg-brand-blueSoft has-[:checked]:text-brand-blue dark:border-white/10 dark:bg-slate-800 dark:text-slate-300">
+                  <input type="radio" name="metode" value="kantor" class="text-brand-blue focus:ring-brand-blue/30"> Kantor
+                </label>
+                <label class="flex cursor-pointer items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-3 py-3 text-[12.5px] font-semibold text-slate-700 has-[:checked]:border-brand-blue has-[:checked]:bg-brand-blueSoft has-[:checked]:text-brand-blue dark:border-white/10 dark:bg-slate-800 dark:text-slate-300">
+                  <input type="radio" name="metode" value="lapangan" class="text-brand-blue focus:ring-brand-blue/30"> Lapangan
+                </label>
+              </div>
+            </div>
+            <div><label class="mb-2 block text-[11.5px] font-bold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">Topik Konsultasi</label><textarea rows="4" placeholder="Topik yang ingin dibahas…" class="w-full resize-none rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-[13.5px] leading-relaxed text-slate-800 placeholder-slate-400 outline-none transition-all focus:border-brand-blue/50 focus:bg-white focus:ring-2 focus:ring-brand-blue/15 dark:border-white/10 dark:bg-slate-800 dark:text-slate-200 dark:placeholder-slate-500"></textarea></div>
+            <div class="flex items-center justify-end gap-3 pt-2">
+              <button type="submit" class="btn-primary inline-flex items-center gap-2 rounded-xl px-7 py-3.5 text-[13.5px] font-bold text-white">Booking Sekarang <i data-lucide="calendar-check" class="h-4 w-4"></i></button>
+            </div>
+            <div data-form-feedback class="hidden items-start gap-3 rounded-2xl border border-emerald-500/25 bg-emerald-50 px-4 py-3.5 dark:bg-emerald-500/10">
+              <i data-lucide="check-circle-2" class="mt-0.5 h-4.5 w-4.5 shrink-0 text-emerald-600"></i>
+              <div><div class="text-[13px] font-bold text-emerald-700 dark:text-emerald-300">Booking berhasil!</div><div class="mt-0.5 text-[12px] text-emerald-700/70 dark:text-emerald-300/70">Kami akan mengirimkan konfirmasi jadwal via WhatsApp/Email.</div></div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- FORM 4: Vendor Registration -->
+      <div id="form-4" class="tab-panel">
+        <div class="mx-auto max-w-3xl">
+          <div class="text-center">
+            <div class="inline-flex items-center gap-2 rounded-full bg-amber-50 px-3 py-1 text-[10.5px] font-bold uppercase tracking-wider text-amber-700 dark:bg-amber-500/10 dark:text-amber-400"><i data-lucide="building-2" class="h-3 w-3"></i> Vendor Registration</div>
+            <h3 class="mt-4 text-xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-2xl">Daftar sebagai Vendor / Supplier</h3>
+            <p class="mt-2 text-[13.5px] text-slate-600 dark:text-slate-400">Bergabung dalam jaringan vendor Judison untuk peluang kerja sama di masa depan.</p>
+          </div>
+          <form data-simple class="mt-8 space-y-5">
+            <div><label class="mb-2 block text-[11.5px] font-bold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">Nama Perusahaan <span class="text-brand-red">*</span></label><input type="text" required placeholder="PT / CV ..." class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-[13.5px] text-slate-800 placeholder-slate-400 outline-none transition-all focus:border-brand-blue/50 focus:bg-white focus:ring-2 focus:ring-brand-blue/15 dark:border-white/10 dark:bg-slate-800 dark:text-slate-200 dark:placeholder-slate-500"></div>
+            <div class="grid gap-5 sm:grid-cols-2">
+              <div><label class="mb-2 block text-[11.5px] font-bold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">Bidang Usaha <span class="text-brand-red">*</span></label>
+                <select required class="w-full appearance-none rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-[13.5px] text-slate-800 outline-none transition-all focus:border-brand-blue/50 focus:bg-white focus:ring-2 focus:ring-brand-blue/15 dark:border-white/10 dark:bg-slate-800 dark:text-slate-200">
+                  <option value="">Pilih…</option>
+                  <option>Material Konstruksi</option>
+                  <option>Alat Berat / Rental</option>
+                  <option>Logistik / Transportasi</option>
+                  <option>Pangan &amp; Bahan Baku</option>
+                  <option>Komoditas (Batubara/CPO/Karet)</option>
+                  <option>Konsultan / Jasa Teknik</option>
+                  <option>Lainnya</option>
+                </select>
+              </div>
+              <div><label class="mb-2 block text-[11.5px] font-bold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">NPWP Perusahaan <span class="text-brand-red">*</span></label><input type="text" required placeholder="00.000.000.0-000.000" class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-[13.5px] text-slate-800 placeholder-slate-400 outline-none transition-all focus:border-brand-blue/50 focus:bg-white focus:ring-2 focus:ring-brand-blue/15 dark:border-white/10 dark:bg-slate-800 dark:text-slate-200 dark:placeholder-slate-500"></div>
+            </div>
+            <div class="grid gap-5 sm:grid-cols-2">
+              <div><label class="mb-2 block text-[11.5px] font-bold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">Nama PIC <span class="text-brand-red">*</span></label><input type="text" required placeholder="Nama penanggung jawab" class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-[13.5px] text-slate-800 placeholder-slate-400 outline-none transition-all focus:border-brand-blue/50 focus:bg-white focus:ring-2 focus:ring-brand-blue/15 dark:border-white/10 dark:bg-slate-800 dark:text-slate-200 dark:placeholder-slate-500"></div>
+              <div><label class="mb-2 block text-[11.5px] font-bold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">Kontak PIC <span class="text-brand-red">*</span></label><input type="tel" required placeholder="+62 ..." class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-[13.5px] text-slate-800 placeholder-slate-400 outline-none transition-all focus:border-brand-blue/50 focus:bg-white focus:ring-2 focus:ring-brand-blue/15 dark:border-white/10 dark:bg-slate-800 dark:text-slate-200 dark:placeholder-slate-500"></div>
+            </div>
+            <div class="grid gap-5 sm:grid-cols-2">
+              <div><label class="mb-2 block text-[11.5px] font-bold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">Email PIC <span class="text-brand-red">*</span></label><input type="email" required placeholder="pic@perusahaan.com" class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-[13.5px] text-slate-800 placeholder-slate-400 outline-none transition-all focus:border-brand-blue/50 focus:bg-white focus:ring-2 focus:ring-brand-blue/15 dark:border-white/10 dark:bg-slate-800 dark:text-slate-200 dark:placeholder-slate-500"></div>
+              <div><label class="mb-2 block text-[11.5px] font-bold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">Kota Operasional <span class="text-brand-red">*</span></label><input type="text" required placeholder="Kota / Kabupaten" class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-[13.5px] text-slate-800 placeholder-slate-400 outline-none transition-all focus:border-brand-blue/50 focus:bg-white focus:ring-2 focus:ring-brand-blue/15 dark:border-white/10 dark:bg-slate-800 dark:text-slate-200 dark:placeholder-slate-500"></div>
+            </div>
+            <div><label class="mb-2 block text-[11.5px] font-bold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">Produk / Layanan yang Ditawarkan <span class="text-brand-red">*</span></label><textarea rows="4" required placeholder="Jelaskan produk/layanan, kapasitas, dan pengalaman Anda…" class="w-full resize-none rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-[13.5px] leading-relaxed text-slate-800 placeholder-slate-400 outline-none transition-all focus:border-brand-blue/50 focus:bg-white focus:ring-2 focus:ring-brand-blue/15 dark:border-white/10 dark:bg-slate-800 dark:text-slate-200 dark:placeholder-slate-500"></textarea></div>
+            <div class="flex items-center justify-end gap-3 pt-2">
+              <button type="submit" class="btn-primary inline-flex items-center gap-2 rounded-xl px-7 py-3.5 text-[13.5px] font-bold text-white">Daftar Vendor <i data-lucide="user-plus" class="h-4 w-4"></i></button>
+            </div>
+            <div data-form-feedback class="hidden items-start gap-3 rounded-2xl border border-emerald-500/25 bg-emerald-50 px-4 py-3.5 dark:bg-emerald-500/10">
+              <i data-lucide="check-circle-2" class="mt-0.5 h-4.5 w-4.5 shrink-0 text-emerald-600"></i>
+              <div><div class="text-[13px] font-bold text-emerald-700 dark:text-emerald-300">Registrasi berhasil!</div><div class="mt-0.5 text-[12px] text-emerald-700/70 dark:text-emerald-300/70">Data Anda tersimpan di database vendor kami. Tim procurement akan menghubungi jika ada kebutuhan.</div></div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KONTAK + MAPS -->
+<section id="kontak" class="relative scroll-mt-28 py-20 sm:py-28">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="reveal mx-auto max-w-3xl text-center">
+      <span class="text-[11px] font-bold uppercase tracking-[0.24em] text-brand-blue">Kontak &amp; Lokasi</span>
+      <h2 class="mt-4 text-3xl font-extrabold leading-tight tracking-tight text-slate-900 dark:text-white sm:text-4xl lg:text-[2.75rem]">Kunjungi Kantor Kami</h2>
+      <p class="mt-5 text-[15px] leading-relaxed text-slate-600 dark:text-slate-400">Kami siap menyambut Anda di kantor Palembang dan Jakarta.</p>
+    </div>
+
     <div class="mt-14 grid gap-6 lg:grid-cols-12">
       <div class="space-y-5 lg:col-span-5">
+        <!-- Live clock -->
         <div class="reveal rounded-3xl border border-slate-200 bg-gradient-to-br from-brand-blue to-brand-blueDark p-6 shadow-glow sm:p-7">
           <div class="flex items-center gap-3 text-white"><i data-lucide="clock" class="h-5 w-5"></i><span class="text-[11.5px] font-bold uppercase tracking-[0.16em] opacity-90">Waktu Indonesia Barat</span></div>
           <div id="wibClock" class="mt-3 font-mono text-3xl font-extrabold tracking-tight text-white">--:--:--</div>
@@ -1120,7 +1520,7 @@ tailwind.config = {
                 <div class="text-[10.5px] font-semibold uppercase tracking-[0.14em] text-slate-500 dark:text-slate-400">Telepon / WhatsApp</div>
                 <div class="mt-0.5 text-[13.5px] font-semibold text-slate-800 dark:text-slate-200">0878 8885 5877</div>
               </div>
-              <button data-copy="087888855877" class="copy-btn grid h-8 w-8 shrink-0 place-items-center rounded-lg border border-slate-200 bg-white text-slate-500 transition-all hover:border-brand-blue/40 hover:text-brand-blue dark:border-white/10 dark:bg-slate-900 dark:text-slate-400" aria-label="Copy"><i data-lucide="copy" class="h-3.5 w-3.5"></i></button>
+              <button data-copy="087888855877" class="copy-btn grid h-8 w-8 shrink-0 place-items-center rounded-lg border border-slate-200 bg-white text-slate-500 transition-all hover:border-brand-blue/40 hover:text-brand-blue dark:border-white/10 dark:bg-slate-900 dark:text-slate-400"><i data-lucide="copy" class="h-3.5 w-3.5"></i></button>
             </div>
             <div class="group flex items-center gap-3.5 rounded-xl border border-slate-200 bg-slate-50 p-3.5 dark:border-white/10 dark:bg-slate-800">
               <div class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-brand-blueSoft text-brand-blue dark:bg-brand-blue/10"><i data-lucide="mail" class="h-4.5 w-4.5"></i></div>
@@ -1128,99 +1528,69 @@ tailwind.config = {
                 <div class="text-[10.5px] font-semibold uppercase tracking-[0.14em] text-slate-500 dark:text-slate-400">Email</div>
                 <div class="mt-0.5 truncate text-[13.5px] font-semibold text-slate-800 dark:text-slate-200">info@judison.my.id</div>
               </div>
-              <button data-copy="info@judison.my.id" class="copy-btn grid h-8 w-8 shrink-0 place-items-center rounded-lg border border-slate-200 bg-white text-slate-500 transition-all hover:border-brand-blue/40 hover:text-brand-blue dark:border-white/10 dark:bg-slate-900 dark:text-slate-400" aria-label="Copy"><i data-lucide="copy" class="h-3.5 w-3.5"></i></button>
-            </div>
-            <div class="group flex items-center gap-3.5 rounded-xl border border-slate-200 bg-slate-50 p-3.5 dark:border-white/10 dark:bg-slate-800">
-              <div class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-pink-50 text-pink-500 dark:bg-pink-500/10"><i data-lucide="instagram" class="h-4.5 w-4.5"></i></div>
-              <div class="min-w-0 flex-1 leading-tight">
-                <div class="text-[10.5px] font-semibold uppercase tracking-[0.14em] text-slate-500 dark:text-slate-400">Instagram</div>
-                <div class="mt-0.5 text-[13.5px] font-semibold text-slate-800 dark:text-slate-200">@judisongroup</div>
-              </div>
-              <a href="https://instagram.com/judisongroup" target="_blank" rel="noopener" class="grid h-8 w-8 shrink-0 place-items-center rounded-lg border border-slate-200 bg-white text-slate-500 transition-all hover:border-brand-blue/40 hover:text-brand-blue dark:border-white/10 dark:bg-slate-900 dark:text-slate-400" aria-label="Buka Instagram"><i data-lucide="external-link" class="h-3.5 w-3.5"></i></a>
+              <button data-copy="info@judison.my.id" class="copy-btn grid h-8 w-8 shrink-0 place-items-center rounded-lg border border-slate-200 bg-white text-slate-500 transition-all hover:border-brand-blue/40 hover:text-brand-blue dark:border-white/10 dark:bg-slate-900 dark:text-slate-400"><i data-lucide="copy" class="h-3.5 w-3.5"></i></button>
             </div>
           </div>
-        </div>
-
-        <div class="reveal rounded-3xl border border-slate-200 bg-white p-6 shadow-card dark:border-white/10 dark:bg-slate-900 sm:p-7" style="transition-delay:.24s">
-          <div class="flex items-center gap-3">
-            <div class="grid h-10 w-10 place-items-center rounded-xl bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300"><i data-lucide="calendar-clock" class="h-5 w-5"></i></div>
-            <h3 class="text-[14.5px] font-extrabold tracking-tight text-slate-900 dark:text-white">Jam Operasional</h3>
-          </div>
-          <div class="mt-5 space-y-3">
-            <div class="flex items-center justify-between text-[12.5px]"><span class="text-slate-500 dark:text-slate-400">Senin – Jumat</span><span class="font-semibold text-slate-800 dark:text-slate-200">08.00 – 17.00 WIB</span></div>
-            <div class="h-px hairline"></div>
-            <div class="flex items-center justify-between text-[12.5px]"><span class="text-slate-500 dark:text-slate-400">Sabtu</span><span class="font-semibold text-slate-800 dark:text-slate-200">08.00 – 13.00 WIB</span></div>
-            <div class="h-px hairline"></div>
-            <div class="flex items-center justify-between text-[12.5px]"><span class="text-slate-500 dark:text-slate-400">Minggu &amp; Hari Libur</span><span class="font-semibold text-slate-500 dark:text-slate-400">Tutup</span></div>
+          <!-- SHARE -->
+          <div class="mt-5">
+            <div class="text-[11px] font-bold uppercase tracking-[0.14em] text-slate-500 dark:text-slate-400">Bagikan Halaman Ini</div>
+            <div class="mt-3 flex flex-wrap gap-2">
+              <a data-share="whatsapp" href="#" class="grid h-9 w-9 place-items-center rounded-xl border border-slate-200 bg-white text-emerald-600 transition-all hover:border-emerald-500/40 hover:bg-emerald-50 dark:border-white/10 dark:bg-slate-800" aria-label="WhatsApp"><i data-lucide="message-circle" class="h-4 w-4"></i></a>
+              <a data-share="facebook" href="#" class="grid h-9 w-9 place-items-center rounded-xl border border-slate-200 bg-white text-blue-600 transition-all hover:border-blue-500/40 hover:bg-blue-50 dark:border-white/10 dark:bg-slate-800" aria-label="Facebook"><i data-lucide="facebook" class="h-4 w-4"></i></a>
+              <a data-share="twitter" href="#" class="grid h-9 w-9 place-items-center rounded-xl border border-slate-200 bg-white text-slate-800 transition-all hover:border-slate-500/40 hover:bg-slate-100 dark:border-white/10 dark:bg-slate-800 dark:text-slate-200" aria-label="X"><i data-lucide="twitter" class="h-4 w-4"></i></a>
+              <a data-share="linkedin" href="#" class="grid h-9 w-9 place-items-center rounded-xl border border-slate-200 bg-white text-sky-700 transition-all hover:border-sky-500/40 hover:bg-sky-50 dark:border-white/10 dark:bg-slate-800" aria-label="LinkedIn"><i data-lucide="linkedin" class="h-4 w-4"></i></a>
+              <button data-share="copy" class="grid h-9 w-9 place-items-center rounded-xl border border-slate-200 bg-white text-slate-600 transition-all hover:border-brand-blue/40 hover:bg-brand-blueSoft dark:border-white/10 dark:bg-slate-800 dark:text-slate-300" aria-label="Copy link"><i data-lucide="link" class="h-4 w-4"></i></button>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="reveal lg:col-span-7" style="transition-delay:.1s">
-        <div class="relative h-full overflow-hidden rounded-3xl border border-slate-200 bg-white p-7 shadow-card dark:border-white/10 dark:bg-slate-900 sm:p-9">
-          <div class="absolute -right-24 -top-24 h-64 w-64 rounded-full bg-brand-blue/10 blur-3xl"></div>
-          <div class="relative">
-            <h3 class="text-xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-2xl">Kirim Pesan</h3>
-            <p class="mt-2.5 text-[13.5px] leading-relaxed text-slate-600 dark:text-slate-400">Lengkapi formulir di bawah ini. Tim kami akan merespons dalam 1×24 jam kerja.</p>
-            <form id="contactForm" class="mt-8 space-y-5" novalidate>
-              <div class="grid gap-5 sm:grid-cols-2">
-                <div>
-                  <label for="nama" class="mb-2 block text-[11.5px] font-bold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">Nama Lengkap <span class="text-brand-red">*</span></label>
-                  <input id="nama" name="nama" type="text" required placeholder="Nama Anda" class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-[13.5px] text-slate-800 placeholder-slate-400 outline-none transition-all duration-300 focus:border-brand-blue/50 focus:bg-white focus:ring-2 focus:ring-brand-blue/15 dark:border-white/10 dark:bg-slate-800 dark:text-slate-200 dark:placeholder-slate-500">
-                </div>
-                <div>
-                  <label for="perusahaan" class="mb-2 block text-[11.5px] font-bold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">Perusahaan / Instansi</label>
-                  <input id="perusahaan" name="perusahaan" type="text" placeholder="Opsional" class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-[13.5px] text-slate-800 placeholder-slate-400 outline-none transition-all duration-300 focus:border-brand-blue/50 focus:bg-white focus:ring-2 focus:ring-brand-blue/15 dark:border-white/10 dark:bg-slate-800 dark:text-slate-200 dark:placeholder-slate-500">
-                </div>
-              </div>
-              <div class="grid gap-5 sm:grid-cols-2">
-                <div>
-                  <label for="email" class="mb-2 block text-[11.5px] font-bold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">Email <span class="text-brand-red">*</span></label>
-                  <input id="email" name="email" type="email" required placeholder="nama@perusahaan.com" class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-[13.5px] text-slate-800 placeholder-slate-400 outline-none transition-all duration-300 focus:border-brand-blue/50 focus:bg-white focus:ring-2 focus:ring-brand-blue/15 dark:border-white/10 dark:bg-slate-800 dark:text-slate-200 dark:placeholder-slate-500">
-                </div>
-                <div>
-                  <label for="telepon" class="mb-2 block text-[11.5px] font-bold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">Telepon / WhatsApp</label>
-                  <input id="telepon" name="telepon" type="tel" placeholder="+62 ..." class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-[13.5px] text-slate-800 placeholder-slate-400 outline-none transition-all duration-300 focus:border-brand-blue/50 focus:bg-white focus:ring-2 focus:ring-brand-blue/15 dark:border-white/10 dark:bg-slate-800 dark:text-slate-200 dark:placeholder-slate-500">
-                </div>
-              </div>
-              <div>
-                <label for="topik" class="mb-2 block text-[11.5px] font-bold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">Kebutuhan <span class="text-brand-red">*</span></label>
-                <select id="topik" name="topik" required class="w-full appearance-none rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-[13.5px] text-slate-800 outline-none transition-all duration-300 focus:border-brand-blue/50 focus:bg-white focus:ring-2 focus:ring-brand-blue/15 dark:border-white/10 dark:bg-slate-800 dark:text-slate-200">
-                  <option value="">Pilih kategori kebutuhan…</option>
-                  <option>Konstruksi &amp; Infrastruktur</option>
-                  <option>Agrikultur &amp; Kemitraan Lahan</option>
-                  <option>Distribusi Pangan</option>
-                  <option>Perdagangan Besar / Pengadaan Komoditas</option>
-                  <option>Koperasi Desa / Nelayan</option>
-                  <option>Program Dapur MBG</option>
-                  <option>Kemitraan Strategis / Lainnya</option>
-                </select>
-              </div>
-              <div>
-                <label for="pesan" class="mb-2 block text-[11.5px] font-bold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">Pesan <span class="text-brand-red">*</span></label>
-                <textarea id="pesan" name="pesan" rows="5" required placeholder="Jelaskan kebutuhan atau proyek Anda secara singkat…" class="w-full resize-none rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-[13.5px] leading-relaxed text-slate-800 placeholder-slate-400 outline-none transition-all duration-300 focus:border-brand-blue/50 focus:bg-white focus:ring-2 focus:ring-brand-blue/15 dark:border-white/10 dark:bg-slate-800 dark:text-slate-200 dark:placeholder-slate-500"></textarea>
-              </div>
-              <div class="flex flex-col gap-4 pt-1 sm:flex-row sm:items-center sm:justify-between">
-                <p class="flex items-start gap-2 text-[11.5px] leading-relaxed text-slate-500 dark:text-slate-400 sm:max-w-xs"><i data-lucide="lock" class="mt-0.5 h-3.5 w-3.5 shrink-0 text-slate-400"></i>Informasi Anda kami jaga kerahasiaannya.</p>
-                <button type="submit" class="btn-primary inline-flex shrink-0 items-center justify-center gap-2 rounded-xl px-7 py-3.5 text-[13.5px] font-bold text-white">Kirim Pesan <i data-lucide="send" class="h-4 w-4"></i></button>
-              </div>
-              <div id="formFeedback" class="hidden items-start gap-3 rounded-2xl border border-emerald-500/25 bg-emerald-50 px-4 py-3.5 dark:bg-emerald-500/10">
-                <i data-lucide="check-circle-2" class="mt-0.5 h-4.5 w-4.5 shrink-0 text-emerald-600 dark:text-emerald-400"></i>
-                <div>
-                  <div class="text-[13px] font-bold text-emerald-700 dark:text-emerald-300">Pesan berhasil terkirim!</div>
-                  <div class="mt-0.5 text-[12px] leading-relaxed text-emerald-700/70 dark:text-emerald-300/70">Terima kasih. Tim kami akan segera menghubungi Anda.</div>
-                </div>
-              </div>
-            </form>
+      <!-- MAPS -->
+      <div class="reveal space-y-5 lg:col-span-7" style="transition-delay:.1s">
+        <div class="overflow-hidden rounded-3xl border border-slate-200 shadow-card dark:border-white/10">
+          <div class="flex items-center justify-between gap-3 border-b border-slate-200 bg-white px-5 py-3 dark:border-white/10 dark:bg-slate-900">
+            <div class="flex items-center gap-2"><i data-lucide="map-pin" class="h-4 w-4 text-brand-blue"></i><span class="text-[13px] font-bold text-slate-900 dark:text-white">Kantor Pusat — Palembang</span></div>
+            <a href="https://maps.google.com/?q=Jl.+Jend.+Sudirman+No.+5206+Ario+Kemuning+Ilir+Timur+1+Palembang" target="_blank" rel="noopener" class="text-[12px] font-semibold text-brand-blue hover:underline">Buka di Google Maps</a>
           </div>
+          <iframe src="https://www.google.com/maps?q=Jl.+Jend.+Sudirman+No.+5206+Ario+Kemuning+Ilir+Timur+1+Palembang&output=embed" width="100%" height="280" style="border:0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <div class="overflow-hidden rounded-3xl border border-slate-200 shadow-card dark:border-white/10">
+          <div class="flex items-center justify-between gap-3 border-b border-slate-200 bg-white px-5 py-3 dark:border-white/10 dark:bg-slate-900">
+            <div class="flex items-center gap-2"><i data-lucide="map-pin" class="h-4 w-4 text-brand-red"></i><span class="text-[13px] font-bold text-slate-900 dark:text-white">Kantor Perwakilan — Jakarta</span></div>
+            <a href="https://maps.google.com/?q=Jl.+Balai+Pustaka+Barat+No.+337+Rawamangun+Pulo+Gadung+Jakarta+Timur" target="_blank" rel="noopener" class="text-[12px] font-semibold text-brand-blue hover:underline">Buka di Google Maps</a>
+          </div>
+          <iframe src="https://www.google.com/maps?q=Jl.+Balai+Pustaka+Barat+No.+337+Rawamangun+Pulo+Gadung+Jakarta+Timur&output=embed" width="100%" height="280" style="border:0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- NEWSLETTER CTA -->
+<section class="relative overflow-hidden border-y border-slate-200 bg-gradient-to-br from-brand-blue via-brand-blueDark to-brand-blueDeep py-16 dark:border-white/10 sm:py-20 no-print">
+  <div class="pointer-events-none absolute inset-0 bg-grid-dark opacity-20"></div>
+  <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
+      <div class="reveal text-white">
+        <div class="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-3 py-1 text-[10.5px] font-bold uppercase tracking-wider backdrop-blur"><i data-lucide="mail" class="h-3 w-3"></i> Newsletter</div>
+        <h2 class="mt-4 text-2xl font-extrabold leading-tight tracking-tight sm:text-3xl lg:text-[2rem]">Dapatkan update proyek &amp; berita terbaru</h2>
+        <p class="mt-3 text-[14.5px] leading-relaxed text-white/80">Berlangganan newsletter kami untuk menerima informasi proyek, program, dan peluang kemitraan langsung di email Anda.</p>
+      </div>
+      <div class="reveal" style="transition-delay:.1s">
+        <form id="newsletterForm" class="flex flex-col gap-3 sm:flex-row" novalidate>
+          <input id="nlEmail" type="email" required placeholder="email@perusahaan.com" class="w-full rounded-xl border border-white/30 bg-white/10 px-4 py-3.5 text-[13.5px] text-white placeholder-white/60 outline-none backdrop-blur transition-all focus:border-white focus:bg-white/20 focus:ring-2 focus:ring-white/30">
+          <button type="submit" class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl bg-white px-6 py-3.5 text-[13.5px] font-bold text-brand-blueDark shadow-lg transition-all hover:-translate-y-0.5 hover:shadow-xl">
+            <i data-lucide="send" class="h-4 w-4"></i> Berlangganan
+          </button>
+        </form>
+        <p class="mt-3 text-[11.5px] text-white/70">Kami tidak mengirim spam. Anda bisa berhenti kapan saja.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- FOOTER -->
-<footer class="relative border-t border-slate-200 bg-slate-50 dark:border-white/10 dark:bg-slate-950">
+<footer class="relative bg-slate-50 dark:bg-slate-950 no-print">
   <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
     <div class="grid gap-12 lg:grid-cols-12">
       <div class="lg:col-span-4">
@@ -1256,7 +1626,7 @@ tailwind.config = {
       <div class="lg:col-span-3">
         <h4 class="text-[11.5px] font-bold uppercase tracking-[0.16em] text-slate-900 dark:text-white">Kontak</h4>
         <ul class="mt-5 space-y-4">
-          <li class="flex items-start gap-2.5"><i data-lucide="map-pin" class="mt-0.5 h-4 w-4 shrink-0 text-brand-blue"></i><span class="text-[12.5px] leading-relaxed text-slate-500 dark:text-slate-400">Jl. Jend. Sudirman No. 5206, Ario Kemuning, Ilir Timur 1, Palembang, 30128</span></li>
+          <li class="flex items-start gap-2.5"><i data-lucide="map-pin" class="mt-0.5 h-4 w-4 shrink-0 text-brand-blue"></i><span class="text-[12.5px] leading-relaxed text-slate-500 dark:text-slate-400">Jl. Jend. Sudirman No. 5206, Palembang</span></li>
           <li class="flex items-start gap-2.5"><i data-lucide="phone" class="mt-0.5 h-4 w-4 shrink-0 text-brand-blue"></i><a href="https://wa.me/628788855877" target="_blank" rel="noopener" class="text-[12.5px] text-slate-500 transition-colors hover:text-brand-blueDark dark:text-slate-400 dark:hover:text-white">0878 8885 5877</a></li>
           <li class="flex items-start gap-2.5"><i data-lucide="mail" class="mt-0.5 h-4 w-4 shrink-0 text-brand-blue"></i><a href="mailto:info@judison.my.id" class="text-[12.5px] text-slate-500 transition-colors hover:text-brand-blueDark dark:text-slate-400 dark:hover:text-white">info@judison.my.id</a></li>
         </ul>
@@ -1275,16 +1645,48 @@ tailwind.config = {
 </footer>
 
 <!-- FLOATING ACTIONS -->
-<div class="fixed bottom-5 right-5 z-40 flex flex-col items-end gap-3 sm:bottom-7 sm:right-7">
-  <a href="mailto:info@judison.my.id" aria-label="Email" class="grid h-11 w-11 place-items-center rounded-xl border border-slate-200 bg-white text-slate-600 shadow-lg transition-all hover:-translate-y-0.5 hover:border-brand-blue/40 hover:text-brand-blue dark:border-white/10 dark:bg-slate-800 dark:text-slate-300"><i data-lucide="mail" class="h-5 w-5"></i></a>
-  <a href="tel:+628788855877" aria-label="Telepon" class="grid h-11 w-11 place-items-center rounded-xl border border-slate-200 bg-white text-slate-600 shadow-lg transition-all hover:-translate-y-0.5 hover:border-brand-blue/40 hover:text-brand-blue dark:border-white/10 dark:bg-slate-800 dark:text-slate-300"><i data-lucide="phone" class="h-5 w-5"></i></a>
+<div id="floatingActions" class="fixed bottom-5 right-5 z-40 flex flex-col items-end gap-3 no-print sm:bottom-7 sm:right-7">
+  <button id="chatToggle" aria-label="Buka chat" class="grid h-12 w-12 place-items-center rounded-full bg-gradient-to-br from-brand-blue to-brand-blueDark text-white shadow-xl transition-transform hover:scale-105">
+    <i data-lucide="message-square" class="h-5 w-5"></i>
+  </button>
   <a href="https://wa.me/628788855877" target="_blank" rel="noopener" aria-label="WhatsApp" class="inline-flex items-center gap-2.5 rounded-2xl border border-emerald-500/30 bg-emerald-500 px-4 py-3 text-[13px] font-bold text-white shadow-2xl shadow-emerald-900/30 transition-all hover:scale-[1.04] hover:bg-emerald-600">
     <i data-lucide="message-circle" class="h-5 w-5"></i><span class="hidden sm:inline">WhatsApp</span>
   </a>
 </div>
 
-<!-- BACK TO TOP -->
-<button id="backToTop" aria-label="Kembali ke atas" class="hidden-btn fixed bottom-5 left-5 z-40 grid h-12 w-12 place-items-center rounded-full border border-slate-200 bg-white text-slate-600 shadow-xl transition-all hover:border-brand-blue/40 hover:text-brand-blue dark:border-white/10 dark:bg-slate-800 dark:text-slate-300 sm:bottom-7 sm:left-7">
+<!-- CHAT PANEL -->
+<div id="chatPanel" class="hidden-chat fixed bottom-24 right-5 z-50 w-[calc(100vw-2.5rem)] max-w-sm overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-2xl dark:border-white/10 dark:bg-slate-900 no-print sm:right-7">
+  <div class="flex items-center justify-between bg-gradient-to-r from-brand-blue to-brand-blueDark p-4 text-white">
+    <div class="flex items-center gap-3">
+      <div class="relative grid h-9 w-9 place-items-center rounded-full bg-white/20"><i data-lucide="headphones" class="h-4.5 w-4.5"></i><span class="absolute -right-0.5 -bottom-0.5 h-3 w-3 rounded-full border-2 border-brand-blue bg-emerald-400"></span></div>
+      <div class="leading-tight">
+        <div class="text-[13px] font-extrabold">Tim Judison</div>
+        <div class="text-[10.5px] text-white/80">Online — biasanya balas cepat</div>
+      </div>
+    </div>
+    <button id="chatClose" aria-label="Tutup" class="grid h-8 w-8 place-items-center rounded-lg transition-colors hover:bg-white/15"><i data-lucide="x" class="h-4 w-4"></i></button>
+  </div>
+  <div class="max-h-80 overflow-y-auto p-4" id="chatMessages">
+    <div class="mb-3 rounded-2xl rounded-tl-sm bg-slate-100 p-3 text-[13px] text-slate-700 dark:bg-slate-800 dark:text-slate-200">
+      Halo! 👋 Selamat datang di Judison. Ada yang bisa kami bantu?
+    </div>
+    <div class="mb-3 ml-auto max-w-[80%] rounded-2xl rounded-tr-sm bg-brand-blue p-3 text-[13px] text-white">
+      Pilih topik di bawah untuk mulai.
+    </div>
+  </div>
+  <div class="border-t border-slate-200 p-3 dark:border-white/10">
+    <div class="grid grid-cols-2 gap-2">
+      <button data-chat-reply="Konsultasi proyek konstruksi" class="rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-[11.5px] font-semibold text-slate-700 transition-all hover:border-brand-blue/40 hover:bg-brand-blueSoft hover:text-brand-blue dark:border-white/10 dark:bg-slate-800 dark:text-slate-300">Konsultasi Proyek</button>
+      <button data-chat-reply="Request penawaran harga" class="rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-[11.5px] font-semibold text-slate-700 transition-all hover:border-brand-blue/40 hover:bg-brand-blueSoft hover:text-brand-blue dark:border-white/10 dark:bg-slate-800 dark:text-slate-300">Request Quote</button>
+      <button data-chat-reply="Info kemitraan & vendor" class="rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-[11.5px] font-semibold text-slate-700 transition-all hover:border-brand-blue/40 hover:bg-brand-blueSoft hover:text-brand-blue dark:border-white/10 dark:bg-slate-800 dark:text-slate-300">Kemitraan</button>
+      <button data-chat-reply="Lainnya" class="rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-[11.5px] font-semibold text-slate-700 transition-all hover:border-brand-blue/40 hover:bg-brand-blueSoft hover:text-brand-blue dark:border-white/10 dark:bg-slate-800 dark:text-slate-300">Lainnya</button>
+    </div>
+    <a href="https://wa.me/628788855877" target="_blank" rel="noopener" class="mt-3 flex items-center justify-center gap-2 rounded-xl bg-emerald-500 py-2.5 text-[12.5px] font-bold text-white transition-colors hover:bg-emerald-600"><i data-lucide="message-circle" class="h-3.5 w-3.5"></i> Lanjut ke WhatsApp</a>
+  </div>
+</div>
+
+<!-- BACK TO TOP with reading % -->
+<button id="backToTop" aria-label="Kembali ke atas" class="hidden-btn fixed bottom-5 left-5 z-40 flex h-12 w-12 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 shadow-xl transition-all hover:border-brand-blue/40 hover:text-brand-blue dark:border-white/10 dark:bg-slate-800 dark:text-slate-300 no-print sm:bottom-7 sm:left-7">
   <svg class="absolute inset-0" viewBox="0 0 44 44" fill="none">
     <circle cx="22" cy="22" r="20" stroke="currentColor" stroke-opacity="0.1" stroke-width="2"/>
     <circle id="ringProgress" class="ring-bg" cx="22" cy="22" r="20" stroke="url(#grad)" stroke-width="2" stroke-linecap="round" transform="rotate(-90 22 22)"/>
@@ -1293,10 +1695,32 @@ tailwind.config = {
   <i data-lucide="arrow-up" class="relative h-5 w-5"></i>
 </button>
 
+<!-- READING PROGRESS BADGE -->
+<div id="readingBadge" class="pointer-events-none fixed bottom-20 left-5 z-40 hidden rounded-full border border-slate-200 bg-white/95 px-3 py-1.5 text-[11px] font-bold text-slate-600 shadow-lg backdrop-blur dark:border-white/10 dark:bg-slate-800/95 dark:text-slate-300 no-print sm:bottom-24 sm:left-7">
+  <span id="readingBadgeText">0%</span>
+</div>
+
 <!-- LIGHTBOX -->
-<div id="lightbox" class="hidden-lb fixed inset-0 z-[200] flex items-center justify-center bg-black/90 p-4 backdrop-blur-sm">
+<div id="lightbox" class="hidden-lb fixed inset-0 z-[200] flex items-center justify-center bg-black/90 p-4 backdrop-blur-sm no-print">
   <button id="lbClose" class="absolute right-5 top-5 grid h-11 w-11 place-items-center rounded-full border border-white/20 bg-white/10 text-white transition-all hover:bg-white/20"><i data-lucide="x" class="h-5 w-5"></i></button>
   <img id="lbImage" src="" alt="Preview" class="max-h-[85vh] max-w-[90vw] rounded-2xl shadow-2xl">
+</div>
+
+<!-- SHARE SHEET -->
+<div id="shareSheet" class="hidden-lb fixed inset-0 z-[300] flex items-end justify-center bg-black/60 p-4 backdrop-blur-sm no-print sm:items-center">
+  <div class="w-full max-w-md rounded-3xl bg-white p-6 shadow-2xl dark:bg-slate-900">
+    <div class="flex items-center justify-between">
+      <h3 class="text-[15px] font-extrabold text-slate-900 dark:text-white">Bagikan Halaman Ini</h3>
+      <button data-share="close" class="grid h-8 w-8 place-items-center rounded-lg text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800"><i data-lucide="x" class="h-4 w-4"></i></button>
+    </div>
+    <div class="mt-5 grid grid-cols-5 gap-3">
+      <a data-share="whatsapp" href="#" class="flex flex-col items-center gap-2"><div class="grid h-12 w-12 place-items-center rounded-2xl bg-emerald-50 text-emerald-600 dark:bg-emerald-500/10"><i data-lucide="message-circle" class="h-5 w-5"></i></div><span class="text-[10.5px] font-semibold text-slate-500 dark:text-slate-400">WA</span></a>
+      <a data-share="facebook" href="#" class="flex flex-col items-center gap-2"><div class="grid h-12 w-12 place-items-center rounded-2xl bg-blue-50 text-blue-600 dark:bg-blue-500/10"><i data-lucide="facebook" class="h-5 w-5"></i></div><span class="text-[10.5px] font-semibold text-slate-500 dark:text-slate-400">FB</span></a>
+      <a data-share="twitter" href="#" class="flex flex-col items-center gap-2"><div class="grid h-12 w-12 place-items-center rounded-2xl bg-slate-100 text-slate-800 dark:bg-slate-800 dark:text-slate-200"><i data-lucide="twitter" class="h-5 w-5"></i></div><span class="text-[10.5px] font-semibold text-slate-500 dark:text-slate-400">X</span></a>
+      <a data-share="linkedin" href="#" class="flex flex-col items-center gap-2"><div class="grid h-12 w-12 place-items-center rounded-2xl bg-sky-50 text-sky-700 dark:bg-sky-500/10"><i data-lucide="linkedin" class="h-5 w-5"></i></div><span class="text-[10.5px] font-semibold text-slate-500 dark:text-slate-400">IN</span></a>
+      <button data-share="copy" class="flex flex-col items-center gap-2"><div class="grid h-12 w-12 place-items-center rounded-2xl bg-brand-blueSoft text-brand-blue dark:bg-brand-blue/10"><i data-lucide="link" class="h-5 w-5"></i></div><span class="text-[10.5px] font-semibold text-slate-500 dark:text-slate-400">Salin</span></button>
+    </div>
+  </div>
 </div>
 
 <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
@@ -1324,7 +1748,7 @@ tailwind.config = {
     }
   }, 150);
 
-  /* THEME */
+  /* THEME with AUTO BY TIME */
   var themeToggle = document.getElementById('themeToggle');
   var sunIcon = document.querySelector('.theme-icon-sun');
   var moonIcon = document.querySelector('.theme-icon-moon');
@@ -1342,22 +1766,28 @@ tailwind.config = {
   var savedTheme = localStorage.getItem('judison-theme');
   if (savedTheme === 'dark') applyTheme(true);
   else if (savedTheme === 'light') applyTheme(false);
-  else if (window.matchMedia('(prefers-color-scheme: dark)').matches) applyTheme(true);
-  else applyTheme(false);
+  else {
+    // Auto: dark if hour is 18-23 or 0-5
+    var hour = new Date().getHours();
+    var autoDark = hour >= 18 || hour < 6;
+    applyTheme(autoDark);
+  }
   if (themeToggle) themeToggle.addEventListener('click', function () {
     var isDark = !document.documentElement.classList.contains('dark');
     applyTheme(isDark);
     localStorage.setItem('judison-theme', isDark ? 'dark' : 'light');
   });
 
-  /* SCROLL */
+  /* SCROLL + READING PROGRESS */
   var scrollProgress = document.getElementById('scrollProgress');
   var backToTop = document.getElementById('backToTop');
   var ringProgress = document.getElementById('ringProgress');
+  var readingBadge = document.getElementById('readingBadge');
+  var readingBadgeText = document.getElementById('readingBadgeText');
   function handleScroll() {
     var winScroll = document.documentElement.scrollTop;
     var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    var scrolled = (winScroll / height) * 100;
+    var scrolled = height > 0 ? (winScroll / height) * 100 : 0;
     if (scrollProgress) scrollProgress.style.width = scrolled + '%';
     if (backToTop) {
       if (winScroll > 400) backToTop.classList.remove('hidden-btn');
@@ -1367,6 +1797,11 @@ tailwind.config = {
       var ringMax = 126;
       ringProgress.style.strokeDashoffset = ringMax - (ringMax * scrolled / 100);
     }
+    if (readingBadge) {
+      if (winScroll > 800) readingBadge.classList.remove('hidden');
+      else readingBadge.classList.add('hidden');
+    }
+    if (readingBadgeText) readingBadgeText.textContent = Math.round(scrolled) + '%';
     var navInner = document.getElementById('navInner');
     if (navInner) {
       if (winScroll > 20) navInner.classList.add('nav-scrolled');
@@ -1394,7 +1829,7 @@ tailwind.config = {
       link.addEventListener('click', function () { mobileMenu.classList.add('hidden'); setMenuIcon(false); });
     });
     window.addEventListener('resize', function () {
-      if (window.innerWidth >= 1024 && !mobileMenu.classList.contains('hidden')) {
+      if (window.innerWidth >= 1280 && !mobileMenu.classList.contains('hidden')) {
         mobileMenu.classList.add('hidden'); setMenuIcon(false);
       }
     });
@@ -1404,9 +1839,7 @@ tailwind.config = {
   var revealEls = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window) {
     var ro = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) { e.target.classList.add('in'); ro.unobserve(e.target); }
-      });
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); ro.unobserve(e.target); } });
     }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
     revealEls.forEach(function (el) { ro.observe(el); });
   }
@@ -1434,6 +1867,44 @@ tailwind.config = {
     counters.forEach(function (el) { co.observe(el); });
   }
 
+  /* PROGRESS BARS (project) */
+  var progBars = document.querySelectorAll('.prog-fill');
+  if ('IntersectionObserver' in window) {
+    var pObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          var val = e.target.getAttribute('data-prog') || '0';
+          e.target.style.width = val + '%';
+          pObserver.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.3 });
+    progBars.forEach(function (el) { pObserver.observe(el); });
+  }
+  var progLabels = document.querySelectorAll('[data-prog-label]');
+  if ('IntersectionObserver' in window) {
+    var plObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          var target = parseInt(e.target.getAttribute('data-prog-label'), 10) || 0;
+          var start = 0;
+          var startTime = null;
+          function stepProg(ts) {
+            if (startTime === null) startTime = ts;
+            var p = Math.min((ts - startTime) / 1400, 1);
+            var eased = 1 - Math.pow(1 - p, 3);
+            e.target.textContent = Math.round(eased * target) + '%';
+            if (p < 1) requestAnimationFrame(stepProg);
+            else e.target.textContent = target + '%';
+          }
+          requestAnimationFrame(stepProg);
+          plObserver.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    progLabels.forEach(function (el) { plObserver.observe(el); });
+  }
+
   /* SCROLLSPY */
   var sections = document.querySelectorAll('section[id]');
   var navLinks = document.querySelectorAll('.nav-link');
@@ -1456,17 +1927,21 @@ tailwind.config = {
     sections.forEach(function (s) { so.observe(s); });
   }
 
-  /* TABS */
-  document.querySelectorAll('.tab-btn').forEach(function (btn) {
+  /* TABS (generic) */
+  document.querySelectorAll('[data-tab]').forEach(function (btn) {
     btn.addEventListener('click', function () {
       var target = btn.getAttribute('data-tab');
-      document.querySelectorAll('.tab-btn').forEach(function (b) {
+      // Sibling tabs
+      var parent = btn.parentElement;
+      parent.querySelectorAll('[data-tab]').forEach(function (b) {
         b.classList.remove('bg-brand-blue', 'text-white', 'border-brand-blue/30', 'shadow-md');
         b.classList.add('bg-white', 'text-slate-600', 'border-slate-200', 'dark:bg-slate-900', 'dark:text-slate-300', 'dark:border-white/10');
       });
       btn.classList.add('bg-brand-blue', 'text-white', 'border-brand-blue/30', 'shadow-md');
       btn.classList.remove('bg-white', 'text-slate-600', 'border-slate-200', 'dark:bg-slate-900', 'dark:text-slate-300', 'dark:border-white/10');
-      document.querySelectorAll('.tab-panel').forEach(function (p) { p.classList.remove('active'); });
+      // Find panels within the same wrapping card
+      var card = btn.closest('section').querySelectorAll('.tab-panel');
+      card.forEach(function (p) { p.classList.remove('active'); });
       var targetPanel = document.getElementById(target);
       if (targetPanel) targetPanel.classList.add('active');
     });
@@ -1501,7 +1976,6 @@ tailwind.config = {
   }
   if (lbClose) lbClose.addEventListener('click', closeLb);
   if (lightbox) lightbox.addEventListener('click', function (e) { if (e.target === lightbox) closeLb(); });
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeLb(); });
 
   /* COPY */
   document.querySelectorAll('.copy-btn').forEach(function (btn) {
@@ -1512,10 +1986,7 @@ tailwind.config = {
         var orig = btn.innerHTML;
         btn.innerHTML = '<i data-lucide="check" class="h-3.5 w-3.5 text-emerald-500"></i>';
         if (window.lucide) window.lucide.createIcons();
-        setTimeout(function () {
-          btn.innerHTML = orig;
-          if (window.lucide) window.lucide.createIcons();
-        }, 1600);
+        setTimeout(function () { btn.innerHTML = orig; if (window.lucide) window.lucide.createIcons(); }, 1600);
       });
     });
   });
@@ -1526,30 +1997,165 @@ tailwind.config = {
   function updateClock() {
     var now = new Date();
     var wib = new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Jakarta' }));
-    if (wibClock) {
-      wibClock.textContent = String(wib.getHours()).padStart(2,'0') + ':' + String(wib.getMinutes()).padStart(2,'0') + ':' + String(wib.getSeconds()).padStart(2,'0');
-    }
+    if (wibClock) wibClock.textContent = String(wib.getHours()).padStart(2,'0') + ':' + String(wib.getMinutes()).padStart(2,'0') + ':' + String(wib.getSeconds()).padStart(2,'0');
     if (wibDate) wibDate.textContent = wib.toLocaleDateString('id-ID', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
   }
   updateClock(); setInterval(updateClock, 1000);
 
-  /* FORM */
-  var form = document.getElementById('contactForm');
-  var feedback = document.getElementById('formFeedback');
-  if (form) {
+  /* FILTER PROYEK */
+  var filterChips = document.querySelectorAll('[data-filter]');
+  var proyekCards = document.querySelectorAll('.proyek-card');
+  var emptyFilter = document.getElementById('emptyFilter');
+  filterChips.forEach(function (chip) {
+    chip.addEventListener('click', function () {
+      filterChips.forEach(function (c) {
+        c.classList.remove('active', 'bg-brand-blue', 'text-white');
+        c.classList.add('bg-white', 'text-slate-600', 'dark:bg-slate-900', 'dark:text-slate-300');
+      });
+      chip.classList.add('active');
+      var filter = chip.getAttribute('data-filter');
+      var visible = 0;
+      proyekCards.forEach(function (card) {
+        var cats = (card.getAttribute('data-cat') || '').split(' ');
+        var show = filter === 'all' || cats.indexOf(filter) !== -1;
+        card.style.display = show ? '' : 'none';
+        if (show) visible++;
+      });
+      if (emptyFilter) emptyFilter.classList.toggle('hidden', visible !== 0);
+    });
+  });
+
+  /* BEFORE-AFTER */
+  document.querySelectorAll('.ba-wrap').forEach(function (wrap) {
+    var range = wrap.querySelector('.ba-range');
+    var after = wrap.querySelector('.ba-img-after');
+    var handle = wrap.querySelector('.ba-handle');
+    if (!range || !after || !handle) return;
+    function update(v) {
+      after.style.clipPath = 'inset(0 0 0 ' + v + '%)';
+      handle.style.left = v + '%';
+    }
+    range.addEventListener('input', function () { update(range.value); });
+  });
+
+  /* SHARE */
+  function getShareUrl() { return window.location.href; }
+  function getShareText() { return 'Judison — PT Medwa Judison Perkasa | Konstruksi, Agrikultur, Pangan & Perdagangan'; }
+  document.querySelectorAll('[data-share]').forEach(function (el) {
+    el.addEventListener('click', function (e) {
+      var kind = el.getAttribute('data-share');
+      if (kind === 'close') { var sheet = document.getElementById('shareSheet'); if (sheet) sheet.classList.add('hidden-lb'); document.body.style.overflow = ''; return; }
+      if (kind === 'whatsapp') { e.preventDefault(); window.open('https://wa.me/?text=' + encodeURIComponent(getShareText() + ' ' + getShareUrl()), '_blank'); }
+      else if (kind === 'facebook') { e.preventDefault(); window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(getShareUrl()), '_blank'); }
+      else if (kind === 'twitter') { e.preventDefault(); window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(getShareText()) + '&url=' + encodeURIComponent(getShareUrl()), '_blank'); }
+      else if (kind === 'linkedin') { e.preventDefault(); window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(getShareUrl()), '_blank'); }
+      else if (kind === 'copy') {
+        e.preventDefault();
+        if (navigator.share) { navigator.share({ title: getShareText(), url: getShareUrl() }).catch(function(){}); }
+        else if (navigator.clipboard) {
+          navigator.clipboard.writeText(getShareUrl()).then(function () {
+            var sheet = document.getElementById('shareSheet');
+            if (sheet) sheet.classList.add('hidden-lb');
+            document.body.style.overflow = '';
+            showToast('Link berhasil disalin!');
+          });
+        }
+      }
+    });
+  });
+  var shareBtnNav = document.getElementById('shareBtnNav');
+  if (shareBtnNav) {
+    shareBtnNav.addEventListener('click', function (e) {
+      e.preventDefault();
+      var sheet = document.getElementById('shareSheet');
+      if (sheet) { sheet.classList.remove('hidden-lb'); document.body.style.overflow = 'hidden'; }
+    });
+  }
+
+  /* TOAST */
+  function showToast(msg) {
+    var t = document.createElement('div');
+    t.className = 'fixed bottom-24 left-1/2 z-[500] -translate-x-1/2 rounded-xl bg-slate-900 px-5 py-3 text-[13px] font-semibold text-white shadow-2xl transition-all duration-300 dark:bg-white dark:text-slate-900';
+    t.textContent = msg;
+    document.body.appendChild(t);
+    setTimeout(function () { t.style.opacity = '0'; t.style.transform = 'translate(-50%, 20px)'; }, 2000);
+    setTimeout(function () { t.remove(); }, 2400);
+  }
+
+  /* MULTI-STEP FORM */
+  document.querySelectorAll('[data-multi]').forEach(function (form) {
+    var stepPanels = form.querySelectorAll('.step-panel');
+    var stepDots = form.querySelectorAll('.step-dot');
+    var prevBtn = form.querySelector('[data-nav="prev"]');
+    var nextBtn = form.querySelector('[data-nav="next"]');
+    var submitBtn = form.querySelector('[data-nav="submit"]');
+    var currInd = form.querySelector('[data-current-step]');
+    var total = stepPanels.length;
+    var current = 1;
+    function render() {
+      stepPanels.forEach(function (p) { p.classList.toggle('active', p.getAttribute('data-step') == current); });
+      stepDots.forEach(function (d) {
+        var i = parseInt(d.getAttribute('data-step-ind'), 10);
+        d.classList.remove('active', 'done');
+        if (i === current) d.classList.add('active');
+        else if (i < current) d.classList.add('done');
+      });
+      if (currInd) currInd.textContent = current;
+      if (prevBtn) prevBtn.disabled = current === 1;
+      if (nextBtn) nextBtn.classList.toggle('hidden', current === total);
+      if (submitBtn) submitBtn.classList.toggle('hidden', current !== total);
+      if (submitBtn) submitBtn.style.display = current === total ? 'inline-flex' : 'none';
+    }
+    function validateStep(step) {
+      var panel = form.querySelector('.step-panel[data-step="' + step + '"]');
+      var valid = true;
+      panel.querySelectorAll('[required]').forEach(function (f) {
+        if ((f.type === 'checkbox' || f.type === 'radio') && !f.checked) { /* handled later */ }
+        else if (!f.value.trim()) { valid = false; f.classList.add('border-red-500/60', 'ring-2', 'ring-red-500/15'); }
+        else f.classList.remove('border-red-500/60', 'ring-2', 'ring-red-500/15');
+      });
+      return valid;
+    }
+    if (nextBtn) nextBtn.addEventListener('click', function () {
+      if (!validateStep(current)) return;
+      if (current < total) { current++; render(); }
+    });
+    if (prevBtn) prevBtn.addEventListener('click', function () {
+      if (current > 1) { current--; render(); }
+    });
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!validateStep(current)) return;
+      var btn = submitBtn || form.querySelector('button[type="submit"]');
+      var orig = btn.innerHTML;
+      btn.disabled = true;
+      btn.innerHTML = '<span class="inline-block h-4 w-4 animate-spin rounded-full border-2 border-white/30 border-t-white"></span> Mengirim…';
+      setTimeout(function () {
+        btn.disabled = false; btn.innerHTML = orig;
+        if (window.lucide) window.lucide.createIcons();
+        var fb = form.querySelector('[data-form-feedback]');
+        if (fb) { fb.classList.remove('hidden'); fb.classList.add('flex'); }
+        // Confetti
+        if (window.confetti) window.confetti({ particleCount: 120, spread: 70, origin: { y: 0.7 }, colors: ['#2563EB', '#60A5FA', '#DC2626', '#FFFFFF'] });
+        setTimeout(function () { form.reset(); current = 1; render(); }, 400);
+        setTimeout(function () { if (fb) { fb.classList.add('hidden'); fb.classList.remove('flex'); } }, 8000);
+      }, 1100);
+    });
+    render();
+  });
+
+  /* SIMPLE FORMS */
+  document.querySelectorAll('form[data-simple]').forEach(function (form) {
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       var required = form.querySelectorAll('[required]');
       var valid = true;
       required.forEach(function (f) {
-        if (!f.value.trim()) { valid = false; f.classList.add('border-red-500/60','ring-2','ring-red-500/15'); }
-        else f.classList.remove('border-red-500/60','ring-2','ring-red-500/15');
+        if ((f.type === 'checkbox' || f.type === 'radio') && !f.checked) { valid = false; }
+        else if (!f.value.trim()) { valid = false; f.classList.add('border-red-500/60', 'ring-2', 'ring-red-500/15'); }
+        else f.classList.remove('border-red-500/60', 'ring-2', 'ring-red-500/15');
       });
-      var email = document.getElementById('email');
-      if (email && email.value.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) {
-        valid = false; email.classList.add('border-red-500/60','ring-2','ring-red-500/15');
-      }
-      if (!valid) return;
+      if (!valid) { showToast('Mohon lengkapi kolom wajib.'); return; }
       var btn = form.querySelector('button[type="submit"]');
       var orig = btn.innerHTML;
       btn.disabled = true;
@@ -1557,18 +2163,126 @@ tailwind.config = {
       setTimeout(function () {
         btn.disabled = false; btn.innerHTML = orig;
         if (window.lucide) window.lucide.createIcons();
-        if (feedback) { feedback.classList.remove('hidden'); feedback.classList.add('flex'); }
+        var fb = form.querySelector('[data-form-feedback]');
+        if (fb) { fb.classList.remove('hidden'); fb.classList.add('flex'); }
+        if (window.confetti) window.confetti({ particleCount: 120, spread: 70, origin: { y: 0.7 }, colors: ['#2563EB', '#60A5FA', '#DC2626', '#FFFFFF'] });
         form.reset();
-        setTimeout(function () {
-          if (feedback) { feedback.classList.add('hidden'); feedback.classList.remove('flex'); }
-        }, 7000);
+        setTimeout(function () { if (fb) { fb.classList.add('hidden'); fb.classList.remove('flex'); } }, 8000);
       }, 1100);
     });
-    form.querySelectorAll('input,select,textarea').forEach(function (f) {
-      f.addEventListener('input', function () { f.classList.remove('border-red-500/60','ring-2','ring-red-500/15'); });
-      f.addEventListener('change', function () { f.classList.remove('border-red-500/60','ring-2','ring-red-500/15'); });
+  });
+
+  /* NEWSLETTER */
+  var newsletterForm = document.getElementById('newsletterForm');
+  var nlEmail = document.getElementById('nlEmail');
+  if (newsletterForm) {
+    newsletterForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!nlEmail.value.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(nlEmail.value.trim())) { showToast('Email tidak valid.'); return; }
+      showToast('Terima kasih! Email Anda telah terdaftar.');
+      if (window.confetti) window.confetti({ particleCount: 60, spread: 60, origin: { y: 0.7 }, colors: ['#FFFFFF', '#60A5FA'] });
+      newsletterForm.reset();
     });
   }
+
+  /* FILE UPLOAD */
+  var fileDrop = document.getElementById('fileDrop');
+  var fileInput = document.getElementById('fileInput');
+  var fileBrowseBtn = document.getElementById('fileBrowseBtn');
+  var fileList = document.getElementById('fileList');
+  var files = [];
+  function renderFiles() {
+    if (!fileList) return;
+    fileList.innerHTML = '';
+    files.forEach(function (f, idx) {
+      var li = document.createElement('li');
+      li.className = 'flex items-center justify-between gap-3 rounded-xl border border-slate-200 bg-slate-50 px-4 py-2.5 text-[12.5px] dark:border-white/10 dark:bg-slate-800';
+      var sizeKB = Math.round(f.size / 1024);
+      var sizeStr = sizeKB < 1024 ? sizeKB + ' KB' : (sizeKB / 1024).toFixed(1) + ' MB';
+      li.innerHTML = '<div class="flex min-w-0 items-center gap-2"><i data-lucide="file-text" class="h-4 w-4 shrink-0 text-brand-blue"></i><span class="truncate font-medium text-slate-700 dark:text-slate-200">' + f.name + '</span><span class="shrink-0 text-slate-400">· ' + sizeStr + '</span></div><button type="button" data-remove="' + idx + '" class="grid h-7 w-7 shrink-0 place-items-center rounded-lg text-slate-500 hover:bg-slate-200 hover:text-red-600 dark:hover:bg-slate-700"><i data-lucide="x" class="h-3.5 w-3.5"></i></button>';
+      fileList.appendChild(li);
+    });
+    if (window.lucide) window.lucide.createIcons();
+    fileList.querySelectorAll('[data-remove]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var i = parseInt(btn.getAttribute('data-remove'), 10);
+        files.splice(i, 1);
+        renderFiles();
+      });
+    });
+  }
+  if (fileBrowseBtn && fileInput) fileBrowseBtn.addEventListener('click', function () { fileInput.click(); });
+  if (fileDrop && fileInput) {
+    fileDrop.addEventListener('click', function (e) { if (e.target === fileDrop) fileInput.click(); });
+    fileInput.addEventListener('change', function () {
+      Array.prototype.forEach.call(fileInput.files, function (f) { if (files.length < 5) files.push(f); });
+      renderFiles();
+    });
+    ['dragenter', 'dragover'].forEach(function (evt) {
+      fileDrop.addEventListener(evt, function (e) { e.preventDefault(); fileDrop.classList.add('dragover'); });
+    });
+    ['dragleave', 'drop'].forEach(function (evt) {
+      fileDrop.addEventListener(evt, function (e) { e.preventDefault(); fileDrop.classList.remove('dragover'); });
+    });
+    fileDrop.addEventListener('drop', function (e) {
+      var dt = e.dataTransfer;
+      if (dt && dt.files) {
+        Array.prototype.forEach.call(dt.files, function (f) { if (files.length < 5) files.push(f); });
+        renderFiles();
+      }
+    });
+  }
+
+  /* CHAT WIDGET */
+  var chatToggle = document.getElementById('chatToggle');
+  var chatClose = document.getElementById('chatClose');
+  var chatPanel = document.getElementById('chatPanel');
+  if (chatToggle && chatPanel) {
+    chatToggle.addEventListener('click', function () {
+      chatPanel.classList.toggle('hidden-chat');
+    });
+  }
+  if (chatClose && chatPanel) {
+    chatClose.addEventListener('click', function () {
+      chatPanel.classList.add('hidden-chat');
+    });
+  }
+  document.querySelectorAll('[data-chat-reply]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var reply = btn.getAttribute('data-chat-reply');
+      var chatMessages = document.getElementById('chatMessages');
+      if (chatMessages) {
+        var userMsg = document.createElement('div');
+        userMsg.className = 'mb-3 ml-auto max-w-[80%] rounded-2xl rounded-tr-sm bg-brand-blue p-3 text-[13px] text-white';
+        userMsg.textContent = reply;
+        chatMessages.appendChild(userMsg);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+        setTimeout(function () {
+          var botMsg = document.createElement('div');
+          botMsg.className = 'mb-3 max-w-[85%] rounded-2xl rounded-tl-sm bg-slate-100 p-3 text-[13px] text-slate-700 dark:bg-slate-800 dark:text-slate-200';
+          var responses = {
+            'Konsultasi proyek konstruksi': 'Baik! Silakan isi form "Booking Konsultasi" atau chat kami di WhatsApp 0878 8885 5877. Kami akan menghubungkan Anda dengan tim terkait.',
+            'Request penawaran harga': 'Untuk penawaran harga, silakan isi form "Request Quote (RFQ)" di section Layanan Digital. Lampirkan spesifikasi untuk hasil yang lebih akurat.',
+            'Info kemitraan & vendor': 'Kami terbuka untuk kemitraan! Daftarkan perusahaan Anda melalui form "Registrasi Vendor". Tim procurement akan meninjau.',
+            'Lainnya': 'Silakan sampaikan pertanyaan Anda via WhatsApp 0878 8885 5877 atau email info@judison.my.id. Tim kami siap membantu!'
+          };
+          botMsg.textContent = responses[reply] || responses['Lainnya'];
+          chatMessages.appendChild(botMsg);
+          chatMessages.scrollTop = chatMessages.scrollHeight;
+        }, 600);
+      }
+    });
+  });
+
+  /* DOWNLOAD PDF (print) */
+  function triggerPrint() {
+    showToast('Menyiapkan dokumen…');
+    setTimeout(function () { window.print(); }, 400);
+  }
+  var dlBtn = document.getElementById('downloadPdf');
+  if (dlBtn) dlBtn.addEventListener('click', triggerPrint);
+  var dlBtnLegal = document.getElementById('downloadPdfLegal');
+  if (dlBtnLegal) dlBtnLegal.addEventListener('click', triggerPrint);
 
   /* YEAR */
   var y = document.getElementById('year');
