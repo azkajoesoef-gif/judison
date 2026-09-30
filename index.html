@@ -99,21 +99,27 @@ tailwind.config = {
 
   .ring-bg{stroke-dasharray:126;stroke-dashoffset:126;transition:stroke-dashoffset .2s linear}
 
-  /* Section Navigator */
+  /* ============================================
+     SECTION NAVIGATOR — HORIZONTAL BOTTOM BAR
+     Tidak menutupi konten (horizontal, di bawah)
+  ============================================ */
   #sectionNav{transition:opacity .4s ease,transform .4s ease}
-  #sectionNav.nav-hidden{opacity:0;pointer-events:none;transform:translateY(-50%) translateX(-12px)}
-  .section-nav-item{display:flex;align-items:center;gap:10px;padding:5px 0;cursor:pointer;text-decoration:none}
-  .section-dot{display:block;width:8px;height:8px;border-radius:9999px;background:#CBD5E1;transition:all .35s cubic-bezier(.16,1,.3,1);flex-shrink:0}
-  .section-nav-label{font-size:11px;font-weight:700;letter-spacing:.02em;color:#64748B;white-space:nowrap;opacity:0;transform:translateX(-6px);transition:all .35s cubic-bezier(.16,1,.3,1)}
-  .section-nav-item:hover .section-nav-label{opacity:1;transform:translateX(0)}
-  .section-nav-item:hover .section-dot{background:#94A3B8;transform:scale(1.15)}
-  .section-nav-item.active .section-dot{width:12px;height:12px;background:#2563EB;box-shadow:0 0 0 4px rgba(37,99,235,.18)}
-  .section-nav-item.active .section-nav-label{opacity:1;transform:translateX(0);color:#1D4ED8}
-  .dark .section-dot{background:#475569}
-  .dark .section-nav-item:hover .section-dot{background:#94A3B8}
-  .dark .section-nav-item.active .section-dot{background:#60A5FA;box-shadow:0 0 0 4px rgba(96,165,250,.22)}
-  .dark .section-nav-label{color:#94A3B8}
-  .dark .section-nav-item.active .section-nav-label{color:#60A5FA}
+  #sectionNav.nav-hidden{opacity:0;pointer-events:none;transform:translate(-50%,12px)}
+  .sec-pill{
+    display:inline-flex;align-items:center;gap:6px;
+    padding:6px 12px;border-radius:9999px;
+    font-size:11px;font-weight:600;letter-spacing:.01em;
+    white-space:nowrap;cursor:pointer;text-decoration:none;
+    color:#64748B;background:transparent;border:1px solid transparent;
+    transition:all .3s cubic-bezier(.16,1,.3,1);
+  }
+  .sec-pill:hover{color:#1D4ED8;background:rgba(37,99,235,.06);border-color:rgba(37,99,235,.15)}
+  .sec-pill.active{color:#FFFFFF;background:linear-gradient(100deg,#3B82F6 0%,#2563EB 100%);border-color:transparent;box-shadow:0 6px 20px -6px rgba(37,99,235,.6)}
+  .dark .sec-pill{color:#94A3B8}
+  .dark .sec-pill:hover{color:#60A5FA;background:rgba(96,165,250,.1);border-color:rgba(96,165,250,.2)}
+  .dark .sec-pill.active{color:#FFFFFF;background:linear-gradient(100deg,#3B82F6 0%,#1D4ED8 100%)}
+  #sectionNavScroll{scrollbar-width:none;-ms-overflow-style:none}
+  #sectionNavScroll::-webkit-scrollbar{display:none}
   @media (max-width:1023px){#sectionNav{display:none!important}}
 
   .partner-logo{filter:grayscale(100%);opacity:.65;transition:filter .4s ease,opacity .4s ease,transform .4s ease}
@@ -129,24 +135,19 @@ tailwind.config = {
   .ba-knob{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:9999px;background:white;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,.35);pointer-events:none;font-weight:700;color:#2563EB}
   .ba-range{position:absolute;inset:0;opacity:0;cursor:ew-resize;width:100%;height:100%;margin:0;padding:0}
 
-  /* Filter chips */
   .filter-chip{transition:all .3s ease}
   .filter-chip.active{background:linear-gradient(100deg,#3B82F6 0%,#2563EB 100%);color:white;border-color:transparent;box-shadow:0 8px 20px -8px rgba(37,99,235,.6)}
 
-  /* Progress bar */
   .prog-fill{transition:width 1.6s cubic-bezier(.16,1,.3,1)}
 
-  /* Multi-step */
   .step-dot{transition:all .4s ease}
   .step-dot.active{background:#2563EB;color:white;transform:scale(1.1)}
   .step-dot.done{background:#10B981;color:white}
   .step-panel{display:none}
   .step-panel.active{display:block;animation:fadeSlide .4s ease}
 
-  /* File drop */
   .file-drop.dragover{border-color:#2563EB;background:rgba(37,99,235,.06)}
 
-  /* Chat widget */
   #chatPanel{transition:opacity .3s ease,transform .3s ease,visibility .3s ease;transform-origin:bottom right}
   #chatPanel.hidden-chat{opacity:0;visibility:hidden;transform:translateY(12px) scale(.96)}
 
@@ -187,25 +188,28 @@ tailwind.config = {
 </head>
 <body class="bg-white font-sans text-slate-700 antialiased selection:bg-brand-blue/15 selection:text-brand-blueDark dark:bg-slate-950 dark:text-slate-300">
 
-<!-- SECTION NAVIGATOR (TOC Floating) -->
-<nav id="sectionNav" class="fixed left-4 top-1/2 z-40 -translate-y-1/2 no-print sm:left-6" aria-label="Navigasi halaman">
-  <div class="rounded-2xl border border-slate-200/70 bg-white/80 p-3 shadow-lg backdrop-blur-xl dark:border-white/10 dark:bg-slate-900/70">
-    <div class="mb-2 text-center text-[9px] font-bold uppercase tracking-[0.2em] text-slate-400">Section</div>
-    <ul class="space-y-0.5">
-      <li><a href="#home" class="section-nav-item active" data-section="home"><span class="section-dot"></span><span class="section-nav-label">Beranda</span></a></li>
-      <li><a href="#mitra" class="section-nav-item" data-section="mitra"><span class="section-dot"></span><span class="section-nav-label">Mitra</span></a></li>
-      <li><a href="#tentang" class="section-nav-item" data-section="tentang"><span class="section-dot"></span><span class="section-nav-label">Tentang</span></a></li>
-      <li><a href="#layanan" class="section-nav-item" data-section="layanan"><span class="section-dot"></span><span class="section-nav-label">Layanan</span></a></li>
-      <li><a href="#proyek" class="section-nav-item" data-section="proyek"><span class="section-dot"></span><span class="section-nav-label">Proyek</span></a></li>
-      <li><a href="#testimoni" class="section-nav-item" data-section="testimoni"><span class="section-dot"></span><span class="section-nav-label">Testimoni</span></a></li>
-      <li><a href="#timeline" class="section-nav-item" data-section="timeline"><span class="section-dot"></span><span class="section-nav-label">Perjalanan</span></a></li>
-      <li><a href="#legalitas" class="section-nav-item" data-section="legalitas"><span class="section-dot"></span><span class="section-nav-label">Legalitas</span></a></li>
-      <li><a href="#struktur" class="section-nav-item" data-section="struktur"><span class="section-dot"></span><span class="section-nav-label">Struktur</span></a></li>
-      <li><a href="#direktur" class="section-nav-item" data-section="direktur"><span class="section-dot"></span><span class="section-nav-label">Pimpinan</span></a></li>
-      <li><a href="#form-hub" class="section-nav-item" data-section="form-hub"><span class="section-dot"></span><span class="section-nav-label">Layanan Digital</span></a></li>
-      <li><a href="#faq" class="section-nav-item" data-section="faq"><span class="section-dot"></span><span class="section-nav-label">FAQ</span></a></li>
-      <li><a href="#kontak" class="section-nav-item" data-section="kontak"><span class="section-dot"></span><span class="section-nav-label">Kontak</span></a></li>
-    </ul>
+<!-- ============================================
+     SECTION NAVIGATOR — HORIZONTAL BOTTOM BAR
+     Model baru: horizontal pill bar di bawah layar.
+     Tidak menutupi konten kiri/kanan.
+============================================ -->
+<nav id="sectionNav" class="fixed bottom-20 left-1/2 z-40 -translate-x-1/2 no-print" aria-label="Navigasi section">
+  <div class="rounded-full border border-slate-200/80 bg-white/95 px-2 py-1.5 shadow-2xl backdrop-blur-xl dark:border-white/10 dark:bg-slate-900/95">
+    <div id="sectionNavScroll" class="flex max-w-[calc(100vw-5rem)] items-center gap-0.5 overflow-x-auto">
+      <a href="#home" class="sec-pill" data-section="home">Beranda</a>
+      <a href="#mitra" class="sec-pill" data-section="mitra">Mitra</a>
+      <a href="#tentang" class="sec-pill" data-section="tentang">Tentang</a>
+      <a href="#layanan" class="sec-pill" data-section="layanan">Layanan</a>
+      <a href="#proyek" class="sec-pill" data-section="proyek">Proyek</a>
+      <a href="#testimoni" class="sec-pill" data-section="testimoni">Testimoni</a>
+      <a href="#timeline" class="sec-pill" data-section="timeline">Perjalanan</a>
+      <a href="#legalitas" class="sec-pill" data-section="legalitas">Legalitas</a>
+      <a href="#struktur" class="sec-pill" data-section="struktur">Struktur</a>
+      <a href="#direktur" class="sec-pill" data-section="direktur">Pimpinan</a>
+      <a href="#form-hub" class="sec-pill" data-section="form-hub">Layanan Digital</a>
+      <a href="#faq" class="sec-pill" data-section="faq">FAQ</a>
+      <a href="#kontak" class="sec-pill" data-section="kontak">Kontak</a>
+    </div>
   </div>
 </nav>
 
@@ -220,7 +224,7 @@ tailwind.config = {
   </div>
 </div>
 
-<!-- SCROLL / READING PROGRESS -->
+<!-- SCROLL PROGRESS -->
 <div class="fixed inset-x-0 top-0 z-[100] h-[3px] bg-transparent no-print">
   <div id="scrollProgress" class="h-full w-0 bg-gradient-to-r from-brand-blue via-brand-blueDark to-brand-red transition-[width] duration-150"></div>
 </div>
@@ -653,7 +657,11 @@ tailwind.config = {
   </div>
 </section>
 
-<!-- PROYEK -->
+<!-- ============================================
+     PROYEK — TAHUN DIPERBAIKI, KATEGORI DIPERBAIKI
+     Dapur MBG: 2025, kategori "pemerintah"
+     Koperasi Desa & Nelayan: 2026, kategori "pemerintah"
+============================================ -->
 <section id="proyek" class="relative scroll-mt-28 py-20 sm:py-28">
   <div class="pointer-events-none absolute inset-0 -z-10 radial-blue-soft opacity-70 dark:opacity-30"></div>
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -663,15 +671,16 @@ tailwind.config = {
       <p class="mt-5 text-[15px] leading-relaxed text-slate-600 dark:text-slate-400">Dipercaya oleh institusi pemerintah dan mitra strategis nasional dalam pekerjaan konstruksi, pengaspalan jalan, program pangan, dan pemberdayaan masyarakat.</p>
     </div>
 
+    <!-- FILTER: "Program Sosial" → "Program Pemerintah" -->
     <div class="reveal mt-10 flex flex-wrap justify-center gap-2">
       <button data-filter="all" class="filter-chip active rounded-full border border-slate-200 bg-white px-5 py-2 text-[12.5px] font-bold text-slate-600 dark:border-white/10 dark:bg-slate-900 dark:text-slate-300">Semua</button>
       <button data-filter="konstruksi" class="filter-chip rounded-full border border-slate-200 bg-white px-5 py-2 text-[12.5px] font-semibold text-slate-600 dark:border-white/10 dark:bg-slate-900 dark:text-slate-300">Konstruksi</button>
       <button data-filter="agrikultur" class="filter-chip rounded-full border border-slate-200 bg-white px-5 py-2 text-[12.5px] font-semibold text-slate-600 dark:border-white/10 dark:bg-slate-900 dark:text-slate-300">Agrikultur</button>
       <button data-filter="pangan" class="filter-chip rounded-full border border-slate-200 bg-white px-5 py-2 text-[12.5px] font-semibold text-slate-600 dark:border-white/10 dark:bg-slate-900 dark:text-slate-300">Pangan</button>
-      <button data-filter="sosial" class="filter-chip rounded-full border border-slate-200 bg-white px-5 py-2 text-[12.5px] font-semibold text-slate-600 dark:border-white/10 dark:bg-slate-900 dark:text-slate-300">Program Sosial</button>
+      <button data-filter="pemerintah" class="filter-chip rounded-full border border-slate-200 bg-white px-5 py-2 text-[12.5px] font-semibold text-slate-600 dark:border-white/10 dark:bg-slate-900 dark:text-slate-300">Program Pemerintah</button>
     </div>
 
-    <!-- PROYEK GRID - FIXED 3 columns -->
+    <!-- PROYEK GRID -->
     <div id="proyekGrid" class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
 
       <!-- Lumbung Pangan (Featured - span 2) -->
@@ -735,34 +744,34 @@ tailwind.config = {
         </div>
       </div>
 
-      <!-- Koperasi Desa -->
-      <article class="card-lift reveal proyek-card group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-6 shadow-card dark:border-white/10 dark:bg-slate-900 sm:p-7" data-cat="sosial" data-year="2024">
+      <!-- Koperasi Desa Merah Putih — 2026, Program Pemerintah -->
+      <article class="card-lift reveal proyek-card group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-6 shadow-card dark:border-white/10 dark:bg-slate-900 sm:p-7" data-cat="pemerintah" data-year="2026">
         <div class="flex items-start justify-between gap-4">
           <div class="icon-tile grid h-12 w-12 place-items-center rounded-2xl bg-red-50 text-brand-red dark:bg-red-500/10"><i data-lucide="store" class="h-6 w-6"></i></div>
-          <span class="rounded-full border border-brand-red/30 bg-brand-redSoft px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-brand-red dark:bg-brand-red/10">2024</span>
+          <span class="rounded-full border border-brand-red/30 bg-brand-redSoft px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-brand-red dark:bg-brand-red/10">2026</span>
         </div>
         <h4 class="mt-5 text-[16px] font-extrabold tracking-tight text-slate-900 dark:text-white">Koperasi Desa Merah Putih</h4>
-        <p class="mt-2.5 text-[13px] leading-relaxed text-slate-600 dark:text-slate-400">Pembangunan dan pendampingan Koperasi Desa Merah Putih sebagai pilar ekonomi kerakyatan di pedesaan — kemandirian ekonomi desa, distribusi sembako, dan pemberdayaan UMKM lokal.</p>
+        <p class="mt-2.5 text-[13px] leading-relaxed text-slate-600 dark:text-slate-400">Pembangunan dan pendampingan Koperasi Desa/Kelurahan Merah Putih (KDKMP) sebagai infrastruktur ekonomi desa — mendukung rantai pasok nasional, distribusi sembako, dan pemberdayaan UMKM lokal.</p>
       </article>
 
-      <!-- Dapur MBG -->
-      <article class="card-lift reveal proyek-card group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-6 shadow-card dark:border-white/10 dark:bg-slate-900 sm:p-7" data-cat="sosial pangan" data-year="2024">
+      <!-- Pembangunan Dapur MBG — 2025, Program Pemerintah -->
+      <article class="card-lift reveal proyek-card group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-6 shadow-card dark:border-white/10 dark:bg-slate-900 sm:p-7" data-cat="pemerintah pangan" data-year="2025">
         <div class="flex items-start justify-between gap-4">
           <div class="icon-tile grid h-12 w-12 place-items-center rounded-2xl bg-emerald-50 text-emerald-600 dark:bg-emerald-500/10"><i data-lucide="utensils" class="h-6 w-6"></i></div>
-          <span class="rounded-full border border-emerald-500/30 bg-emerald-50 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400">2024</span>
+          <span class="rounded-full border border-emerald-500/30 bg-emerald-50 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400">2025</span>
         </div>
         <h4 class="mt-5 text-[16px] font-extrabold tracking-tight text-slate-900 dark:text-white">Pembangunan Dapur MBG</h4>
-        <p class="mt-2.5 text-[13px] leading-relaxed text-slate-600 dark:text-slate-400">Pembangunan dapur fasilitas Makan Bergizi Gratis (MBG) beserta instalasi dan operasionalnya — bersama Badan Gizi Nasional &amp; Yayasan Kartika Eka Paksi.</p>
+        <p class="mt-2.5 text-[13px] leading-relaxed text-slate-600 dark:text-slate-400">Pembangunan Satuan Pelayanan Pemenuhan Gizi (SPPG) atau dapur Makan Bergizi Gratis beserta instalasi dan operasionalnya — bersama Badan Gizi Nasional (BGN) &amp; Yayasan Kartika Eka Paksi (YKEP).</p>
       </article>
 
-      <!-- Koperasi Nelayan -->
-      <article class="card-lift reveal proyek-card group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-6 shadow-card dark:border-white/10 dark:bg-slate-900 sm:p-7" data-cat="sosial" data-year="2024">
+      <!-- Koperasi Nelayan Merah Putih — 2026, Program Pemerintah -->
+      <article class="card-lift reveal proyek-card group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-6 shadow-card dark:border-white/10 dark:bg-slate-900 sm:p-7" data-cat="pemerintah" data-year="2026">
         <div class="flex items-start justify-between gap-4">
           <div class="icon-tile grid h-12 w-12 place-items-center rounded-2xl bg-sky-50 text-sky-600 dark:bg-sky-500/10"><i data-lucide="fish" class="h-6 w-6"></i></div>
-          <span class="rounded-full border border-sky-500/30 bg-sky-50 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:bg-sky-500/10 dark:text-sky-400">2024</span>
+          <span class="rounded-full border border-sky-500/30 bg-sky-50 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:bg-sky-500/10 dark:text-sky-400">2026</span>
         </div>
-        <h4 class="mt-5 text-[16px] font-extrabold tracking-tight text-slate-900 dark:text-white">Pembangunan Koperasi Nelayan</h4>
-        <p class="mt-2.5 text-[13px] leading-relaxed text-slate-600 dark:text-slate-400">Pembangunan koperasi nelayan beserta sarana pendukungnya — penguatan ekonomi pesisir, distribusi hasil tangkapan, pemberdayaan keluarga nelayan. Bersama KKP RI.</p>
+        <h4 class="mt-5 text-[16px] font-extrabold tracking-tight text-slate-900 dark:text-white">Koperasi Nelayan Merah Putih</h4>
+        <p class="mt-2.5 text-[13px] leading-relaxed text-slate-600 dark:text-slate-400">Pembangunan Koperasi Nelayan Merah Putih (KNMP) beserta sarana pendukungnya — penguatan ekonomi pesisir, distribusi hasil tangkapan, pemberdayaan keluarga nelayan. Bersama Kementerian Kelautan &amp; Perikanan RI.</p>
       </article>
     </div>
 
@@ -771,7 +780,7 @@ tailwind.config = {
       <p class="mt-3 text-[13.5px] font-medium text-slate-500 dark:text-slate-400">Tidak ada proyek yang sesuai dengan filter ini.</p>
     </div>
 
-    <!-- BEFORE / AFTER - FIXED IMAGES -->
+    <!-- BEFORE / AFTER — FOTO ANDA -->
     <div class="reveal mt-20">
       <div class="mb-6 text-center">
         <span class="text-[11px] font-bold uppercase tracking-[0.24em] text-brand-red">Sebelum &amp; Sesudah</span>
@@ -780,8 +789,8 @@ tailwind.config = {
       </div>
       <div class="mx-auto max-w-3xl">
         <div class="ba-wrap aspect-[16/9] shadow-card">
-          <img class="ba-img" src="https://placehold.co/1400x788/334155/FFFFFF?text=SEBELUM%0AJalan+Rusak%2C+Berlubang+%26+Berdebu" alt="Sebelum" loading="lazy">
-          <img class="ba-img ba-img-after" src="https://placehold.co/1400x788/2563EB/FFFFFF?text=SESUDAH%0AAspal+Hotmix+Baru+%26+Mulus" alt="Sesudah" loading="lazy">
+          <img class="ba-img" src="https://i.ibb.co.com/PzhWrKp7/PHOTO-2026-08-31-19-20-32.jpg" alt="Sebelum" loading="lazy">
+          <img class="ba-img ba-img-after" src="https://i.ibb.co.com/BVkMpG4f/PHOTO-2026-08-31-19-20-31.jpg" alt="Sesudah" loading="lazy">
           <div class="ba-handle"><div class="ba-knob">⇔</div></div>
           <input type="range" min="0" max="100" value="50" class="ba-range" aria-label="Before after slider">
           <div class="pointer-events-none absolute left-3 top-3 rounded-lg bg-black/60 px-3 py-1.5 text-[11px] font-bold uppercase tracking-wider text-white backdrop-blur">Sebelum</div>
@@ -860,7 +869,7 @@ tailwind.config = {
   </div>
 </section>
 
-<!-- TIMELINE -->
+<!-- TIMELINE — DIPERBARUI -->
 <section id="timeline" class="relative scroll-mt-28 py-20 sm:py-28">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="reveal mx-auto max-w-3xl text-center">
@@ -883,19 +892,25 @@ tailwind.config = {
         </div>
         <div class="relative mb-10">
           <div class="absolute -left-[41px] top-1 h-4 w-4 rounded-full border-2 border-white bg-emerald-500 shadow-md dark:border-slate-900 sm:-left-[49px]"></div>
-          <div class="text-[11px] font-bold uppercase tracking-widest text-emerald-600">2024</div>
-          <h3 class="mt-1.5 text-[16px] font-extrabold tracking-tight text-slate-900 dark:text-white">Dapur MBG &amp; Koperasi Desa Merah Putih</h3>
-          <p class="mt-1.5 text-[13.5px] leading-relaxed text-slate-600 dark:text-slate-400">Pembangunan dapur MBG bersama YKEP dan pengembangan koperasi desa.</p>
+          <div class="text-[11px] font-bold uppercase tracking-widest text-emerald-600">2025</div>
+          <h3 class="mt-1.5 text-[16px] font-extrabold tracking-tight text-slate-900 dark:text-white">Pembangunan Dapur MBG</h3>
+          <p class="mt-1.5 text-[13.5px] leading-relaxed text-slate-600 dark:text-slate-400">Pembangunan dapur SPPG bersama Badan Gizi Nasional &amp; Yayasan Kartika Eka Paksi (YKEP).</p>
+        </div>
+        <div class="relative mb-10">
+          <div class="absolute -left-[41px] top-1 h-4 w-4 rounded-full border-2 border-white bg-red-500 shadow-md dark:border-slate-900 sm:-left-[49px]"></div>
+          <div class="text-[11px] font-bold uppercase tracking-widest text-red-600">2026</div>
+          <h3 class="mt-1.5 text-[16px] font-extrabold tracking-tight text-slate-900 dark:text-white">Koperasi Desa Merah Putih</h3>
+          <p class="mt-1.5 text-[13.5px] leading-relaxed text-slate-600 dark:text-slate-400">Pembangunan Koperasi Desa/Kelurahan Merah Putih (KDKMP) sebagai infrastruktur ekonomi desa.</p>
         </div>
         <div class="relative mb-10">
           <div class="absolute -left-[41px] top-1 h-4 w-4 rounded-full border-2 border-white bg-sky-500 shadow-md dark:border-slate-900 sm:-left-[49px]"></div>
-          <div class="text-[11px] font-bold uppercase tracking-widest text-sky-600">2024 — 2025</div>
-          <h3 class="mt-1.5 text-[16px] font-extrabold tracking-tight text-slate-900 dark:text-white">Pembangunan Koperasi Nelayan</h3>
-          <p class="mt-1.5 text-[13.5px] leading-relaxed text-slate-600 dark:text-slate-400">Bersama Kementerian Kelautan &amp; Perikanan RI.</p>
+          <div class="text-[11px] font-bold uppercase tracking-widest text-sky-600">2026</div>
+          <h3 class="mt-1.5 text-[16px] font-extrabold tracking-tight text-slate-900 dark:text-white">Koperasi Nelayan Merah Putih</h3>
+          <p class="mt-1.5 text-[13.5px] leading-relaxed text-slate-600 dark:text-slate-400">Bersama Kementerian Kelautan &amp; Perikanan RI untuk penguatan ekonomi pesisir.</p>
         </div>
         <div class="relative">
           <div class="absolute -left-[41px] top-1 h-4 w-4 rounded-full border-2 border-white bg-brand-blue shadow-md dark:border-slate-900 sm:-left-[49px]"></div>
-          <div class="text-[11px] font-bold uppercase tracking-widest text-brand-blue">2025 — Kini</div>
+          <div class="text-[11px] font-bold uppercase tracking-widest text-brand-blue">2026 — Kini</div>
           <h3 class="mt-1.5 text-[16px] font-extrabold tracking-tight text-slate-900 dark:text-white">Konsolidasi &amp; Pertumbuhan Berkelanjutan</h3>
           <p class="mt-1.5 text-[13.5px] leading-relaxed text-slate-600 dark:text-slate-400">Penguatan tata kelola, inovasi agrikultur, dan perluasan rantai pasok nasional.</p>
         </div>
@@ -1492,7 +1507,7 @@ tailwind.config = {
               <button data-copy="info@judison.my.id" class="copy-btn grid h-8 w-8 shrink-0 place-items-center rounded-lg border border-slate-200 bg-white text-slate-500 transition-all hover:border-brand-blue/40 hover:text-brand-blue dark:border-white/10 dark:bg-slate-900 dark:text-slate-400" aria-label="Copy"><i data-lucide="copy" class="h-3.5 w-3.5"></i></button>
             </div>
           </div>
-          <!-- SHARE BUTTONS - FIXED WITH INLINE SVG -->
+          <!-- SHARE BUTTONS -->
           <div class="mt-5">
             <div class="text-[11px] font-bold uppercase tracking-[0.14em] text-slate-500 dark:text-slate-400">Bagikan Halaman Ini</div>
             <div class="mt-3 flex flex-wrap gap-2">
@@ -1588,7 +1603,7 @@ tailwind.config = {
           <li><a href="#layanan" class="text-[13px] text-slate-500 transition-colors hover:text-brand-blueDark dark:text-slate-400 dark:hover:text-white">Agrikultur</a></li>
           <li><a href="#layanan" class="text-[13px] text-slate-500 transition-colors hover:text-brand-blueDark dark:text-slate-400 dark:hover:text-white">Distribusi Pangan</a></li>
           <li><a href="#layanan" class="text-[13px] text-slate-500 transition-colors hover:text-brand-blueDark dark:text-slate-400 dark:hover:text-white">Perdagangan Besar</a></li>
-          <li><a href="#proyek" class="text-[13px] text-slate-500 transition-colors hover:text-brand-blueDark dark:text-slate-400 dark:hover:text-white">Koperasi &amp; Program Sosial</a></li>
+          <li><a href="#proyek" class="text-[13px] text-slate-500 transition-colors hover:text-brand-blueDark dark:text-slate-400 dark:hover:text-white">Koperasi &amp; Program Pemerintah</a></li>
         </ul>
       </div>
       <div class="lg:col-span-3">
@@ -1868,7 +1883,7 @@ tailwind.config = {
   /* SCROLLSPY + SECTION NAV */
   var sections = document.querySelectorAll('section[id]');
   var navLinks = document.querySelectorAll('.nav-link');
-  var sectionNavItems = document.querySelectorAll('.section-nav-item');
+  var sectionNavItems = document.querySelectorAll('.sec-pill');
   function setActiveSection(id) {
     navLinks.forEach(function (link) {
       if (link.getAttribute('href') === '#' + id) {
@@ -1880,7 +1895,19 @@ tailwind.config = {
       }
     });
     sectionNavItems.forEach(function (item) {
-      item.classList.toggle('active', item.getAttribute('data-section') === id);
+      var isActive = item.getAttribute('data-section') === id;
+      item.classList.toggle('active', isActive);
+      if (isActive) {
+        // Auto-scroll the pill into view
+        var container = document.getElementById('sectionNavScroll');
+        if (container) {
+          var itemRect = item.getBoundingClientRect();
+          var contRect = container.getBoundingClientRect();
+          if (itemRect.left < contRect.left || itemRect.right > contRect.right) {
+            item.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+          }
+        }
+      }
     });
   }
   if ('IntersectionObserver' in window && sections.length) {
